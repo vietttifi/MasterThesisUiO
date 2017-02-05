@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Master Science - Viet Thi Tran</string>
+    <string name="txt_export">Export data</string>
+    <string name="txt_sensor_wrapper">Sensor sources</string>
+    <string name="txt_mining">Mining</string>
+    <string name="txt_plot">Plot diagram</string>
+    <string name="txt_MITBIH">Physionet: MIT-BIH Polysomnographic source</string>
+    <string name="txt_BITalino">BITalino sensor source</string>
+    <string name="txt_EDF">From EDF source</string>
+    <string name="txt_NOXT3">NOX-T3 sensor source</string>
+    <string name="txt_ApneaECG">Physionet: Apnea-ECG source</string>
+    <string name="txt_SourceInfo">Source Information</string>
+    <string name="txt_serverInfo">
+        The BITalino acquisition client must send a JSON string format (cite Gjøby) as follow:\n
+        At first, a client must send a metadata to identify it self.\n
+        A metadata is formatted as below:\n\n
+        {\"type\": \"meta\",\n\t\"name\": Name of source,\n\t\"id\": Source ID,\n\n\t"channels":
+        [\n\t\t {\"id\":  ID,\n\t\t\t\"type\":  TYPE,\n\t\t\t\"metric\":  METRIC,\n\t\t\t\"description\":DESCRIPTION},
+        \n\t\t {\"id\":  ID,\n\t\t\t\"type\":  TYPE,\n\t\t\t\"metric\":  METRIC,\n\t\t\t\"description\":DESCRIPTION},\n\t\t.....]\n}\n\n
+        Then, the client sends data samples that are formatted as below:\n\n
+        { \"type\": \"data\",\n\t\"id\": ID_SOURCE,\n\t\"time\": COLLECT_AT,\n\n\t\"data\":[\n\t\t{\"id\": CHANNEL_ID, \"value\":VALUE},\n\t\t{\"id\": CHANNEL_ID, \"value\":VALUE},\n\t\t...]\n}
+
+    </string>
+
+    <string name="chooser_title">Choose sensor source file</string>
+    <string name="choose_file">Select a file</string>
+    <string name="internal_storage">Internal storage</string>
+    <string name="empty_directory">Empty Directory</string>
+    <string name="storage_removed">Storage was removed or unmounted.</string>
+    <string name="error_selecting_file">Error selecting File</string>
+
+</resources>
