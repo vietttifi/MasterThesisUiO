@@ -8,12 +8,6 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.ClinicAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.DataRecordAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.PatientAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.SensorSourceAdapter;
 import no.uio.ifi.viettt.mscosa.MainFragments.PlotViewFragment;
 import no.uio.ifi.viettt.mscosa.MainFragments.SourceFromFileFragment;
 import no.uio.ifi.viettt.mscosa.MainFragments.MiningFragment;
@@ -24,13 +18,6 @@ public class MainActivity extends AppCompatActivity {
     public SourceFromFileFragment ef;
     public PlotViewFragment ccsf;
     public MiningFragment mf;
-
-    /*public SensorSourceAdapter sensorSourceAdapter;
-    public ChannelAdapter channelAdapter;
-    public ClinicAdapter clinicAdapter;
-    public DataRecordAdapter dataRecordAdapter;
-    public PatientAdapter patientAdapter;
-    public SampleAdapter sampleAdapter;*/
 
     public BottomBar bottomBar;
 
@@ -43,18 +30,10 @@ public class MainActivity extends AppCompatActivity {
         swf.setmMainActivityAndOther(this,ccsf);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*sensorSourceAdapter = new SensorSourceAdapter(this);
-        channelAdapter = new ChannelAdapter(this);
-        clinicAdapter = new ClinicAdapter(this);
-        dataRecordAdapter = new DataRecordAdapter(this);
-        patientAdapter = new PatientAdapter(this);
-        sampleAdapter = new SampleAdapter(this);*/
 
         bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
@@ -90,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onDestroy(){
         super.onDestroy();
-        swf.stopAllConnection();
-        /*sensorSourceAdapter.close();
-        channelAdapter.close();
-        clinicAdapter.close();
-        dataRecordAdapter.close();
-        patientAdapter.close();
-        sampleAdapter.close();*/
     }
 
 }

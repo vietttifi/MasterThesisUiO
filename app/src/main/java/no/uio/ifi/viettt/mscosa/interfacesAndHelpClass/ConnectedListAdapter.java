@@ -70,7 +70,7 @@ public class ConnectedListAdapter extends BaseAdapter {
         }
 
         SensorSource source_s = this.listData.get(i);
-        holder.lbl_sensor_source_ID.setText(source_s.getSensor_source_ID());
+        holder.lbl_sensor_source_ID.setText(source_s.getSource_id());
         holder.lbl_source_name.setText(source_s.getSource_name());
         holder.lbl_SenStatus.setText(source_s.source_status);
         holder.imageView_logo.setImageResource(source_s.logo_in_drawable);

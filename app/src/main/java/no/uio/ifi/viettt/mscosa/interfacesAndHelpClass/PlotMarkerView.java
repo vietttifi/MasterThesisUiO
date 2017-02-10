@@ -40,7 +40,7 @@ public class PlotMarkerView extends MarkerView {
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
         float frequence = 1;
-        for(Channel s: sensorSource.getChannelsOfThisSource().values()){
+        for(Channel s: sensorSource.getClient_thread().getChannelList()){
             frequence = s.frequence; break;
         }
         long original_time = sensorSource.getStartDateTime() + (long)((e.getX()*1000)/frequence);

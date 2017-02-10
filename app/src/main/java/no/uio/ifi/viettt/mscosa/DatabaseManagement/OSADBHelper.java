@@ -24,10 +24,8 @@ public class OSADBHelper extends SQLiteOpenHelper {
 
     //Channel table and its columns ---------- CHANNEL ------------
     public static final String TABLE_CHANNEL = "channel";
-    public static final String CHANNEL_KEY = "channel_key";
     public static final String CHANNEL_ID = "channel_id";
-    public static final String CHANNEL_SENSOR_SOURCE_ID = "sensor_source_ID";
-    public static final String CHANNEL_MAX_SAMPLE_EACH_DATA_RECORD = "nr_of_sample_per_dataRecord";
+    public static final String CHANNEL_SENSOR_SOURCE_ID = "source_id";
     public static final String CHANNEL_NAME = "channel_name";
     public static final String CHANNEL_TRANSDUCER_TYPE = "transducer_type";
     public static final String CHANNEL_DIMENSION = "dimension";
@@ -41,27 +39,28 @@ public class OSADBHelper extends SQLiteOpenHelper {
 
     //Data_record table and its columns    --------------- DATA_RECORD ------------
     public static final String TABLE_DATA_RECORD = "data_record";
-    public static final String DATA_RECORD_KEY = "data_record_key";
-    public static final String DATA_RECORD_ID = "data_record_id";
+    public static final String DATA_RECORD_ID = "dr_id";
     public static final String DATA_RECORD_SOURCE_ID = "source_id";
     public static final String DATA_RECORD_PATIENT_ID = "patient_id";
     public static final String DATA_RECORD_CLINIC_ID = "clinic_id";
     public static final String DATA_RECORD_CREATEDATE = "createDate";
     public static final String DATA_RECORD_EXPERIMENTS = "experiments";
     public static final String DATA_RECORD_DESCRIPTIONS = "descriptions";
+    public static final String DATA_RECORD_MAX_SAMPLE = "max_sample";
 
-    //Sample table and its columns ----------- SAMPLE ---------
-    public static final String TABLE_SAMPLE = "sample";
+    //Sample table and its columns ----------- SAMPLE SET---------
+    public static final String TABLE_SAMPLE_SET = "sampleset";
+    public static final String SAMPLE_SOURCE_ID = "source_id";
     public static final String SAMPLE_CHANNEL_ID = "channel_id";
-    public static final String SAMPLE_DATA_RECORD_ID = "data_record_id";
-    public static final String SAMPLE_MAX_SAMPLE = "max_sample";
-    public static final String SAMPLE_COEFFICIENT = "coefficient";
+    public static final String SAMPLE_DATA_RECORD_ID = "dr_id";
+    public static final String SAMPLE_PATIENT_ID = "patient_id";
+    public static final String SAMPLE_CLINIC_ID = "clinic_id";
     public static final String SAMPLE_DATA = "sample_data";
 
     //Patient table and its columns
     public static final String TABLE_PATIENT = "patient";
     public static final String PATIENT_ID = "patient_id";
-    public static final String PATIENT_CODE_IN_CLINIC = "patient_code_in_clinic";
+    public static final String PATIENT_CODE_IN_CLINIC = "p_code_in_clinic";
     public static final String PATIENT_GENDER = "gender";
     public static final String PATIENT_LASTNAME = "last_name";
     public static final String PATIENT_FIRSTNAME = "first_name";
@@ -88,7 +87,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_SENSOR_SOURCE + "("
             + SENSOR_SOURCE_ID + " TEXT PRIMARY KEY, "
             + SENSOR_SOURCE_NAME + " TEXT NOT NULL, "
-            + SENSOR_SOURCE_TYPE + " TEXT NOT NULL, "
+            + SENSOR_SOURCE_TYPE + " TEXT, "
             + SENSOR_SOURCE_START_DATE + " INTEGER, "
             + SENSOR_SOURCE_RESERVED + " BLOB, "
             + SENSOR_SOURCE_DATA_RECORD_DURATION + " INTEGER"
@@ -97,12 +96,10 @@ public class OSADBHelper extends SQLiteOpenHelper {
     // SQL statement of the -------  CHANNEL ------ table creation
     private static final String SQL_CREATE_TABLE_CHANNEL =
             "CREATE TABLE " + TABLE_CHANNEL + "("
-                    + CHANNEL_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + CHANNEL_ID + " TEXT, "
-                    + CHANNEL_SENSOR_SOURCE_ID + " TEXT, "
-                    + CHANNEL_MAX_SAMPLE_EACH_DATA_RECORD + " INTEGER, "
+                    + CHANNEL_ID + " TEXT NOT NULL, "
+                    + CHANNEL_SENSOR_SOURCE_ID + " TEXT NOT NULL, "
                     + CHANNEL_NAME + " TEXT NOT NULL, "
-                    + CHANNEL_TRANSDUCER_TYPE + " TEXT, "
+                    + CHANNEL_TRANSDUCER_TYPE + " TEXT NOT NULL, "
                     + CHANNEL_DIMENSION + " TEXT, "
                     + CHANNEL_PHYSICAL_MIN + " REAL, "
                     + CHANNEL_PHYSICAL_MAX + " REAL, "
@@ -111,38 +108,41 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + CHANNEL_PREFILTERING + " TEXT, "
                     + CHANNEL_RESERVED + " BLOB, "
                     + CHANNEL_DESCRIPTION + " TEXT, "
-                    + " CONSTRAINT key_channel UNIQUE ("+ CHANNEL_ID +","+CHANNEL_SENSOR_SOURCE_ID+")"
+                    + " PRIMARY KEY ("+ CHANNEL_ID +","+CHANNEL_SENSOR_SOURCE_ID+"), "
                     + " FOREIGN KEY( "+ CHANNEL_SENSOR_SOURCE_ID +" ) REFERENCES "+ TABLE_SENSOR_SOURCE +"("+ SENSOR_SOURCE_ID +")"
                     +");";
 
     // SQL statement of the ---------- DATA_RECORD ------- table creation
     private static final String SQL_CREATE_TABLE_DATA_RECORD =
             "CREATE TABLE " + TABLE_DATA_RECORD + "("
-                    + DATA_RECORD_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + DATA_RECORD_ID + " TEXT, "
                     + DATA_RECORD_SOURCE_ID + " TEXT NOT NULL, "
                     + DATA_RECORD_PATIENT_ID + " TEXT NOT NULL, "
                     + DATA_RECORD_CLINIC_ID + " TEXT NOT NULL, "
-                    + DATA_RECORD_CREATEDATE + " INTEGER, "
-                    + DATA_RECORD_EXPERIMENTS + " TEXT NOT NULL, "
-                    + DATA_RECORD_DESCRIPTIONS + " TEXT NOT NULL, "
-                    + " CONSTRAINT key_data_record UNIQUE ("+ DATA_RECORD_ID +","+DATA_RECORD_SOURCE_ID+","+DATA_RECORD_PATIENT_ID+","+DATA_RECORD_CLINIC_ID+")"
-                    + " FOREIGN KEY( "+ DATA_RECORD_SOURCE_ID +" ) REFERENCES "+ TABLE_SENSOR_SOURCE +"("+ SENSOR_SOURCE_ID +"),"
-                    + " FOREIGN KEY( "+ DATA_RECORD_PATIENT_ID +" ) REFERENCES "+ TABLE_PATIENT +"("+ PATIENT_ID +"),"
+                    + DATA_RECORD_CREATEDATE + " INTEGER NOT NULL, "
+                    + DATA_RECORD_EXPERIMENTS + " TEXT, "
+                    + DATA_RECORD_DESCRIPTIONS + " TEXT, "
+                    + DATA_RECORD_MAX_SAMPLE + " INTEGER NOT NULL, "
+                    + " PRIMARY KEY ("+ DATA_RECORD_ID +","+DATA_RECORD_SOURCE_ID+","+DATA_RECORD_PATIENT_ID+","+DATA_RECORD_CLINIC_ID+"), "
+                    + " FOREIGN KEY( "+ DATA_RECORD_SOURCE_ID +" ) REFERENCES "+ TABLE_SENSOR_SOURCE +"("+ SENSOR_SOURCE_ID +"), "
+                    + " FOREIGN KEY( "+ DATA_RECORD_PATIENT_ID +" ) REFERENCES "+ TABLE_PATIENT +"("+ PATIENT_ID +"), "
                     + " FOREIGN KEY( "+ DATA_RECORD_CLINIC_ID +" ) REFERENCES "+ TABLE_CLINIC +"("+ CLINIC_ID +")"
                     +");";
 
-    // SQL statement of the ------- SAMPLE ------ table creation
-    private static final String SQL_CREATE_TABLE_SAMPLE =
-            "CREATE TABLE " + TABLE_SAMPLE + "("
+    // SQL statement of the ------- SAMPLE SET------ table creation
+    private static final String SQL_CREATE_TABLE_SAMPLE_SET =
+            "CREATE TABLE " + TABLE_SAMPLE_SET + "("
+                    + SAMPLE_SOURCE_ID + " TEXT NOT NULL, "
                     + SAMPLE_CHANNEL_ID + " TEXT NOT NULL, "
                     + SAMPLE_DATA_RECORD_ID + " TEXT NOT NULL, "
-                    + SAMPLE_MAX_SAMPLE + " INTEGER NOT NULL, "
-                    + SAMPLE_COEFFICIENT + " REAL NOT NULL, "
+                    + SAMPLE_PATIENT_ID + " TEXT NOT NULL, "
+                    + SAMPLE_CLINIC_ID + " TEXT NOT NULL, "
                     + SAMPLE_DATA + " BLOB,"
-                    + " PRIMARY KEY ("+CHANNEL_KEY+","+ DATA_RECORD_KEY+"),"
-                    + " FOREIGN KEY( "+ SAMPLE_CHANNEL_ID +" ) REFERENCES "+ TABLE_CHANNEL +"("+ CHANNEL_KEY +"),"
-                    + " FOREIGN KEY( "+ SAMPLE_DATA_RECORD_ID +" ) REFERENCES "+ TABLE_DATA_RECORD +"("+ DATA_RECORD_KEY +")"
+                    + " PRIMARY KEY ("+ SAMPLE_SOURCE_ID +","+ SAMPLE_CHANNEL_ID +","
+                                +SAMPLE_DATA_RECORD_ID+","+SAMPLE_PATIENT_ID+","+SAMPLE_CLINIC_ID+"), "
+                    + " FOREIGN KEY( "+ SAMPLE_SOURCE_ID +","+ SAMPLE_CHANNEL_ID +" ) REFERENCES "+ TABLE_CHANNEL +"("+ CHANNEL_ID +","+CHANNEL_SENSOR_SOURCE_ID +"),"
+                    + " FOREIGN KEY( "+ SAMPLE_DATA_RECORD_ID+","+ SAMPLE_SOURCE_ID+","+SAMPLE_PATIENT_ID+","+SAMPLE_CLINIC_ID
+                                +" ) REFERENCES "+ TABLE_DATA_RECORD +"("+ DATA_RECORD_ID +","+DATA_RECORD_SOURCE_ID+","+DATA_RECORD_PATIENT_ID+","+DATA_RECORD_CLINIC_ID +")"
                     +");";
 
     // SQL statement of the SensorSource table creation
@@ -214,7 +214,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + " AFTER DELETE ON " +TABLE_CHANNEL
                     + " FOR EACH ROW "
                     + " BEGIN "
-                    + " DELETE FROM "+ TABLE_SAMPLE
+                    + " DELETE FROM "+ TABLE_SAMPLE_SET
                     + " WHERE "
                     + SAMPLE_CHANNEL_ID + " = OLD."+CHANNEL_ID+"; "
                     + " END";
@@ -225,7 +225,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + " AFTER DELETE ON " +TABLE_DATA_RECORD
                     + " FOR EACH ROW "
                     + " BEGIN "
-                    + " DELETE FROM "+ TABLE_SAMPLE
+                    + " DELETE FROM "+ TABLE_SAMPLE_SET
                     + " WHERE "
                     + SAMPLE_DATA_RECORD_ID + " = OLD."+DATA_RECORD_ID+"; "
                     + " END";
@@ -240,7 +240,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_SENSOR_SOURCE);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_CHANNEL);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_DATA_RECORD);
-        sqLiteDatabase.execSQL(SQL_CREATE_TABLE_SAMPLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_TABLE_SAMPLE_SET);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_PATIENT);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_CLINIC);
 
@@ -260,7 +260,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_CHANNEL);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_CLINIC);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_PATIENT);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_SAMPLE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_SAMPLE_SET);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_DATA_RECORD);
 
         //AND RECREATE THEM

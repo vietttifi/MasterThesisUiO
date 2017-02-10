@@ -13,11 +13,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.SensorSourceAdapter;
+import no.uio.ifi.viettt.mscosa.MainFragments.PlotViewFragment;
 import no.uio.ifi.viettt.mscosa.MainFragments.ServerFragment;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Clinic;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.DataRecord;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.SampleSet;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
 
 /**
@@ -25,24 +32,45 @@ import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
  */
 
 public class ClientThread extends Thread{
-    ClientThread selv;
-    public Socket clientsSocket;
-    Context context;
-    ServerFragment serverFragment;
-    BeNotifiedComingSample beNotifiedComingSample;
+    //MAIN ATTRIBUTE OF A CLIENT THREAD
+    private List<Channel> channelList;
+    private boolean isRec = false;
+    private boolean stop = false;
+    private MonitorUpdatePlot monitorUpdatePlot;
+    private MonitorUpdateDB monitorUpdateDB;
+    private Socket clientsSocket;
+    private SensorSource sensorSource;
+    private DataRecord dataRecord;
+    long data_record_ID = 0;
 
-    public boolean stop = false;
-    public SensorSource handlingSource;
-    Handler serverUpdateUI;
+    private UpdatePlotThread treadUpdatePlot;
+    private UpdateDBThread threadUpdateDB;
 
-    public ClientThread(Socket clientsSocket, Context context, ServerFragment serverFragment, Handler serverUpdateUI){
+
+    //HELP ATTRIBUTE
+    private Context context;
+    private Handler serverUpdateUI;
+    private float maxFrequence = 1;
+
+    public ClientThread(Socket clientsSocket, Context context, Handler serverUpdateUI){
         this.clientsSocket = clientsSocket;
         this.context = context;
-        this.serverFragment = serverFragment;
         this.serverUpdateUI = serverUpdateUI;
-        selv = this;
     }
 
+    public void registerSensorSource(SensorSource sensorSource){
+        this.sensorSource = sensorSource;
+    }
+
+    public boolean isStop() {
+        return stop;
+    }
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
+    }
+
+    @Override
     public void run(){
         final String clientIP = clientsSocket.getRemoteSocketAddress().toString();
         try{
@@ -72,15 +100,21 @@ public class ClientThread extends Thread{
 
             }
 
+        }catch (IOException e){
+            //e.printStackTrace();
+        }
+
+        try {
             if(!clientsSocket.isClosed()){
                 PrintWriter out = new PrintWriter(clientsSocket.getOutputStream(),true);
                 out.println("SEE YOU NEXT TIME");
                 out.flush();
                 out.close();
             }
-
-        }catch (IOException e){
-            //e.printStackTrace();
+            clientsSocket.close();
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println(e);
         }
 
         serverUpdateUI.post(new Runnable() {
@@ -91,41 +125,22 @@ public class ClientThread extends Thread{
             }
         });
 
-        try {
-            if (handlingSource != null){
-                handlingSource.source_status = SensorSource.UNACTIVESTATUS;
-                handlingSource.setReferenceThread(null);
-                serverFragment.close_a_socket(clientsSocket);
-                serverFragment.invalidateSourceList();
-            }
-            if(!clientsSocket.isClosed()) clientsSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
 
     void registerNewSensorSource(JSONObject jsonObj) throws JSONException{
+        channelList = new ArrayList<>();
         String id_source = jsonObj.getString("id");
-        if(serverFragment.activeDisconnectedSource(id_source,clientsSocket)){
-            return;
-        }
-
         //Create information for new coming source
         String name_source = jsonObj.getString("name");
         String type_source = "bitalino";
         if(jsonObj.has("type_source")) type_source = jsonObj.getString("type_source");
-        SensorSource new_source = new SensorSource(id_source, name_source, "bitalino");
-        handlingSource = new_source;
-        new_source.setReferenceThread(selv);
-        new_source.setStartDateTime(System.currentTimeMillis());
-        new_source.setReserved(null);
-        new_source.setData_record_duration(SensorSource.MAX_DURATION_EACH_DATA_RECORD);
 
-        new_source.patient = new Patient();
-        new_source.clinic = new Clinic();
-        new_source.mainActivity = serverFragment.mMainActivity;
+        id_source = name_source + id_source;
+        sensorSource.setSource_name(name_source);
+        sensorSource.setSource_type(type_source);
+        sensorSource.setSource_id(id_source);
+        sensorSource.setStartDateTime(System.currentTimeMillis());
 
         // Getting JSON Array node
         JSONArray channels = jsonObj.getJSONArray("channels");
@@ -142,12 +157,12 @@ public class ClientThread extends Thread{
                 if(channel.has("metric")) dimension = channel.getString("metric");
                 else dimension = channel.getString("dimension");
             }
-            double physical_min = -1000;
-            double physical_max = 1000;
+            double physical_min = 0;
+            double physical_max = 0;
             if(channel.has("physical_min")) physical_min = Double.parseDouble(channel.getString("physical_min").trim());
             if(channel.has("physical_max")) physical_max = Double.parseDouble(channel.getString("physical_max").trim());
-            int digital_min = -1000;
-            int digital_max = 1000;
+            int digital_min = 0;
+            int digital_max = 0;
             if(channel.has("digital_min")) digital_min = Integer.parseInt(channel.getString("digital_min").trim());
             if(channel.has("digital_max")) digital_max = Integer.parseInt(channel.getString("digital_max").trim());
             String pre_filtering = "";
@@ -155,7 +170,7 @@ public class ClientThread extends Thread{
             String description = "";
             if(channel.has("description")) description = channel.getString("description");
 
-            Channel s_new = new Channel(id,id_source,(int)(SensorSource.MAX_DURATION_EACH_DATA_RECORD*Float.parseFloat("10")));
+            Channel s_new = new Channel(id,id_source);
             s_new.setChannel_name(channel_name);
             s_new.setTransducer_type(transducer);
             s_new.setPhysical_dimension(dimension);
@@ -167,42 +182,120 @@ public class ClientThread extends Thread{
             s_new.setDescription(description);
 
             s_new.frequence = Float.parseFloat("10");
-
-            new_source.getChannelsOfThisSource().put(s_new.getChannel_ID(),s_new);
+            channelList.add(s_new);
         }
-
-        new_source.initBufferDataRecord();
-        serverFragment.registerNewConnectionUI(new_source);
 
     }
 
     void updateSample(JSONObject jsonObj) throws JSONException{
+
         String id_source = jsonObj.getString("id");
 
-        SensorSource sensorSource = serverFragment.clientConnectedList.get(id_source);
-        if(sensorSource == null) return;
-        long created_time = System.currentTimeMillis();
-
         // Getting JSON Array node
+        //jsonObj.getString("time")
+        ABITalinoData abiTalinoData = new ABITalinoData(System.currentTimeMillis());
         JSONArray datas = jsonObj.getJSONArray("data");
         for (int i = 0; i < datas.length(); i++) {
             JSONObject data = datas.getJSONObject(i);
             String id_channel = data.getString("id");
-            float value = Float.parseFloat(data.getString("value").trim());
+            String value = data.getString("value").trim();
+            abiTalinoData.addDataSample(id_channel,value);
+        }
 
-            boolean isNewDataRecord = sensorSource.addSample_true_if_createNew(id_channel,created_time,value);
+        if(monitorUpdatePlot != null){
+            monitorUpdatePlot.addSample(abiTalinoData);
+        }
 
-            if(beNotifiedComingSample != null)
-                beNotifiedComingSample.addNewSample(id_channel,value,created_time);
+        if(isRec){
+            if(!dataRecord.isDataRecordFull()){ //buffer the sample
+                for(SampleSet s : dataRecord.getSampleSetList()){
+                    s.addABITalinoSample(abiTalinoData);
+                }
+                dataRecord.countUpSample();
+            } else { //save to DB when buff is full
+                /*Give DataRecord for UpDateDB thread*/
+                monitorUpdateDB.addDateRecord(dataRecord);
+                data_record_ID++;
+                //if 1000hz, each second we have 1000 samples
+                int maxSample = (int)Math.ceil(sensorSource.getData_record_duration()*maxFrequence);
+                dataRecord = new DataRecord(data_record_ID, sensorSource.getSource_id(),
+                        dataRecord.getPatient_ID(),dataRecord.getClinic_ID(),
+                        System.currentTimeMillis(), maxSample);
+            }
+        }
+
+        //else drop this data
+    }
+
+    public void closeConnection(){
+        //TELL IT SELF TO STOP THE THREAD
+        stop = true;
+        if(isRec) { // STOP REC, save the rest of the current datarecord
+            monitorUpdateDB.addDateRecord(dataRecord);
+            monitorUpdateDB.setStopUpdateThread(true);
+            monitorUpdateDB.notifyAll();
         }
     }
 
-    public void setBeNotifiedComingSampleObject(BeNotifiedComingSample beNotifiedComingSample){
-        this.beNotifiedComingSample = beNotifiedComingSample;
+    public boolean isRec() {
+        return isRec;
     }
 
-    public void removeBeNotifiedComingSampleObject(){
-        this.beNotifiedComingSample = null;
+    public void setRec(boolean rec, String patient_ID, String clinic_ID) {
+        //CLINIC AND PATIENT MUST BE STORED BEFORE CALLING THIS FUNCTION
+        if(rec){//BEGIN REC
+            /*store sensor source, channel list to DB*/
+            storeSensorSourceAndChannelList();
+            /*begin to buff and store data record for this sensor source*/
+            monitorUpdateDB = new MonitorUpdateDB();
+            threadUpdateDB = new UpdateDBThread(monitorUpdateDB,this.context);
+            new Thread(threadUpdateDB).start();
+            data_record_ID = 0;
+            //if 1000hz, each second we have 1000 samples
+            int maxSample = (int)Math.ceil(sensorSource.getData_record_duration()*maxFrequence);
+
+            dataRecord = new DataRecord(data_record_ID, sensorSource.getSource_id(),
+                    patient_ID,clinic_ID,System.currentTimeMillis(),maxSample);
+        }else { // STOP REC, save the rest of the current datarecord
+            monitorUpdateDB.addDateRecord(dataRecord);
+            monitorUpdateDB.setStopUpdateThread(true);
+            monitorUpdateDB.notifyAll();
+        }
+        isRec = rec;
     }
 
+    private void storeSensorSourceAndChannelList(){
+        SensorSourceAdapter sourceAdapter = new SensorSourceAdapter(this.context);
+        sourceAdapter.saveSensorSourceToDB(sensorSource.getSource_id(),sensorSource.getSource_name(),sensorSource.getSource_type(),
+                sensorSource.getStartDateTime(),sensorSource.getReserved(),sensorSource.getData_record_duration());
+        sourceAdapter.close();
+
+        ChannelAdapter channelAdapter = new ChannelAdapter(this.context);
+        for(Channel c : channelList){
+            channelAdapter.saveChannelToDB(c.getChannel_ID(),c.getSource_ID(),c.getChannel_name(),c.getTransducer_type(),
+                    c.getPhysical_dimension(),c.getPhysical_min(),c.getPhysical_max(),c.getDigital_min(),
+                    c.getDigital_max(),c.getPrefiltering(),c.getReserved(),c.getDescription());
+            //calculate max frequence of all channels
+            if(c.frequence > maxFrequence) maxFrequence = c.frequence;
+        }
+        channelAdapter.close();
+    }
+
+    public void setMonitorUpdatePlot(MonitorUpdatePlot monitorUpdatePlot, PlotViewFragment plotViewFragment){
+        monitorUpdatePlot.setStopUpdateThread(false);
+        this.monitorUpdatePlot = monitorUpdatePlot;
+        treadUpdatePlot = new UpdatePlotThread(plotViewFragment,monitorUpdatePlot,this.context);
+        new Thread(treadUpdatePlot).start();
+    }
+
+    public List<Channel> getChannelList() {
+        return channelList;
+    }
+
+    public void stopThreadPlotUpdate(){
+        if(treadUpdatePlot != null){
+            treadUpdatePlot.stopThread();
+        }
+        monitorUpdatePlot = null;
+    }
 }

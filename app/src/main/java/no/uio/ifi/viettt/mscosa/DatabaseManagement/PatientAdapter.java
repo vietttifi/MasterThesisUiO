@@ -58,7 +58,7 @@ public class PatientAdapter {
         return patient;
     }
 
-    public Patient createPatient(String patient_code_in_clinic, String gender,String last_name,
+    public void storeNewPatient(String patient_code_in_clinic, String gender,String last_name,
                                String first_name,String date_of_birth,
                                  String address, String phone_nr, String email){
         ContentValues values = new ContentValues();
@@ -71,16 +71,7 @@ public class PatientAdapter {
         values.put(OSADBHelper.PATIENT_PHONE_NR,phone_nr);
         values.put(OSADBHelper.PATIENT_EMAIL,email);
 
-        long insertId = mDatabase.insert(OSADBHelper.TABLE_PATIENT, null, values);
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_PATIENT, mAllColumns,
-                OSADBHelper.PATIENT_ID + " = " + insertId, null, null,
-                null, null);
-        cursor.moveToFirst();
-
-        Patient newPatient = cursorToPatient(cursor);
-        cursor.close();
-        return newPatient;
+        mDatabase.insert(OSADBHelper.TABLE_PATIENT, null, values);
     }
 
     public Patient getPatientById(String patient_ID) {
@@ -116,7 +107,7 @@ public class PatientAdapter {
         return listPatient;
     }
 
-    public void deleteRecord(Patient patient) {
+    public void deletePatient(Patient patient) {
         String id = patient.getPatient_ID();
 
         // delete all ALL RECORD belong to this PATIENT ------ TRIGGER will be called.
@@ -124,11 +115,11 @@ public class PatientAdapter {
         mDatabase.delete(OSADBHelper.TABLE_PATIENT, OSADBHelper.PATIENT_ID + " = " + id, null);
     }
 
-    public List<Patient> searchRecord(String searchText) {
+    public List<Patient> searchPatient(String searchText) {
         List<Patient> listPatient = new ArrayList<Patient>();
 
         Cursor cursor = mDatabase.query(OSADBHelper.TABLE_PATIENT, mAllColumns,
-                OSADBHelper.PATIENT_ID + " like ", new String[] {searchText}, null, null, null);
+                OSADBHelper.PATIENT_FIRSTNAME + " like ", new String[] {searchText}, null, null, null);
 
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();

@@ -44,7 +44,7 @@ import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.ClinicAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.DataRecordAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.PatientAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleSetAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.SensorSourceAdapter;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFHeaderParser;
 import no.uio.ifi.viettt.mscosa.MainActivity;
@@ -56,7 +56,7 @@ import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Clinic;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.DataRecord;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.SampleSet;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
 
 import static android.app.Activity.RESULT_OK;
@@ -66,7 +66,7 @@ import static android.app.Activity.RESULT_OK;
  */
 
 public class SourceFromFileFragment extends Fragment {
-
+/*
     MainActivity mMainActivity;
     PlotViewFragment mPlotViewFragment;
 
@@ -238,7 +238,7 @@ public class SourceFromFileFragment extends Fragment {
         public ClinicAdapter clinicAdapter;
         public DataRecordAdapter dataRecordAdapter;
         public PatientAdapter patientAdapter;
-        public SampleAdapter sampleAdapter;
+        public SampleSetAdapter sampleSetAdapter;
 
         SourceFileLoaderThread(String name ,File_Sensor_Source in){
             super(name) ;
@@ -265,7 +265,7 @@ public class SourceFromFileFragment extends Fragment {
             clinicAdapter = new ClinicAdapter(getContext());
             dataRecordAdapter = new DataRecordAdapter(getContext());
             patientAdapter = new PatientAdapter(getContext());
-            sampleAdapter = new SampleAdapter(getContext());
+            sampleSetAdapter = new SampleSetAdapter(getContext());
             try {
 
                 File_Sensor_Source file_source = loading_File_data.get(in.index);
@@ -312,9 +312,9 @@ public class SourceFromFileFragment extends Fragment {
                 file_source.sensor_source.setSource_type("edf "+clinicfromEDF[3]);
 
                 //parse Clinic info according to EDF format
-                /*System.out.println("EDF: HAS SAVED SOURCE ----> "+file_source.sensor_source.getSource_name()
+                System.out.println("EDF: HAS SAVED SOURCE ----> "+file_source.sensor_source.getSource_name()
                         + ", patient "+patient.getPatient_ID()+" clinic "+clinic.getClinic_ID()+" "+clinic.getClinic_CODE()+" --- "+result.header.getStartDate().trim()+
-                " --- "+result.header.getStartTime().trim());*/
+                " --- "+result.header.getStartTime().trim());
 
                 //looping through channels
                 String channels[] = header.getChannelLabels();
@@ -410,7 +410,7 @@ public class SourceFromFileFragment extends Fragment {
                             bytebuf.get(samples);
                             //String channel_id, String record_id, int maxSample, float coefficient, byte[] sample_data
                             Channel c = channelAdapter.getChannelById(j+"",id_source);
-                            Sample s = sampleAdapter.createSample(j+"",i+"",c.getMaxSampleEachDataRecord(),c.getCoefficient(),samples);
+                            SampleSet s = sampleSetAdapter.createSample(j+"",i+"",c.getMaxSampleEachDataRecord(),c.getCoefficient(),samples);
 
                             //System.out.println("EDF: HAS SAVED SAMPLES FOR DATA_RECORD "+dr.getData_record_ID()+", channel ----> "+c.getChannel_ID()+c.getChannel_name()+" nrbytes "+s.getNr_of_sample()*2);
 
@@ -441,7 +441,7 @@ public class SourceFromFileFragment extends Fragment {
             clinicAdapter.close();
             dataRecordAdapter.close();
             patientAdapter.close();
-            sampleAdapter.close();
+            sampleSetAdapter.close();
         }
 
     }
@@ -619,4 +619,6 @@ class ProgressBarHandler extends Handler{
         }
 
     }
+
+    */
 }

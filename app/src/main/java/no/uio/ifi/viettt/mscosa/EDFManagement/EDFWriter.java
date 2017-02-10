@@ -7,9 +7,10 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.List;
 
 import no.uio.ifi.viettt.mscosa.SensorsObjects.DataRecord;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.SampleSet;
 
 public class EDFWriter{
 
@@ -79,9 +80,9 @@ public class EDFWriter{
 
         /*For each DataRecord, write it to file*/
         for(int i = 0; i < listDataRecord.length; i++){
-            Sample[] sampleList = listDataRecord[i].getSamples_per_channel();
-            for(int j = 0; j < sampleList.length; j++){
-                byteBuffer.put(sampleList[j].getSample_for_database());
+            List<SampleSet> sampleSetList = listDataRecord[i].getSampleSetList();
+            for(int j = 0; j < sampleSetList.size(); j++){
+                byteBuffer.put(sampleSetList.get(j).getSamples());
             }
         }
     }

@@ -21,9 +21,9 @@ public class DataRecordAdapter {
     private SQLiteDatabase mDatabase;
     private OSADBHelper mDbHelper;
     private Context mContext;
-    private String[] mAllColumns = {OSADBHelper.DATA_RECORD_KEY, OSADBHelper.DATA_RECORD_ID, OSADBHelper.DATA_RECORD_SOURCE_ID, OSADBHelper.DATA_RECORD_PATIENT_ID,
+    private String[] mAllColumns = {OSADBHelper.DATA_RECORD_ID, OSADBHelper.DATA_RECORD_SOURCE_ID, OSADBHelper.DATA_RECORD_PATIENT_ID,
             OSADBHelper.DATA_RECORD_CLINIC_ID, OSADBHelper.DATA_RECORD_CREATEDATE,
-            OSADBHelper.DATA_RECORD_EXPERIMENTS, OSADBHelper.DATA_RECORD_DESCRIPTIONS};
+            OSADBHelper.DATA_RECORD_EXPERIMENTS, OSADBHelper.DATA_RECORD_DESCRIPTIONS, OSADBHelper.DATA_RECORD_MAX_SAMPLE};
 
     public DataRecordAdapter(Context context){
         this.mContext = context;
@@ -44,17 +44,18 @@ public class DataRecordAdapter {
         mDbHelper.close();
     }
 
-    DataRecord cursorToRecord(Cursor cursor) {
+    public static DataRecord cursorToRecord(Cursor cursor) {
         DataRecord dataRecord = new DataRecord(cursor.getLong(0),cursor.getString(1),cursor.getString(2),
                 cursor.getString(3),cursor.getLong(4));
         dataRecord.setExperiments(cursor.getString(5));
         dataRecord.setDescriptions(cursor.getString(6));
+        dataRecord.setMax_sample(cursor.getInt(7));
         return dataRecord;
     }
 
-    public DataRecord createRecord(long data_record_id, String source_id,
+    public void saveRecordToDB(long data_record_id, String source_id,
                                    String patient_id, String clinic_id, long createDate,
-                                   String experiments, String descriptions){
+                                   String experiments, String descriptions, int max_sample){
         ContentValues values = new ContentValues();
         values.put(OSADBHelper.DATA_RECORD_ID,data_record_id);
         values.put(OSADBHelper.DATA_RECORD_SOURCE_ID,source_id);
@@ -63,77 +64,8 @@ public class DataRecordAdapter {
         values.put(OSADBHelper.DATA_RECORD_CREATEDATE,createDate);
         values.put(OSADBHelper.DATA_RECORD_EXPERIMENTS,experiments);
         values.put(OSADBHelper.DATA_RECORD_DESCRIPTIONS,descriptions);
+        values.put(OSADBHelper.DATA_RECORD_MAX_SAMPLE,max_sample);
 
-        long insertId = mDatabase.insert(OSADBHelper.TABLE_DATA_RECORD, null, values);
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_DATA_RECORD, mAllColumns,
-                OSADBHelper.DATA_RECORD_ID + " = " + data_record_id, null, null,
-                null, null);
-        cursor.moveToFirst();
-
-        DataRecord newDataRecord = cursorToRecord(cursor);
-        cursor.close();
-        return newDataRecord;
-    }
-
-    public DataRecord getRecordById(String record_ID) {
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_DATA_RECORD, mAllColumns,
-                OSADBHelper.DATA_RECORD_ID + " = ?", new String[] {record_ID}, null, null, null);
-
-        DataRecord newDataRecord = null;
-        if (cursor.getCount() != 0) {
-            cursor.moveToFirst();
-            newDataRecord = cursorToRecord(cursor);
-
-        }
-        cursor.close();
-        return newDataRecord;
-    }
-
-    public List<DataRecord> getallRecords(){
-        List<DataRecord> listDataRecord = new ArrayList<DataRecord>();
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_DATA_RECORD, mAllColumns,
-                null, null, null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                DataRecord dataRecord = cursorToRecord(cursor);
-                listDataRecord.add(dataRecord);
-                cursor.moveToNext();
-            }
-
-            //close the cursor
-            cursor.close();
-        }
-        return listDataRecord;
-    }
-
-    public void deleteRecord(DataRecord dataRecord) {
-        long id = dataRecord.getData_record_ID();
-
-        // delete all ALL SAMPLE belong to this RECORD ------ TRIGGER will be called.
-
-        mDatabase.delete(OSADBHelper.TABLE_DATA_RECORD, OSADBHelper.DATA_RECORD_ID + " = " + id, null);
-    }
-
-    public List<DataRecord> searchRecord(String searchText) {
-        List<DataRecord> listDataRecord = new ArrayList<DataRecord>();
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_DATA_RECORD, mAllColumns,
-                OSADBHelper.DATA_RECORD_ID + " like ", new String[] {searchText}, null, null, null);
-
-        if (cursor != null) {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                DataRecord dataRecord = cursorToRecord(cursor);
-                listDataRecord.add(dataRecord);
-                cursor.moveToNext();
-            }
-
-            //close the cursor
-            cursor.close();
-        }
-        return listDataRecord;
+        mDatabase.insert(OSADBHelper.TABLE_DATA_RECORD, null, values);
     }
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/lblPlot_RO"
+            android:text="Signals observing"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:elevation="18dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:layout_weight="0.6"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/ic_menu_camera"
+            android:background="#AAA9B1"
+            android:id="@+id/btnRec_RO"
+            android:layout_weight="0.2"
+            android:layout_marginEnd="3dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/checkbox_off_background"
+            android:background="#AAA9B1"
+            android:id="@+id/btnSave_RO"
+            android:layout_weight="0.2"
+            android:layout_marginEnd="3dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp" />
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/lineChart"
+        android:layout_weight="0.9">
+    </com.github.mikephil.charting.charts.LineChart>
+
+</LinearLayout>

@@ -44,7 +44,8 @@ public class SensorSourceAdapter{
     }
 
     SensorSource cursorToSensorSource(Cursor cursor) {
-        SensorSource sensorSource = new SensorSource(cursor.getString(0),cursor.getString(1),cursor.getString(2));
+        SensorSource sensorSource = new SensorSource(cursor.getString(1),cursor.getString(2));
+        sensorSource.setSource_id(cursor.getString(0));
         sensorSource.setStartDateTime(cursor.getInt(3));
         sensorSource.setReserved(cursor.getBlob(4));
         sensorSource.setData_record_duration(cursor.getInt(5));
@@ -52,26 +53,17 @@ public class SensorSourceAdapter{
         return sensorSource;
     }
 
-    public SensorSource createSensorSource(String sensor_source_ID, String source_name, String source_type,
+    public void saveSensorSourceToDB(String sensor_source_ID, String source_name, String source_type,
                                    long startDateTime, byte[] reserved, int data_record_duration){
         ContentValues values = new ContentValues();
         values.put(OSADBHelper.SENSOR_SOURCE_ID,sensor_source_ID);
         values.put(OSADBHelper.SENSOR_SOURCE_NAME,source_name);
         values.put(OSADBHelper.SENSOR_SOURCE_TYPE,source_type);
         values.put(OSADBHelper.SENSOR_SOURCE_START_DATE,startDateTime);
-        values.put(OSADBHelper.SENSOR_SOURCE_RESERVED,reserved);
+        if(reserved != null) values.put(OSADBHelper.SENSOR_SOURCE_RESERVED,reserved);
         values.put(OSADBHelper.SENSOR_SOURCE_DATA_RECORD_DURATION,data_record_duration);
 
-        long insertId = mDatabase.insert(OSADBHelper.TABLE_SENSOR_SOURCE, null, values);
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_SENSOR_SOURCE, mAllColumns,
-                OSADBHelper.SENSOR_SOURCE_ID + " = " + "'"+sensor_source_ID+"'", null, null,
-                null, null);
-        cursor.moveToFirst();
-
-        SensorSource newSensorSource= cursorToSensorSource(cursor);
-        cursor.close();
-        return newSensorSource;
+        mDatabase.insert(OSADBHelper.TABLE_SENSOR_SOURCE, null, values);
     }
 
     public SensorSource getSensorSourceById(String source_ID) {
@@ -107,7 +99,7 @@ public class SensorSourceAdapter{
     }
 
     public void deleteSource(SensorSource sensorSource) {
-        String id = sensorSource.getSensor_source_ID();
+        String id = sensorSource.getSource_id();
 
         // delete all ALL CHANNEL AND RECORD belong to this SOURCE ------ TRIGGER will be called.
 

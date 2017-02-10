@@ -26,7 +26,7 @@ public class TimeAxisValueFormatter implements IAxisValueFormatter
     @Override
     public String getFormattedValue(float value, AxisBase axis) {
         float frequence = 1;
-        for(Channel s: sensorSource.getChannelsOfThisSource().values()){
+        for(Channel s: sensorSource.getClient_thread().getChannelList()){
             frequence = s.frequence; break;
         }
 

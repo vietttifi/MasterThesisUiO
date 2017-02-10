@@ -54,7 +54,7 @@ public class ClinicAdapter {
         return clinic;
     }
 
-    public Clinic createClinic(String clinic_CODE, String technician_ID, String address,
+    public void storeNewClinic(String clinic_CODE, String technician_ID, String address,
                                  String phone_nr,String email){
         ContentValues values = new ContentValues();
         values.put(OSADBHelper.CLINIC_CODE,clinic_CODE);
@@ -63,16 +63,7 @@ public class ClinicAdapter {
         values.put(OSADBHelper.CLINIC_PHONE_NR,phone_nr);
         values.put(OSADBHelper.CLINIC_EMAIL,email);
 
-        long insertId = mDatabase.insert(OSADBHelper.TABLE_CLINIC, null, values);
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_CLINIC, mAllColumns,
-                OSADBHelper.CLINIC_ID + " = " + insertId, null, null,
-                null, null);
-        cursor.moveToFirst();
-
-        Clinic newClinic = cursorToClinic(cursor);
-        cursor.close();
-        return newClinic;
+        mDatabase.insert(OSADBHelper.TABLE_CLINIC, null, values);
     }
 
     public Clinic getClinicById(String clinic_ID) {
@@ -108,7 +99,7 @@ public class ClinicAdapter {
         return listClinic;
     }
 
-    public void deleteRecord(Clinic clinic) {
+    public void deleteClinic(Clinic clinic) {
         String id = clinic.getClinic_ID();
 
         // delete all ALL RECORD belong to this CLINIC ------ TRIGGER will be called.
@@ -116,7 +107,7 @@ public class ClinicAdapter {
         mDatabase.delete(OSADBHelper.TABLE_CLINIC, OSADBHelper.CLINIC_ID + " = " + id, null);
     }
 
-    public List<Clinic> searchRecord(String searchText) {
+    public List<Clinic> searchClinic(String searchText) {
         List<Clinic> listClinic = new ArrayList<Clinic>();
 
         Cursor cursor = mDatabase.query(OSADBHelper.TABLE_CLINIC, mAllColumns,
