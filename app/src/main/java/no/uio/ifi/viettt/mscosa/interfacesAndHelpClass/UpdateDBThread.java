@@ -12,36 +12,37 @@ import no.uio.ifi.viettt.mscosa.SensorsObjects.DataRecord;
 
 public class UpdateDBThread implements Runnable{
 
-    private MonitorUpdateDB monitorUpdateDB;
+    private DataRecordAdapter dataRecordAdapter;
     private DataRecord dataRecord;
     private Context context;
     private boolean stop = false;
+    private final Object lock = new Object();
 
-    public UpdateDBThread(MonitorUpdateDB monitorUpdateDB, Context context){
-        this.monitorUpdateDB = monitorUpdateDB;
+    public UpdateDBThread(Context context){
         this.context = context;
     }
 
     @Override
     public void run() {
         do{
-
-
-            //monitor will wait until it has data record
-            dataRecord = monitorUpdateDB.getDataRecord();
-            if(dataRecord == null) break;
-
-            storeDataRecord();
-            storeSampleSet();
-
+            synchronized (lock){
+                while (dataRecord == null) {
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                storeDataRecord();
+                storeSampleSet();
+                dataRecord = null;
+            }
         }while(!stop);
-
-        monitorUpdateDB.setStopUpdateThread(true);
 
     }
 
     private void storeDataRecord(){
-        DataRecordAdapter dataRecordAdapter = new DataRecordAdapter(this.context);
+        dataRecordAdapter = new DataRecordAdapter(this.context);
         dataRecordAdapter.saveRecordToDB(dataRecord.getData_record_ID(),dataRecord.getSource_ID(),
                 dataRecord.getPatient_ID(),dataRecord.getClinic_ID(),dataRecord.getCreated_date(),
                 dataRecord.getExperiments(),dataRecord.getDescriptions(),dataRecord.getMax_sample());
@@ -50,14 +51,23 @@ public class UpdateDBThread implements Runnable{
 
     private void storeSampleSet(){
         SampleSetAdapter sampleSetAdapter = new SampleSetAdapter(this.context);
-        System.out.println("---> ADD sample to database");
         //Transaction will be used here
         sampleSetAdapter.saveSampleToDB(dataRecord.getSampleSetList());
 
         sampleSetAdapter.close();
     }
 
+    public void updateDataRecord(DataRecord dataRecord){
+        synchronized (lock){
+            this.dataRecord = dataRecord;
+            lock.notify();
+        }
+    }
+
     public void stopThread(){
         this.stop = true;
+        synchronized (lock) {
+            lock.notify();
+        }
     }
 }

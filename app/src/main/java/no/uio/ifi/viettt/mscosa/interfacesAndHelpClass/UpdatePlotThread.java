@@ -10,16 +10,12 @@ import no.uio.ifi.viettt.mscosa.MainFragments.PlotViewFragment;
 
 public class UpdatePlotThread implements Runnable{
 
-    private MonitorUpdatePlot monitorUpdatePlot;
-    private Context context;
     private PlotViewFragment plotViewFragment;
     private boolean stop = false;
+    private ABITalinoData abiTalinoData;
+    private final Object lock = new Object();
 
-    ABITalinoData abiTalinoData;
-
-    public UpdatePlotThread(PlotViewFragment plotViewFragment, MonitorUpdatePlot monitorUpdatePlot, Context context){
-        this.monitorUpdatePlot = monitorUpdatePlot;
-        this.context = context;
+    public UpdatePlotThread(PlotViewFragment plotViewFragment){
         this.plotViewFragment = plotViewFragment;
     }
 
@@ -27,21 +23,40 @@ public class UpdatePlotThread implements Runnable{
     public void run() {
         int cnt = 0;
         do{
-            abiTalinoData = monitorUpdatePlot.getSample();
-            if(abiTalinoData == null) break;
+            synchronized (lock) {
+                while (abiTalinoData == null) {
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
 
-            for(String channel_id : abiTalinoData.getData().keySet()){
-                if(!stop)
-                plotViewFragment.addNewSample(channel_id,
-                        Float.parseFloat(abiTalinoData.getData().get(channel_id)),abiTalinoData.getTime(), cnt);
+                for (String channel_id : abiTalinoData.getData().keySet()) {
+                    if (!stop)
+                        plotViewFragment.addNewSample(channel_id,
+                                Float.parseFloat(abiTalinoData.getData().get(channel_id)), abiTalinoData.getTime(), cnt);
+                }
+                cnt++;
+                abiTalinoData = null;
             }
-            cnt++;
         }while(!stop);
+        plotViewFragment = null;
+        abiTalinoData = null;
+    }
 
-        monitorUpdatePlot.setStopUpdateThread(true);
+    public void updateSamples(ABITalinoData abiTalinoData){
+        synchronized (lock){
+            this.abiTalinoData = abiTalinoData;
+            lock.notify();
+        }
+
     }
 
     public void stopThread(){
         this.stop = true;
+        synchronized (lock) {
+            lock.notify();
+        }
     }
 }

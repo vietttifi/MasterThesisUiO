@@ -36,8 +36,6 @@ public class ClientThread extends Thread{
     private List<Channel> channelList;
     private boolean isRec = false;
     private boolean stop = false;
-    private MonitorUpdatePlot monitorUpdatePlot;
-    private MonitorUpdateDB monitorUpdateDB;
     private Socket clientsSocket;
     private SensorSource sensorSource;
     private DataRecord dataRecord;
@@ -52,6 +50,8 @@ public class ClientThread extends Thread{
     private Handler serverUpdateUI;
     private float maxFrequence = 1;
 
+    List<String> channelIDsToBeStoreToDB;
+
     public ClientThread(Socket clientsSocket, Context context, Handler serverUpdateUI){
         this.clientsSocket = clientsSocket;
         this.context = context;
@@ -62,12 +62,14 @@ public class ClientThread extends Thread{
         this.sensorSource = sensorSource;
     }
 
-    public boolean isStop() {
-        return stop;
-    }
-
-    public void setStop(boolean stop) {
-        this.stop = stop;
+    public void closeConnection(){
+        try {
+            if(threadUpdateDB != null) threadUpdateDB.stopThread();
+            if(treadUpdatePlot != null) treadUpdatePlot.stopThread();
+            clientsSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -116,6 +118,8 @@ public class ClientThread extends Thread{
             e.printStackTrace();
             System.out.println(e);
         }
+
+        sensorSource.setSource_status(SensorSource.UNACTIVESTATUS);
 
         serverUpdateUI.post(new Runnable() {
             @Override
@@ -202,66 +206,61 @@ public class ClientThread extends Thread{
             abiTalinoData.addDataSample(id_channel,value);
         }
 
-        if(monitorUpdatePlot != null){
-            monitorUpdatePlot.addSample(abiTalinoData);
-        }
+        if(treadUpdatePlot != null) treadUpdatePlot.updateSamples(abiTalinoData);
 
         if(isRec){
-            if(!dataRecord.isDataRecordFull()){ //buffer the sample
+            if(dataRecord.isNOTDataRecordFull()){ //buffer the sample
                 for(SampleSet s : dataRecord.getSampleSetList()){
                     s.addABITalinoSample(abiTalinoData);
                 }
                 dataRecord.countUpSample();
+                System.out.println("----> COUNT UP");
             } else { //save to DB when buff is full
                 /*Give DataRecord for UpDateDB thread*/
-                monitorUpdateDB.addDateRecord(dataRecord);
+                System.out.println("FULL A BUFFER -> STORE");
+                if(threadUpdateDB != null) threadUpdateDB.updateDataRecord(dataRecord);
                 data_record_ID++;
                 //if 1000hz, each second we have 1000 samples
                 int maxSample = (int)Math.ceil(sensorSource.getData_record_duration()*maxFrequence);
                 dataRecord = new DataRecord(data_record_ID, sensorSource.getSource_id(),
                         dataRecord.getPatient_ID(),dataRecord.getClinic_ID(),
                         System.currentTimeMillis(), maxSample);
+                //INIT SAMPLESET WITH RESPECT TO SELECTED CHANNELS
+                dataRecord.initSampleSet(channelIDsToBeStoreToDB);
             }
         }
 
         //else drop this data
     }
 
-    public void closeConnection(){
-        //TELL IT SELF TO STOP THE THREAD
-        stop = true;
-        if(isRec) { // STOP REC, save the rest of the current datarecord
-            monitorUpdateDB.addDateRecord(dataRecord);
-            monitorUpdateDB.setStopUpdateThread(true);
-            monitorUpdateDB.notifyAll();
-        }
-    }
-
-    public boolean isRec() {
-        return isRec;
-    }
-
-    public void setRec(boolean rec, String patient_ID, String clinic_ID) {
+    public void setRec(boolean rec, String patient_ID, String clinic_ID, List<String> channelIDs) {
         //CLINIC AND PATIENT MUST BE STORED BEFORE CALLING THIS FUNCTION
         if(rec){//BEGIN REC
+            channelIDsToBeStoreToDB = channelIDs;
             /*store sensor source, channel list to DB*/
             storeSensorSourceAndChannelList();
             /*begin to buff and store data record for this sensor source*/
-            monitorUpdateDB = new MonitorUpdateDB();
-            threadUpdateDB = new UpdateDBThread(monitorUpdateDB,this.context);
-            new Thread(threadUpdateDB).start();
             data_record_ID = 0;
             //if 1000hz, each second we have 1000 samples
             int maxSample = (int)Math.ceil(sensorSource.getData_record_duration()*maxFrequence);
 
             dataRecord = new DataRecord(data_record_ID, sensorSource.getSource_id(),
                     patient_ID,clinic_ID,System.currentTimeMillis(),maxSample);
-        }else { // STOP REC, save the rest of the current datarecord
-            monitorUpdateDB.addDateRecord(dataRecord);
-            monitorUpdateDB.setStopUpdateThread(true);
-            monitorUpdateDB.notifyAll();
+            threadUpdateDB = new UpdateDBThread(context);
+            //INIT SAMPLESET WITH RESPECT TO SELECTED CHANNELS
+            dataRecord.initSampleSet(channelIDs);
+
+            new Thread(threadUpdateDB).start();
+        } else{
+            if(threadUpdateDB != null) threadUpdateDB.stopThread();
+            threadUpdateDB = null;
         }
         isRec = rec;
+    }
+
+    public void visualisePlotView(PlotViewFragment plotViewFragment){
+        treadUpdatePlot = new UpdatePlotThread(plotViewFragment);
+        new Thread(treadUpdatePlot).start();
     }
 
     private void storeSensorSourceAndChannelList(){
@@ -281,13 +280,6 @@ public class ClientThread extends Thread{
         channelAdapter.close();
     }
 
-    public void setMonitorUpdatePlot(MonitorUpdatePlot monitorUpdatePlot, PlotViewFragment plotViewFragment){
-        monitorUpdatePlot.setStopUpdateThread(false);
-        this.monitorUpdatePlot = monitorUpdatePlot;
-        treadUpdatePlot = new UpdatePlotThread(plotViewFragment,monitorUpdatePlot,this.context);
-        new Thread(treadUpdatePlot).start();
-    }
-
     public List<Channel> getChannelList() {
         return channelList;
     }
@@ -296,6 +288,6 @@ public class ClientThread extends Thread{
         if(treadUpdatePlot != null){
             treadUpdatePlot.stopThread();
         }
-        monitorUpdatePlot = null;
+        treadUpdatePlot = null;
     }
 }

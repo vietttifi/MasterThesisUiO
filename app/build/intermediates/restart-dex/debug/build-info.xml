@@ -5,54 +5,33 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="576495174756051"
+    timestamp="597151483845589"
     token="4017941314611577501"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="119" />
+        duration="333" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="8" />
+        duration="283" />
     <task
         name="verifier"
-        duration="0" />
+        duration="95" />
 
     <artifact
-        location="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2/classes.dex"
-        type="DEX" />
+        location="/Users/viettt/Desktop/MScOSA/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="571492244807401"
+        timestamp="597151483845589"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/viettt/Desktop/MScOSA/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="571914890624886"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="576088425379521"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="576495174756051"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2/classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

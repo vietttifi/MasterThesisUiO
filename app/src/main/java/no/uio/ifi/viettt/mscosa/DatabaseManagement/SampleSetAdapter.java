@@ -45,7 +45,7 @@ public class SampleSetAdapter {
     }
 
     public static SampleSet cursorToSample(Cursor cursor) {
-        SampleSet sampleSet = new SampleSet(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3), cursor.getString(4));
+        SampleSet sampleSet = new SampleSet(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3), cursor.getString(4),-1);
         sampleSet.setSamples(cursor.getBlob(5));
         return sampleSet;
     }

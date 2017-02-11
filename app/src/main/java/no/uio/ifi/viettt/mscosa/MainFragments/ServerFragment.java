@@ -21,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.ServerSocket;
@@ -29,7 +28,6 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 
 import no.uio.ifi.viettt.mscosa.MainActivity;
@@ -37,7 +35,6 @@ import no.uio.ifi.viettt.mscosa.R;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.ClientThread;
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.ConnectedListAdapter;
-import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.MonitorUpdatePlot;
 
 /**
  * Created by viettt on 18/12/2016.
@@ -68,7 +65,6 @@ public class ServerFragment extends Fragment {
     //Pointer to other fragments
     private MainActivity mainActivity;
     private PlotViewFragment plotViewFragment;
-    private MonitorUpdatePlot monitorUpdatePlot = new MonitorUpdatePlot();
 
     public ServerFragment(){
         selv = this;
@@ -125,6 +121,11 @@ public class ServerFragment extends Fragment {
                 stopAllConnection();
             }
         });
+
+        for(SensorSource s: connectedSources)
+            if(!s.getSource_status().equals(SensorSource.ACTIVESTATUS))
+                connectedSources.remove(s);
+        invalidateSourceList();
 
         return v;
     }
@@ -202,6 +203,7 @@ public class ServerFragment extends Fragment {
         }
         stopListeningServerButton();
         stopAll.setEnabled(false);
+        invalidateSourceList();
     }
 
     private void getIPofThisDeviceAsServerIP(){
@@ -277,15 +279,13 @@ public class ServerFragment extends Fragment {
             case R.id.observeSelected:
                 SensorSource ss = (SensorSource)listView.getItemAtPosition(adapterContextMenuInfo.position);
                 Toast.makeText(getContext(),ss.getSource_id(),Toast.LENGTH_SHORT).show();
-                monitorUpdatePlot.setStopUpdateThread(true);
                 for(SensorSource s : connectedSources){
                     if (s.getClient_thread() != null) {
                         s.getClient_thread().stopThreadPlotUpdate();
                     }
                 }
 
-                if(ss.getClient_thread() != null) ss.getClient_thread().setMonitorUpdatePlot(monitorUpdatePlot,plotViewFragment);
-
+                ss.getClient_thread().visualisePlotView(plotViewFragment);
                 plotViewFragment.setVisualiseSource(ss);
                 mainActivity.bottomBar.selectTabWithId(R.id.action_current_connected);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,plotViewFragment).commit();
@@ -301,8 +301,11 @@ public class ServerFragment extends Fragment {
                         public void onClick(DialogInterface dialog, int which)
                         {
                             SensorSource ss = (SensorSource)listView.getItemAtPosition(currentSelected);
-                            /*----mm----*/
+                            ss.closeConnection();
+                            connectedSources.remove(ss);
+                            invalidateSourceList();
                             Toast.makeText(getContext(),ss.getSource_id()+" has unregistered.",Toast.LENGTH_SHORT).show();
+
                         }
                     });
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener()

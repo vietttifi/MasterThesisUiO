@@ -1,6 +1,8 @@
 package no.uio.ifi.viettt.mscosa.SensorsObjects;
 
 import java.util.HashMap;
+import java.util.List;
+
 import no.uio.ifi.viettt.mscosa.MainActivity;
 import no.uio.ifi.viettt.mscosa.R;
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.ClientThread;
@@ -16,7 +18,7 @@ public class SensorSource {
     private String source_type;
     private long startDateTime;
     private byte[] reserved;
-    private int data_record_duration = 30; //default value is 30s in case the users do not give it
+    private int data_record_duration = 3; //default value is 30s in case the users do not give it
 
     //ASSISTANT ATTRIBUTES
     public MainActivity mainActivity;
@@ -59,13 +61,10 @@ public class SensorSource {
         source_status = ACTIVESTATUS;
     }
 
-    public void setReferenceThread(ClientThread client_thread){
-        this.client_thread = client_thread;
-    }
-
-    public void setRecFlag(boolean recFlag, String patient_id, String clinic_id){
+    public void setRecFlag(boolean recFlag, String patient_id, String clinic_id, List<String> channelIDs){
         if(client_thread != null){
-            client_thread.setRec(recFlag,patient_id, clinic_id);
+            client_thread.setRec(recFlag,patient_id, clinic_id, channelIDs);
+            this.recFlag = recFlag;
         }
     }
 
@@ -117,22 +116,6 @@ public class SensorSource {
         this.data_record_duration = data_record_duration;
     }
 
-    public DataRecord getBufferDataRecord() {
-        return bufferDataRecord;
-    }
-
-    public void setBufferDataRecord(DataRecord bufferDataRecord) {
-        this.bufferDataRecord = bufferDataRecord;
-    }
-
-    public long getDataRecordNr() {
-        return dataRecordNr;
-    }
-
-    public void setDataRecordNr(long dataRecordNr) {
-        this.dataRecordNr = dataRecordNr;
-    }
-
     public Patient getPatient() {
         return patient;
     }
@@ -153,18 +136,6 @@ public class SensorSource {
         return client_thread;
     }
 
-    public void setClient_thread(ClientThread client_thread) {
-        this.client_thread = client_thread;
-    }
-
-    public int getLogo_in_drawable() {
-        return logo_in_drawable;
-    }
-
-    public void setLogo_in_drawable(int logo_in_drawable) {
-        this.logo_in_drawable = logo_in_drawable;
-    }
-
     public String getSource_status() {
         return source_status;
     }
@@ -181,21 +152,4 @@ public class SensorSource {
         client_thread.closeConnection();
     }
 
-    public void registerClientThread(ClientThread client_thread){
-        this.client_thread = client_thread;
-    }
-
-    public String getStatus(){
-        if(client_thread != null) return ACTIVESTATUS;
-        else return UNACTIVESTATUS;
-    }
-
-    public void recSamples(String patient_ID, String clinic_ID, int data_record_duration){
-        this.data_record_duration = data_record_duration;
-        client_thread.setRec(true, patient_ID,clinic_ID);
-    }
-
-    public void stopRecSamples(){
-        client_thread.setRec(false, null,null);
-    }
 }

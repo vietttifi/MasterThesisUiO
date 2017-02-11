@@ -42,6 +42,13 @@ public class DataRecord {
         sampleSetList = new ArrayList<>();
     }
 
+    public void initSampleSet(List<String> channelIDs){
+        for(String s : channelIDs){
+            SampleSet ss = new SampleSet(source_ID,s,data_record_ID+"",patient_ID,clinic_ID,max_sample);
+            getSampleSetList().add(ss);
+        }
+    }
+
     public long getData_record_ID() {
         return data_record_ID;
     }
@@ -106,7 +113,7 @@ public class DataRecord {
         this.max_sample = max_sample;
     }
 
-    public boolean isDataRecordFull(){
+    public boolean isNOTDataRecordFull(){
         return cnt_sample < max_sample;
     }
 

@@ -73,7 +73,6 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
 
     public void setVisualiseSource(SensorSource sensorSource){
         if(sensorSource == null) return;
-        Utils.init(getContext());
         //if(lineChart != null) lineChart.removeAllViews();
         this.visualiseSource = sensorSource;
         channelList = sensorSource.getClient_thread().getChannelList();
@@ -81,15 +80,6 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
         forUpdateNewSamples = new HashMap<>();
         selectedChannels = new boolean[channelList.size()];
         alertDialogItems = new String[channelList.size()];
-
-        for(Channel channel : channelList) {
-            String legendName = channel.getChannel_name()+"(" +((channel.getPhysical_dimension().equals("")) ? "": channel.getPhysical_dimension().trim())+")";
-            ILineDataSet dataSet = createSet(legendName, Color.rgb((int) (Math.random() * Integer.MAX_VALUE),
-                    (int) (Math.random() * Integer.MAX_VALUE), (int) (Math.random() * Integer.MAX_VALUE)));
-            dataSet.setVisible(false);
-            lineDataSetsPLOT.add(dataSet);
-            forUpdateNewSamples.put(channel.getChannel_ID(),dataSet);
-        }
     }
 
     private LineDataSet createSet(String lineName, int color) {
@@ -109,6 +99,20 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
 
         //lineChart.setOnChartValueSelectedListener(this);
         // enable description text
+        Utils.init(getContext());
+
+        if(forUpdateNewSamples.size() == 0){
+            forUpdateNewSamples = new HashMap<>();
+            for(Channel channel : channelList) {
+                String legendName = channel.getChannel_name()+"(" +((channel.getPhysical_dimension().equals("")) ? "": channel.getPhysical_dimension().trim())+")";
+                ILineDataSet dataSet = createSet(legendName, Color.rgb((int) (Math.random() * Integer.MAX_VALUE),
+                        (int) (Math.random() * Integer.MAX_VALUE), (int) (Math.random() * Integer.MAX_VALUE)));
+                forUpdateNewSamples.put(channel.getChannel_ID(),dataSet);
+            }
+        }
+
+
+
         lineChart.getDescription().setEnabled(true);
         Description d = new Description();
         d.setText("BITalino "+visualiseSource.getSource_id());
@@ -184,8 +188,9 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
         v = inflater.inflate(R.layout.ro_plot_layout, container, false);
 
         lineChart = (LineChart) v.findViewById(R.id.lineChart);
+        initPlot(-600,600);
 
-        TextView selectSensors = (TextView) v.findViewById(R.id.lblPlot_RO);
+        final TextView selectSensors = (TextView) v.findViewById(R.id.lblPlot_RO);
         selectSensors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -294,7 +299,11 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
                                 viewF.invalidate();
                                 ibtn_save.getBackground().clearColorFilter();
                                 ibtn_save.invalidate();
-                                visualiseSource.setRecFlag(true, txtPatientID.getText().toString(), txtClinicID.getText().toString());
+                                List<String> channelIDs = new ArrayList<>();
+                                for(int i = 0; i < selectedChannels.length; i++){
+                                    if(selectedChannels[i]) channelIDs.add(""+(i+1));
+                                }
+                                visualiseSource.setRecFlag(true, txtPatientID.getText().toString(), txtClinicID.getText().toString(),channelIDs);
                                 mpopup.dismiss();
                             }else {
                                 Toast.makeText(getContext(),"CANNOT STORE WITHOUT INFO OF PATIENT AND CLINIC",Toast.LENGTH_SHORT).show();
@@ -311,9 +320,9 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
                 if(visualiseSource == null){
                     return;
                 }
-                Toast.makeText(getContext(),"STOP STORING",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"STOP CLICK",Toast.LENGTH_SHORT).show();
                 if(visualiseSource.isRecFlag()){
-                    visualiseSource.setRecFlag(false, null, null);
+                    visualiseSource.setRecFlag(false, null, null,null);
                     view.getBackground().setColorFilter(0xe0f47521,PorterDuff.Mode.SRC_ATOP);
                     view.invalidate();
                     ibtn_rec.getBackground().clearColorFilter();
@@ -323,7 +332,6 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
             }
         });
 
-        initPlot(-600,600);
         return v;
     }
 
@@ -349,18 +357,13 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
         alertdialogbuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                lineChart = (LineChart) v.findViewById(R.id.lineChart);
-                lineDataSetsPLOT = new ArrayList<ILineDataSet>();
                 for(int i = 0; i < selectedChannels.length;i++){
                     ILineDataSet iLineDataSet = forUpdateNewSamples.get(""+(i+1));
+                    lineDataSetsPLOT.remove(iLineDataSet);
                     if(selectedChannels[i]){
-                        iLineDataSet.setVisible(true);
                         lineDataSetsPLOT.add(iLineDataSet);
-                    }else {
-                        iLineDataSet.setVisible(false);
                     }
                 }
-                initPlot(-600,600);
             }
         });
 
@@ -376,47 +379,44 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
 
 
     @Override
-    public void addNewSample(final String channel_ID, final float sample_data, final long created_date, final float cnt){
-
+    public void addNewSample(String channel_ID, float sample_data, long created_date, final float cnt){
         if(v == null) return;
         if(lineChart == null) return;
+        ILineDataSet channel_line = forUpdateNewSamples.get(channel_ID);
+        if (channel_line == null) return;
+
+        //MAKE SURE THAT WE LIMIT THE WINDOWS OF ENTRY TO AVOID EATING A LOT OF MEMORY
+        if(channel_line.getEntryCount() > NR_ENTRIES_WINDOW*3){
+            channel_line.removeEntry(0);
+            channel_line.removeEntry(1);
+            channel_line.removeEntry(2);
+        }
+
+
+        Entry new_entry = new Entry(cnt,sample_data);
+
+        channel_line.addEntry(new_entry);
+        lineChart.getData().notifyDataChanged();
+
+        // let the chart know it's data has changed
+        lineChart.notifyDataSetChanged();
+        // limit the number of visible entries
+        lineChart.setVisibleXRangeMaximum(NR_ENTRIES_WINDOW);
+        //System.out.println(" PlotView "+visualiseSource.getSource_id()+"---------> channel :" +channel_ID+" sample:"+sample_data);
         v.post(new Runnable() {
             @Override
             public void run() {
-                ILineDataSet channel_line = forUpdateNewSamples.get(channel_ID);
-                if (channel_line == null) return;
-
-                //MAKE SURE THAT WE LIMIT THE WINDOWS OF ENTRY TO AVOID EATING A LOT OF MEMORY
-                if(channel_line.getEntryCount() > NR_ENTRIES_WINDOW*3){
-                    channel_line.removeEntry(0);
-                    channel_line.removeEntry(1);
-                    channel_line.removeEntry(2);
-                }
-
-                System.out.println(" PlotView "+visualiseSource.getSource_id()+"---------> channel :" +channel_ID+" sample:"+sample_data+" date:"+(cnt));
-                //ILineDataSet i2 = lineChart.getData().getDataSetByIndex(Integer.parseInt(channel_ID)-1);
-                //System.out.println(" PlotView "+visualiseSource.getSource_id()+"---------> channel :"
-                //        +channel_ID+" sample:"+sample_data+" date:"+created_date+ " ***\n "+channel_line+ " ***\n " +i2);
-
-                Entry new_entry = new Entry(cnt,sample_data);
-
-                channel_line.addEntry(new_entry);
-                lineChart.getData().notifyDataChanged();
-
-                // let the chart know it's data has changed
-                lineChart.notifyDataSetChanged();
-                // limit the number of visible entries
-                lineChart.setVisibleXRangeMaximum(NR_ENTRIES_WINDOW);
                 // move to the latest entry
                 if((cnt - (NR_ENTRIES_WINDOW + 1) > 0)){
                     lineChart.moveViewToX(cnt - NR_ENTRIES_WINDOW - 1);
                 } else lineChart.invalidate();
-
-                System.out.println(" PlotView "+visualiseSource.getSource_id()+"---------> channel :"
-                        +channel_ID+" sample:"+sample_data);
             }
-
         });
+    }
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
     }
 
 }

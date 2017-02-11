@@ -17,19 +17,21 @@ public class SampleSet {
     private String patient_id;
     private String clinic_id;
     private byte[] samples;
-    private int indexSamples = 0;
+    private int maxSample = 0;
 
     //HELP ATTRIBUTES FOR OTHER PURPOSE
     private int nr_of_sample;
     private float sample_data[];
 
 
-    public SampleSet(String source_id, String channel_id, String record_id, String patient_id, String clinic_id){
+    public SampleSet(String source_id, String channel_id, String record_id, String patient_id, String clinic_id, int maxSample){
         this.source_id = source_id;
         this.channel_id = channel_id;
         this.record_id = record_id;
         this.patient_id = patient_id;
         this.clinic_id = clinic_id;
+        sample_data = new float[maxSample];
+        this.maxSample = maxSample;
     }
 
     public void addABITalinoSample(ABITalinoData abiTalinoData){
@@ -51,6 +53,7 @@ public class SampleSet {
             short sample_in_digi = (short) (sample_data[i]/1);
             bb.putShort(sample_in_digi);
         }
+        bb.rewind();
         bb.get(samples,0,samples.length);
         return samples;
     }
