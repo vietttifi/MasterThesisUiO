@@ -2,6 +2,7 @@ package no.uio.ifi.viettt.mscosa.SensorsObjects;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
 
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.ABITalinoData;
 
@@ -16,12 +17,13 @@ public class SampleSet {
     private String record_id;
     private String patient_id;
     private String clinic_id;
-    private byte[] samples;
     private int maxSample = 0;
 
     //HELP ATTRIBUTES FOR OTHER PURPOSE
     private int nr_of_sample;
     private float sample_data[];
+
+    private byte[] samples;
 
 
     public SampleSet(String source_id, String channel_id, String record_id, String patient_id, String clinic_id, int maxSample){
@@ -39,63 +41,68 @@ public class SampleSet {
             sample_data[nr_of_sample++] = Float.parseFloat(abiTalinoData.getData().get(channel_id));
     }
 
-    /**
-     * This method will convert array of float_sample into array_of_byte that EDF compatible.
-     * coefficient number is calculated by (physicalmax-physicalmin)/(digitalmax-digitalmin)
-     * Therefore, digi = physical/coefficient, and physical = digi*coefficient
-     */
-    public byte[] sample_data_to_digit(){
-        samples = new byte[nr_of_sample*2];
-        ByteBuffer bb = ByteBuffer.allocate(nr_of_sample * 2);
-        bb.order(ByteOrder.LITTLE_ENDIAN);
-
-        for(int i = 0; i < nr_of_sample; i++){
-            short sample_in_digi = (short) (sample_data[i]/1);
-            bb.putShort(sample_in_digi);
+    public byte[] floatSamplesToBytes(){
+        ByteBuffer bb = ByteBuffer.allocate(maxSample*2);
+        for(int i = 0; i < sample_data.length; i++){
+            bb.putShort((short)sample_data[i]);
         }
         bb.rewind();
-        bb.get(samples,0,samples.length);
+        samples = new byte[maxSample*2];
+        bb.get(samples);
         return samples;
     }
 
-    /**
-     * This method will convert array_of_byte that EDF compatible to float physical sample.
-     *
-     */
-    public float[] digi_short_to_physical_float(){
-
+    public float[] samplesByteToFloat(boolean isConvert, float yMin, float accuracy, boolean sign){
+        sample_data = new float[maxSample];
         ByteBuffer bb = ByteBuffer.wrap(samples);
-        bb.order(ByteOrder.LITTLE_ENDIAN);
 
-        for (int i = 0; i < samples.length/2; i++) {
-            sample_data[i] = bb.getShort();
+        if(isConvert){
+            for(int i = 0; i < maxSample; i++){
+                if(sign) sample_data[i] = (-1)*(float) (yMin*Math.exp((-1)*accuracy*bb.getShort()));
+                else sample_data[i] = (float) (yMin*Math.exp(accuracy*bb.getShort()));
+            }
+        }else{
+            for(int i = 0; i < maxSample; i++){
+                sample_data[i] = bb.getShort();
+            }
         }
-        nr_of_sample = samples.length/2;
         return sample_data;
+    }
+
+    public void stringDataToFloatArray(String samples){
+        String ar[] = null;
+        if(samples.indexOf(0) == '['){
+            ar = samples.substring(1,samples.length()-1).split(", ");
+        }else{
+            ar = samples.split(", ");
+        }
+
+        sample_data = new float[ar.length];
+        for(int i = 0; i < ar.length; i++){
+            try{
+                sample_data[i] = Float.parseFloat(ar[i]);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //convert float to 2 bytes int
+    public byte[] getSamples(){
+        if(samples == null) floatSamplesToBytes();
+        return samples;
     }
 
     public String getSource_id() {
         return source_id;
     }
 
-    public void setSource_id(String source_id) {
-        this.source_id = source_id;
-    }
-
     public String getChannel_id() {
         return channel_id;
     }
 
-    public void setChannel_id(String channel_id) {
-        this.channel_id = channel_id;
-    }
-
     public String getRecord_id() {
         return record_id;
-    }
-
-    public void setRecord_id(String record_id) {
-        this.record_id = record_id;
     }
 
     public String getPatient_id() {
@@ -110,32 +117,9 @@ public class SampleSet {
         return clinic_id;
     }
 
-    public void setClinic_id(String clinic_id) {
-        this.clinic_id = clinic_id;
-    }
-
-    public byte[] getSamples() {
-        sample_data_to_digit();
-        return samples;
-    }
-
     public void setSamples(byte[] samples) {
         this.samples = samples;
     }
 
-    public int getNr_of_sample() {
-        return nr_of_sample;
-    }
 
-    public void setNr_of_sample(int nr_of_sample) {
-        this.nr_of_sample = nr_of_sample;
-    }
-
-    public float[] getSample_data() {
-        return sample_data;
-    }
-
-    public void setSample_data(float[] sample_data) {
-        this.sample_data = sample_data;
-    }
 }

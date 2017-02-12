@@ -1,11 +1,11 @@
 [
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_lines_media.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_template_lines_media.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_title_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/fragment_chooser.xml",
@@ -13,11 +13,11 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_radio.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_list_menu_item_radio.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/list_item.xml",
@@ -25,15 +25,15 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_menu.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_navigation_menu.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_checkbox.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_part_time.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_template_part_time.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/list_items_connected_layout.xml",
@@ -41,51 +41,51 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_text_input_password_icon.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_text_input_password_icon.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_search_view.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_search_view.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_simple.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_screen_simple.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_media.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_template_media.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_snackbar_include.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_layout_snackbar_include.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_expanded_menu_layout.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_expanded_menu_layout.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_bottom_navigation_item.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_bottom_navigation_item.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_tab_text.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_layout_tab_text.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_subheader.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_navigation_item_subheader.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_popup_menu_item_layout.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_popup_menu_item_layout.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_menu_item.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_navigation_menu_item.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_navigation_item.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/ro_plot_marker_view.xml",
@@ -93,23 +93,23 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_select_dialog_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_select_dialog_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_part_chronometer.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_template_part_chronometer.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_up_container.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_action_bar_up_container.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_menu_item_action_area.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_menu_item_action_area.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_mode_bar.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_action_mode_bar.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/ro_plot_layout.xml",
@@ -121,15 +121,15 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_multichoice_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/select_dialog_multichoice_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_icon.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_list_menu_item_icon.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/source_from_file_listview_item.xml",
@@ -137,7 +137,7 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_popup_menu_header_item_layout.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/file.xml",
@@ -145,15 +145,15 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_alert_dialog_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_layout.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_list_menu_item_layout.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_bottom_sheet_dialog.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_bottom_sheet_dialog.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/patient_clinic_info.xml",
@@ -161,7 +161,7 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_media_custom.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_template_media_custom.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/client_connected_layout.xml",
@@ -173,19 +173,19 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_dialog_title_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_dialog_title_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_separator.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_navigation_item_separator.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_header.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_navigation_item_header.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_tab_icon.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_layout_tab_icon.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/mining_fragment_layout.xml",
@@ -193,39 +193,39 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_snackbar.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/layout/design_layout_snackbar.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_mode_close_item_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_title_item.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_action_bar_title_item.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_button_bar_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_menu_item_layout.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_action_menu_item_layout.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_search_dropdown_item_icons_2line.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_action_bar_view_list_nav_layout.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_singlechoice_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
@@ -233,11 +233,11 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_item_material.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/select_dialog_item_material.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_menu_layout.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_action_menu_layout.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/source_from_file_fragment_layout.xml",
@@ -257,11 +257,15 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/activity_raw_query.xml",
+        "source": "/Users/viettt/Desktop/MScOSA/app/src/main/res/layout/activity_raw_query.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_toolbar.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/bb_bottom_bar_item_shifting.xml",
@@ -273,6 +277,6 @@
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_content_include.xml"
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_screen_content_include.xml"
     }
 ]

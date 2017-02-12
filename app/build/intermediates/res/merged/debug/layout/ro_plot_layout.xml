@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/lblPlot_RO"
-            android:text="Signals observing"
+            android:text="Select channels"
             android:gravity="center"
             android:textSize="18sp"
             android:elevation="18dp"

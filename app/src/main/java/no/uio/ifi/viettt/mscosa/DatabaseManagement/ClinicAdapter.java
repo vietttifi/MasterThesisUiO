@@ -54,7 +54,7 @@ public class ClinicAdapter {
         return clinic;
     }
 
-    public void storeNewClinic(String clinic_CODE, String technician_ID, String address,
+    public long storeNewClinic(String clinic_CODE, String technician_ID, String address,
                                  String phone_nr,String email){
         ContentValues values = new ContentValues();
         values.put(OSADBHelper.CLINIC_CODE,clinic_CODE);
@@ -63,7 +63,7 @@ public class ClinicAdapter {
         values.put(OSADBHelper.CLINIC_PHONE_NR,phone_nr);
         values.put(OSADBHelper.CLINIC_EMAIL,email);
 
-        mDatabase.insert(OSADBHelper.TABLE_CLINIC, null, values);
+        return mDatabase.insert(OSADBHelper.TABLE_CLINIC, null, values);
     }
 
     public Clinic getClinicById(String clinic_ID) {

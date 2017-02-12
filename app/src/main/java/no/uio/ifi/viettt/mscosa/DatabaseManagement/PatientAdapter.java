@@ -58,7 +58,7 @@ public class PatientAdapter {
         return patient;
     }
 
-    public void storeNewPatient(String patient_code_in_clinic, String gender,String last_name,
+    public long storeNewPatient(String patient_code_in_clinic, String gender,String last_name,
                                String first_name,String date_of_birth,
                                  String address, String phone_nr, String email){
         ContentValues values = new ContentValues();
@@ -71,7 +71,7 @@ public class PatientAdapter {
         values.put(OSADBHelper.PATIENT_PHONE_NR,phone_nr);
         values.put(OSADBHelper.PATIENT_EMAIL,email);
 
-        mDatabase.insert(OSADBHelper.TABLE_PATIENT, null, values);
+        return mDatabase.insert(OSADBHelper.TABLE_PATIENT, null, values);
     }
 
     public Patient getPatientById(String patient_ID) {

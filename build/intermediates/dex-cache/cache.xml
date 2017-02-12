@@ -3,12 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/transition/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.0_cbaa92a99032dbc53ecf670e1fdd7e57227e2a97/classes.dex" />
+        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-transition-25.1.1_74624adbf1a5e99b7b42be5ab148a253db7cd7ab/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -21,48 +21,57 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/transition/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-transition-25.1.0_a5d5ff6b7d7d5537eccf31f5d87f26e218932bb6/classes.dex" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.1_914eeb22a4442bd16094c845c212b82a50975279/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_47388280c422fc209fac24ddfb2164921f6819e6/classes.dex" />
+        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.1.1_55138ddf2615efeee39b4fdbb729eb9a9c936159/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_393fd434ce0f1a39a743fc73934bc93c290e7695/classes.dex" />
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.1_0a1b08e7daf7513696df5c0a0e5a11994ec159bf/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.0_3b77439c2a2796587811795eb5978bfef148c617/classes.dex" />
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.1_c9480ab219ed9783eab498507ce2aea22f1806f8/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.0_1c2e5f62a4877e654b43296e6600d95b6f23b89b/classes.dex" />
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.1_b4102ba052f4a7b8d1fd92f93ce7888f73c11289/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.1.1_3d320f3e692566282d9148a23006dc5f748a2127/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -75,12 +84,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.0_2e33728299d28fea53ce618a96a7212ea3fffd2a/classes.dex" />
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.1_34a924494ca7972a5d2602ad2af7768f429eb4e8/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -88,7 +97,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="97168959ca6208784c376fb36dc5238aaa1c3cb4">
+        sha1="055f02f2e972525f023a34d722778a9c8f0a60a4">
         <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c9d5b5f9ab56bf696d7d389999c462f07e372d66/classes.dex" />
     </item>
     <item
@@ -97,62 +106,53 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="ed05ec03eba4c5eadbbf496cf83074d7c15213ed">
+        sha1="dac54b53b9efbbd50c7a2ee3182f29814809272b">
         <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_c0f258a528100a8c7c70cb91943099c25f09161d/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.0_240e24f4f9145a2fc52698f418acdd82f4886cfb/classes.dex" />
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.1_a02827bb22e1ed6320ecb26f470309d2cf8cc79f/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.1.0_b6c3882bfb83af5737076951ee6b1d772abb7dd6/classes.dex" />
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.1_ba2401b8436446df7859a26f97976ea9f850e7cc/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.0_1f7241b565413f4129dcecea38864047977b1b01/classes.dex" />
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.1_77e7e84c570de16e2a5ca91f38980ca03e2e41cd/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.0_6d3f1df6cd7aec3cc9241eb688c53dd3557110d8/classes.dex" />
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.1_e18dcfadbeb3bcfc5e04451eb562195597443c58/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.0_1be79b686fa85893795bc38975980ebaf697816d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.1.0_54230604767161ae12646bd6aa4a7beb868d7e0f/classes.dex" />
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.1_00390d73d1e7d12ec471b454aa7fa84d47b47a62/classes.dex" />
     </item>
     <item
         is-multidex="true"

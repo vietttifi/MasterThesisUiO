@@ -90,7 +90,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
             + SENSOR_SOURCE_TYPE + " TEXT, "
             + SENSOR_SOURCE_START_DATE + " INTEGER, "
             + SENSOR_SOURCE_RESERVED + " BLOB, "
-            + SENSOR_SOURCE_DATA_RECORD_DURATION + " INTEGER"
+            + SENSOR_SOURCE_DATA_RECORD_DURATION + " REAL "
             +");";
 
     // SQL statement of the -------  CHANNEL ------ table creation
@@ -137,7 +137,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + SAMPLE_DATA_RECORD_ID + " TEXT NOT NULL, "
                     + SAMPLE_PATIENT_ID + " TEXT NOT NULL, "
                     + SAMPLE_CLINIC_ID + " TEXT NOT NULL, "
-                    + SAMPLE_DATA + " BLOB,"
+                    + SAMPLE_DATA + " BLOB , "
                     + " PRIMARY KEY ("+ SAMPLE_SOURCE_ID +","+ SAMPLE_CHANNEL_ID +","
                                 +SAMPLE_DATA_RECORD_ID+","+SAMPLE_PATIENT_ID+","+SAMPLE_CLINIC_ID+"), "
                     + " FOREIGN KEY( "+ SAMPLE_SOURCE_ID +","+ SAMPLE_CHANNEL_ID +" ) REFERENCES "+ TABLE_CHANNEL +"("+ CHANNEL_ID +","+CHANNEL_SENSOR_SOURCE_ID +"),"

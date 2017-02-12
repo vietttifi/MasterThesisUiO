@@ -124,4 +124,8 @@ public class DataRecord {
     public List<SampleSet> getSampleSetList() {
         return sampleSetList;
     }
+
+    public void setSampleSetList(List<SampleSet> sampleSetList) {
+        this.sampleSetList = sampleSetList;
+    }
 }

@@ -21,6 +21,7 @@ public class Channel {
 
     //ASSISTANT ATTRIBUTE
     public float frequence;
+    private int numberSampleEDF;
 
     public Channel(String channel_ID, String source_ID){
         this.channel_ID = channel_ID;
@@ -129,5 +130,13 @@ public class Channel {
 
     public void setFrequence(float frequence) {
         this.frequence = frequence;
+    }
+
+    public int getNumberSampleEDF() {
+        return numberSampleEDF;
+    }
+
+    public void setNumberSampleEDF(int numberSampleEDF) {
+        this.numberSampleEDF = numberSampleEDF;
     }
 }

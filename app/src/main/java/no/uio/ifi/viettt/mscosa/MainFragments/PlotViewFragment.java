@@ -387,11 +387,9 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
 
         //MAKE SURE THAT WE LIMIT THE WINDOWS OF ENTRY TO AVOID EATING A LOT OF MEMORY
         if(channel_line.getEntryCount() > NR_ENTRIES_WINDOW*3){
-            channel_line.removeEntry(0);
-            channel_line.removeEntry(1);
-            channel_line.removeEntry(2);
+            channel_line.removeFirst();
+            //channel_line.removeFirst();
         }
-
 
         Entry new_entry = new Entry(cnt,sample_data);
 

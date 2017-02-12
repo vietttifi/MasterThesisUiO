@@ -1,69 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:id="@+id/txtSearch"
-            android:hint="RawQuery"
-            android:textSize="20dp"
-            android:maxLines="40"
-            android:background="#d7caca"
-            />
-
-        <Button
-            android:text="Execute query"
-            android:layout_width="0dp"
-            android:layout_weight="0.3"
-            android:layout_height="match_parent"
-            android:id="@+id/btnSearchRaw"
-            android:textAlignment="center"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-    <HorizontalScrollView
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
-            <TableLayout
-                android:layout_width="match_parent"
+            <ImageButton
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/tblRawData">
+                app:srcCompat="@drawable/visualise"
+                android:background="#AAA9B1"
+                android:id="@+id/btnVisualise"
+                android:layout_weight="0.2"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:padding="20dp"/>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/raw_sql"
+                android:background="#AAA9B1"
+                android:id="@+id/btnRawQuery"
+                android:layout_weight="0.2"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:padding="20dp"/>
+        </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </TableLayout>
-        </ScrollView>
-
-
-    </HorizontalScrollView>
-
+    </TableLayout>
 </LinearLayout>

@@ -35,6 +35,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="no.uio.ifi.viettt.mscosa.DatabaseVisualisationActivity"
+            android:label="@string/title_activity_database_visualisation"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name="no.uio.ifi.viettt.mscosa.RawQueryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_raw_query"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>

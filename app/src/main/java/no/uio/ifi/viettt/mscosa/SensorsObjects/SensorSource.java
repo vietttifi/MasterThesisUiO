@@ -16,16 +16,15 @@ public class SensorSource {
     private String source_id; //for database b/c source_type + dateTime = A RECORD
     private String source_name;
     private String source_type;
+    private String createdDate;
+    private String createdTime;
     private long startDateTime;
     private byte[] reserved;
-    private int data_record_duration = 3; //default value is 30s in case the users do not give it
+    private double data_record_duration = 3; //default value is 30s in case the users do not give it
 
     //ASSISTANT ATTRIBUTES
-    public MainActivity mainActivity;
     public static final String ACTIVESTATUS = "Active", UNACTIVESTATUS = "Disconnected", OFFLINESOURCE = "Offline source";
-
-    private DataRecord bufferDataRecord;
-    private long dataRecordNr = 0;
+    private int numberOfbytesHeaderEDF;
 
     //Maybe register to database immediately?
     public Patient patient;
@@ -108,11 +107,11 @@ public class SensorSource {
         this.reserved = reserved;
     }
 
-    public int getData_record_duration() {
+    public double getData_record_duration() {
         return data_record_duration;
     }
 
-    public void setData_record_duration(int data_record_duration) {
+    public void setData_record_duration(double data_record_duration) {
         this.data_record_duration = data_record_duration;
     }
 
@@ -152,4 +151,11 @@ public class SensorSource {
         client_thread.closeConnection();
     }
 
+    public int getNumberOfbytesHeaderEDF() {
+        return numberOfbytesHeaderEDF;
+    }
+
+    public void setNumberOfbytesHeaderEDF(int numberOfbytesHeaderEDF) {
+        this.numberOfbytesHeaderEDF = numberOfbytesHeaderEDF;
+    }
 }

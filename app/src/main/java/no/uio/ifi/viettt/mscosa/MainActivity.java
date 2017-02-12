@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mf = new MiningFragment();
 
         swf.setmMainActivityAndOther(this,ccsf);
+        ef.setPointerToCurUI(this);
     }
 
     @Override

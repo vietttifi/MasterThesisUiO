@@ -54,7 +54,7 @@ public class SensorSourceAdapter{
     }
 
     public void saveSensorSourceToDB(String sensor_source_ID, String source_name, String source_type,
-                                   long startDateTime, byte[] reserved, int data_record_duration){
+                                   long startDateTime, byte[] reserved, double data_record_duration){
         ContentValues values = new ContentValues();
         values.put(OSADBHelper.SENSOR_SOURCE_ID,sensor_source_ID);
         values.put(OSADBHelper.SENSOR_SOURCE_NAME,source_name);

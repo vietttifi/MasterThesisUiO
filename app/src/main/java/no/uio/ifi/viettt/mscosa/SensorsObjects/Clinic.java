@@ -8,6 +8,7 @@ public class Clinic {
     private String clinic_ID;
     private String clinic_CODE;
     private String technician_ID;
+    private String used_equipment;
     private String clinic_address;
     private String phone_nr;
     private String email;
@@ -62,5 +63,13 @@ public class Clinic {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsed_equipment() {
+        return used_equipment;
+    }
+
+    public void setUsed_equipment(String used_equipment) {
+        this.used_equipment = used_equipment;
     }
 }

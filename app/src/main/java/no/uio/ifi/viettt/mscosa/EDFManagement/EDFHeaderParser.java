@@ -35,7 +35,7 @@ public class EDFHeaderParser{
                 header.setTransducerTypes(readASCIIStrings(is, EDFElementSize.TRANSDUCER_TYPE_SIZE, numberOfChannels));
                 header.setDimensions(readASCIIStrings(is, EDFElementSize.PHYSICAL_DIMENSION_OF_CHANNEL_SIZE, numberOfChannels));
                 header.setMinInUnits(readDoubles(is, EDFElementSize.PHYSICAL_MIN_IN_UNITS_SIZE, numberOfChannels));
-                header.setMinInUnits(readDoubles(is, EDFElementSize.PHYSICAL_MAX_IN_UNITS_SIZE, numberOfChannels));
+                header.setMaxInUnits(readDoubles(is, EDFElementSize.PHYSICAL_MAX_IN_UNITS_SIZE, numberOfChannels));
                 header.setDigitalMin(readIntegers(is, EDFElementSize.DIGITAL_MIN_SIZE, numberOfChannels));
                 header.setDigitalMax(readIntegers(is, EDFElementSize.DIGITAL_MAX_SIZE, numberOfChannels));
                 header.setPrefilterings(readASCIIStrings(is, EDFElementSize.PREFILTERING_SIZE, numberOfChannels));

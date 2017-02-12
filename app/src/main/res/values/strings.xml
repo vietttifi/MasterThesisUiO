@@ -29,4 +29,10 @@
     <string name="storage_removed">Storage was removed or unmounted.</string>
     <string name="error_selecting_file">Error selecting File</string>
 
+    <string name="title_activity_database_visualisation">DatabaseVisualisationActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_raw_query">RawQueryActivity</string>
+
 </resources>
