@@ -5,115 +5,124 @@ package no.uio.ifi.viettt.mscosa.SensorsObjects;
  */
 
 public class Channel {
-    //ATTRIBUTES FOR DATABASE
-    private String channel_ID;
-    private String source_ID;
-    private String channel_name;
-    private String transducer_type;
-    private String physical_dimension;
-    private double physical_min;
-    private double physical_max;
-    private int digital_min;
-    private int digital_max;
-    private String prefiltering;
-    private byte[] reserved;
+    //=================== DATABASE ATTRIBUTE =========
+    private long ch_id;
+    private String s_id;
+    private String ch_nr;
+    private String ch_name;
+    private String transducer;
+    private String dimension;
+    private float phy_min;
+    private float phy_max;
+    private int dig_min;
+    private int dig_max;
+    private byte[] edf_reserved;
+    //=================================================
+
+
+    //================= REAL-TIME-HELP ATTRIBUTE ======
+    private boolean isSelectedToSaveSample;
+    private int lastXRealtime = 0;
     private String description;
 
-    //ASSISTANT ATTRIBUTE
-    public float frequence;
-    private int numberSampleEDF;
-
-    public Channel(String channel_ID, String source_ID){
-        this.channel_ID = channel_ID;
-        this.source_ID = source_ID;
+    public Channel(){
     }
 
-    public String getChannel_ID() {
-        return channel_ID;
+    public String getS_id() {
+        return s_id;
     }
 
-    public void setChannel_ID(String channel_ID) {
-        this.channel_ID = channel_ID;
+    public void setS_id(String s_id) {
+        this.s_id = s_id;
     }
 
-    public String getSource_ID() {
-        return source_ID;
+    public long getCh_id() {
+        return ch_id;
     }
 
-    public void setSource_ID(String source_ID) {
-        this.source_ID = source_ID;
+    public void setCh_id(long ch_id) {
+        this.ch_id = ch_id;
     }
 
-    public String getChannel_name() {
-        return channel_name;
+    public String getCh_name() {
+        return ch_name;
     }
 
-    public void setChannel_name(String channel_name) {
-        this.channel_name = channel_name;
+    public void setCh_name(String ch_name) {
+        this.ch_name = ch_name;
     }
 
-    public String getTransducer_type() {
-        return transducer_type;
+    public String getTransducer() {
+        return transducer;
     }
 
-    public void setTransducer_type(String transducer_type) {
-        this.transducer_type = transducer_type;
+    public void setTransducer(String transducer) {
+        this.transducer = transducer;
     }
 
-    public String getPhysical_dimension() {
-        return physical_dimension;
+    public String getDimension() {
+        return dimension;
     }
 
-    public void setPhysical_dimension(String physical_dimension) {
-        this.physical_dimension = physical_dimension;
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
     }
 
-    public double getPhysical_min() {
-        return physical_min;
+    public float getPhy_min() {
+        return phy_min;
     }
 
-    public void setPhysical_min(double physical_min) {
-        this.physical_min = physical_min;
+    public void setPhy_min(float phy_min) {
+        this.phy_min = phy_min;
     }
 
-    public double getPhysical_max() {
-        return physical_max;
+    public float getPhy_max() {
+        return phy_max;
     }
 
-    public void setPhysical_max(double physical_max) {
-        this.physical_max = physical_max;
+    public void setPhy_max(float phy_max) {
+        this.phy_max = phy_max;
     }
 
-    public int getDigital_min() {
-        return digital_min;
+    public int getDig_min() {
+        return dig_min;
     }
 
-    public void setDigital_min(int digital_min) {
-        this.digital_min = digital_min;
+    public void setDig_min(int dig_min) {
+        this.dig_min = dig_min;
     }
 
-    public int getDigital_max() {
-        return digital_max;
+    public int getDig_max() {
+        return dig_max;
     }
 
-    public void setDigital_max(int digital_max) {
-        this.digital_max = digital_max;
+    public void setDig_max(int dig_max) {
+        this.dig_max = dig_max;
     }
 
-    public String getPrefiltering() {
-        return prefiltering;
+    public String getCh_nr() {
+        return ch_nr;
     }
 
-    public void setPrefiltering(String prefiltering) {
-        this.prefiltering = prefiltering;
+    public void setCh_nr(String ch_nr) {
+        this.ch_nr = ch_nr;
     }
 
-    public byte[] getReserved() {
-        return reserved;
+    public boolean isSelectedToSaveSample() {
+        return isSelectedToSaveSample;
     }
 
-    public void setReserved(byte[] reserved) {
-        this.reserved = reserved;
+    public void setSelectedToSaveSample(boolean selectedToSaveSample) {
+        isSelectedToSaveSample = selectedToSaveSample;
+    }
+
+    public byte[] getEdf_reserved() {
+
+        return edf_reserved;
+    }
+
+    public void setEdf_reserved(byte[] edf_reserved) {
+        this.edf_reserved = edf_reserved;
     }
 
     public String getDescription() {
@@ -124,19 +133,11 @@ public class Channel {
         this.description = description;
     }
 
-    public float getFrequence() {
-        return frequence;
+    public int getLastXRealtime() {
+        return lastXRealtime;
     }
 
-    public void setFrequence(float frequence) {
-        this.frequence = frequence;
-    }
-
-    public int getNumberSampleEDF() {
-        return numberSampleEDF;
-    }
-
-    public void setNumberSampleEDF(int numberSampleEDF) {
-        this.numberSampleEDF = numberSampleEDF;
+    public void setLastXRealtime(int lastXRealtime) {
+        this.lastXRealtime = lastXRealtime;
     }
 }

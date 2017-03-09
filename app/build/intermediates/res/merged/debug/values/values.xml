@@ -296,6 +296,7 @@
         </attr><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/><attr format="boolean" name="useCompatPadding"/></declare-styleable>
     <declare-styleable name="FloatingActionButton_Behavior_Layout"><attr format="boolean" name="behavior_autoHide"/></declare-styleable>
     <declare-styleable name="ForegroundLinearLayout"><attr name="android:foreground"/><attr name="android:foregroundGravity"/><attr format="boolean" name="foregroundInsidePadding"/></declare-styleable>
+    <declare-styleable name="GraphViewXML"><attr format="string" name="seriesData"/><attr format="string" name="seriesType"/><attr format="string" name="seriesTitle"/><attr name="android:title"/><attr format="color" name="seriesColor"/></declare-styleable>
     <declare-styleable name="LinearLayoutCompat"><attr name="android:orientation"/><attr name="android:gravity"/><attr name="android:baselineAligned"/><attr name="android:baselineAlignedChildIndex"/><attr name="android:weightSum"/><attr format="boolean" name="measureWithLargestChild"/><attr name="divider"/><attr name="showDividers">
             <flag name="none" value="0"/>
             <flag name="beginning" value="1"/>
@@ -622,6 +623,7 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="storage_removed">Storage was removed or unmounted.</string>
     <string name="title_activity_database_visualisation">DatabaseVisualisationActivity</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="title_activity_raw_query">RawQueryActivity</string>
     <string name="txt_ApneaECG">Physionet: Apnea-ECG source</string>
     <string name="txt_BITalino">BITalino sensor source</string>

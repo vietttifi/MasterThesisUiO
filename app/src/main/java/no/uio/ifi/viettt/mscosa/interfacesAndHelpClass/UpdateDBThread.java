@@ -1,22 +1,20 @@
 package no.uio.ifi.viettt.mscosa.interfacesAndHelpClass;
 
 import android.content.Context;
-
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.DataRecordAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleSetAdapter;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.DataRecord;
+import java.util.ArrayList;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.RecordFragment;
 
 /**
  * Created by viettt on 07/02/2017.
  */
 
-public class UpdateDBThread implements Runnable{
+public class UpdateDBThread extends Thread{
 
-    private DataRecordAdapter dataRecordAdapter;
-    private DataRecord dataRecord;
     private Context context;
     private boolean stop = false;
     private final Object lock = new Object();
+    private ArrayList<RecordFragment> bufferList = new ArrayList<>();
 
     public UpdateDBThread(Context context){
         this.context = context;
@@ -24,50 +22,43 @@ public class UpdateDBThread implements Runnable{
 
     @Override
     public void run() {
-        do{
-            synchronized (lock){
-                while (dataRecord == null) {
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                storeDataRecord();
-                storeSampleSet();
-                dataRecord = null;
+        while(!stop || !bufferList.isEmpty()){
+            RecordFragment recordFragment = getAFragment();
+            if(recordFragment != null){
+                SampleAdapter sampleAdapter = new SampleAdapter(context);
+                sampleAdapter.saveSampleToDB(recordFragment.getSamples_In_The_Same_Fragment());
+                sampleAdapter.close();
             }
-        }while(!stop);
-
+        }
     }
 
-    private void storeDataRecord(){
-        dataRecordAdapter = new DataRecordAdapter(this.context);
-        dataRecordAdapter.saveRecordToDB(dataRecord.getData_record_ID(),dataRecord.getSource_ID(),
-                dataRecord.getPatient_ID(),dataRecord.getClinic_ID(),dataRecord.getCreated_date(),
-                dataRecord.getExperiments(),dataRecord.getDescriptions(),dataRecord.getMax_sample());
-        dataRecordAdapter.close();
-    }
-
-    private void storeSampleSet(){
-        SampleSetAdapter sampleSetAdapter = new SampleSetAdapter(this.context);
-        //Transaction will be used here
-        sampleSetAdapter.saveSampleToDB(dataRecord.getSampleSetList());
-
-        sampleSetAdapter.close();
-    }
-
-    public void updateDataRecord(DataRecord dataRecord){
+    public void requestDataBaseSaving(RecordFragment recordFragment){
         synchronized (lock){
-            this.dataRecord = dataRecord;
+            bufferList.add(recordFragment);
             lock.notify();
         }
     }
 
-    public void stopThread(){
-        this.stop = true;
-        synchronized (lock) {
-            lock.notify();
+    private RecordFragment getAFragment(){
+        RecordFragment ret = null;
+        synchronized (lock){
+            while(bufferList.isEmpty() && !stop){
+                try {
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(!bufferList.isEmpty()) ret = bufferList.remove(0);
+        }
+        return ret;
+    }
+
+
+    public void setStop(boolean stop) {
+        synchronized (lock){
+            this.stop = stop;
+            lock.notifyAll();
         }
     }
 }

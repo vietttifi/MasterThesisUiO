@@ -7,7 +7,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Clinic;
 
@@ -20,12 +19,9 @@ public class ClinicAdapter {
 
     private SQLiteDatabase mDatabase;
     private OSADBHelper mDbHelper;
-    private Context mContext;
-    private String[] mAllColumns = {OSADBHelper.CLINIC_ID, OSADBHelper.CLINIC_CODE, OSADBHelper.CLINIC_TECHNICIAN_ID, OSADBHelper.CLINIC_ADDRESS,
-            OSADBHelper.CLINIC_PHONE_NR, OSADBHelper.CLINIC_EMAIL};
+    private String[] mAllColumns = {OSADBHelper.CLINIC_ID, OSADBHelper.CLINIC_NAME, OSADBHelper.CLINIC_ADDRESS, OSADBHelper.CLINIC_PHONE_NR, OSADBHelper.CLINIC_EMAIL};
 
     public ClinicAdapter(Context context){
-        this.mContext = context;
         mDbHelper = new OSADBHelper(context);
 
         try{
@@ -45,30 +41,29 @@ public class ClinicAdapter {
 
     Clinic cursorToClinic(Cursor cursor) {
         Clinic clinic = new Clinic();
-        clinic.setClinic_ID(cursor.getString(0));
-        clinic.setClinic_CODE(cursor.getString(1));
-        clinic.setTechnician_ID(cursor.getString(2));
-        clinic.setClinic_address(cursor.getString(3));
-        clinic.setPhone_nr(cursor.getString(4));
-        clinic.setEmail(cursor.getString(5));
+        clinic.setCl_id(cursor.getString(0));
+        clinic.setName(cursor.getString(1));
+        clinic.setAddress(cursor.getString(2));
+        clinic.setPhone_nr(cursor.getString(3));
+        clinic.setEmail(cursor.getString(4));
+
         return clinic;
     }
 
-    public long storeNewClinic(String clinic_CODE, String technician_ID, String address,
-                                 String phone_nr,String email){
+    public void storeNewClinic(Clinic clinic){
         ContentValues values = new ContentValues();
-        values.put(OSADBHelper.CLINIC_CODE,clinic_CODE);
-        values.put(OSADBHelper.CLINIC_TECHNICIAN_ID,technician_ID);
-        values.put(OSADBHelper.CLINIC_ADDRESS,address);
-        values.put(OSADBHelper.CLINIC_PHONE_NR,phone_nr);
-        values.put(OSADBHelper.CLINIC_EMAIL,email);
+        values.put(OSADBHelper.CLINIC_ID,clinic.getCl_id());
+        values.put(OSADBHelper.CLINIC_NAME,clinic.getName());
+        values.put(OSADBHelper.CLINIC_ADDRESS,clinic.getAddress());
+        values.put(OSADBHelper.CLINIC_PHONE_NR,clinic.getPhone_nr());
+        values.put(OSADBHelper.CLINIC_EMAIL,clinic.getEmail());
 
-        return mDatabase.insert(OSADBHelper.TABLE_CLINIC, null, values);
+        mDatabase.insertWithOnConflict(OSADBHelper.TABLE_CLINIC, null, values, SQLiteDatabase.CONFLICT_REPLACE);
     }
 
-    public Clinic getClinicById(String clinic_ID) {
+    public Clinic getClinicByIds(String cl_id) {
         Cursor cursor = mDatabase.query(OSADBHelper.TABLE_CLINIC, mAllColumns,
-                OSADBHelper.CLINIC_ID + " = ?", new String[] {clinic_ID}, null, null, null);
+                OSADBHelper.CLINIC_ID + " = ? ", new String[] {cl_id}, null, null, null);
 
         Clinic newClinic = null;
         if (cursor.getCount() != 0) {
@@ -80,50 +75,25 @@ public class ClinicAdapter {
         return newClinic;
     }
 
-    public List<Clinic> getallClinics(){
-        List<Clinic> listClinic = new ArrayList<Clinic>();
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_CLINIC, mAllColumns,
-                null, null, null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                Clinic clinic = cursorToClinic(cursor);
-                listClinic.add(clinic);
-                cursor.moveToNext();
-            }
-
-            //close the cursor
-            cursor.close();
-        }
-        return listClinic;
-    }
-
-    public void deleteClinic(Clinic clinic) {
-        String id = clinic.getClinic_ID();
-
+    public void deleteClinic(String cl_id) {
         // delete all ALL RECORD belong to this CLINIC ------ TRIGGER will be called.
-
-        mDatabase.delete(OSADBHelper.TABLE_CLINIC, OSADBHelper.CLINIC_ID + " = " + id, null);
+        mDatabase.delete(OSADBHelper.TABLE_CLINIC, OSADBHelper.CLINIC_ID + " = " + cl_id, null);
     }
 
-    public List<Clinic> searchClinic(String searchText) {
-        List<Clinic> listClinic = new ArrayList<Clinic>();
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_CLINIC, mAllColumns,
-                OSADBHelper.CLINIC_ID + " like ", new String[] {searchText}, null, null, null);
-
-        if (cursor != null) {
+    public ArrayList<String> getAllClinicIDs(){
+        ArrayList<String> ids = new ArrayList<>();
+        String rawQuery = "SELECT " + OSADBHelper.CLINIC_ID +
+                " FROM " + OSADBHelper.TABLE_CLINIC;
+        Cursor cursor = mDatabase.rawQuery(rawQuery, null);
+        if (cursor.getCount() != 0) {
             cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                Clinic clinic = cursorToClinic(cursor);
-                listClinic.add(clinic);
+            while(!cursor.isAfterLast()){
+                ids.add(cursor.getString(0));
                 cursor.moveToNext();
             }
-
-            //close the cursor
-            cursor.close();
         }
-        return listClinic;
+        cursor.close();
+        return ids;
     }
+
 }

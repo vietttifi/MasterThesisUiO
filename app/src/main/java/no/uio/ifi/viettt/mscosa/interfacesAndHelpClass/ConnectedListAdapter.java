@@ -26,15 +26,15 @@ public class ConnectedListAdapter extends BaseAdapter {
         TextView lbl_SenStatus;
     }
 
-    private List<SensorSource> listData;
+    private List<ClientThread> listData;
     private LayoutInflater layoutInflater;
 
-    public ConnectedListAdapter(Context aContext,  List<SensorSource> listData) {
+    public ConnectedListAdapter(Context aContext,  List<ClientThread> listData) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
     }
 
-    public void add(SensorSource s){
+    public void add(ClientThread s){
         listData.add(s);
     }
 
@@ -69,11 +69,11 @@ public class ConnectedListAdapter extends BaseAdapter {
             holder = (ViewElem) view.getTag();
         }
 
-        SensorSource source_s = this.listData.get(i);
-        holder.lbl_sensor_source_ID.setText(source_s.getSource_id());
-        holder.lbl_source_name.setText(source_s.getSource_name());
-        holder.lbl_SenStatus.setText(source_s.source_status);
-        holder.imageView_logo.setImageResource(source_s.logo_in_drawable);
+        ClientThread source_s = this.listData.get(i);
+        holder.lbl_sensor_source_ID.setText(source_s.getThread_ID());
+        holder.lbl_source_name.setText((source_s.getSensorSource()==null) ? "":source_s.getSensorSource().getS_name());
+        holder.lbl_SenStatus.setText(source_s.getStatus());
+        holder.imageView_logo.setImageResource(R.drawable.bitalino_logo);
 
         return view;
     }

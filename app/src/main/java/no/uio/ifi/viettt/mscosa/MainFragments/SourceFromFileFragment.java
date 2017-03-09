@@ -37,11 +37,10 @@ import java.util.List;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.ClinicAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.DataRecordAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.PatientAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleSetAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.PersonAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.SensorSourceAdapter;
-import no.uio.ifi.viettt.mscosa.EDFManagement.EDFAnnotation;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFHeaderParser;
 import no.uio.ifi.viettt.mscosa.MainActivity;
 import no.uio.ifi.viettt.mscosa.OpenSourceFileChooserFromDelaroy.FileUtils;
@@ -49,9 +48,9 @@ import no.uio.ifi.viettt.mscosa.EDFManagement.EDFHeader;
 import no.uio.ifi.viettt.mscosa.R;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Clinic;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.DataRecord;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.SampleSet;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.File_Sensor_Source;
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.LogReadFile;
@@ -64,6 +63,8 @@ import static android.app.Activity.RESULT_OK;
  */
 
 public class SourceFromFileFragment extends Fragment {
+
+    /*
 
     MainActivity mMainActivity;
 
@@ -262,6 +263,7 @@ public class SourceFromFileFragment extends Fragment {
 
             }catch (Exception e){
                 e.printStackTrace();
+                return null;
             }
             sensorSourceAdapter.close();
             return file_source.getSensor_source();
@@ -280,6 +282,8 @@ public class SourceFromFileFragment extends Fragment {
 
                 long c_id = clinicAdapter.storeNewClinic(clinicfromEDF[2],clinicfromEDF[3],clinicfromEDF[4],"","");
                 clinic.setClinic_ID(c_id+"");
+
+                if(c_id == -1) clinic = clinicAdapter.getClinicByIds(clinicfromEDF[2],clinicfromEDF[3],clinicfromEDF[4],"","");
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -289,9 +293,10 @@ public class SourceFromFileFragment extends Fragment {
         }
 
         private Patient createAndStorePatient(EDFHeader header){
-            PatientAdapter patientAdapter = new PatientAdapter(mMainActivity);
+            PersonAdapter personAdapter = new PersonAdapter(mMainActivity);
             Patient patient = new Patient();
             try{
+
                 String patientfromEDF[] = (header.getPatientInfo().trim()).split(" ");
                 patient.setPatient_ID(patientfromEDF[0]);
                 patient.setPatient_code_in_clinic(patientfromEDF[0]);
@@ -299,13 +304,14 @@ public class SourceFromFileFragment extends Fragment {
                 patient.setGender(patientfromEDF[1]);
                 patient.setFirstName(patientfromEDF[3]);
 
-                long p_id = patientAdapter.storeNewPatient(patientfromEDF[0],patientfromEDF[1],patientfromEDF[3],patientfromEDF[3],patientfromEDF[2],"","","");
+                long p_id = personAdapter.storeNewPatient(patientfromEDF[0],patientfromEDF[1],patientfromEDF[3],patientfromEDF[3],patientfromEDF[2],"","","");
                 patient.setPatient_ID(p_id+"");
+                if(p_id == -1) patient = personAdapter.getPatientByIds(patientfromEDF[0],patientfromEDF[1],patientfromEDF[3],patientfromEDF[3],patientfromEDF[2],"","","");
             }catch (Exception e){
                 e.printStackTrace();
             }
 
-            patientAdapter.close();
+            personAdapter.close();
 
             return patient;
         }
@@ -326,7 +332,7 @@ public class SourceFromFileFragment extends Fragment {
             byte reserved[][] = header.getReserveds();
 
             //PATTERN FOR GET THE FREQUENCE AND DIMENSION
-            ChannelAdapter channelAdapter = new ChannelAdapter(mMainActivity);
+            ChannelAdapter channelAdapter = new ChannelAdapter(mMainActivity, true);
             try{
                 for (int i = 0; i < channels.length; i++) {
                     String channel_id = i+"";
@@ -372,8 +378,8 @@ public class SourceFromFileFragment extends Fragment {
         @Override
         public void run(){
             final String filePath = loading_File_data.get(in.getIndex()).getFilePath();
-            DataRecordAdapter dataRecordAdapter = new DataRecordAdapter(mMainActivity);
-            SampleSetAdapter sampleSetAdapter = new SampleSetAdapter(mMainActivity);
+            RecordAdapter recordAdapter = new RecordAdapter(mMainActivity);
+            SampleAdapter sampleAdapter = new SampleAdapter(mMainActivity);
             try {
                 File_Sensor_Source file_source = loading_File_data.get(in.getIndex());
                 EDFHeader header = null;
@@ -429,7 +435,7 @@ public class SourceFromFileFragment extends Fragment {
 
                 //For each DataRecord
                 while (currentLog.getNr_of_bytes_have_read() < randomAccessFile.length()) {
-                    DataRecord dataRecord = new DataRecord(
+                    Record record = new Record(
                             currentLog.getRecordNR(),
                             sensorSource.getSource_id(),
                             patient.getPatient_ID(),
@@ -438,29 +444,21 @@ public class SourceFromFileFragment extends Fragment {
 
                     long totalBytesReadaRecord = 0;
                     //for each channel c : channels
-                    List<SampleSet> sampleSetsForThisRecord = new ArrayList<>();
+                    List<Sample> sampleSetsForThisRecord = new ArrayList<>();
                     int maxSampleForDataRecord = 0;
                     for(int i = 0; i < channels.length; i++){
                         //get the number of samples of this one
                         int nr_sample_this_channel = channels[i].getNumberSampleEDF();
 
                         //create a float array with this sample inside sampleset
-                        SampleSet sampleForThisChannel = new SampleSet(sensorSource.getSource_id(),
-                                channels[i].getChannel_ID(),dataRecord.getData_record_ID()+"",
+                        Sample sampleForThisChannel = new Sample(sensorSource.getSource_id(),
+                                channels[i].getChannel_ID(), record.getData_record_ID()+"",
                                 patient.getPatient_ID(),clinic.getClinic_ID(),nr_sample_this_channel);
                         byte[] buff = new byte[nr_sample_this_channel*2];
                         randomAccessFile.readFully(buff);
 
 
-                        /*
-                        if(channels[i].getChannel_name().contains("EDF Annotations")){
-                            System.out.println("HAS ANNO");
-                            List<EDFAnnotation> anns =  EDFHeaderParser.parseAnnotations(buff);
-                            for(EDFAnnotation ann : anns){
-                                for( String s : ann.getAnnotationsList())
-                                    System.out.println(s +" <------");
-                            }
-                        }*/
+
 
                         sampleForThisChannel.setSamples(buff);
 
@@ -470,18 +468,16 @@ public class SourceFromFileFragment extends Fragment {
 
                         if(nr_sample_this_channel > maxSampleForDataRecord) maxSampleForDataRecord = nr_sample_this_channel;
                     }
-                    dataRecord.setSampleSetList(sampleSetsForThisRecord);
-                    dataRecord.setMax_sample(maxSampleForDataRecord);
+                    record.setSampleSetList(sampleSetsForThisRecord);
+                    record.setMax_sample(maxSampleForDataRecord);
 
                     //============== HOW MANY DATA RECORD CAN WE BUFF BEFORE SEND TO DB ?===============
-                    /* ---- STORE dataRecord to database --- */
-                    dataRecordAdapter.saveRecordToDB(dataRecord.getData_record_ID(),dataRecord.getSource_ID(),
-                    dataRecord.getPatient_ID(),dataRecord.getClinic_ID(),dataRecord.getCreated_date(),
-                    dataRecord.getExperiments(),dataRecord.getDescriptions(),dataRecord.getMax_sample());
+                    recordAdapter.saveRecordToDB(record.getData_record_ID(), record.getSource_ID(),
+                    record.getPatient_ID(), record.getClinic_ID(), record.getCreated_date(),
+                    record.getExperiments(), record.getDescriptions(), record.getMax_sample());
 
-                    /*-------STORE SAMPLE_SET TO Database------*/
                     //Transaction will be used here
-                    sampleSetAdapter.saveSampleToDB(sampleSetsForThisRecord);
+                    sampleAdapter.saveSampleToDB(sampleSetsForThisRecord);
 
                     //============================= END STORING ======================================
 
@@ -509,8 +505,8 @@ public class SourceFromFileFragment extends Fragment {
                 e.printStackTrace();
             }
 
-            dataRecordAdapter.close();
-            sampleSetAdapter.close();
+            recordAdapter.close();
+            sampleAdapter.close();
             sendMessageToHandler(FILE_IS_LOADED, in.getIndex());
         }
 
@@ -622,5 +618,5 @@ public class SourceFromFileFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-
+*/
 }

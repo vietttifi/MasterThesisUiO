@@ -10,6 +10,7 @@ import no.uio.ifi.viettt.mscosa.MainFragments.SourceFromFileFragment;
  */
 
 public class ProgressBarHandler extends Handler {
+    /*
     private SourceFromFileFragment sourceFromFileFragment;
 
     public ProgressBarHandler(SourceFromFileFragment sourceFromFileFragment){
@@ -55,5 +56,7 @@ public class ProgressBarHandler extends Handler {
         }
 
     }
+
+    */
 
 }

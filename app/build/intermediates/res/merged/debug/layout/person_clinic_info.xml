@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lblPatientAndClinic"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:paddingBottom="10dp"
+        android:text="Person and Clinic Information\nClick to choose, or fill to create new"
+        android:textAlignment="center"
+        android:textColor="?android:attr/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/spinnerPatientTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/bb_darkBackgroundColor"
+                    android:textSize="16sp"
+                    android:spinnerMode="dialog"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:id="@+id/lblPatientID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient ID:" />
+
+                <EditText
+                    android:id="@+id/txtPatientID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="P_ID"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPatientName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient name:" />
+
+                <EditText
+                    android:id="@+id/txtPatientName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="P_Name"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPatient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient city:" />
+
+                <EditText
+                    android:id="@+id/txtPatCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="city"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPatPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone number:" />
+
+                <EditText
+                    android:id="@+id/txtPatPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="phone nr"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPatEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient email:" />
+
+                <EditText
+                    android:id="@+id/txtPatEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="email"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPatGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient gender:" />
+
+                <EditText
+                    android:id="@+id/txtPatGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="gender"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPatDateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient day of birth:" />
+
+                <EditText
+                    android:id="@+id/txtPatDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="birthday"
+                    android:inputType="datetime" />
+
+                <TextView
+                    android:id="@+id/lblPatAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient age:" />
+
+                <EditText
+                    android:id="@+id/txtPatAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="age"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/lblPatHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient height:" />
+
+                <EditText
+                    android:id="@+id/txtPatHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="height"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/lblPatWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient weight:" />
+
+                <EditText
+                    android:id="@+id/txtPatWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="weight"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/lblPatBMI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient age:" />
+
+                <EditText
+                    android:id="@+id/txtPatBMI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="BMI"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/lblPatOtherHealthIss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Other health issues" />
+
+                <EditText
+                    android:id="@+id/txtPatOtherHealthIss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="health problems"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblFragmentDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Choose a duration of a record fragment in second" />
+
+                <EditText
+                    android:id="@+id/txtFragmentDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/spinnerPhyTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/bb_darkBackgroundColor"
+                    android:textSize="16sp"
+                    android:spinnerMode="dialog"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:id="@+id/lblPhyID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Physician ID:" />
+
+                <EditText
+                    android:id="@+id/txtPhyID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician id"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPhyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Patient name:" />
+
+                <EditText
+                    android:id="@+id/txtPhyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician name"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPhyCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="physician city:" />
+
+                <EditText
+                    android:id="@+id/txtPhyCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician city"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPhyPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone number:" />
+
+                <EditText
+                    android:id="@+id/txtPhyPhoneNr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician phone nr"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPhyEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="physician email:" />
+
+                <EditText
+                    android:id="@+id/txtPhyEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician email"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPhyGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="physician gender:" />
+
+                <EditText
+                    android:id="@+id/txtPhyGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician gender"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblPhyDateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Physician day of birth:" />
+
+                <EditText
+                    android:id="@+id/txtPhyDateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician date of birth"
+                    android:inputType="datetime" />
+
+                <TextView
+                    android:id="@+id/lblPhyAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Physician age:" />
+
+                <EditText
+                    android:id="@+id/txtPhyAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician age"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/lblPhyTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Physician title:" />
+
+                <EditText
+                    android:id="@+id/txtPhyTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="physician title"
+                    android:inputType="textPersonName" />
+
+                <Spinner
+                    android:id="@+id/spinnerClinicTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/bb_darkBackgroundColor"
+                    android:textSize="16sp"
+                    android:spinnerMode="dialog"
+                    android:textStyle="normal|bold" />
+                <TextView
+                    android:id="@+id/lblClinicID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Clinic ID:" />
+
+                <EditText
+                    android:id="@+id/txtClinicID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="clinic id"
+                    android:inputType="textPersonName" />
+                <TextView
+                    android:id="@+id/lblClinicName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Clinic name:" />
+
+                <EditText
+                    android:id="@+id/txtClinicName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="clinic name"
+                    android:inputType="textPersonName" />
+                <TextView
+                    android:id="@+id/lblClinicAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Clinic address:" />
+
+                <EditText
+                    android:id="@+id/txtClinicAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="clinic address"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/lblClinicPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone nr:" />
+
+                <EditText
+                    android:id="@+id/txtClinicPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="phone nr"
+                    android:inputType="textPersonName" />
+                <TextView
+                    android:id="@+id/lblClinicEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email:" />
+
+                <EditText
+                    android:id="@+id/txtClinicEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="clinic email"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnPatientClinicOK"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:enabled="false"
+            android:text="Save to database" />
+
+        <Button
+            android:id="@+id/btnChooseChannels"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="match_parent"
+            android:text="Choose channels" />
+
+        <Button
+            android:id="@+id/btnPatientClinicCancel"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="match_parent"
+            android:text="Cancel" />
+    </LinearLayout>
+
+</LinearLayout>

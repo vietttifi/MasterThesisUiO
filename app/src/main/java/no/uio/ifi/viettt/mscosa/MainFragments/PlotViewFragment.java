@@ -1,52 +1,51 @@
 package no.uio.ifi.viettt.mscosa.MainFragments;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.util.Pools;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.utils.Utils;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LegendRenderer;
+import com.jjoe64.graphview.Viewport;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Random;
 
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.ClinicAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.PatientAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.PersonAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.SensorSourceAdapter;
 import no.uio.ifi.viettt.mscosa.R;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.DataRecord;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Clinic;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.SampleSet;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Physician;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.BeNotifiedComingSample;
-import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.PlotMarkerView;
+import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.BitalinoDataSample;
+import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.ClientThread;
 
 /**
  * Created by viettt on 20/12/2016.
@@ -54,173 +53,52 @@ import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.PlotMarkerView;
 
 public class PlotViewFragment extends Fragment implements BeNotifiedComingSample{
 
-    SensorSource visualiseSource;
-    public static final int NR_ENTRIES_WINDOW = 100;
-    List<Channel> channelList;
+    ClientThread visualiseSource;
+    private HashMap<String,Channel> channels = new HashMap<>();
+    public static final int NR_ENTRIES_WINDOW = 210;
 
     View v;
-
+    GraphView graph;
     AlertDialog.Builder alertdialogbuilder;
     String[] alertDialogItems;
     boolean[] selectedChannels;
+    HashMap<String, LineGraphSeries<DataPoint>> channelLines = new HashMap<>();
+    long timestampPlot;
 
-    //For Plot
-    LineChart lineChart;
-    ArrayList<ILineDataSet> lineDataSetsPLOT;
-    HashMap<String, ILineDataSet> forUpdateNewSamples;
-    PlotMarkerView mv;
+    private boolean isReady = false;
 
-
-    public void setVisualiseSource(SensorSource sensorSource){
-        if(sensorSource == null) return;
-        //if(lineChart != null) lineChart.removeAllViews();
-        this.visualiseSource = sensorSource;
-        channelList = sensorSource.getClient_thread().getChannelList();
-        lineDataSetsPLOT = new ArrayList<>();
-        forUpdateNewSamples = new HashMap<>();
-        selectedChannels = new boolean[channelList.size()];
-        alertDialogItems = new String[channelList.size()];
-    }
-
-    private LineDataSet createSet(String lineName, int color) {
-        LineDataSet set = new LineDataSet(null, lineName);
-        set.setDrawCircles(false);
-        set.setAxisDependency(YAxis.AxisDependency.LEFT);
-        set.setColor(color);
-        set.setLineWidth(2f);
-        set.setHighLightColor(Color.rgb(244, 117, 117));
-        set.setDrawValues(false);
-        return set;
-    }
-
-
-    private void initPlot(float yMin, float yMax){
-        if(visualiseSource == null) return;
-
-        //lineChart.setOnChartValueSelectedListener(this);
-        // enable description text
-        Utils.init(getContext());
-
-        if(forUpdateNewSamples.size() == 0){
-            forUpdateNewSamples = new HashMap<>();
-            for(Channel channel : channelList) {
-                String legendName = channel.getChannel_name()+"(" +((channel.getPhysical_dimension().equals("")) ? "": channel.getPhysical_dimension().trim())+")";
-                ILineDataSet dataSet = createSet(legendName, Color.rgb((int) (Math.random() * Integer.MAX_VALUE),
-                        (int) (Math.random() * Integer.MAX_VALUE), (int) (Math.random() * Integer.MAX_VALUE)));
-                forUpdateNewSamples.put(channel.getChannel_ID(),dataSet);
-            }
-        }
-
-
-
-        lineChart.getDescription().setEnabled(true);
-        Description d = new Description();
-        d.setText("BITalino "+visualiseSource.getSource_id());
-        d.setTextColor(Color.rgb((int)(Math.random()*Integer.MAX_VALUE),
-                (int)(Math.random()*Integer.MAX_VALUE),(int)(Math.random()*Integer.MAX_VALUE)));
-        lineChart.setDescription(d);
-
-        // enable touch gestures
-        lineChart.setTouchEnabled(true);
-
-        // enable scaling and dragging
-        lineChart.setDragEnabled(true);
-        lineChart.setScaleEnabled(true);
-        lineChart.setDrawGridBackground(false);
-
-        // if disabled, scaling can be done on x- and y-axis separately
-        //lineChart.setPinchZoom(true);
-        //lineChart.setAutoScaleMinMaxEnabled(true);
-
-        // set an alternative background color
-        lineChart.setBackgroundColor(Color.BLACK);
-
-        // get the legend (only possible after setting data)
-        Legend l = lineChart.getLegend();
-
-        // modify the legend ...
-        l.setForm(Legend.LegendForm.LINE);
-        l.setTextColor(Color.WHITE);
-        l.setWordWrapEnabled(true);
-
-        //------FORMAT DATE BOTTOM----
-        //IAxisValueFormatter xAxisFormatter = new TimeAxisValueFormatter(lineChart,observedSource);
-
-
-
-        XAxis xl = lineChart.getXAxis();
-        xl.setTextColor(Color.WHITE);
-        xl.setDrawGridLines(false);
-        xl.setAvoidFirstLastClipping(true);
-        xl.setEnabled(true);
-        xl.setPosition(XAxis.XAxisPosition.BOTTOM);
-        //xl.setValueFormatter(xAxisFormatter);//-----------------
-
-        //mv = new PlotMarkerView(getContext(), R.layout.ro_plot_marker_view,observedSource);
-        //mv.setChartView(lineChart); // For bounds control
-        //lineChart.setMarker(mv); // Set the marker to the chart
-
-
-
-        YAxis leftAxis = lineChart.getAxisLeft();
-        leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setAxisMaximum(yMax);
-        leftAxis.setAxisMinimum(yMin);
-        leftAxis.setDrawGridLines(true);
-
-        YAxis rightAxis = lineChart.getAxisRight();
-        rightAxis.setEnabled(false);
-
-        LineData init = new LineData(lineDataSetsPLOT);
-        init.setValueTextColor(Color.WHITE);
-        lineChart.setData(init);
-
-        init.notifyDataChanged();
-        // let the chart know it's data has changed
-        lineChart.notifyDataSetChanged();
-        // limit the number of visible entries
-        lineChart.setVisibleXRangeMaximum(NR_ENTRIES_WINDOW);
-        lineChart.moveViewToX(0);
+    public void setVisualiseSource(ClientThread clientThread){
+        channels = clientThread.getChannels();
+        selectedChannels = new boolean[channels.size()];
+        alertDialogItems = new String[channels.size()];
+        visualiseSource = clientThread;
+        timestampPlot = System.currentTimeMillis();
+        isReady = false;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.ro_plot_layout, container, false);
-
-        lineChart = (LineChart) v.findViewById(R.id.lineChart);
-        initPlot(-600,600);
-
-        final TextView selectSensors = (TextView) v.findViewById(R.id.lblPlot_RO);
-        selectSensors.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(visualiseSource == null) return;
-                //read info for select channel list
-                int cnt = 0;
-                for(Channel c : channelList){
-                    alertDialogItems[cnt++] = c.getChannel_name();
-                }
-                popUpSelectSensors();
-            }
-        });
+        graph = (GraphView) v.findViewById(R.id.lineChart);
+        TextView lblPlot_RO = (TextView)v.findViewById(R.id.lblPlot_RO);
 
         final ImageButton ibtn_rec = (ImageButton) v.findViewById(R.id.btnRec_RO);
         final ImageButton ibtn_save = (ImageButton) v.findViewById(R.id.btnSave_RO);
 
         //get button status from observed source.
         if(visualiseSource == null) {
-            ibtn_save.setColorFilter(0xe0f47521,PorterDuff.Mode.SRC_ATOP);
+            ibtn_save.setColorFilter(0xe0f47521, PorterDuff.Mode.SRC_ATOP);
             ibtn_save.invalidate();
         } else {
-            if(visualiseSource.isRecFlag()) {
+            if(visualiseSource.isStoring()) {
                 ibtn_rec.setColorFilter(0xe0f47521,PorterDuff.Mode.SRC_ATOP);
                 ibtn_rec.invalidate();
-                ibtn_save.getBackground().clearColorFilter();
+                ibtn_save.setColorFilter(0x00000000,PorterDuff.Mode.SRC_ATOP);
                 ibtn_save.invalidate();
             }else{
                 ibtn_save.setColorFilter(0xe0f47521,PorterDuff.Mode.SRC_ATOP);
                 ibtn_save.invalidate();
-                ibtn_rec.getBackground().clearColorFilter();
+                ibtn_rec.setColorFilter(0x00000000,PorterDuff.Mode.SRC_ATOP);
                 ibtn_rec.invalidate();
             }
         }
@@ -228,88 +106,16 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
         ibtn_rec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(visualiseSource == null){
-                    Toast.makeText(getContext(),"No data for storing",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                //if source is not active, return
-                if(!visualiseSource.source_status.equals(SensorSource.ACTIVESTATUS)){
-                    Toast.makeText(getContext(),"Source is not active",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if(!visualiseSource.isRecFlag()){
-                    final SensorSource ss = visualiseSource;
-                    //if source is active, we need to pop-up an view to collect patient and clinic info before saving.
-                    View popUpView = getActivity().getLayoutInflater().inflate(R.layout.patient_clinic_info, null); // inflating popup layout
-                    final PopupWindow mpopup = new PopupWindow(popUpView, ViewPager.LayoutParams.MATCH_PARENT, ViewPager.LayoutParams.MATCH_PARENT, true); // Creation of popup
-                    mpopup.setAnimationStyle(android.R.style.Animation_Dialog);
-                    mpopup.showAtLocation(popUpView, Gravity.CENTER, 0, 0); // Displaying popup
-
-                    popUpView.setBackground(new ColorDrawable(Color.WHITE));
-
-                    Button btnPatientClinicOK = (Button) popUpView.findViewById(R.id.btnPatientClinicOK);
-                    //Patient
-                    final EditText txtPatientID = (EditText) popUpView.findViewById(R.id.txtPatientID);
-                    final EditText txtPatientName = (EditText) popUpView.findViewById(R.id.txtPatientName);
-                    final EditText txtPatientSex = (EditText) popUpView.findViewById(R.id.txtPatientSex);
-                    final EditText txtPatientBirthday = (EditText) popUpView.findViewById(R.id.txtPatientBirthday);
-                    final EditText txtPatientAddress = (EditText) popUpView.findViewById(R.id.txtPatientAddress);
-                    final EditText txtPatientTlf = (EditText) popUpView.findViewById(R.id.txtPatientTlf);
-                    final EditText txtPatientEmail = (EditText) popUpView.findViewById(R.id.txtPatientEmail);
-
-                    //Clinic
-                    final EditText txtClinicID = (EditText) popUpView.findViewById(R.id.txtClinicID);
-                    final EditText txtClinicName = (EditText) popUpView.findViewById(R.id.txtClinicName);
-                    final EditText txtClinicTechnician = (EditText) popUpView.findViewById(R.id.txtClinicTechnician);
-                    EditText txtClinicUsedEquipment = (EditText) popUpView.findViewById(R.id.txtClinicUsedEquipment);
-                    final EditText txtClinicAddress = (EditText) popUpView.findViewById(R.id.txtClinicAddress);
-                    final EditText txtClinicEmail = (EditText) popUpView.findViewById(R.id.txtClinicEmail);
-                    EditText txtClinicStartDate = (EditText) popUpView.findViewById(R.id.txtClinicStartDate);
-
-                    final View viewF = view;
-                    btnPatientClinicOK.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (!txtClinicID.getText().toString().trim().equals("")
-                                    && !txtClinicID.getText().toString().trim().equals("")) {
-                                Toast.makeText(getContext(),"STORE PATIENT AND CLINIC; THEN REC",Toast.LENGTH_SHORT).show();
-                                PatientAdapter patientAdapter = new PatientAdapter(getContext());
-                                patientAdapter.storeNewPatient(
-                                        txtPatientID.getText().toString(),
-                                        txtPatientSex.getText().toString(),
-                                        txtPatientName.getText().toString(),
-                                        txtPatientName.getText().toString(),
-                                        txtPatientBirthday.getText().toString(),
-                                        txtPatientAddress.getText().toString(),
-                                        txtPatientTlf.getText().toString(),
-                                        txtPatientEmail.getText().toString());
-                                patientAdapter.close();
-
-                                ClinicAdapter clinicAdapter = new ClinicAdapter(getContext());
-                                clinicAdapter.storeNewClinic(
-                                        txtClinicID.getText().toString(),
-                                        txtClinicTechnician.getText().toString(),
-                                        txtClinicAddress.getText().toString(),
-                                        txtClinicName.getText().toString(),
-                                        txtClinicEmail.getText().toString());
-                                clinicAdapter.close();
-                                viewF.getBackground().setColorFilter(0xe0f47521,PorterDuff.Mode.SRC_ATOP);
-                                viewF.invalidate();
-                                ibtn_save.getBackground().clearColorFilter();
-                                ibtn_save.invalidate();
-                                List<String> channelIDs = new ArrayList<>();
-                                for(int i = 0; i < selectedChannels.length; i++){
-                                    if(selectedChannels[i]) channelIDs.add(""+(i+1));
-                                }
-                                visualiseSource.setRecFlag(true, txtPatientID.getText().toString(), txtClinicID.getText().toString(),channelIDs);
-                                mpopup.dismiss();
-                            }else {
-                                Toast.makeText(getContext(),"CANNOT STORE WITHOUT INFO OF PATIENT AND CLINIC",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                if(visualiseSource == null || visualiseSource.isDisconnected()){
+                    Toast.makeText(getContext(),"Source has not been chosen or disconnected.",Toast.LENGTH_SHORT).show();
+                }else if(visualiseSource.isStoring()) {
+                    Toast.makeText(getContext(),"Stop the current storing before taking new record.",Toast.LENGTH_SHORT).show();
+                }else{
+                    ibtn_rec.setColorFilter(0xe0f47521,PorterDuff.Mode.SRC_ATOP);
+                    ibtn_rec.invalidate();
+                    ibtn_save.setColorFilter(0x00000000,PorterDuff.Mode.SRC_ATOP);
+                    ibtn_save.invalidate();
+                    savePersonClinicInfo(visualiseSource);
                 }
             }
         });
@@ -317,22 +123,386 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
         ibtn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(visualiseSource == null){
-                    return;
-                }
-                Toast.makeText(getContext(),"STOP CLICK",Toast.LENGTH_SHORT).show();
-                if(visualiseSource.isRecFlag()){
-                    visualiseSource.setRecFlag(false, null, null,null);
-                    view.getBackground().setColorFilter(0xe0f47521,PorterDuff.Mode.SRC_ATOP);
-                    view.invalidate();
-                    ibtn_rec.getBackground().clearColorFilter();
+                if(visualiseSource == null || visualiseSource.isDisconnected()){
+                    Toast.makeText(getContext(),"Source has not been chosen or disconnected.",Toast.LENGTH_SHORT).show();
+                }else if(!visualiseSource.isStoring()) {
+                    Toast.makeText(getContext(),"Source is currently stopping.",Toast.LENGTH_SHORT).show();
+                }else{
+                    ibtn_save.setColorFilter(0xe0f47521,PorterDuff.Mode.SRC_ATOP);
+                    ibtn_save.invalidate();
+                    ibtn_rec.getBackground().setColorFilter(0x00000000,PorterDuff.Mode.SRC_ATOP);
                     ibtn_rec.invalidate();
-                    Toast.makeText(getContext(),"STOP STORING",Toast.LENGTH_SHORT).show();
+                    visualiseSource.setStoring(false);
+                    Toast.makeText(getContext(),"Source is stopped.",Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+        lblPlot_RO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popUpSelectSensors();
+            }
+        });
+        initGraph();
+        isReady = true;
         return v;
+    }
+
+    private void initGraph(){
+        if(visualiseSource == null) return;
+        for(String ch_nr : channels.keySet()){
+            if(!channelLines.containsKey(ch_nr))channelLines.put(ch_nr,new LineGraphSeries<DataPoint>());
+            graph.addSeries(channelLines.get(ch_nr));
+            channelLines.get(ch_nr).setTitle(channels.get(ch_nr).getCh_name()+"(" +((channels.get(ch_nr).getDimension()==null) ? "": channels.get(ch_nr).getDimension().trim())+")");
+            channelLines.get(ch_nr).setColor(Color.rgb((int) (Math.random() * Integer.MAX_VALUE),
+                    (int) (Math.random() * Integer.MAX_VALUE), (int) (Math.random() * Integer.MAX_VALUE)));
+        }
+        int inx = 0;
+        for(String c : channels.keySet()){
+            alertDialogItems[inx] = c+": "+channels.get(c).getCh_name();
+            selectedChannels[inx++] = true;
+        }
+
+
+        // customize a little bit viewport
+        Viewport viewport = graph.getViewport();
+        viewport.setScalable(true);
+        viewport.setScalableY(true);
+        viewport.setXAxisBoundsManual(true);
+        viewport.setYAxisBoundsManual(true);
+        viewport.setMaxX(0);
+        viewport.setMaxX(210);
+        viewport.setMinY(-600);
+        viewport.setMaxY(600);
+        viewport.setBackgroundColor(Color.BLACK);
+        graph.getGridLabelRenderer().setGridColor(Color.DKGRAY);
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
+        graph.getGridLabelRenderer().setHorizontalAxisTitle("Time from visualising in second/10");
+        graph.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.GREEN);
+        graph.getGridLabelRenderer().setVerticalAxisTitle("Metric in legend");
+        graph.getGridLabelRenderer().setVerticalAxisTitleColor(Color.GREEN);
+        graph.getGridLabelRenderer().setHumanRounding(false);
+        graph.getLegendRenderer().setVisible(true);
+        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+        v.post(new Runnable() {
+            @Override
+            public void run() {
+                graph.invalidate();
+            }
+        });
+    }
+
+    @Override
+    public synchronized void addNewSample(final BitalinoDataSample samples[]) {
+        if(!isReady) return;
+
+        for(BitalinoDataSample sample : samples){
+            LineGraphSeries<DataPoint> series = channelLines.get(sample.getChannel_nr());
+            if(series == null) return;
+            final int scale = (int)(sample.getCreatedDate()-timestampPlot)/100;
+            if(scale == 0 || scale <= channels.get(sample.getChannel_nr()).getLastXRealtime()) {
+                return;
+            }
+            channels.get(sample.getChannel_nr()).setLastXRealtime(scale);
+        }
+
+        v.post(new Runnable() {
+            @Override
+            public void run() {
+                for(BitalinoDataSample sample: samples){
+                    channelLines.get(sample.getChannel_nr()).appendData(new DataPoint(channels.get(sample.getChannel_nr()).getLastXRealtime(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
+                }
+
+            }
+        });
+
+
+    }
+
+    private void savePersonClinicInfo(final ClientThread clientThread){
+        View popUpView = getActivity().getLayoutInflater().inflate(R.layout.person_clinic_info, null); // inflating popup layout
+        final PopupWindow mpopup = new PopupWindow(popUpView, ViewPager.LayoutParams.MATCH_PARENT, ViewPager.LayoutParams.MATCH_PARENT, true); // Creation of popup
+        mpopup.showAtLocation(popUpView, Gravity.CENTER, 0, 0); // Displaying popup
+
+        popUpView.setBackground(new ColorDrawable(Color.WHITE));
+
+        final Button btnPatientClinicOK = (Button) popUpView.findViewById(R.id.btnPatientClinicOK);
+        Button btnPatientClinicCancel = (Button) popUpView.findViewById(R.id.btnPatientClinicCancel);
+        Button btnChooseChannels = (Button) popUpView.findViewById(R.id.btnChooseChannels);
+
+        final EditText txtPatientID = (EditText) popUpView.findViewById(R.id.txtPatientID);
+        final EditText txtPatientName = (EditText) popUpView.findViewById(R.id.txtPatientName);
+        final EditText txtPatCity = (EditText) popUpView.findViewById(R.id.txtPatCity);
+        final EditText txtPatPhone = (EditText) popUpView.findViewById(R.id.txtPatPhone);
+        final EditText txtPatEmail = (EditText) popUpView.findViewById(R.id.txtPatEmail);
+        final EditText txtPatGender = (EditText) popUpView.findViewById(R.id.txtPatGender);
+        final EditText txtPatDOB = (EditText) popUpView.findViewById(R.id.txtPatDOB);
+        final EditText txtPatAge = (EditText) popUpView.findViewById(R.id.txtPatAge);
+        final EditText txtPatHeight = (EditText) popUpView.findViewById(R.id.txtPatHeight);
+        final EditText txtPatWeight = (EditText) popUpView.findViewById(R.id.txtPatWeight);
+        final EditText txtPatBMI = (EditText) popUpView.findViewById(R.id.txtPatBMI);
+        final EditText txtPatOtherHealthIss = (EditText) popUpView.findViewById(R.id.txtPatOtherHealthIss);
+
+        final EditText txtPhyID = (EditText) popUpView.findViewById(R.id.txtPhyID);
+        final EditText txtPhyName = (EditText) popUpView.findViewById(R.id.txtPhyName);
+        final EditText txtPhyCity = (EditText) popUpView.findViewById(R.id.txtPhyCity);
+        final EditText txtPhyPhoneNr = (EditText) popUpView.findViewById(R.id.txtPhyPhoneNr);
+        final EditText txtPhyEmail = (EditText) popUpView.findViewById(R.id.txtPhyEmail);
+        final EditText txtPhyGender = (EditText) popUpView.findViewById(R.id.txtPhyGender);
+        final EditText txtPhyDateOfBirth = (EditText) popUpView.findViewById(R.id.txtPhyDateOfBirth);
+        final EditText txtPhyAge = (EditText) popUpView.findViewById(R.id.txtPhyAge);
+        final EditText txtPhyTitle = (EditText) popUpView.findViewById(R.id.txtPhyTitle);
+
+        final EditText txtClinicID = (EditText) popUpView.findViewById(R.id.txtClinicID);
+        final EditText txtClinicName = (EditText) popUpView.findViewById(R.id.txtClinicName);
+        final EditText txtClinicAddress = (EditText) popUpView.findViewById(R.id.txtClinicAddress);
+        final EditText txtClinicPhone = (EditText) popUpView.findViewById(R.id.txtClinicPhone);
+        final EditText txtClinicEmail = (EditText) popUpView.findViewById(R.id.txtClinicEmail);
+
+        final EditText txtFragmentDuration = (EditText) popUpView.findViewById(R.id.txtFragmentDuration);
+
+        Spinner sPatient = (Spinner) popUpView.findViewById(R.id.spinnerPatientTable);
+        Spinner sClinic = (Spinner) popUpView.findViewById(R.id.spinnerClinicTable);
+        Spinner sPhysician = (Spinner) popUpView.findViewById(R.id.spinnerPhyTable);
+
+        ClinicAdapter clinicAdapter = new ClinicAdapter(getContext());
+        ArrayList<String> listClinics = clinicAdapter.getAllClinicIDs();
+        clinicAdapter.close();
+        PersonAdapter personAdapter = new PersonAdapter(getContext());
+        final ArrayList<String> listPatients = personAdapter.getAllPatientIDs();
+        ArrayList<String> listPhysicians = personAdapter.getAllPhysicianIDs();
+        personAdapter.close();
+
+        sClinic.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,listClinics));
+        sPhysician.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,listPhysicians));
+        sPatient.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,listPatients));
+        if(listClinics.isEmpty()) sClinic.setEnabled(false);
+        if(listPhysicians.isEmpty()) sPhysician.setEnabled(false);
+        if(listPatients.isEmpty()) sPatient.setEnabled(false);
+
+        final TextView firstTimeSpinnerCheck = (TextView) popUpView.findViewById(R.id.lblPatientID);
+        sPatient.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(firstTimeSpinnerCheck.getText().toString().equals("Patient ID:")){
+                    firstTimeSpinnerCheck.setText(String.valueOf("Patient ID: "));
+                    return;
+                }
+                PersonAdapter personAdapterGet1Per = new PersonAdapter(getContext());
+                Patient patient = personAdapterGet1Per.getPatientByIds(adapterView.getItemAtPosition(i).toString());
+                personAdapterGet1Per.close();
+                txtPatientID.setText(patient.getP_id());
+                txtPatientName.setText(patient.getName());
+                txtPatCity.setText(patient.getCity());
+                txtPatPhone.setText(patient.getPhone());
+                txtPatEmail.setText(patient.getEmail());
+                txtPatGender.setText(patient.getGender());
+                txtPatDOB.setText(patient.getDayOfBirth());
+                txtPatAge.setText(String.valueOf(patient.getAge()));
+                txtPatHeight.setText(String.valueOf(patient.getHeight()));
+                txtPatWeight.setText(String.valueOf(patient.getWeight()));
+                txtPatBMI.setText(String.valueOf(patient.getBMI()));
+                txtPatOtherHealthIss.setText(patient.getOtherHealthIssues());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        final TextView firstTimeSpinnerCheckPhys = (TextView) popUpView.findViewById(R.id.lblPhyID);
+        sPhysician.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(firstTimeSpinnerCheckPhys.getText().toString().equals("Physician ID:")){
+                    firstTimeSpinnerCheckPhys.setText(String.valueOf("Physician ID: "));
+                    return;
+                }
+
+                PersonAdapter personAdapterGet1Per = new PersonAdapter(getContext());
+                Patient patient = personAdapterGet1Per.getPatientByIds(adapterView.getItemAtPosition(i).toString());
+                personAdapterGet1Per.close();
+                txtPhyID.setText(patient.getP_id());
+                txtPhyName.setText(patient.getName());
+                txtPhyCity.setText(patient.getCity());
+                txtPhyPhoneNr.setText(patient.getPhone());
+                txtPhyEmail.setText(patient.getEmail());
+                txtPhyGender.setText(patient.getGender());
+                txtPhyDateOfBirth.setText(patient.getDayOfBirth());
+                txtPhyAge.setText(String.valueOf(patient.getAge()));
+                txtPhyTitle.setText(patient.getOtherHealthIssues());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        final TextView firstTimeSpinnerCheckClinic = (TextView) popUpView.findViewById(R.id.lblClinicID);
+        sClinic.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(firstTimeSpinnerCheckClinic.getText().toString().equals("Clinic ID:")){
+                    firstTimeSpinnerCheckClinic.setText(String.valueOf("Clinic ID: "));
+                    return;
+                }
+                ClinicAdapter clinicAdapterGet1Clinic = new ClinicAdapter(getContext());
+                Clinic clinic = clinicAdapterGet1Clinic.getClinicByIds(adapterView.getItemAtPosition(i).toString());
+                clinicAdapterGet1Clinic.close();
+
+                txtClinicID.setText(clinic.getCl_id());
+                txtClinicName.setText(clinic.getName());
+                txtClinicAddress.setText(clinic.getAddress());
+                txtClinicPhone.setText(clinic.getPhone_nr());
+                txtClinicEmail.setText(clinic.getEmail());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        btnPatientClinicOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (txtPatientID.getText().toString().equals("") ||
+                        txtPhyID.getText().toString().equals("") ||
+                        txtClinicID.getText().toString().equals("")) {
+                    Toast.makeText(getContext(),"CANNOT STORE WITHOUT INFO OF PATIENT ID, PHYSICIAN ID AND CLINIC ID",Toast.LENGTH_SHORT).show();
+                }else {
+                    Patient patient = new Patient();
+                    patient.setP_id(txtPatientID.getText().toString());
+                    patient.setName(txtPatientName.getText().toString());
+                    patient.setCity(txtPatCity.getText().toString());
+                    patient.setPhone(txtPatPhone.getText().toString());
+                    patient.setEmail(txtPatEmail.getText().toString());
+                    patient.setGender(txtPatGender.getText().toString());
+                    patient.setDayOfBirth(txtPatDOB.getText().toString());
+                    patient.setAge(txtPatAge.getText().toString().equals("")? -1 : Integer.parseInt(txtPatAge.getText().toString()));
+                    patient.setHeight(txtPatHeight.getText().toString().equals("") ? 0: Float.parseFloat(txtPatHeight.getText().toString()));
+                    patient.setHeight(txtPatWeight.getText().toString().equals("") ? 0: Float.parseFloat(txtPatWeight.getText().toString()));
+                    patient.setBMI(txtPatBMI.getText().toString().equals("") ? 0: Float.parseFloat(txtPatBMI.getText().toString()));
+                    patient.setOtherHealthIssues(txtPatOtherHealthIss.getText().toString());
+                    patient.setClinic_code(txtClinicID.getText().toString());
+
+                    Physician physician = new Physician();
+                    physician.setP_id(txtPhyID.getText().toString());
+                    physician.setName(txtPhyName.getText().toString());
+                    physician.setCity(txtPhyCity.getText().toString());
+                    physician.setPhone(txtPhyPhoneNr.getText().toString());
+                    physician.setEmail(txtPhyEmail.getText().toString());
+                    physician.setGender(txtPhyGender.getText().toString());
+                    physician.setDayOfBirth(txtPhyDateOfBirth.getText().toString());
+                    physician.setAge(txtPhyAge.getText().toString().equals("") ? -1 : Integer.parseInt(txtPhyAge.getText().toString()));
+                    physician.setTitle(txtPhyTitle.getText().toString());
+                    physician.setClinic_code(txtClinicID.getText().toString());
+
+                    Clinic clinic = new Clinic();
+                    clinic.setCl_id(txtClinicID.getText().toString());
+                    clinic.setName(txtClinicName.getText().toString());
+                    clinic.setAddress(txtClinicAddress.getText().toString());
+                    clinic.setPhone_nr(txtClinicPhone.getText().toString());
+                    clinic.setEmail(txtClinicEmail.getText().toString());
+
+                    ClinicAdapter clinicAdapterSave = new ClinicAdapter(getContext());
+                    clinicAdapterSave.storeNewClinic(clinic);
+                    clinicAdapterSave.close();
+
+                    PersonAdapter personAdapterSave = new PersonAdapter(getContext());
+                    personAdapterSave.storeNewPerson(patient);
+                    personAdapterSave.storeNewPerson(physician);
+                    personAdapterSave.close();
+
+                    SensorSourceAdapter sensorSourceAdapter = new SensorSourceAdapter(getContext());
+                    sensorSourceAdapter.saveSensorSourceToDB(clientThread.getSensorSource());
+                    sensorSourceAdapter.close();
+
+                    HashMap<String,Channel> channels = clientThread.getChannels();
+                    ChannelAdapter channelAdapter = new ChannelAdapter(getContext());
+                    String recordDescription = "";
+                    for(Channel c : channels.values()){
+                        recordDescription += c.getDescription() +"; ";
+                        c.setCh_id(channelAdapter.saveChannelToDB(c));
+                    }
+                    channelAdapter.close();
+
+                    Record record = new Record();
+                    record.setS_id(clientThread.getSensorSource().getS_id());
+                    record.setPhysician_id(physician.getP_id());
+                    record.setPatient_id(physician.getP_id());
+                    record.setTimestamp(System.currentTimeMillis());
+                    record.setDescriptions(recordDescription);
+                    record.setFrag_duration(Integer.parseInt(txtFragmentDuration.getText().toString()));
+                    record.setFrequency(100);
+
+                    RecordAdapter recordAdapter = new RecordAdapter(getContext());
+                    record.setR_id(recordAdapter.saveRecordToDB(record));
+                    recordAdapter.close();
+                    clientThread.setRecord(record);
+
+                    Toast.makeText(getContext(),"INFO have saved/updated to database",Toast.LENGTH_SHORT).show();
+                    clientThread.setStoring(true);
+                    mpopup.dismiss();
+                }
+            }
+        });
+
+        btnPatientClinicCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mpopup.dismiss();
+            }
+        });
+
+        btnChooseChannels.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getActivity());
+                final String[] alertDialogItems = new String[clientThread.getChannels().keySet().size()];
+                final boolean[] selectedChannels = new boolean[alertDialogItems.length];
+
+                int cnt = 0;
+                for(String c : clientThread.getChannels().keySet()){
+                    alertDialogItems[cnt++] = c + ": "+clientThread.getChannels().get(c).getCh_name();
+                }
+
+                alertdialogbuilder.setMultiChoiceItems(alertDialogItems, selectedChannels, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                    }
+                });
+
+                alertdialogbuilder.setCancelable(false);
+
+                alertdialogbuilder.setTitle("Select channels");
+
+                alertdialogbuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for(int i = 0; i < selectedChannels.length;i++){
+                            if(selectedChannels[i]){
+                                String[] selected = alertDialogItems[i].split(": ");
+                                clientThread.getChannels().get(selected[0]).setSelectedToSaveSample(true);
+                            }
+                        }
+                        btnPatientClinicOK.setEnabled(true);
+                    }
+                });
+
+                alertdialogbuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+                dialog.show();
+            }
+        });
     }
 
     void popUpSelectSensors(){
@@ -357,13 +527,19 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
         alertdialogbuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                graph.removeAllSeries();
                 for(int i = 0; i < selectedChannels.length;i++){
-                    ILineDataSet iLineDataSet = forUpdateNewSamples.get(""+(i+1));
-                    lineDataSetsPLOT.remove(iLineDataSet);
                     if(selectedChannels[i]){
-                        lineDataSetsPLOT.add(iLineDataSet);
+                        String ch_nr = alertDialogItems[i].split(": ")[0];
+                        graph.addSeries(channelLines.get(ch_nr));
                     }
                 }
+                v.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        graph.invalidate();
+                    }
+                });
             }
         });
 
@@ -377,44 +553,12 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
         dialog.show();
     }
 
-
     @Override
-    public void addNewSample(String channel_ID, float sample_data, long created_date, final float cnt){
-        if(v == null) return;
-        if(lineChart == null) return;
-        ILineDataSet channel_line = forUpdateNewSamples.get(channel_ID);
-        if (channel_line == null) return;
-
-        //MAKE SURE THAT WE LIMIT THE WINDOWS OF ENTRY TO AVOID EATING A LOT OF MEMORY
-        if(channel_line.getEntryCount() > NR_ENTRIES_WINDOW*3){
-            channel_line.removeFirst();
-            //channel_line.removeFirst();
+    public void unRegisterRunningSource(ClientThread clientThread){
+        if(clientThread == visualiseSource){
+            isReady = false;
+            visualiseSource = null;
         }
-
-        Entry new_entry = new Entry(cnt,sample_data);
-
-        channel_line.addEntry(new_entry);
-        lineChart.getData().notifyDataChanged();
-
-        // let the chart know it's data has changed
-        lineChart.notifyDataSetChanged();
-        // limit the number of visible entries
-        lineChart.setVisibleXRangeMaximum(NR_ENTRIES_WINDOW);
-        //System.out.println(" PlotView "+visualiseSource.getSource_id()+"---------> channel :" +channel_ID+" sample:"+sample_data);
-        v.post(new Runnable() {
-            @Override
-            public void run() {
-                // move to the latest entry
-                if((cnt - (NR_ENTRIES_WINDOW + 1) > 0)){
-                    lineChart.moveViewToX(cnt - NR_ENTRIES_WINDOW - 1);
-                } else lineChart.invalidate();
-            }
-        });
-    }
-
-    @Override
-    public void onAttach(Context context){
-        super.onAttach(context);
     }
 
 }

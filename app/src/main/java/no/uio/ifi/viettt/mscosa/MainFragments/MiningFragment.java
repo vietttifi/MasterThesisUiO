@@ -16,7 +16,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
-import no.uio.ifi.viettt.mscosa.DatabaseVisualisationActivity;
+import no.uio.ifi.viettt.mscosa.EDFExportActivity;
 import no.uio.ifi.viettt.mscosa.MainActivity;
 import no.uio.ifi.viettt.mscosa.R;
 import no.uio.ifi.viettt.mscosa.RawQueryActivity;
@@ -35,6 +35,7 @@ public class MiningFragment extends Fragment {
 
         ImageButton ibtn_visualise = (ImageButton) v.findViewById(R.id.btnVisualise);
         ImageButton ibtn_raw_query = (ImageButton) v.findViewById(R.id.btnRawQuery);
+        ImageButton ibtn_exportEDF = (ImageButton) v.findViewById(R.id.btnExportEDF);
 
         ibtn_raw_query.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +49,14 @@ public class MiningFragment extends Fragment {
         ibtn_visualise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(getActivity(), DatabaseVisualisationActivity.class);
+
+            }
+        });
+
+        ibtn_exportEDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getActivity(), EDFExportActivity.class);
                 myIntent.putExtra("key", "TEST"); //Optional parameters
                 getActivity().startActivity(myIntent);
             }

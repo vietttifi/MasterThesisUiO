@@ -5,12 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
 
@@ -42,19 +44,19 @@ public class RawQueryActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OSADBHelper mDbHelper = new OSADBHelper(getApplication());
-                SQLiteDatabase mDatabase = mDbHelper.getWritableDatabase();
-
                 String queryString = txtSearch.getText().toString();
-
                 if(queryString.equals("")) return;
 
                 //clear result table
                 tableResult.removeAllViews();
 
+                OSADBHelper mDbHelper = new OSADBHelper(getApplication());
+                SQLiteDatabase mDatabase = mDbHelper.getWritableDatabase();
+
                 try {
                     Cursor cursor = mDatabase.rawQuery(queryString, null);
                     cursor.moveToFirst();
+                    Toast.makeText(getApplication(),"Total row: "+cursor.getCount(),Toast.LENGTH_SHORT).show();
                     int cnt = 0;
 
                     int columnCount = cursor.getColumnCount();
@@ -66,6 +68,8 @@ public class RawQueryActivity extends AppCompatActivity {
                     for (int i=0; i<columnCount; i++) {
                         TextView column = new TextView(getApplication());
                         TextView separator = new TextView(getApplication());
+                        column.setGravity(Gravity.CENTER);
+                        separator.setGravity(Gravity.CENTER);
                         separator.setText("---");
                         column.setText(String.valueOf(cursor.getColumnName(i)));
                         column.setPadding(5, 5, 5, 0);
@@ -85,6 +89,7 @@ public class RawQueryActivity extends AppCompatActivity {
                         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
                         for (int i=0; i<columnCount; i++) {
                             TextView column = new TextView(getApplication());
+                            column.setGravity(Gravity.CENTER);
                             if(cursor.getType(i) == Cursor.FIELD_TYPE_BLOB){
                                 column.setText("UNPRINTABLE");
                             }else if(cursor.getType(i) == Cursor.FIELD_TYPE_NULL) {
@@ -92,7 +97,7 @@ public class RawQueryActivity extends AppCompatActivity {
                             }else if(cursor.getType(i) == Cursor.FIELD_TYPE_FLOAT) {
                                 column.setText(String.valueOf(cursor.getFloat(i)));
                             }else if(cursor.getType(i) == Cursor.FIELD_TYPE_INTEGER) {
-                                column.setText(String.valueOf(cursor.getInt(i)));
+                                column.setText(String.valueOf(cursor.getLong(i)));
                             }else {
                                 column.setText(cursor.getString(i));
                             }
@@ -111,27 +116,33 @@ public class RawQueryActivity extends AppCompatActivity {
                     //close the cursor
                     cursor.close();
 
-                    mDatabase.close();
-                    mDbHelper.close();
+
                 }catch (Exception e){
                     //clear result table
                     tableResult.removeAllViews();
                     TableRow tr = new TableRow(getApplication());
                     tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
                     TextView column = new TextView(getApplication());
+                    column.setGravity(Gravity.CENTER);
                     column.setText("Query syntax fail.\nWe have tables:\n" +
-                            "sensor_source\n" +
-                            "channel \n " +
-                            "data_record\n " +
-                            "sample \n " +
-                            "patient \n " +
-                            "clinic\n" +
+                            "SOURCE\n" +
+                            "CHANNEL \n " +
+                            "RECORD\n " +
+                            "FRAGMENT\n " +
+                            "PERSON \n " +
+                            "PHYSICIAN \n " +
+                            "PATIENT\n" +
+                            "CLINIC\n" +
+                            "SAMPLE\n" +
                             "And fail is: "+e.getMessage());
                     tr.addView(column);
                     tableResult.addView(tr, new TableLayout.LayoutParams(
                             TableLayout.LayoutParams.MATCH_PARENT,
                             TableLayout.LayoutParams.WRAP_CONTENT));
                 }
+
+                mDatabase.close();
+                mDbHelper.close();
             }
         });
 

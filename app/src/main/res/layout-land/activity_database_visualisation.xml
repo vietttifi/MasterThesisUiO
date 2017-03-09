@@ -71,32 +71,40 @@
 
         </LinearLayout>
 
-        <ScrollView
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.7">
 
-            <TableLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="0dp">
+                android:layout_height="match_parent"
+                >
 
-                <TableRow
+                <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:id="@+id/tblSources">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </TableLayout>
-        </ScrollView>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </TableLayout>
+            </ScrollView>
+
+        </HorizontalScrollView>
 
     </LinearLayout>
 
@@ -114,56 +122,23 @@
             android:background="#6c6c6c">
 
             <TextView
-                android:text="From"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/lblFrom"
-                android:layout_weight="0.1"
+                android:id="@+id/lblSelectedSource"
+                android:layout_weight="0.8"
                 android:gravity="center"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textStyle="normal|bold" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/txtFrom"
-                android:layout_weight="0.3"
-                android:textSize="12sp"
-                android:hint="Min second"
-                android:imeOptions="actionNext"
-                android:nextFocusDown="@+id/txtTo" />
-
-            <TextView
-                android:text="To"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/lblTo"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:textStyle="normal|bold" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/txtTo"
-                android:layout_weight="0.3"
-                android:textSize="12sp"
-                android:hint="Max second"
-                android:imeOptions="actionDone"/>
 
             <Button
                 android:text="Apply"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/tbnApply"
+                android:id="@+id/btnApply"
                 android:layout_weight="0.2"
                 android:textSize="12sp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:enabled="false" />
 
         </LinearLayout>
 

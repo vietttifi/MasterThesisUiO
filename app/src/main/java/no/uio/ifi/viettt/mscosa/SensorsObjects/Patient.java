@@ -4,90 +4,50 @@ package no.uio.ifi.viettt.mscosa.SensorsObjects;
  * Created by viettt on 20/12/2016.
  */
 
-public class Patient {
-    private String patient_ID;
-    private String patient_code_in_clinic;
-    private String gender;
-    private String lastName;
-    private String firstName;
-    private String dateOfBirth;
-    private String address;
-    private String phoneNr;
-    private String email;
+public class Patient extends Person{
+    private String clinic_code;
+    private float height;
+    private float weight;
+    private float BMI;
+    private String otherHealthIssues;
 
-    public Patient(){
-
+    public String getOtherHealthIssues() {
+        return otherHealthIssues;
     }
 
-    public String getPatient_ID() {
-        return patient_ID;
+    public void setOtherHealthIssues(String otherHealthIssues) {
+        this.otherHealthIssues = otherHealthIssues;
     }
 
-    public void setPatient_ID(String patient_ID) {
-        this.patient_ID = patient_ID;
+    public String getClinic_code() {
+        return clinic_code;
     }
 
-    public String getPatient_code_in_clinic() {
-        return patient_code_in_clinic;
+    public void setClinic_code(String clinic_code) {
+        this.clinic_code = clinic_code;
     }
 
-    public void setPatient_code_in_clinic(String patient_code_in_clinic) {
-        this.patient_code_in_clinic = patient_code_in_clinic;
+    public float getHeight() {
+        return height;
     }
 
-    public String getGender() {
-        return gender;
+    public void setHeight(float height) {
+        this.height = height;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public float getWeight() {
+        return weight;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public float getBMI() {
+        return BMI;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNr() {
-        return phoneNr;
-    }
-
-    public void setPhoneNr(String phoneNr) {
-        this.phoneNr = phoneNr;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setBMI(float BMI) {
+        this.BMI = BMI;
     }
 }

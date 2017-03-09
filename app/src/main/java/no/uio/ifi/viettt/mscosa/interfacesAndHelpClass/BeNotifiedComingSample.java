@@ -6,6 +6,7 @@ package no.uio.ifi.viettt.mscosa.interfacesAndHelpClass;
 
 public interface BeNotifiedComingSample {
 
-    public void addNewSample(String sensorID, float sample, long created_date, float cnt);
+    public void addNewSample(BitalinoDataSample[] samples);
+    public void unRegisterRunningSource(ClientThread clientThread);
 
 }

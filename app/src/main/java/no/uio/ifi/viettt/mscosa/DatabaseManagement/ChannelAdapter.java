@@ -20,15 +20,12 @@ public class ChannelAdapter{
 
     private SQLiteDatabase mDatabase;
     private OSADBHelper mDbHelper;
-    private Context mContext;
-    private String[] mAllColumns = {OSADBHelper.CHANNEL_ID, OSADBHelper.CHANNEL_SENSOR_SOURCE_ID,
+    private String[] mAllColumns = {OSADBHelper.CHANNEL_ID,OSADBHelper.CHANNEL_S_ID, OSADBHelper.CHANNEL_NR,
             OSADBHelper.CHANNEL_NAME, OSADBHelper.CHANNEL_TRANSDUCER_TYPE, OSADBHelper.CHANNEL_DIMENSION,
             OSADBHelper.CHANNEL_PHYSICAL_MIN, OSADBHelper.CHANNEL_PHYSICAL_MAX,
-            OSADBHelper.CHANNEL_DIGITAL_MIN,OSADBHelper.CHANNEL_DIGITAL_MAX,
-            OSADBHelper.CHANNEL_PREFILTERING, OSADBHelper.CHANNEL_RESERVED, OSADBHelper.CHANNEL_DESCRIPTION};
+            OSADBHelper.CHANNEL_DIGITAL_MIN,OSADBHelper.CHANNEL_DIGITAL_MAX, OSADBHelper.CHANNEL_EDF_RESERVED};
 
     public ChannelAdapter(Context context){
-        this.mContext = context;
         mDbHelper = new OSADBHelper(context);
 
         try{
@@ -47,50 +44,42 @@ public class ChannelAdapter{
     }
 
     Channel cursorToChannel(Cursor cursor) {
-        Channel channel = new Channel(cursor.getString(0), cursor.getString(1));
-        channel.setChannel_name(cursor.getString(2));
-        channel.setTransducer_type(cursor.getString(3));
-        channel.setPhysical_dimension(cursor.getString(4));
-        channel.setPhysical_min(cursor.getDouble(5));
-        channel.setPhysical_max(cursor.getDouble(6));
-        channel.setDigital_min(cursor.getInt(7));
-        channel.setDigital_max(cursor.getInt(8));
-        channel.setPrefiltering(cursor.getString(9));
-        channel.setReserved(cursor.getBlob(10));
-        channel.setDescription(cursor.getString(11));
-
+        Channel channel = new Channel();
+        channel.setCh_id(cursor.getInt(0));
+        channel.setS_id(cursor.getString(1));
+        channel.setCh_nr(cursor.getString(2));
+        channel.setCh_name(cursor.getString(3));
+        channel.setTransducer(cursor.getString(4));
+        channel.setDimension(cursor.getString(5));
+        channel.setPhy_min(cursor.getFloat(6));
+        channel.setPhy_max(cursor.getFloat(7));
+        channel.setDig_min(cursor.getInt(8));
+        channel.setDig_max(cursor.getInt(9));
+        channel.setEdf_reserved(cursor.getBlob(10));
         return channel;
     }
 
-    public void saveChannelToDB(String channel_id, String sensor_source_id,
-                                 String channel_name, String channel_transducer_type, String channel_dimension,
-                                 double channel_physical_min, double channel_physical_max,
-                                 int channel_digital_min, int channel_digital_max,
-                                 String channel_prefiltering, byte[] channel_reserved,
-                                 String channel_description){
+    public long saveChannelToDB(Channel channel){
         ContentValues values = new ContentValues();
-        values.put(OSADBHelper.CHANNEL_ID,channel_id);
-        values.put(OSADBHelper.CHANNEL_SENSOR_SOURCE_ID,sensor_source_id);
-        values.put(OSADBHelper.CHANNEL_NAME,channel_name);
-        values.put(OSADBHelper.CHANNEL_TRANSDUCER_TYPE,channel_transducer_type);
-        values.put(OSADBHelper.CHANNEL_DIMENSION,channel_dimension);
+        values.put(OSADBHelper.CHANNEL_S_ID,channel.getS_id());
+        values.put(OSADBHelper.CHANNEL_NR,channel.getCh_id());
+        values.put(OSADBHelper.CHANNEL_NAME,channel.getCh_name());
+        values.put(OSADBHelper.CHANNEL_TRANSDUCER_TYPE,channel.getTransducer());
+        values.put(OSADBHelper.CHANNEL_DIMENSION,channel.getDimension());
 
-        values.put(OSADBHelper.CHANNEL_PHYSICAL_MIN,channel_physical_min);
-        values.put(OSADBHelper.CHANNEL_PHYSICAL_MAX,channel_physical_max);
-        values.put(OSADBHelper.CHANNEL_DIGITAL_MIN,channel_digital_min);
-        values.put(OSADBHelper.CHANNEL_DIGITAL_MAX,channel_digital_max);
+        values.put(OSADBHelper.CHANNEL_PHYSICAL_MIN,channel.getPhy_min());
+        values.put(OSADBHelper.CHANNEL_PHYSICAL_MAX,channel.getPhy_max());
+        values.put(OSADBHelper.CHANNEL_DIGITAL_MIN,channel.getDig_min());
+        values.put(OSADBHelper.CHANNEL_DIGITAL_MAX,channel.getDig_max());
+        values.put(OSADBHelper.CHANNEL_EDF_RESERVED,channel.getEdf_reserved());
 
-        values.put(OSADBHelper.CHANNEL_PREFILTERING,channel_prefiltering);
-        values.put(OSADBHelper.CHANNEL_RESERVED,channel_reserved);
-        values.put(OSADBHelper.CHANNEL_DESCRIPTION,channel_description);
-
-        mDatabase.insert(OSADBHelper.TABLE_CHANNEL, null, values);
+        return mDatabase.insertWithOnConflict(OSADBHelper.TABLE_CHANNEL, null, values, SQLiteDatabase.CONFLICT_REPLACE);
     }
 
-    public Channel getChannelById(String channel_ID, String source_id) {
+    public Channel getChannelById(String channel_nr, String source_id) {
         Cursor cursor = mDatabase.query(OSADBHelper.TABLE_CHANNEL, mAllColumns,
-                OSADBHelper.CHANNEL_ID + " = ? and " + OSADBHelper.CHANNEL_SENSOR_SOURCE_ID + " = ? ",
-                new String[] {channel_ID, source_id}, null, null, null);
+                OSADBHelper.CHANNEL_NR + " = ? and " + OSADBHelper.CHANNEL_S_ID + " = ? ",
+                new String[] {channel_nr, source_id}, null, null, null);
 
         Channel newChannel = null;
         if (cursor.getCount() != 0) {
@@ -101,26 +90,22 @@ public class ChannelAdapter{
         return newChannel;
     }
 
-    public List<Channel> getallChannels(){
-        List<Channel> listChannel = new ArrayList<Channel>();
-
+    public Channel getChannelById(String channel_ID) {
         Cursor cursor = mDatabase.query(OSADBHelper.TABLE_CHANNEL, mAllColumns,
-                null, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            Channel channel = cursorToChannel(cursor);
-            listChannel.add(channel);
-            cursor.moveToNext();
-        }
+                OSADBHelper.CHANNEL_ID + " = ? ",
+                new String[] {channel_ID}, null, null, null);
 
-        //close the cursor
+        Channel newChannel = null;
+        if (cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            newChannel = cursorToChannel(cursor);
+        }
         cursor.close();
-        return listChannel;
+        return newChannel;
     }
 
-    public void deleteRecord(Channel channel) {
-        String id = channel.getChannel_ID();
+    public void deleteRecord(String channel_nr, String source_id) {
         // delete all ALL RECORD belong to this CLINIC ------ TRIGGER will be called.
-        mDatabase.delete(OSADBHelper.TABLE_CHANNEL, OSADBHelper.CHANNEL_ID + " = " + id, null);
+        mDatabase.delete(OSADBHelper.TABLE_CHANNEL, OSADBHelper.CHANNEL_NR + " = " + channel_nr + " AND "+OSADBHelper.CHANNEL_S_ID + " = "+source_id, null);
     }
 }

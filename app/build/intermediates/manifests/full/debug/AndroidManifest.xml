@@ -17,7 +17,7 @@
 
     <application
         android:allowBackup="true"
-        android:hardwareAccelerated="false"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
@@ -37,6 +37,7 @@
         </activity>
         <activity
             android:name="no.uio.ifi.viettt.mscosa.DatabaseVisualisationActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_database_visualisation"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" />
@@ -44,6 +45,11 @@
             android:name="no.uio.ifi.viettt.mscosa.RawQueryActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_raw_query"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name="no.uio.ifi.viettt.mscosa.EDFExportActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
             android:theme="@style/FullscreenTheme" />
     </application>
 

@@ -1,27 +1,27 @@
 package no.uio.ifi.viettt.mscosa.EDFManagement;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.List;
 
-import no.uio.ifi.viettt.mscosa.SensorsObjects.DataRecord;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.SampleSet;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
 
 public class EDFWriter{
 
-    public static void writeEDFHeaderToFile(String fileName, EDFHeader header, DataRecord[] listDataRecord) throws IOException{
-        OutputStream fos = new FileOutputStream(fileName,false);
+    public static void writeEDFHeaderToFile(RandomAccessFile raf, EDFHeader header) throws IOException{
         DecimalFormatSymbols dfs = new DecimalFormatSymbols();
         dfs.setDecimalSeparator('.');
         DecimalFormat shortFormatter = new DecimalFormat("#0.0", dfs);
         DecimalFormat longFormatter = new DecimalFormat("#0.0####", dfs);
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(header.getBytesInHeader());
+        byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 
         /*Put information in the header to byte buffer*/
         putString(byteBuffer,header.getVersion(),EDFElementSize.VERSION_SIZE);
@@ -76,15 +76,11 @@ public class EDFWriter{
             byteBuffer.put(header.getReserveds()[i]);
         }
 
-        fos.write(byteBuffer.array());
+        raf.write(byteBuffer.array());
 
-        /*For each DataRecord, write it to file*/
-        for(int i = 0; i < listDataRecord.length; i++){
-            List<SampleSet> sampleSetList = listDataRecord[i].getSampleSetList();
-            for(int j = 0; j < sampleSetList.size(); j++){
-                byteBuffer.put(sampleSetList.get(j).getSamples());
-            }
-        }
+    }
+
+    public static void writeDatarecordsToEDF  (RandomAccessFile raf, Record[] listRecord, int numberofBytes) throws IOException{
     }
 
     private static void putString(ByteBuffer byteBuffer, String value, int elemSize){

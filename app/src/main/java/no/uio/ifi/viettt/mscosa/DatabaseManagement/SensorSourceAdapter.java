@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
 
 /**
@@ -20,14 +17,10 @@ public class SensorSourceAdapter{
 
     private SQLiteDatabase mDatabase;
     private OSADBHelper mDbHelper;
-    private Context mContext;
-    private String[] mAllColumns = {OSADBHelper.SENSOR_SOURCE_ID, OSADBHelper.SENSOR_SOURCE_NAME, OSADBHelper.SENSOR_SOURCE_TYPE,
-    OSADBHelper.SENSOR_SOURCE_START_DATE, OSADBHelper.SENSOR_SOURCE_RESERVED, OSADBHelper.SENSOR_SOURCE_DATA_RECORD_DURATION};
+    private String[] mAllColumns = {OSADBHelper.SENSOR_SOURCE_ID, OSADBHelper.SENSOR_SOURCE_NAME, OSADBHelper.SENSOR_SOURCE_TYPE};
 
     public SensorSourceAdapter(Context context){
-        this.mContext = context;
         mDbHelper = new OSADBHelper(context);
-
         try{
             open();
         }catch (SQLException e){
@@ -44,26 +37,19 @@ public class SensorSourceAdapter{
     }
 
     SensorSource cursorToSensorSource(Cursor cursor) {
-        SensorSource sensorSource = new SensorSource(cursor.getString(1),cursor.getString(2));
-        sensorSource.setSource_id(cursor.getString(0));
-        sensorSource.setStartDateTime(cursor.getInt(3));
-        sensorSource.setReserved(cursor.getBlob(4));
-        sensorSource.setData_record_duration(cursor.getInt(5));
-
+        SensorSource sensorSource = new SensorSource();
+        sensorSource.setS_id(cursor.getString(0));
+        sensorSource.setS_name(cursor.getString(1));
+        sensorSource.setS_type(cursor.getString(2));
         return sensorSource;
     }
 
-    public void saveSensorSourceToDB(String sensor_source_ID, String source_name, String source_type,
-                                   long startDateTime, byte[] reserved, double data_record_duration){
+    public void saveSensorSourceToDB(SensorSource source){
         ContentValues values = new ContentValues();
-        values.put(OSADBHelper.SENSOR_SOURCE_ID,sensor_source_ID);
-        values.put(OSADBHelper.SENSOR_SOURCE_NAME,source_name);
-        values.put(OSADBHelper.SENSOR_SOURCE_TYPE,source_type);
-        values.put(OSADBHelper.SENSOR_SOURCE_START_DATE,startDateTime);
-        if(reserved != null) values.put(OSADBHelper.SENSOR_SOURCE_RESERVED,reserved);
-        values.put(OSADBHelper.SENSOR_SOURCE_DATA_RECORD_DURATION,data_record_duration);
-
-        mDatabase.insert(OSADBHelper.TABLE_SENSOR_SOURCE, null, values);
+        values.put(OSADBHelper.SENSOR_SOURCE_ID,source.getS_id());
+        values.put(OSADBHelper.SENSOR_SOURCE_NAME,source.getS_name());
+        values.put(OSADBHelper.SENSOR_SOURCE_TYPE,source.getS_type());
+        mDatabase.insertWithOnConflict(OSADBHelper.TABLE_SENSOR_SOURCE, null, values, SQLiteDatabase.CONFLICT_REPLACE);
     }
 
     public SensorSource getSensorSourceById(String source_ID) {
@@ -73,56 +59,14 @@ public class SensorSourceAdapter{
         SensorSource newSensorSource = null;
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
-            newSensorSource= cursorToSensorSource(cursor);
+            newSensorSource = cursorToSensorSource(cursor);
         }
         cursor.close();
         return newSensorSource;
     }
 
-    public List<SensorSource> getallSensorSource(){
-        List<SensorSource> listSensorSources = new ArrayList<SensorSource>();
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_SENSOR_SOURCE, mAllColumns,
-                null, null, null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                SensorSource sensorSource = cursorToSensorSource(cursor);
-                listSensorSources.add(sensorSource);
-                cursor.moveToNext();
-            }
-
-            //close the cursor
-            cursor.close();
-        }
-        return listSensorSources;
-    }
-
-    public void deleteSource(SensorSource sensorSource) {
-        String id = sensorSource.getSource_id();
-
+    public void deleteSource(String source_ID) {
         // delete all ALL CHANNEL AND RECORD belong to this SOURCE ------ TRIGGER will be called.
-
-        mDatabase.delete(OSADBHelper.TABLE_SENSOR_SOURCE, OSADBHelper.SENSOR_SOURCE_ID + " = " + id, null);
-    }
-
-    public List<SensorSource> searchSource(String searchText) {
-        List<SensorSource> listSensorSources = new ArrayList<SensorSource>();
-
-        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_SENSOR_SOURCE, mAllColumns,
-                OSADBHelper.SENSOR_SOURCE_ID + " like ", new String[] {searchText}, null, null, null);
-
-        if (cursor != null) {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                SensorSource sensorSource = cursorToSensorSource(cursor);
-                listSensorSources.add(sensorSource);
-                cursor.moveToNext();
-            }
-
-            //close the cursor
-            cursor.close();
-        }
-        return listSensorSources;
+        mDatabase.delete(OSADBHelper.TABLE_SENSOR_SOURCE, OSADBHelper.SENSOR_SOURCE_ID + " = " + source_ID, null);
     }
 }

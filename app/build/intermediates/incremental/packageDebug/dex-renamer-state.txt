@@ -1,7 +1,4 @@
-#Sun Feb 12 17:49:40 CET 2017
-base.0=/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_c0f258a528100a8c7c70cb91943099c25f09161d
-renamed.1=classes2.dex
+#Thu Mar 09 19:19:43 CET 2017
+base.0=/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
-file.1=/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c9d5b5f9ab56bf696d7d389999c462f07e372d66/classes.dex
-base.1=/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c9d5b5f9ab56bf696d7d389999c462f07e372d66
-file.0=/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_c0f258a528100a8c7c70cb91943099c25f09161d/classes.dex
+file.0=/Users/viettt/Desktop/MScOSA/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

@@ -3,20 +3,27 @@ package no.uio.ifi.viettt.mscosa.MainFragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +35,21 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
 
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.ClinicAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.PersonAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.SensorSourceAdapter;
 import no.uio.ifi.viettt.mscosa.MainActivity;
 import no.uio.ifi.viettt.mscosa.R;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Clinic;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Physician;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.ClientThread;
 import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.ConnectedListAdapter;
@@ -42,7 +60,7 @@ import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.ConnectedListAdapter;
 
 public class ServerFragment extends Fragment {
     //MAIN ATTRIBUTES
-    List<SensorSource> connectedSources;
+    List<ClientThread> connectedSources;
 
     /*OTHERS ATTRIBUTES*/
     //Elements to control server
@@ -65,6 +83,9 @@ public class ServerFragment extends Fragment {
     //Pointer to other fragments
     private MainActivity mainActivity;
     private PlotViewFragment plotViewFragment;
+
+    //lock object used for add things to list
+    private final Object lock = new Object();
 
     public ServerFragment(){
         selv = this;
@@ -122,11 +143,6 @@ public class ServerFragment extends Fragment {
             }
         });
 
-        for(SensorSource s: connectedSources)
-            if(!s.getSource_status().equals(SensorSource.ACTIVESTATUS))
-                connectedSources.remove(s);
-        invalidateSourceList();
-
         return v;
     }
 
@@ -155,10 +171,8 @@ public class ServerFragment extends Fragment {
                                 Toast.makeText(CONTEXT,"Got connect from: "+clientIP,Toast.LENGTH_SHORT).show();
                             }
                         });
-                        ClientThread clientConnected = new ClientThread(socClient,CONTEXT,serverUpdateUI);
-                        SensorSource new_source = new SensorSource("", "bitalino", clientConnected);
-                        clientConnected.registerSensorSource(new_source);
-                        selv.addNewSource(new_source);
+                        ClientThread clientConnected = new ClientThread(socClient,CONTEXT,serverUpdateUI, selv);
+                        addNewSource(clientConnected);
                         clientConnected.start();
                     }
                 } catch (IOException e) {
@@ -192,14 +206,12 @@ public class ServerFragment extends Fragment {
                 stopAll.setEnabled(true);
             }
         }catch(Exception e){
-            e.printStackTrace();
         }
     }
 
-    private synchronized void stopAllConnection(){
-        for(SensorSource s : connectedSources){
+    private void stopAllConnection(){
+        for(ClientThread s : connectedSources){
             s.closeConnection();
-            s.setSource_status(SensorSource.UNACTIVESTATUS);
         }
         stopListeningServerButton();
         stopAll.setEnabled(false);
@@ -233,14 +245,41 @@ public class ServerFragment extends Fragment {
         }
     }
 
-    public synchronized void addNewSource(SensorSource newClient){
-        this.connectedSources.add(newClient);
+    public void addNewSource(ClientThread newClient){
+        synchronized (lock){
+            this.connectedSources.add(newClient);
+        }
         invalidateSourceList();
     }
 
-    public synchronized void removeSourceFromList(SensorSource oldClient){
-        connectedSources.remove(oldClient);
+    public void removeSourceFromList(ClientThread oldClient){
+        synchronized (lock){
+            connectedSources.remove(oldClient);
+            if(plotViewFragment != null) plotViewFragment.unRegisterRunningSource(oldClient);
+        }
         invalidateSourceList();
+    }
+
+    public boolean checkAndRemoveSourceNewSource(String source_ID, ClientThread newConnected){
+        boolean ret = false;
+        synchronized (lock){
+            ClientThread tmp = null;
+            for(ClientThread c : connectedSources){
+                if(c.getThread_ID().equals(source_ID)){
+                    tmp = c; break;
+                }
+            }
+
+            if(tmp != null){
+                if(tmp.isDisconnected()) connectedSources.remove(tmp);
+                else {
+                    newConnected.closeConnection();
+                    connectedSources.remove(newConnected);
+                    ret = true;
+                }
+            }
+        }
+        return ret;
     }
 
     public void invalidateSourceList(){
@@ -276,19 +315,23 @@ public class ServerFragment extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()){
-            case R.id.observeSelected:
-                SensorSource ss = (SensorSource)listView.getItemAtPosition(adapterContextMenuInfo.position);
-                Toast.makeText(getContext(),ss.getSource_id(),Toast.LENGTH_SHORT).show();
-                for(SensorSource s : connectedSources){
-                    if (s.getClient_thread() != null) {
-                        s.getClient_thread().stopThreadPlotUpdate();
+            case R.id.visualiseSelected:
+                Toast.makeText(getContext(),"I will implement it when I have time - low priority",Toast.LENGTH_SHORT).show();
+                if(!((ClientThread)listView.getItemAtPosition(currentSelected)).isReadyToUse() || ((ClientThread)listView.getItemAtPosition(currentSelected)).isDisconnected()){
+                    Toast.makeText(getContext(),"Source is not ready to use",Toast.LENGTH_SHORT).show();
+                } else{
+                    ClientThread ss = (ClientThread) listView.getItemAtPosition(adapterContextMenuInfo.position);
+                    for(ClientThread s : connectedSources){
+                        if (s != ss) s.setPlotting(false,plotViewFragment);
                     }
+                    if(!ss.isPlotting()){
+                        plotViewFragment.setVisualiseSource(ss);
+                        ss.setPlotting(true,plotViewFragment);
+                    }
+                    mainActivity.bottomBar.selectTabWithId(R.id.action_current_connected);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,plotViewFragment).commit();
                 }
 
-                ss.getClient_thread().visualisePlotView(plotViewFragment);
-                plotViewFragment.setVisualiseSource(ss);
-                mainActivity.bottomBar.selectTabWithId(R.id.action_current_connected);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,plotViewFragment).commit();
                 break;
             case  R.id.deleteSource:
                 if(listView == null || listView.getItemAtPosition(currentSelected) == null){
@@ -300,11 +343,11 @@ public class ServerFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which)
                         {
-                            SensorSource ss = (SensorSource)listView.getItemAtPosition(currentSelected);
+                            ClientThread ss = (ClientThread) listView.getItemAtPosition(currentSelected);
                             ss.closeConnection();
-                            connectedSources.remove(ss);
+                            removeSourceFromList(ss);
                             invalidateSourceList();
-                            Toast.makeText(getContext(),ss.getSource_id()+" has unregistered.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(),ss.getThread_ID()+" has unregistered.",Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -317,11 +360,31 @@ public class ServerFragment extends Fragment {
                         }
                     });
 
-                    builder.setMessage("Delete "+((SensorSource) listView.getItemAtPosition(currentSelected)).getSource_id()+" ?");
+                    builder.setMessage("Delete "+((ClientThread) listView.getItemAtPosition(currentSelected)).getThread_ID()+" ?");
                     builder.setTitle("Warning...");
 
                     AlertDialog dialog_show = builder.create();
                     dialog_show.show();
+                }
+                break;
+            case R.id.startCollecting:
+                if(!((ClientThread)listView.getItemAtPosition(currentSelected)).isReadyToUse()){
+                    Toast.makeText(getContext(),"Source is not ready to use",Toast.LENGTH_SHORT).show();
+                } else if(((ClientThread)listView.getItemAtPosition(currentSelected)).isStoring()){
+                    Toast.makeText(getContext(),"Source is currently used, stop it if you want to record new.",Toast.LENGTH_SHORT).show();
+                } else{
+                    savePersonClinicInfo(((ClientThread)listView.getItemAtPosition(currentSelected)));
+                    invalidateSourceList();
+                }
+                break;
+            case R.id.stopCollecting:
+                if(!((ClientThread)listView.getItemAtPosition(currentSelected)).isStoring()){
+                    Toast.makeText(getContext(),"Source is not used, start it if you want to record new.",Toast.LENGTH_SHORT).show();
+                } else{
+                    Record record = ((ClientThread)listView.getItemAtPosition(currentSelected)).getRecord();
+                    ((ClientThread)listView.getItemAtPosition(currentSelected)).setStoring(false);
+                    invalidateSourceList();
+                    if(record != null) Toast.makeText(getContext(),record.getR_id()+" has been saved to database",Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:
@@ -335,6 +398,275 @@ public class ServerFragment extends Fragment {
     public void setmMainActivityAndOther(MainActivity mMainActivity, PlotViewFragment plotViewFragment){
         this.mainActivity = mMainActivity;
         this.plotViewFragment = plotViewFragment;
+    }
+
+    private void savePersonClinicInfo(final ClientThread clientThread){
+        View popUpView = getActivity().getLayoutInflater().inflate(R.layout.person_clinic_info, null); // inflating popup layout
+        final PopupWindow mpopup = new PopupWindow(popUpView, ViewPager.LayoutParams.MATCH_PARENT, ViewPager.LayoutParams.MATCH_PARENT, true); // Creation of popup
+        mpopup.showAtLocation(popUpView, Gravity.CENTER, 0, 0); // Displaying popup
+
+        popUpView.setBackground(new ColorDrawable(Color.WHITE));
+
+        final Button btnPatientClinicOK = (Button) popUpView.findViewById(R.id.btnPatientClinicOK);
+        Button btnPatientClinicCancel = (Button) popUpView.findViewById(R.id.btnPatientClinicCancel);
+        Button btnChooseChannels = (Button) popUpView.findViewById(R.id.btnChooseChannels);
+
+        final EditText txtPatientID = (EditText) popUpView.findViewById(R.id.txtPatientID);
+        final EditText txtPatientName = (EditText) popUpView.findViewById(R.id.txtPatientName);
+        final EditText txtPatCity = (EditText) popUpView.findViewById(R.id.txtPatCity);
+        final EditText txtPatPhone = (EditText) popUpView.findViewById(R.id.txtPatPhone);
+        final EditText txtPatEmail = (EditText) popUpView.findViewById(R.id.txtPatEmail);
+        final EditText txtPatGender = (EditText) popUpView.findViewById(R.id.txtPatGender);
+        final EditText txtPatDOB = (EditText) popUpView.findViewById(R.id.txtPatDOB);
+        final EditText txtPatAge = (EditText) popUpView.findViewById(R.id.txtPatAge);
+        final EditText txtPatHeight = (EditText) popUpView.findViewById(R.id.txtPatHeight);
+        final EditText txtPatWeight = (EditText) popUpView.findViewById(R.id.txtPatWeight);
+        final EditText txtPatBMI = (EditText) popUpView.findViewById(R.id.txtPatBMI);
+        final EditText txtPatOtherHealthIss = (EditText) popUpView.findViewById(R.id.txtPatOtherHealthIss);
+
+        final EditText txtPhyID = (EditText) popUpView.findViewById(R.id.txtPhyID);
+        final EditText txtPhyName = (EditText) popUpView.findViewById(R.id.txtPhyName);
+        final EditText txtPhyCity = (EditText) popUpView.findViewById(R.id.txtPhyCity);
+        final EditText txtPhyPhoneNr = (EditText) popUpView.findViewById(R.id.txtPhyPhoneNr);
+        final EditText txtPhyEmail = (EditText) popUpView.findViewById(R.id.txtPhyEmail);
+        final EditText txtPhyGender = (EditText) popUpView.findViewById(R.id.txtPhyGender);
+        final EditText txtPhyDateOfBirth = (EditText) popUpView.findViewById(R.id.txtPhyDateOfBirth);
+        final EditText txtPhyAge = (EditText) popUpView.findViewById(R.id.txtPhyAge);
+        final EditText txtPhyTitle = (EditText) popUpView.findViewById(R.id.txtPhyTitle);
+
+        final EditText txtClinicID = (EditText) popUpView.findViewById(R.id.txtClinicID);
+        final EditText txtClinicName = (EditText) popUpView.findViewById(R.id.txtClinicName);
+        final EditText txtClinicAddress = (EditText) popUpView.findViewById(R.id.txtClinicAddress);
+        final EditText txtClinicPhone = (EditText) popUpView.findViewById(R.id.txtClinicPhone);
+        final EditText txtClinicEmail = (EditText) popUpView.findViewById(R.id.txtClinicEmail);
+
+        final EditText txtFragmentDuration = (EditText) popUpView.findViewById(R.id.txtFragmentDuration);
+
+        Spinner sPatient = (Spinner) popUpView.findViewById(R.id.spinnerPatientTable);
+        Spinner sClinic = (Spinner) popUpView.findViewById(R.id.spinnerClinicTable);
+        Spinner sPhysician = (Spinner) popUpView.findViewById(R.id.spinnerPhyTable);
+
+        ClinicAdapter clinicAdapter = new ClinicAdapter(getContext());
+        ArrayList<String> listClinics = clinicAdapter.getAllClinicIDs();
+        clinicAdapter.close();
+        PersonAdapter personAdapter = new PersonAdapter(getContext());
+        final ArrayList<String> listPatients = personAdapter.getAllPatientIDs();
+        ArrayList<String> listPhysicians = personAdapter.getAllPhysicianIDs();
+        personAdapter.close();
+
+        sClinic.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,listClinics));
+        sPhysician.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,listPhysicians));
+        sPatient.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,listPatients));
+        if(listClinics.isEmpty()) sClinic.setEnabled(false);
+        if(listPhysicians.isEmpty()) sPhysician.setEnabled(false);
+        if(listPatients.isEmpty()) sPatient.setEnabled(false);
+
+        sPatient.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                PersonAdapter personAdapterGet1Per = new PersonAdapter(getContext());
+                Patient patient = personAdapterGet1Per.getPatientByIds(adapterView.getItemAtPosition(i).toString());
+                personAdapterGet1Per.close();
+                txtPatientID.setText(patient.getP_id());
+                txtPatientName.setText(patient.getName());
+                txtPatCity.setText(patient.getCity());
+                txtPatPhone.setText(patient.getPhone());
+                txtPatEmail.setText(patient.getEmail());
+                txtPatGender.setText(patient.getGender());
+                txtPatDOB.setText(patient.getDayOfBirth());
+                txtPatAge.setText(String.valueOf(patient.getAge()));
+                txtPatHeight.setText(String.valueOf(patient.getHeight()));
+                txtPatWeight.setText(String.valueOf(patient.getWeight()));
+                txtPatBMI.setText(String.valueOf(patient.getBMI()));
+                txtPatOtherHealthIss.setText(patient.getOtherHealthIssues());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        sPhysician.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                PersonAdapter personAdapterGet1Per = new PersonAdapter(getContext());
+                Patient patient = personAdapterGet1Per.getPatientByIds(adapterView.getItemAtPosition(i).toString());
+                personAdapterGet1Per.close();
+                txtPhyID.setText(patient.getP_id());
+                txtPhyName.setText(patient.getName());
+                txtPhyCity.setText(patient.getCity());
+                txtPhyPhoneNr.setText(patient.getPhone());
+                txtPhyEmail.setText(patient.getEmail());
+                txtPhyGender.setText(patient.getGender());
+                txtPhyDateOfBirth.setText(patient.getDayOfBirth());
+                txtPhyAge.setText(String.valueOf(patient.getAge()));
+                txtPhyTitle.setText(patient.getOtherHealthIssues());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        sClinic.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ClinicAdapter clinicAdapterGet1Clinic = new ClinicAdapter(getContext());
+                Clinic clinic = clinicAdapterGet1Clinic.getClinicByIds(adapterView.getItemAtPosition(i).toString());
+                clinicAdapterGet1Clinic.close();
+
+                txtClinicID.setText(clinic.getCl_id());
+                txtClinicName.setText(clinic.getName());
+                txtClinicAddress.setText(clinic.getAddress());
+                txtClinicPhone.setText(clinic.getPhone_nr());
+                txtClinicEmail.setText(clinic.getEmail());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        btnPatientClinicOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (txtPatientID.getText().toString().equals("") ||
+                        txtPhyID.getText().toString().equals("") ||
+                        txtClinicID.getText().toString().equals("")) {
+                    Toast.makeText(getContext(),"CANNOT STORE WITHOUT INFO OF PATIENT ID, PHYSICIAN ID AND CLINIC ID",Toast.LENGTH_SHORT).show();
+                }else {
+                    Patient patient = new Patient();
+                    patient.setP_id(txtPatientID.getText().toString());
+                    patient.setName(txtPatientName.getText().toString());
+                    patient.setCity(txtPatCity.getText().toString());
+                    patient.setPhone(txtPatPhone.getText().toString());
+                    patient.setEmail(txtPatEmail.getText().toString());
+                    patient.setGender(txtPatGender.getText().toString());
+                    patient.setDayOfBirth(txtPatDOB.getText().toString());
+                    patient.setAge(txtPatAge.getText().toString().equals("")? -1 : Integer.parseInt(txtPatAge.getText().toString()));
+                    patient.setHeight(txtPatHeight.getText().toString().equals("") ? 0: Float.parseFloat(txtPatHeight.getText().toString()));
+                    patient.setHeight(txtPatWeight.getText().toString().equals("") ? 0: Float.parseFloat(txtPatWeight.getText().toString()));
+                    patient.setBMI(txtPatBMI.getText().toString().equals("") ? 0: Float.parseFloat(txtPatBMI.getText().toString()));
+                    patient.setOtherHealthIssues(txtPatOtherHealthIss.getText().toString());
+                    patient.setClinic_code(txtClinicID.getText().toString());
+
+                    Physician physician = new Physician();
+                    physician.setP_id(txtPhyID.getText().toString());
+                    physician.setName(txtPhyName.getText().toString());
+                    physician.setCity(txtPhyCity.getText().toString());
+                    physician.setPhone(txtPhyPhoneNr.getText().toString());
+                    physician.setEmail(txtPhyEmail.getText().toString());
+                    physician.setGender(txtPhyGender.getText().toString());
+                    physician.setDayOfBirth(txtPhyDateOfBirth.getText().toString());
+                    physician.setAge(txtPhyAge.getText().toString().equals("") ? -1 : Integer.parseInt(txtPhyAge.getText().toString()));
+                    physician.setTitle(txtPhyTitle.getText().toString());
+                    physician.setClinic_code(txtClinicID.getText().toString());
+
+                    Clinic clinic = new Clinic();
+                    clinic.setCl_id(txtClinicID.getText().toString());
+                    clinic.setName(txtClinicName.getText().toString());
+                    clinic.setAddress(txtClinicAddress.getText().toString());
+                    clinic.setPhone_nr(txtClinicPhone.getText().toString());
+                    clinic.setEmail(txtClinicEmail.getText().toString());
+
+                    ClinicAdapter clinicAdapterSave = new ClinicAdapter(getContext());
+                    clinicAdapterSave.storeNewClinic(clinic);
+                    clinicAdapterSave.close();
+
+                    PersonAdapter personAdapterSave = new PersonAdapter(getContext());
+                    personAdapterSave.storeNewPerson(patient);
+                    personAdapterSave.storeNewPerson(physician);
+                    personAdapterSave.close();
+
+                    SensorSourceAdapter sensorSourceAdapter = new SensorSourceAdapter(getContext());
+                    sensorSourceAdapter.saveSensorSourceToDB(clientThread.getSensorSource());
+                    sensorSourceAdapter.close();
+
+                    HashMap<String,Channel> channels = clientThread.getChannels();
+                    ChannelAdapter channelAdapter = new ChannelAdapter(getContext());
+                    String recordDescription = "";
+                    for(Channel c : channels.values()){
+                        recordDescription += c.getDescription() +"; ";
+                        c.setCh_id(channelAdapter.saveChannelToDB(c));
+                    }
+                    channelAdapter.close();
+
+                    Record record = new Record();
+                    record.setS_id(clientThread.getSensorSource().getS_id());
+                    record.setPhysician_id(physician.getP_id());
+                    record.setPatient_id(physician.getP_id());
+                    record.setTimestamp(System.currentTimeMillis());
+                    record.setDescriptions(recordDescription);
+                    record.setFrag_duration(1000*(Integer.parseInt(txtFragmentDuration.getText().toString())));
+                    record.setFrequency(100);
+
+                    RecordAdapter recordAdapter = new RecordAdapter(getContext());
+                    record.setR_id(recordAdapter.saveRecordToDB(record));
+                    recordAdapter.close();
+                    clientThread.setRecord(record);
+
+                    Toast.makeText(getContext(),"INFO have saved/updated to database",Toast.LENGTH_SHORT).show();
+                    clientThread.setStoring(true);
+                    mpopup.dismiss();
+                }
+            }
+        });
+
+        btnPatientClinicCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mpopup.dismiss();
+            }
+        });
+
+        btnChooseChannels.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getActivity());
+                final String[] alertDialogItems = new String[clientThread.getChannels().keySet().size()];
+                final boolean[] selectedChannels = new boolean[alertDialogItems.length];
+
+                int cnt = 0;
+                for(String c : clientThread.getChannels().keySet()){
+                    alertDialogItems[cnt++] = c + ": "+clientThread.getChannels().get(c).getCh_name();
+                }
+
+                alertdialogbuilder.setMultiChoiceItems(alertDialogItems, selectedChannels, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                    }
+                });
+
+                alertdialogbuilder.setCancelable(false);
+
+                alertdialogbuilder.setTitle("Select channels");
+
+                alertdialogbuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for(int i = 0; i < selectedChannels.length;i++){
+                            if(selectedChannels[i]){
+                                String[] selected = alertDialogItems[i].split(": ");
+                                clientThread.getChannels().get(selected[0]).setSelectedToSaveSample(true);
+                            }
+                        }
+                        btnPatientClinicOK.setEnabled(true);
+                    }
+                });
+
+                alertdialogbuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+                dialog.show();
+            }
+        });
     }
 
 }
