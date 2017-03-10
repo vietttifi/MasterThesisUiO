@@ -228,6 +228,103 @@ public class OSADBHelper extends SQLiteOpenHelper {
     //================================================================================
 
     //============================= TRIGGERS =========================================
+    // SQL TRIGGER WHEN DELETE SENSOR_SOURCE
+    private static final String SQL_TRIGGER_DELETE_SENSOR_SOURCE =
+            "CREATE TRIGGER Delete_Sensor_Source_trigger "
+                    + " AFTER DELETE ON " +TABLE_SENSOR_SOURCE
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_RECORD
+                    + " WHERE "
+                    + RECORD_S_ID + " = OLD."+SENSOR_SOURCE_ID+"; "
+                    + " DELETE FROM "+ TABLE_CHANNEL
+                    + " WHERE "
+                    + CHANNEL_S_ID + " = OLD."+SENSOR_SOURCE_ID+"; "
+                    + " END";
+
+    // SQL TRIGGER WHEN DELETE CHANNEL
+    private static final String SQL_TRIGGER_DELETE_CHANNEL =
+            "CREATE TRIGGER Delete_Channel_trigger "
+                    + " AFTER DELETE ON " +TABLE_CHANNEL
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_SAMPLE
+                    + " WHERE "
+                    + SAMPLE_CHANNEL_ID + " = OLD."+CHANNEL_ID+"; "
+                    + " END";
+
+    // SQL TRIGGER WHEN DELETE DATA_RECORD
+    private static final String SQL_TRIGGER_DELETE_RECORD =
+            "CREATE TRIGGER Delete_data_record_trigger "
+                    + " AFTER DELETE ON " +TABLE_RECORD
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_RECORD_FRAGMENT
+                    + " WHERE "
+                    + FRAGMENT_RECORD_ID + " = OLD."+RECORD_ID+"; "
+                    + " END";
+
+    // SQL TRIGGER WHEN DELETE DATA_RECORD_FRAGMENT
+    private static final String SQL_TRIGGER_DELETE_RECORD_FRAGMENT =
+            "CREATE TRIGGER Delete_data_record_fragment_trigger "
+                    + " AFTER DELETE ON " +TABLE_RECORD_FRAGMENT
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_SAMPLE
+                    + " WHERE "
+                    + SAMPLE_RECORD_FRAGMENT_INDEX + " = OLD."+FRAGMENT_INDEX+ " AND "
+                    + SAMPLE_RECORD_ID + " = OLD."+FRAGMENT_RECORD_ID+"; "
+                    + " END";
+
+    // SQL TRIGGER WHEN DELETE PATIENT
+    private static final String SQL_TRIGGER_DELETE_PATIENT =
+            "CREATE TRIGGER Delete_Patient_trigger "
+                    + " AFTER DELETE ON " +TABLE_PATIENT
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_RECORD
+                    + " WHERE "
+                    + RECORD_PATIENT_ID + " = OLD."+PATIENT_PER_ID+"; "
+                    + " END";
+
+    // SQL TRIGGER WHEN DELETE PHYSICIAN
+    private static final String SQL_TRIGGER_DELETE_PHYSICIAN =
+            "CREATE TRIGGER Delete_Physician_trigger "
+                    + " AFTER DELETE ON " +TABLE_PHYSICIAN
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_RECORD
+                    + " WHERE "
+                    + RECORD_PHYSICIAN_ID + " = OLD."+PHY_PERSON_ID+"; "
+                    + " END";
+
+    // SQL TRIGGER WHEN DELETE PERSON
+    private static final String SQL_TRIGGER_DELETE_PERSON =
+            "CREATE TRIGGER Delete_Person_trigger "
+                    + " AFTER DELETE ON " +TABLE_PERSON
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_PATIENT
+                    + " WHERE "
+                    + PATIENT_PER_ID + " = OLD."+PERSON_ID+"; "
+                    + " DELETE FROM "+ TABLE_PHYSICIAN
+                    + " WHERE "
+                    + PHY_PERSON_ID + " = OLD."+PERSON_ID+"; "
+                    + " END";
+    // SQL TRIGGER WHEN DELETE CLINIC
+    private static final String SQL_TRIGGER_DELETE_CLINIC =
+            "CREATE TRIGGER Delete_Clinic_trigger "
+                    + " AFTER DELETE ON " +TABLE_CLINIC
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_PATIENT
+                    + " WHERE "
+                    + PATIENT_CLINIC_P + " = OLD."+CLINIC_ID+"; "
+                    + " DELETE FROM "+ TABLE_PHYSICIAN
+                    + " WHERE "
+                    + PHY_CLINIC_ID + " = OLD."+CLINIC_ID+"; "
+                    + " END";
+
     //================================================================================
     public OSADBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -245,6 +342,15 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_CLINIC);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_PHYSICIAN);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_PATIENT);
+
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_CLINIC);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_PERSON);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_PHYSICIAN);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_PATIENT);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_RECORD_FRAGMENT);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_RECORD);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_CHANNEL);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_SENSOR_SOURCE);
     }
 
     @Override

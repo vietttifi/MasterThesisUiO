@@ -39,6 +39,12 @@ public class RecordAdapter {
         mDbHelper.close();
     }
 
+    public void updateRecordTimestamp(long r_id, long timestamp){
+        ContentValues values = new ContentValues();
+        values.put(OSADBHelper.RECORD_TIMESTAMP,timestamp);
+        mDatabase.update(OSADBHelper.TABLE_RECORD,values,OSADBHelper.RECORD_ID + " = " + r_id,null);
+    }
+
     public Record cursorToRecord(Cursor cursor) {
         Record record = new Record();
         record.setR_id(cursor.getLong(0));
@@ -103,6 +109,6 @@ public class RecordAdapter {
 
     public void deleteRecord(String r_id) {
         // delete all ALL RECORD belong to this CLINIC ------ TRIGGER will be called.
-        mDatabase.delete(OSADBHelper.TABLE_RECORD, OSADBHelper.RECORD_ID + " = " + r_id, null);
+        mDatabase.delete(OSADBHelper.TABLE_RECORD, OSADBHelper.RECORD_ID + " = " + r_id,null);
     }
 }

@@ -14,6 +14,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
 
 
@@ -83,7 +86,7 @@ public class RawQueryActivity extends AppCompatActivity {
                     tableResult.addView(trSep, new TableLayout.LayoutParams(
                             TableLayout.LayoutParams.MATCH_PARENT,
                             TableLayout.LayoutParams.WRAP_CONTENT));
-
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS z"); // the format of your date
                     while (!cursor.isAfterLast() && cnt++ < LIMIT) {
                         tr = new TableRow(getApplication());
                         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
@@ -97,7 +100,10 @@ public class RawQueryActivity extends AppCompatActivity {
                             }else if(cursor.getType(i) == Cursor.FIELD_TYPE_FLOAT) {
                                 column.setText(String.valueOf(cursor.getFloat(i)));
                             }else if(cursor.getType(i) == Cursor.FIELD_TYPE_INTEGER) {
-                                column.setText(String.valueOf(cursor.getLong(i)));
+                                if(cursor.getColumnName(i).equals("timestamp")){
+                                    sdf.setTimeZone(TimeZone.getTimeZone("UTC")); // give a timezone reference for formating (see comment at the bottom
+                                    column.setText(sdf.format(cursor.getLong(i)));
+                                }else column.setText(String.valueOf(cursor.getLong(i)));
                             }else {
                                 column.setText(cursor.getString(i));
                             }

@@ -62,7 +62,7 @@ public class ChannelAdapter{
     public long saveChannelToDB(Channel channel){
         ContentValues values = new ContentValues();
         values.put(OSADBHelper.CHANNEL_S_ID,channel.getS_id());
-        values.put(OSADBHelper.CHANNEL_NR,channel.getCh_id());
+        values.put(OSADBHelper.CHANNEL_NR,channel.getCh_nr());
         values.put(OSADBHelper.CHANNEL_NAME,channel.getCh_name());
         values.put(OSADBHelper.CHANNEL_TRANSDUCER_TYPE,channel.getTransducer());
         values.put(OSADBHelper.CHANNEL_DIMENSION,channel.getDimension());

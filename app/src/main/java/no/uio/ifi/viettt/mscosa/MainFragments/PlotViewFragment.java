@@ -62,18 +62,25 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
     AlertDialog.Builder alertdialogbuilder;
     String[] alertDialogItems;
     boolean[] selectedChannels;
-    HashMap<String, LineGraphSeries<DataPoint>> channelLines = new HashMap<>();
+    HashMap<String, LineGraphSeries<DataPoint>> channelLines;
     long timestampPlot;
 
     private boolean isReady = false;
 
     public void setVisualiseSource(ClientThread clientThread){
-        channels = clientThread.getChannels();
-        selectedChannels = new boolean[channels.size()];
-        alertDialogItems = new String[channels.size()];
-        visualiseSource = clientThread;
         timestampPlot = System.currentTimeMillis();
+        channels = clientThread.getChannels();
+        visualiseSource = clientThread;
+        channelLines = new HashMap<>();
         isReady = false;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isReady = false;
+        graph.removeAllSeries();
+        channelLines = new HashMap<>();
     }
 
     @Override
@@ -151,6 +158,9 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
 
     private void initGraph(){
         if(visualiseSource == null) return;
+        selectedChannels = new boolean[channels.size()];
+        alertDialogItems = new String[channels.size()];
+
         for(String ch_nr : channels.keySet()){
             if(!channelLines.containsKey(ch_nr))channelLines.put(ch_nr,new LineGraphSeries<DataPoint>());
             graph.addSeries(channelLines.get(ch_nr));
@@ -212,7 +222,9 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
             @Override
             public void run() {
                 for(BitalinoDataSample sample: samples){
-                    channelLines.get(sample.getChannel_nr()).appendData(new DataPoint(channels.get(sample.getChannel_nr()).getLastXRealtime(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
+                    LineGraphSeries<DataPoint> tmp = channelLines.get(sample.getChannel_nr());
+                    if(tmp != null && isReady)
+                        tmp.appendData(new DataPoint(channels.get(sample.getChannel_nr()).getLastXRealtime(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
                 }
 
             }
@@ -436,7 +448,7 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
                     record.setPatient_id(physician.getP_id());
                     record.setTimestamp(System.currentTimeMillis());
                     record.setDescriptions(recordDescription);
-                    record.setFrag_duration(Integer.parseInt(txtFragmentDuration.getText().toString()));
+                    record.setFrag_duration(1000*Integer.parseInt(txtFragmentDuration.getText().toString()));
                     record.setFrequency(100);
 
                     RecordAdapter recordAdapter = new RecordAdapter(getContext());

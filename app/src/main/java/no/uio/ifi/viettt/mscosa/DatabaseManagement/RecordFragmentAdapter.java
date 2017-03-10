@@ -37,6 +37,14 @@ public class RecordFragmentAdapter {
         mDbHelper.close();
     }
 
+    public void updateRecordFragmentTimestamp(long r_id, int inx, long timestamp){
+        ContentValues values = new ContentValues();
+        values.put(OSADBHelper.FRAGMENT_TIMESTAMP,timestamp);
+        mDatabase.update(OSADBHelper.TABLE_RECORD_FRAGMENT,values,
+                OSADBHelper.FRAGMENT_RECORD_ID + " = " + r_id
+                        +" AND "+OSADBHelper.FRAGMENT_INDEX + " = "+inx,null);
+    }
+
     RecordFragment cursorToRecordFragment(Cursor cursor) {
         RecordFragment recordFragment = new RecordFragment();
         recordFragment.setR_id(cursor.getLong(0));

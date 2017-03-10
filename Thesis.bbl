@@ -1,0 +1,420 @@
+\begin{thebibliography}{64}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[sleep and tmj center(2016)]{HudsonOSA}
+Hudson sleep and tmj center.
+\newblock Obstructive sleep apnea.
+\newblock 2016.
+\newblock URL \url{http://sleeptmjdr.com/obstructive-sleep-apnea/}.
+
+\bibitem[heart.org(June 2001)]{Advan}
+heart.org.
+\newblock Sleep as a teaching tool for integrating respiratory physiology and
+  motor control.
+\newblock June 2001.
+\newblock URL \url{http://advan.physiology.org/content/25/2/29}.
+
+\bibitem[BITalino(2016{\natexlab{a}})]{BITalino_board}
+BITalino.
+\newblock Bitalino (r)evolution board kit data sheet.
+\newblock 2016{\natexlab{a}}.
+\newblock URL
+  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Board_Kit_Datasheet.pdf}.
+
+\bibitem[BITalino(2016{\natexlab{b}})]{BITalino_plugged}
+BITalino.
+\newblock Bitalino (r)evolution plugged kit data sheet.
+\newblock 2016{\natexlab{b}}.
+\newblock URL
+  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Plugged_Kit_Datasheet.pdf}.
+
+\bibitem[BITalino(2016{\natexlab{c}})]{BITalino_Freestyle}
+BITalino.
+\newblock Bitalino (r)evolution freestyle kit data sheet.
+\newblock 2016{\natexlab{c}}.
+\newblock URL
+  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Freestyle_Kit_Datasheet.pdf}.
+
+\bibitem[edfplus.info({\natexlab{a}})]{EDF2}
+edfplus.info.
+\newblock Full specification of edf.
+\newblock {\natexlab{a}}.
+\newblock URL \url{http://www.edfplus.info/specs/edf.html}.
+
+\bibitem[edfplus.info({\natexlab{b}})]{EDFpluss}
+edfplus.info.
+\newblock Full specification of edf+.
+\newblock {\natexlab{b}}.
+\newblock URL \url{http://www.edfplus.info/specs/edfplus.html}.
+
+\bibitem[Gjørby(2016)]{SP}
+Svein~Petter Gjørby.
+\newblock Generic data acquisition for mobile platforms.
+\newblock 2016.
+
+\bibitem[et.al(2011{\natexlab{a}})]{StorageBIT}
+Charles~Hansen et.al.
+\newblock Storagebit a metadata-aware, extensible, semantic, and hierarchical
+  database for biosignals.
+\newblock 2011{\natexlab{a}}.
+\newblock URL \url{http://www.lx.it.pt/~afred/papers/StorageBIT.pdf}.
+
+\bibitem[for~the Public(May 2009)]{NHLBI}
+Health~Information for~the Public.
+\newblock Sleep apnea: What is sleep apnea?
+\newblock May 2009.
+\newblock URL
+  \url{http://www.nhlbi.nih.gov/health/health-topics/topics/sleepapnea/}.
+
+\bibitem[et.al(16 June 2010)]{Akershus}
+HARALD HRUBOS-STRØM et.al.
+\newblock A norwegian population-based study on the risk and prevalence of
+  obstructive sleep apnea the akershus sleep apnea project (asap).
+\newblock 16 June 2010.
+\newblock URL
+  \url{http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2869.2010.00861.x/full}.
+
+\bibitem[of~Sleep~Medicine.(2005)]{Westchester}
+American~Academy of~Sleep~Medicine.
+\newblock The international classification of sleep disorders : diagnostic and
+  coding manual.
+\newblock \emph{Obstructive Sleep Apnea Syndrome}, page~52, 2005.
+
+\bibitem[Wikipedia(2016)]{OSAWiki}
+Wikipedia.
+\newblock Obstructive sleep apnea.
+\newblock 2016.
+\newblock URL \url{https://en.wikipedia.org/wiki/Obstructive_sleep_apnea}.
+
+\bibitem[Arghir; and Paraschiva Postolache* Ovidius University~of
+  Constanta(04.2016)]{ChestWorldCongress}
+Mihaela Trenchea PhD Oana Deleanu Elena Dantes PhD Agripina Rascu~Oana Arghir;
+  and Romania Paraschiva Postolache* Ovidius University~of Constanta,
+  Constanta.
+\newblock Smoking, drinking, overweight, and obstructive sleep apnea among
+  patients with sleep breathing disorders.
+\newblock 04.2016.
+\newblock URL
+  \url{http://journal.publications.chestnet.org/data/Journals/CHEST/935163/02594.pdf}.
+
+\bibitem[clinic staff(June 15, 2016)]{MAYOCLINIC}
+By~Mayo clinic staff.
+\newblock Obstructive sleep apnea - treatment.
+\newblock June 15, 2016.
+\newblock URL
+  \url{http://www.mayoclinic.org/diseases-conditions/obstructive-sleep-apnea/diagnosis-treatment/treatment/txc-20206034}.
+
+\bibitem[ScienceDaily(September 4, 2006)]{ScienceDaily}
+ScienceDaily.
+\newblock Mayo clinic discovers new type of sleep apnea.
+\newblock September 4, 2006.
+\newblock URL
+  \url{https://www.sciencedaily.com/releases/2006/09/060901161349.htm}.
+
+\bibitem[Khan and Franco(February 16, 2014)]{Hindawi}
+Muhammad~Talha Khan and Rose~Amy Franco.
+\newblock Complex sleep apnea syndrome.
+\newblock February 16, 2014.
+\newblock URL \url{http://www.hindawi.com/journals/sd/2014/798487/}.
+
+\bibitem[heart.org(April, 2016)]{HEARTORG_HR}
+heart.org.
+\newblock All about heart rate (pulse).
+\newblock April, 2016.
+\newblock URL
+  \url{http://www.heart.org/HEARTORG/Conditions/More/MyHeartandStrokeNews/All-About-Heart-Rate-Pulse_UCM_438850_Article.jsp#.V9boyTt1ZVo}.
+
+\bibitem[et.al(February 25, 2016)]{BersainReyes}
+Bersain~Reyes et.al.
+\newblock Tidal volume and instantaneous respiration rate estimation using a
+  smartphone camera.
+\newblock February 25, 2016.
+\newblock URL
+  \url{http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7415992}.
+
+\bibitem[et.al(May 1, 2015)]{IEEEOSAEEG}
+Wafaa~S.Almuhammadi et.al.
+\newblock Efficient obstructive sleep apnea classification based on eeg
+  signals.
+\newblock May 1, 2015.
+\newblock URL
+  \url{http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7160186}.
+
+\bibitem[et.al(August 29, 2012)]{NCBIEGEPILEPSY}
+Karakis et.al.
+\newblock The utility of routine eeg in the diagnosis of sleep disordered
+  breathing.
+\newblock August 29, 2012.
+\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/22854767}.
+
+\bibitem[et.al(May 20, 2004)]{SDEMG}
+Marc B~Blumen et.al.
+\newblock Tongue mechanical characteristics and genioglossus muscle emg in
+  obstructive sleep apnoea patients.
+\newblock May 20, 2004.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/S1569904803002933}.
+
+\bibitem[et.al(2012)]{JSREM}
+Babak~Mokhlesi et.al.
+\newblock “rem-related” obstructive sleep apnea: An epiphenomenon or a
+  clinically important entity?
+\newblock 2012.
+\newblock URL \url{http://www.journalsleep.org/ViewAbstract.aspx?pid=28396}.
+
+\bibitem[Laiali~Almazaydeh(May 2012)]{RESEARCHGATE}
+Miad~Faezipour Laiali~Almazaydeh, Khaled~Elleithy.
+\newblock Detection of obstructive sleep apnea through ecg signal features.
+\newblock May 2012.
+\newblock URL
+  \url{https://www.researchgate.net/publication/254039441_Detection_of_obstructive_sleep_apnea_through_ECG_signal_features}.
+
+\bibitem[Wiki~how(August, 2016)]{WIKIHOW}
+M.~Expert review by Janine~Kelbach Wiki~how.
+\newblock How to measure oxygen saturation using pulse oximeter.
+\newblock August, 2016.
+\newblock URL
+  \url{http://www.wikihow.com/Measure-Oxygen-Saturation-Using-Pulse-Oximeter}.
+
+\bibitem[de~Sousa Michels~et.al(2014)]{HINDIWAAIRFLOW}
+Daniel de~Sousa Michels~et.al.
+\newblock Nasal involvement in obstructive sleep apnea syndrome.
+\newblock 2014.
+\newblock URL \url{http://www.hindawi.com/journals/ijoto/2014/717419/}.
+
+\bibitem[heart.org(August, 2016)]{HEARTORG}
+heart.org.
+\newblock Understanding blood pressure readings.
+\newblock August, 2016.
+\newblock URL
+  \url{http://www.heart.org/HEARTORG/Conditions/HighBloodPressure/AboutHighBloodPressure/Understanding-Blood-Pressure-Readings_UCM_301764_Article.jsp#.V7sFAWWDBug}.
+
+\bibitem[edfplus.info({\natexlab{c}})]{EDF1}
+edfplus.info.
+\newblock Edf info.
+\newblock {\natexlab{c}}.
+\newblock URL \url{http://www.edfplus.info}.
+
+\bibitem[Thomas(August 26th 2016)]{Thomas}
+Line Thomas.
+\newblock Email communication between line michelsen (resmed) and thomas
+  plagemann (university of oslo).
+\newblock August 26th 2016.
+
+\bibitem[BITalino(2016{\natexlab{d}})]{BITalinoPubs}
+BITalino.
+\newblock Publications.
+\newblock 2016{\natexlab{d}}.
+\newblock URL \url{http://www.bitalino.com/index.php/community/publications}.
+
+\bibitem[BITalino(2016{\natexlab{e}})]{BITalino}
+BITalino.
+\newblock Disclaimer.
+\newblock 2016{\natexlab{e}}.
+\newblock URL \url{http://plux.info/index.php/en/policies/119-privacy-policy}.
+
+\bibitem[BITalino(2016{\natexlab{f}})]{BITalino_MCU}
+BITalino.
+\newblock Microcontroller unit (mcu) block data sheet.
+\newblock 2016{\natexlab{f}}.
+\newblock URL
+  \url{http://bitalino.com/datasheets/REVOLUTION_MCU_Block_Datasheet.pdf}.
+
+\bibitem[et.al(1984)]{LOGICALSENSOR_1}
+C.Hansen et.al.
+\newblock Logical sensor specification.
+\newblock pages 169--193, 1984.
+\newblock URL \url{http://www.cs.utah.edu/~tch/publications/pub38.pdf}.
+
+\bibitem[Henderson and Shilcrat(1984)]{LOGICALSENSOR_0}
+Tom Henderson and Esther Shilcrat.
+\newblock Logical sensor system.
+\newblock 1984.
+\newblock URL \url{http://www.cs.utah.edu/~tch/publications/pub38.pdf}.
+
+\bibitem[et.al({\natexlab{a}})]{SensorDataAbstract}
+Payam~Barnaghi et.al.
+\newblock Computing perception from sensor data.
+\newblock {\natexlab{a}}.
+\newblock URL
+  \url{http://personal.ee.surrey.ac.uk/Personal/P.Barnaghi/doc/PID2479545.pdf}.
+
+\bibitem[et.al(2011{\natexlab{b}})]{LOGICALSENSOR_3}
+Carlos~Carreiras et.al.
+\newblock Logical sensor specification.
+\newblock 2011{\natexlab{b}}.
+\newblock URL \url{http://www.cs.utah.edu/~tch/publications/pub30.pdf}.
+
+\bibitem[et.al({\natexlab{b}})]{PhysioNet_Intro}
+George B.~Moody et.al.
+\newblock Physionet: A web-based resource for the study of physiologic signals.
+\newblock {\natexlab{b}}.
+\newblock URL
+  \url{http://ecg.mit.edu/george/publications/physionet-embs-2001.pdf}.
+
+\bibitem[PhysioNet({\natexlab{a}})]{PhysioNet_Training}
+PhysioNet.
+\newblock Training opportunities at physionet.
+\newblock {\natexlab{a}}.
+\newblock URL \url{https://www.physionet.org/training.shtml}.
+
+\bibitem[PhysioNet({\natexlab{b}})]{PhysioNet_Contributing}
+PhysioNet.
+\newblock Contributing to physionet - data contributions.
+\newblock {\natexlab{b}}.
+\newblock URL \url{https://physionet.org/guidelines.shtml}.
+
+\bibitem[T~Penzel()]{Apnea_ecg_db}
+RG~Mark AL Goldberger JH~Peter T~Penzel, GB~Moody.
+\newblock Data for development and evaluation.
+\newblock \emph{Detecting and quantifying apnea based on the ECG}.
+\newblock URL
+  \url{http://ecg.mit.edu/george/publications/apnea-ecg-cinc-2000.pdf}.
+
+\bibitem[Physionet({\natexlab{a}})]{CinC2000}
+Physionet.
+\newblock The apnea-ecg database.
+\newblock \emph{Computers in Cardiology 2000}, {\natexlab{a}}.
+\newblock URL \url{https://physionet.org/challenge/2000/}.
+
+\bibitem[Physionet({\natexlab{b}})]{Apnea_ecg}
+Physionet.
+\newblock Data for development and evaluation of ecg-based apnea detectors.
+\newblock \emph{CinC Challenge 2000 data sets}, {\natexlab{b}}.
+\newblock URL \url{https://physionet.org/physiobank/database/apnea-ecg/}.
+
+\bibitem[Physionet({\natexlab{c}})]{STVinceUniversity}
+Physionet.
+\newblock Subjects.
+\newblock \emph{St. Vincent's University Hospital / University College Dublin
+  Sleep Apnea Database}, {\natexlab{c}}.
+\newblock URL \url{https://physionet.org/pn3/ucddb/}.
+
+\bibitem[Y.ICHIMARU()]{MIT_BIH_slpdb}
+GB.MOODY Y.ICHIMARU.
+\newblock Development of the polysomnographic database on cd-rom.
+\newblock URL \url{http://ecg.mit.edu/george/publications/slpdb-pcn-1999.pdf}.
+
+\bibitem[Sleepdata.org()]{SHSH_SleepData}
+Sleepdata.org.
+\newblock Sleep heart health study.
+\newblock URL \url{https://sleepdata.org/datasets/shhs/}.
+
+\bibitem[sleepdata.org()]{SHSH_NationalSleepData}
+sleepdata.org.
+\newblock National sleep research resource.
+\newblock URL \url{https://sleepdata.org}.
+
+\bibitem[Physionet({\natexlab{d}})]{Apnea_ecg_annotation}
+Physionet.
+\newblock Apnea-ecg database annotations.
+\newblock {\natexlab{d}}.
+\newblock URL
+  \url{https://physionet.org/physiobank/database/apnea-ecg/annotations.shtml}.
+
+\bibitem[Physionet({\natexlab{e}})]{STVinceUniversity_ann}
+Physionet.
+\newblock Subjects.
+\newblock \emph{St. Vincent's University Hospital / University College Dublin
+  Sleep Apnea Database}, {\natexlab{e}}.
+\newblock URL \url{https://physionet.org/pn3/ucddb/#annotations}.
+
+\bibitem[Moody()]{MIT_BIH_WFDB}
+George~B. Moody.
+\newblock Wfdb programmer's guide.
+\newblock URL \url{https://www.physionet.org/physiotools/wpg/}.
+
+\bibitem[physionet.org()]{SHSH_Physiobank}
+physionet.org.
+\newblock Physiobank atm.
+\newblock URL
+  \url{https://www.physionet.org/cgi-bin/atm/ATM?tool=&database=shhpsgdb&rbase=&srecord=&annotator=&signal=&sfreq=&tstart=&tdur=&tfinal=&action=&tfmt=&dfmt=&nbwidth=}.
+
+\bibitem[Thalheim(2011)]{CONCEPTUAL_BOOK}
+David W. Embley ·~Bernhard Thalheim.
+\newblock Handbook of conceptual modeling.
+\newblock 2011.
+
+\bibitem[Toby~Teorey(2006)]{DATABASEMODELING_BOOK}
+Tom~Nadeau Toby~Teorey, Sam~Lightstone.
+\newblock Database modeling \& design: Logical design.
+\newblock 2006.
+
+\bibitem[Halpin(2017{\natexlab{a}})]{ORMdotNET}
+Terry Halpin.
+\newblock Object-role modeling.
+\newblock 2017{\natexlab{a}}.
+\newblock URL \url{http://www.orm.net}.
+
+\bibitem[Wikipedia(2017)]{Wiki_ORM}
+Wikipedia.
+\newblock Object-role modeling.
+\newblock 2017.
+\newblock URL \url{https://en.wikipedia.org/wiki/Object-role_modeling}.
+
+\bibitem[Halpin(2017{\natexlab{b}})]{ORMdotNET2}
+Terry Halpin.
+\newblock Orm 2.
+\newblock 2017{\natexlab{b}}.
+\newblock URL \url{http://www.orm.net/pdf/ORM2.pdf}.
+
+\bibitem[Munthe-Kaas(2017)]{INF3100_Recipe_book}
+Ellen Munthe-Kaas.
+\newblock Recipe book.
+\newblock 2017.
+\newblock URL
+  \url{http://www.uio.no/studier/emner/matnat/ifi/INF3100/v16/undervisningsmateriale/forelesningsmateriale/oppskriftsbok.pdf}.
+
+\bibitem[Thorstensen(2017)]{INF3100}
+Evgenij Thorstensen.
+\newblock Database system course.
+\newblock 2017.
+\newblock URL \url{http://www.uio.no/studier/emner/matnat/ifi/INF3100/v17/}.
+
+\bibitem[SQLite(2017{\natexlab{a}})]{SQLITEORG}
+SQLite.
+\newblock About sqlite.
+\newblock 2017{\natexlab{a}}.
+\newblock URL \url{https://www.sqlite.org/about.html}.
+
+\bibitem[Sommerville(2017)]{INF1050BOOK}
+Ian Sommerville.
+\newblock Software engineering.
+\newblock 2017.
+
+\bibitem[veracode(2017)]{OWASP}
+veracode.
+\newblock Owasp top 10 vulnerabilities.
+\newblock 2017.
+\newblock URL \url{https://www.veracode.com/directory/owasp-top-10}.
+
+\bibitem[Emanuele~Panigati and Zaniolo(2017)]{DSMS_WINDOW}
+Fabio A.~Schreiber Emanuele~Panigati and Carlo Zaniolo.
+\newblock Data streams and data stream management systems and languages.
+\newblock 2017.
+\newblock URL
+  \url{http://eecs.wsu.edu/~yinghui/mat/courses/spring%202016/Reading/chp5-data%20stream%20management.pdf}.
+
+\bibitem[SQLite(2017{\natexlab{b}})]{SQLITEORG_INSERT}
+SQLite.
+\newblock Insert performance.
+\newblock 2017{\natexlab{b}}.
+\newblock URL \url{http://www.sqlite.org/faq.html#q19}.
+
+\bibitem[teuniz.net(2017)]{EDFLIB}
+teuniz.net.
+\newblock Edfbrowser and edflib.
+\newblock 2017.
+\newblock URL \url{http://www.teuniz.net/edfbrowser/}.
+
+\bibitem[MIOB(2017)]{EDF4J}
+MIOB.
+\newblock Java-parser for the file formats edf and edf+.
+\newblock 2017.
+\newblock URL \url{https://github.com/MIOB/EDF4J}.
+
+\end{thebibliography}

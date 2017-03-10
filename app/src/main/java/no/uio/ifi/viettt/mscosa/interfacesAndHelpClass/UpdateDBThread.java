@@ -24,6 +24,7 @@ public class UpdateDBThread extends Thread{
     public void run() {
         while(!stop || !bufferList.isEmpty()){
             RecordFragment recordFragment = getAFragment();
+            System.out.println("GOT CHA ---> "+bufferList.size());
             if(recordFragment != null){
                 SampleAdapter sampleAdapter = new SampleAdapter(context);
                 sampleAdapter.saveSampleToDB(recordFragment.getSamples_In_The_Same_Fragment());
