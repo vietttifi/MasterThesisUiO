@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaScannerConnection;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,42 +14,50 @@ import android.text.TextWatcher;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TimeZone;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.ClinicAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADataBaseManager;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.PersonAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.SensorSourceAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFElementSize;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFHeader;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFWriter;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.Clinic;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Physician;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
+
 
 public class EDFExportActivity extends AppCompatActivity{
 
+    RadioButton rdSource, rdPatient;
     EditText searchText;
     Button btnExport;
-    ListView tblSource, tblChannel;
+    ListView tblRecord;
 
-    //final SourceClickListener sourceListener = new SourceClickListener();
-
-    String[] sourceIDs, patinetIDs, clinicIDs;
-
-    private String sourceID, patientID, clinicID;
+    long[] chosenRecord;
+    String[] chosenPatients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +65,24 @@ public class EDFExportActivity extends AppCompatActivity{
         setContentView(R.layout.edf_export_fullscreen);
 
         searchText = (EditText)findViewById(R.id.txtSearch);
-        tblSource = (ListView) findViewById(R.id.tblSources);
-        tblChannel = (ListView) findViewById(R.id.tblChannel);
-
+        tblRecord = (ListView)findViewById(R.id.tblRecord);
         btnExport = (Button)findViewById(R.id.btnExport);
+        rdSource = (RadioButton)findViewById(R.id.rdBtnSource);
+        rdPatient = (RadioButton)findViewById(R.id.rdBtnPatient);
+
+        rdSource.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                manageRdSource(view);
+            }
+        });
+
+        rdPatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                manageRdPatient(view);
+            }
+        });
 
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -70,7 +93,7 @@ public class EDFExportActivity extends AppCompatActivity{
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(charSequence.toString().length()<2) return;
-                //manageKeySearch(charSequence,i,i1,i2);
+                manageKeySearch(charSequence,i,i1,i2);
             }
 
             @Override
@@ -82,40 +105,64 @@ public class EDFExportActivity extends AppCompatActivity{
         btnExport.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                //exportBtn();
+                exportBtn();
             }
         });
     }
-/*
+
+    private void manageRdSource(View view){
+        manageKeySearch(searchText.getText(),0,0,0);
+    }
+
+    private void manageRdPatient(View view){
+        manageKeySearch(searchText.getText(),0,0,0);
+    }
+
     private void exportBtn(){
+
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText edittext = new EditText(getApplication());
-        edittext.setText(sourceID);
-        edittext.setSelection(sourceID.length());
+        edittext.setText(String.valueOf(System.currentTimeMillis()/1000));
+        edittext.setSelection(edittext.getText().length());
         alert.setTitle("Enter file name");
         alert.setView(edittext);
         alert.setPositiveButton("Export", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
 
-                SparseBooleanArray checked = tblChannel.getCheckedItemPositions();
-                String channelIDS[] = new String[tblChannel.getCheckedItemCount()];
-
-                int cnt = 0;
-                for (int i = 0; i < tblChannel.getAdapter().getCount(); i++) {
+                SparseBooleanArray checked = tblRecord.getCheckedItemPositions();
+                ArrayList<String> exportedRecords = new ArrayList<String>();
+                String firstPID = null;
+                for (int i = 0; i < tblRecord.getAdapter().getCount(); i++) {
                     if (checked.get(i)) {
-                        channelIDS[cnt++] = tblChannel.getAdapter().getItem(i).toString().trim().split(" ")[1];
+                        exportedRecords.add(String.valueOf(chosenRecord[i]));
+                        if(firstPID == null) firstPID = chosenPatients[i];
+                        else if(!firstPID.equals(chosenPatients[i])){
+                            Toast.makeText(getApplication(),"PLEASE CHOOSE RECORD FOR THE SAME PATIENT!",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                     }
                 }
-
+                if(exportedRecords.isEmpty()){
+                    Toast.makeText(getApplication(),"PLEASE CHOOSE AT LEAST ONE RECORD!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 btnExport.setEnabled(false);
-                tblSource.setAdapter(null);
-                tblChannel.setAdapter(null);
-                File path = new File(Environment.getExternalStorageDirectory().getPath()+"/EDF_FILES/");
+                tblRecord.setAdapter(null);
+                
+                File path = new File(Environment.getExternalStorageDirectory().getPath()+"/Download/");
                 if(!path.exists()) path.mkdir();
+                // fix
+                path.setExecutable(true);
+                path.setReadable(true);
+                path.setWritable(true);
+
+// initiate media scan and put the new things into the path array to
+// make the scanner aware of the location and the files you want to see
+                MediaScannerConnection.scanFile(getApplication(), new String[] {path.toString()}, null, null);
                 String fileName = path.getPath()+"/"+edittext.getText().toString() + ".edf";
                 Toast.makeText(getApplication(),"File save to: "+fileName,Toast.LENGTH_SHORT).show();
                 //Start thread that will export data to EDF file.
-                (new ExportSourceToEDF(sourceID,patientID,clinicID,channelIDS,fileName)).start();
+                (new ExportSourceToEDF(exportedRecords,fileName, firstPID)).start();
             }
         });
 
@@ -125,45 +172,46 @@ public class EDFExportActivity extends AppCompatActivity{
         });
 
         alert.show();
-
-
     }
 
     private void manageKeySearch(CharSequence charSequence, int i, int i1, int i2){
         String[] choiceList = null;
+        tblRecord.setAdapter(null);
 
-        String queryString = "SELECT DISTINCT " +
-                " sensor_source.source_id as S_ID, " +
-                " patient.patient_id as P_ID, patient.last_name as P_NAME, clinic.clinic_id as C_ID , clinic.clinic_code as C_CODE" +
-                " from data_record " +
-                " JOIN sensor_source ON sensor_source.source_id = data_record.source_id " +
-                " JOIN patient ON patient.patient_id = data_record.patient_id " +
-                " JOIN clinic ON clinic.clinic_id = data_record.clinic_id " +
-                " where sensor_source.source_id like '%"+ charSequence.toString()+"%' " +
-                " OR patient.last_name like '%"+ charSequence.toString()+"%' " +
-                " OR clinic.clinic_code like '%"+ charSequence.toString()+"%' ";
+        String queryString = "SELECT "
+                + " R.r_id, R.p_owner as Patient, R.s_id as Source, C.ch_nr as C_NR, C.ch_name as C_Name, R.p_collect as Physician, R.timestamp "
+                + " FROM RECORD R NATURAL JOIN CHANNEL C ";
 
-        OSADBHelper mDbHelper = new OSADBHelper(getApplication());
-        SQLiteDatabase mDatabase = mDbHelper.getReadableDatabase();
+        if(rdSource.isChecked()){
+            queryString += " WHERE s_id like '%"+ charSequence.toString()+"%' ";
+        } else {
+            queryString += " WHERE p_owner like '%"+ charSequence.toString()+"%' ";
+        }
+
+        queryString += " ORDER BY R.p_owner, R.s_id, C.ch_nr, R.timestamp";
+
+        OSADataBaseManager.initializeInstance(new OSADBHelper(getApplication()));
+        OSADataBaseManager osaDataBaseManager = null;
 
         try {
+            osaDataBaseManager = OSADataBaseManager.getInstance();
+
+            SQLiteDatabase mDatabase = osaDataBaseManager.openDatabase();
             Cursor cursor = mDatabase.rawQuery(queryString, null);
             cursor.moveToFirst();
 
-            sourceIDs = new String[cursor.getCount()];
-            clinicIDs = new String[cursor.getCount()];
-            patinetIDs = new String[cursor.getCount()];
-
             choiceList = new String[cursor.getCount()];
+            chosenRecord = new long[cursor.getCount()];
+            chosenPatients = new String[cursor.getCount()];
 
             int cnt = 0;
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS z"); // the format of your date
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC")); // give a timezone reference for formating (see comment at the bottom
             while (!cursor.isAfterLast()) {
-                sourceIDs[cnt] = cursor.getString(0);
-                clinicIDs[cnt] = cursor.getString(3);
-                patinetIDs[cnt] = cursor.getString(1);
-                choiceList[cnt] = "SID: "+cursor.getString(0) +
-                        " PID: " + cursor.getString(1) +
-                        " CID: " + cursor.getString(3);
+                choiceList[cnt] = "R_ID: "+cursor.getLong(0) +"\nP_ID: "+ cursor.getString(1) +"\nSID: "+ cursor.getString(2)
+                        +"\nCH_NR: "+ cursor.getInt(3)+"\nCH_NAME: "+cursor.getString(4) + "\nP_PHY: "+cursor.getString(5)+"\nDATE: "+sdf.format(cursor.getLong(6));
+                chosenRecord[cnt] = cursor.getLong(0);
+                chosenPatients[cnt] = cursor.getString(1);
                 cnt++;
                 cursor.moveToNext();
             }
@@ -175,88 +223,35 @@ public class EDFExportActivity extends AppCompatActivity{
             System.out.println(e.getMessage());
         }
 
-        mDatabase.close();
-        mDbHelper.close();
+        if(osaDataBaseManager != null) osaDataBaseManager.closeDatabase();
 
         if(choiceList != null){
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice,choiceList);
-            tblSource.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-            tblSource.setAdapter(adapter);
-
-            tblSource.setOnItemClickListener(sourceListener);
-        }
-
-    }
-
-    private class SourceClickListener implements AdapterView.OnItemClickListener{
-
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            String[] choiceList = null;
-            sourceID = sourceIDs[i];
-            patientID = patinetIDs[i];
-            clinicID = clinicIDs[i];
-
-            String queryString = "SELECT DISTINCT " +
-                    " channel_id, channel_name, transducer_type, dimension " +
-                    " from channel " +
-                    " WHERE source_id = '"+ sourceIDs[i] +"'";
-
-            OSADBHelper mDbHelper = new OSADBHelper(getApplication());
-            SQLiteDatabase mDatabase = mDbHelper.getReadableDatabase();
-
-            try {
-                Cursor cursor = mDatabase.rawQuery(queryString, null);
-                cursor.moveToFirst();
-
-                choiceList = new String[cursor.getCount()];
-
-                int cnt = 0;
-                while (!cursor.isAfterLast()) {
-                    choiceList[cnt] = "ID: "+cursor.getString(0) +" "+ cursor.getString(1) +" "+ cursor.getString(2) +" "+ cursor.getString(3);
-                    cnt++;
-                    cursor.moveToNext();
-                }
-
-                //close the cursor
-                cursor.close();
-
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
-
-            mDatabase.close();
-            mDbHelper.close();
-
-            if(choiceList != null){
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplication(), android.R.layout.simple_list_item_checked, choiceList);
-                tblChannel.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-                tblChannel.setAdapter(adapter);
-                btnExport.setEnabled(true);
-            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplication(), R.layout.simple_list_checked, choiceList);
+            tblRecord.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            tblRecord.setAdapter(adapter);
+            btnExport.setEnabled(true);
         }
     }
-
 
     private class ExportSourceToEDF extends Thread{
-        private final String source_id;
-        private final String patient_id;
-        private final String clinic_id;
-        private final String[] channelIDS;
-        private final String fileName;
-        private final int NR_OF_DR_BUFF = 50;
+        //5s, is 1000Hz source = 5000 samples = 10000bytes, it is not over the limit including the size limit of 61440
+        private final int DURATION = 5;
+        private final Record[] records;
+        private final String fileName, patientID;
         private final Context context;
-        private final int totalDatarecord;
         private RandomAccessFile raf;
+        private boolean isAnnotation = false;
+        private EDFHeader edfHeader;
 
-        ExportSourceToEDF(String source_ID, String patient_ID, String clinic_ID, String[] channelIDS, String fileName){
-            this.source_id = source_ID;
-            this.patient_id = patient_ID;
-            this.clinic_id = clinic_ID;
-            this.channelIDS = channelIDS;
-            this.fileName = fileName;
+        ExportSourceToEDF(ArrayList<String> recordIDs, String fileName, String patientID){
             this.context = getApplication();
-            totalDatarecord = numberOfDataRecord();
+            this.patientID = patientID;
+            this.fileName = fileName;
+            RecordAdapter recordAdapter = new RecordAdapter(context);
+            ArrayList<Record> recordList = recordAdapter.getListRecordByListIds(recordIDs);
+            recordAdapter.close();
+            records = new Record[recordList.size()];
+            recordList.toArray(records);
         }
 
         @Override
@@ -273,40 +268,71 @@ public class EDFExportActivity extends AppCompatActivity{
             System.out.println("----> FINISHED WRITE TO FILE "+this.fileName);
         }
 
-        private void buildEDFheader() throws IOException{
-            EDFHeader edfHeader = new EDFHeader();
+        private int numberOfByteInHeader(){
+            return  EDFElementSize.VERSION_SIZE+
+                    EDFElementSize.PATIENT_INFO_SIZE+
+                    EDFElementSize.CLINIC_INFO_SIZE+
+                    EDFElementSize.START_DATE_SIZE+
+                    EDFElementSize.START_TIME_SIZE+
+                    EDFElementSize.HEADER_SIZE+
+                    EDFElementSize.RESERVED_FORMAT_SIZE+
+                    EDFElementSize.DURATION_DATA_RECORDS_SIZE+
+                    EDFElementSize.NUMBER_OF_DATA_RECORDS_SIZE+
+                    EDFElementSize.NUMBER_OF_CHANNELS_SIZE+
+                    + records.length*(EDFElementSize.LABEL_OF_CHANNEL_SIZE+
+                            EDFElementSize.TRANSDUCER_TYPE_SIZE+
+                            EDFElementSize.PHYSICAL_DIMENSION_OF_CHANNEL_SIZE+
+                            EDFElementSize.PHYSICAL_MIN_IN_UNITS_SIZE+
+                            EDFElementSize.PHYSICAL_MAX_IN_UNITS_SIZE+
+                            EDFElementSize.DIGITAL_MIN_SIZE+
+                            EDFElementSize.DIGITAL_MAX_SIZE+
+                            EDFElementSize.PREFILTERING_SIZE+
+                            EDFElementSize.NUMBER_OF_SAMPLES_SIZE+
+                            EDFElementSize.RESERVED_SIZE);
+        }
 
-            SensorSourceAdapter sourceAdapter = new SensorSourceAdapter(this.context);
-            SensorSource sensorSource = sourceAdapter.getSensorSourceById(this.source_id);
-            sourceAdapter.close();
-
-            ClinicAdapter clinicAdapter = new ClinicAdapter(this.context);
-            Clinic clinic = clinicAdapter.getClinicById(this.clinic_id);
-            clinicAdapter.close();
+        private void buildEDFheader() throws IOException {
+            edfHeader = new EDFHeader();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy"); // the format of your date
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC")); // give a timezone reference for formating (see comment at the bottom
 
             PersonAdapter personAdapter = new PersonAdapter(this.context);
-            Patient patient = personAdapter.getPatientById(this.patient_id);
+            Patient patient = personAdapter.getPatientByIds(this.patientID);
             personAdapter.close();
-            String localPatientID = (patient.getPatient_code_in_clinic().equals("") ? "X" : patient.getPatient_code_in_clinic()) + " "+
-                    (patient.getGender().equals("") ? "X" : patient.getGender()) +" "+
-                    (patient.getDateOfBirth().equals("") ? "X" : patient.getDateOfBirth()) +" "+
-                    ((patient.getFirstName()+" "+patient.getLastName()).equals("") ? "X" : (patient.getFirstName()+" "+patient.getLastName()));
-            String localrecordingID = "Startdate" + " X "+(clinic.getClinic_CODE().equals("") ? "X" : clinic.getClinic_CODE())+ " " +
-                    (clinic.getTechnician_ID().equals("") ? "X":clinic.getClinic_CODE())+ " " +
-                    (clinic.getUsed_equipment().equals("") ? "X" : clinic.getUsed_equipment());
 
-            Channel[] channels = getChannelList();
-            int numberOfChannels = nrOfChannels();
+            String localPatientID = (patient.getPatient_id_in_clinic().equals("") ? "X" : patient.getPatient_id_in_clinic()) + " "+
+                    ((patient.getGender() == null || patient.getGender().equals("")) ? "X" : patient.getGender()) +" "+
+                    ((patient.getDayOfBirth() == null || patient.getDayOfBirth().equals("")) ? "X" : patient.getDayOfBirth()) +" "+
+                    ((patient.getName() == null || patient.getName().equals("")) ? "X" : (patient.getName()));
+            String localRecordingID = "Startdate" + " X "+(records[0].getTimestamp() == 0 ? "X" : sdf.format(records[0].getTimestamp()))+ " " +
+                    ((records[0].getDescriptions() == null || records[0].getDescriptions().equals("")) ? "X": records[0].getDescriptions())+ " " +
+                    ((records[0].getUsed_equip() == null || records[0].getUsed_equip().equals("")) ? "X" : records[0].getUsed_equip());
 
+            List<String[]> channelsInfo = new ArrayList<>();
+            long minTimeStamp = records[0].getTimestamp();
+            for(int i = 0; i < records.length; i++){
+                channelsInfo.add(new String[]{String.valueOf(records[i].getCh_nr()),records[i].getS_id()});
+                if(minTimeStamp>records[i].getTimestamp()) minTimeStamp = records[i].getTimestamp();
+            }
+            ChannelAdapter channelAdapter = new ChannelAdapter(context);
+            Channel channels[] = channelAdapter.getChannelsByListIds(channelsInfo);
+            channelAdapter.close();
+
+            SimpleDateFormat sdfStartDate = new SimpleDateFormat("dd.MM.yy"); // the format of your date
+            sdfStartDate.setTimeZone(TimeZone.getTimeZone("UTC")); // give a timezone reference for formating (see comment at the bottom
+            SimpleDateFormat sdfStartTime = new SimpleDateFormat("hh.mm.ss"); // the format of your date
+            sdfStartTime.setTimeZone(TimeZone.getTimeZone("UTC")); // give a timezone reference for formating (see comment at the bottom
+
+            int numberOfChannels = records.length;
             edfHeader.setVersion("0");
             edfHeader.setPatientInfo(localPatientID);
-            edfHeader.setClinicInfo(localrecordingID);
-            edfHeader.setStartDate(sensorSource.getCreatedDate());
-            edfHeader.setStartTime(sensorSource.getCreatedTime());
+            edfHeader.setClinicInfo(localRecordingID);
+            edfHeader.setStartDate(sdfStartDate.format(minTimeStamp));
+            edfHeader.setStartTime(sdfStartTime.format(minTimeStamp));
             edfHeader.setBytesInHeader(numberOfByteInHeader());
-            edfHeader.setReservedFormat(new String(sensorSource.getReserved()));
-            edfHeader.setNumberOfRecords(totalDatarecord);
-            edfHeader.setDurationOfRecords(sensorSource.getData_record_duration());
+            edfHeader.setReservedFormat(isAnnotation ? "EDF+C" : "");
+            edfHeader.setNumberOfRecords(-1);
+            edfHeader.setDurationOfRecords(DURATION);
             edfHeader.setNumberOfChannels(numberOfChannels);
 
             String[] channelLabels = new String[numberOfChannels];
@@ -321,19 +347,17 @@ public class EDFExportActivity extends AppCompatActivity{
             byte[][] reserveds = new byte[numberOfChannels][];
 
             for (int i = 0; i < channels.length; i++) {
-                channelLabels[i] = channels[i].getChannel_name();
-                transducerTypes[i] = channels[i].getTransducer_type();
-                dimensions[i] = channels[i].getPhysical_dimension();
-                minInUnits[i] = channels[i].getPhysical_min();
-                maxInUnits[i] = channels[i].getPhysical_max();
-                digitalMin[i] = channels[i].getDigital_min();
-                digitalMax[i] = channels[i].getDigital_max();
+                System.out.println(channels[i].getCh_nr()+" <----- ");
+                channelLabels[i] = channels[i].getCh_name();
+                transducerTypes[i] = channels[i].getTransducer();
+                dimensions[i] = channels[i].getDimension();
+                minInUnits[i] = channels[i].getPhy_min();
+                maxInUnits[i] = channels[i].getPhy_max();
+                digitalMin[i] = channels[i].getDig_min();
+                digitalMax[i] = channels[i].getDig_max();
                 prefilterings[i] = channels[i].getPrefiltering();
-                numberOfSamples[i] = 100;//channels[i].getNumberSampleEDF();
-                reserveds[i] = channels[i].getReserved();
-                //System.out.println(channelLabels[i]+" "+ transducerTypes[i]
-                // +" "+dimensions[i]+" "+minInUnits[i]+" "+maxInUnits[i]+" "+digitalMin[i]
-                // +" "+digitalMax[i]+" "+prefilterings[i]);
+                numberOfSamples[i] = (int)(records[i].getFrequency()*DURATION);
+                reserveds[i] = channels[i].getEdf_reserved();
             }
 
             edfHeader.setChannelLabels(channelLabels);
@@ -348,147 +372,56 @@ public class EDFExportActivity extends AppCompatActivity{
             edfHeader.setReserveds(reserveds);
 
             EDFWriter.writeEDFHeaderToFile(raf,edfHeader);
+            raf.seek(edfHeader.getBytesInHeader());
+
         }
 
         private void storeDataRecord() throws IOException{
-            Record[] records = null;
-            int numberOfDRecord = totalDatarecord;
-            int skip = 0;
 
-            while(numberOfDRecord > 0){
-                int arrayBuff = numberOfDRecord/NR_OF_DR_BUFF;
-                if(arrayBuff == 0){
-                    records = new Record[numberOfDRecord%NR_OF_DR_BUFF];
-                }else{
-                    records = new Record[NR_OF_DR_BUFF];
-                }
+            int dataRecordSize = 0;
+            for(int i = 0; i<records.length; i++){
+                dataRecordSize += edfHeader.getNumberOfSamples()[i];
+            }
 
+            System.out.println(dataRecordSize);
+            SampleAdapter sampleAdapter = new SampleAdapter(getApplication());
+            int dataRecordCnt = 1;
+            boolean stop = false;
+            while(!stop){
+                ByteBuffer byteBuffer = ByteBuffer.allocate(dataRecordSize*2);
+                byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 
-                //initial data record list
-                for(int i = 0; i < records.length; i++){
-                    records[i] = new Record(0,this.source_id, this.patient_id, this.clinic_id,0);
-                    records[i].initSampleSet(channelIDS);
-                }
-
-                //number of bytes for this record
-                int nrofBytesRecord = 0;
-                //get the data record for each channel
-                for (int i = 0; i < channelIDS.length; i++) {
-                    if(channelIDS[i] != null){
-                        String query_s = "SELECT dr_id, sample_data " +
-                                " FROM sampleset " +
-                                " WHERE source_id = '"+this.source_id+"' AND " +
-                                " channel_id = '"+this.channelIDS[i]+"' AND " +
-                                " patient_id = '"+this.patient_id+"' AND " +
-                                " clinic_id = '"+this.clinic_id+"' " +
-                                " ORDER BY dr_id " +
-                                " LIMIT "+skip+","+ records.length+"";
-
-                        //Open readDB and read DATA RECORD for this channel
-                        OSADBHelper mDbHelper = new OSADBHelper(getApplication());
-                        SQLiteDatabase mDatabase = mDbHelper.getReadableDatabase();
-                        try {
-                            Cursor cursor = mDatabase.rawQuery(query_s, null);
-                            //System.out.println(totalDatarecord+"----"+skip+"-----"+dataRecords.length+"-------> "+channelIDS[i]+ " " +DatabaseUtils.dumpCursorToString(cursor));
-                            if (cursor.getCount() != 0) {
-                                cursor.moveToFirst();
-                                while (!cursor.isAfterLast()){
-                                    int record_NR = cursor.getInt(0);
-                                    byte[] sample_data = cursor.getBlob(1);
-                                    nrofBytesRecord += sample_data.length;
-                                    records[record_NR-skip].setData_record_ID(record_NR);
-                                    records[record_NR-skip].addSampleSetsToList(channelIDS[i],sample_data);
-                                    cursor.moveToNext();
-                                }
-                            }
-                            cursor.close();
-                        }catch(Exception e){
-                            e.printStackTrace();
+                for(int i = 0; i<records.length; i++){
+                    //dataRecordSize += edfHeader.getNumberOfSamples()[i];
+                    short[] valuesRecord = sampleAdapter.getShortValues(records[i].getR_id(),(dataRecordCnt - 1)*edfHeader.getNumberOfSamples()[i],dataRecordCnt*edfHeader.getNumberOfSamples()[i]);
+                    if(valuesRecord != null) {
+                        //System.out.println("BUFF LENGTH "+byteBuffer.limit()+ ", values length"+valuesRecord.length);
+                        for(int j = 0 ; j<valuesRecord.length; j++){
+                            //System.out.println(valuesRecord[j]);
+                            byteBuffer.putShort(valuesRecord[j]);
                         }
-                        mDatabase.close();
-                        mDbHelper.close();
+                    } else {
+                        stop = true;
                     }
                 }
-
-
-                numberOfDRecord = numberOfDRecord-NR_OF_DR_BUFF;
-                skip += records.length;
-                EDFWriter.writeDatarecordsToEDF(raf, records, nrofBytesRecord);
-            }
-        }
-
-        private int numberOfByteInHeader(){
-            return  EDFElementSize.VERSION_SIZE+
-                    EDFElementSize.PATIENT_INFO_SIZE+
-                    EDFElementSize.CLINIC_INFO_SIZE+
-                    EDFElementSize.START_DATE_SIZE+
-                    EDFElementSize.START_TIME_SIZE+
-                    EDFElementSize.HEADER_SIZE+
-                    EDFElementSize.RESERVED_FORMAT_SIZE+
-                    EDFElementSize.DURATION_DATA_RECORDS_SIZE+
-                    EDFElementSize.NUMBER_OF_DATA_RECORDS_SIZE+
-                    EDFElementSize.NUMBER_OF_CHANNELS_SIZE+
-                    + nrOfChannels()*(EDFElementSize.LABEL_OF_CHANNEL_SIZE+
-                                    EDFElementSize.TRANSDUCER_TYPE_SIZE+
-                                    EDFElementSize.PHYSICAL_DIMENSION_OF_CHANNEL_SIZE+
-                                    EDFElementSize.PHYSICAL_MIN_IN_UNITS_SIZE+
-                                    EDFElementSize.PHYSICAL_MAX_IN_UNITS_SIZE+
-                                    EDFElementSize.DIGITAL_MIN_SIZE+
-                                    EDFElementSize.DIGITAL_MAX_SIZE+
-                                    EDFElementSize.PREFILTERING_SIZE+
-                                    EDFElementSize.NUMBER_OF_SAMPLES_SIZE+
-                                    EDFElementSize.RESERVED_SIZE);
-        }
-
-        private int numberOfDataRecord(){
-            String query_s = "SELECT COUNT(DISTINCT data_record.dr_id) as r_ID " +
-                    " from data_record " +
-                    " JOIN sensor_source ON sensor_source.source_id = data_record.source_id " +
-                    " JOIN patient ON patient.patient_id = data_record.patient_id " +
-                    " JOIN clinic ON clinic.clinic_id = data_record.clinic_id " +
-                    " where sensor_source.source_id = '"+this.source_id+"' " +
-                    " OR patient.last_name = '"+this.patient_id+"' " +
-                    " OR clinic.clinic_code = '"+this.clinic_id+"' ";
-
-            int nrR = 0;
-            OSADBHelper mDbHelper = new OSADBHelper(getApplication());
-            SQLiteDatabase mDatabase = mDbHelper.getReadableDatabase();
-            try {
-                Cursor cursor = mDatabase.rawQuery(query_s, null);
-                //System.out.println(DatabaseUtils.dumpCursorToString(cursor));
-                cursor.moveToFirst();
-                nrR = cursor.getInt(0);
-                cursor.close();
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-            mDatabase.close();
-            mDbHelper.close();
-
-            return nrR;
-        }
-
-        private int nrOfChannels(){
-            int numberOfChannels = 0;
-            for(String s : channelIDS) if(s != null) numberOfChannels++;
-            return numberOfChannels;
-        }
-
-        private Channel[] getChannelList(){
-            Channel[] channels = new Channel[nrOfChannels()];
-            ChannelAdapter channelAdapter = new ChannelAdapter(this.context,false);
-            int j = 0;
-            for(int i = 0; i < channelIDS.length; i++){
-                if(channelIDS[i] != null){
-                    channels[j++] = channelAdapter.getChannelById(channelIDS[i],this.source_id);
+                if(!stop){
+                    raf.seek(edfHeader.getBytesInHeader()+(dataRecordCnt-1)*dataRecordSize*2);
+                    System.out.println("A data record "+dataRecordCnt + " at "+(edfHeader.getBytesInHeader()+(dataRecordCnt-1)*dataRecordSize*2));
+                    raf.write(byteBuffer.array());
+                    dataRecordCnt++;
                 }
+
             }
-            channelAdapter.close();
+            sampleAdapter.close();
+            System.out.println("NR OF DATA RECORD "+(dataRecordCnt-1));
+            edfHeader.setNumberOfRecords(dataRecordCnt-1);
+            //UPDATE TOTAL RECORD
+            edfHeader.printHeader();
+            raf.seek(0);
+            EDFWriter.writeEDFHeaderToFile(raf,edfHeader);
 
-            return channels;
         }
-    }
 
-    */
+    }
 
 }

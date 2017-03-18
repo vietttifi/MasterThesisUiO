@@ -3,7 +3,7 @@ package no.uio.ifi.viettt.mscosa.interfacesAndHelpClass;
 import android.content.Context;
 import java.util.ArrayList;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.RecordFragment;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
 
 /**
  * Created by viettt on 07/02/2017.
@@ -14,7 +14,7 @@ public class UpdateDBThread extends Thread{
     private Context context;
     private boolean stop = false;
     private final Object lock = new Object();
-    private ArrayList<RecordFragment> bufferList = new ArrayList<>();
+    private ArrayList<ArrayList<Sample>> bufferList = new ArrayList<>();
 
     public UpdateDBThread(Context context){
         this.context = context;
@@ -23,25 +23,25 @@ public class UpdateDBThread extends Thread{
     @Override
     public void run() {
         while(!stop || !bufferList.isEmpty()){
-            RecordFragment recordFragment = getAFragment();
+            ArrayList<Sample> aSamplesBuff = getAFragment();
             System.out.println("GOT CHA ---> "+bufferList.size());
-            if(recordFragment != null){
+            if(aSamplesBuff != null){
                 SampleAdapter sampleAdapter = new SampleAdapter(context);
-                sampleAdapter.saveSampleToDB(recordFragment.getSamples_In_The_Same_Fragment());
+                sampleAdapter.saveSampleToDB(aSamplesBuff);
                 sampleAdapter.close();
             }
         }
     }
 
-    public void requestDataBaseSaving(RecordFragment recordFragment){
+    public void requestDataBaseSaving(ArrayList<Sample> samplesBuff){
         synchronized (lock){
-            bufferList.add(recordFragment);
+            bufferList.add(samplesBuff);
             lock.notify();
         }
     }
 
-    private RecordFragment getAFragment(){
-        RecordFragment ret = null;
+    private ArrayList<Sample> getAFragment(){
+        ArrayList<Sample> ret = null;
         synchronized (lock){
             while(bufferList.isEmpty() && !stop){
                 try {

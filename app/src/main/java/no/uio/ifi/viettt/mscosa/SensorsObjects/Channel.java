@@ -6,16 +6,16 @@ package no.uio.ifi.viettt.mscosa.SensorsObjects;
 
 public class Channel {
     //=================== DATABASE ATTRIBUTE =========
-    private long ch_id;
     private String s_id;
     private String ch_nr;
     private String ch_name;
-    private String transducer;
     private String dimension;
-    private float phy_min;
-    private float phy_max;
+    private String transducer;
+    private double phy_min;
+    private double phy_max;
     private int dig_min;
     private int dig_max;
+    private String prefiltering;
     private byte[] edf_reserved;
     //=================================================
 
@@ -24,6 +24,12 @@ public class Channel {
     private boolean isSelectedToSaveSample;
     private int lastXRealtime = 0;
     private String description;
+
+    //FOR EDF READ
+    private int maxSamplesPerDataRecord;
+    private float frequency;
+    private float period; //T = 1/f
+    long timeStampReading;
 
     public Channel(){
     }
@@ -34,14 +40,6 @@ public class Channel {
 
     public void setS_id(String s_id) {
         this.s_id = s_id;
-    }
-
-    public long getCh_id() {
-        return ch_id;
-    }
-
-    public void setCh_id(long ch_id) {
-        this.ch_id = ch_id;
     }
 
     public String getCh_name() {
@@ -68,19 +66,19 @@ public class Channel {
         this.dimension = dimension;
     }
 
-    public float getPhy_min() {
+    public double getPhy_min() {
         return phy_min;
     }
 
-    public void setPhy_min(float phy_min) {
+    public void setPhy_min(double phy_min) {
         this.phy_min = phy_min;
     }
 
-    public float getPhy_max() {
+    public double getPhy_max() {
         return phy_max;
     }
 
-    public void setPhy_max(float phy_max) {
+    public void setPhy_max(double phy_max) {
         this.phy_max = phy_max;
     }
 
@@ -139,5 +137,45 @@ public class Channel {
 
     public void setLastXRealtime(int lastXRealtime) {
         this.lastXRealtime = lastXRealtime;
+    }
+
+    public String getPrefiltering() {
+        return prefiltering;
+    }
+
+    public void setPrefiltering(String prefiltering) {
+        this.prefiltering = prefiltering;
+    }
+
+    public int getMaxSamplesPerDataRecord() {
+        return maxSamplesPerDataRecord;
+    }
+
+    public void setMaxSamplesPerDataRecord(int maxSamplesPerDataRecord) {
+        this.maxSamplesPerDataRecord = maxSamplesPerDataRecord;
+    }
+
+    public float getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(float frequency) {
+        this.frequency = frequency;
+    }
+
+    public float getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(float period) {
+        this.period = period;
+    }
+
+    public long getTimeStampReading() {
+        return timeStampReading;
+    }
+
+    public void setTimeStampReading(long timeStampReading) {
+        this.timeStampReading = timeStampReading;
     }
 }

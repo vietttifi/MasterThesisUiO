@@ -19,56 +19,71 @@ public class SampleAdapter {
     public static final String TAG = "SampleAdapter";
 
     private SQLiteDatabase mDatabase;
-    private OSADBHelper mDbHelper;
-    private String[] mAllColumns = {OSADBHelper.SAMPLE_RECORD_ID, OSADBHelper.SAMPLE_RECORD_FRAGMENT_INDEX, OSADBHelper.SAMPLE_TIMESTAMP,
-            OSADBHelper.SAMPLE_CHANNEL_ID, OSADBHelper.SAMPLE_VALUE_FLOAT, OSADBHelper.SAMPLE_VALUE_ANNO};
+    private OSADataBaseManager mDbManagerInstance;
+    private String[] mAllColumns = {OSADBHelper.SAMPLE_RECORD_ID, OSADBHelper.SAMPLE_TIMESTAMP, OSADBHelper.SAMPLE_VALUE};
 
     public SampleAdapter(Context context){
-        mDbHelper = new OSADBHelper(context);
-
+        OSADataBaseManager.initializeInstance(new OSADBHelper(context));
         try{
-            open();
-        }catch (SQLException e){
+            mDbManagerInstance = OSADataBaseManager.getInstance();
+            mDatabase = mDbManagerInstance.openDatabase();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
-
-    public void open() throws SQLException{
-        mDatabase = mDbHelper.getWritableDatabase();
-    }
-
     public void close(){
-        mDbHelper.close();
+        mDbManagerInstance.closeDatabase();
     }
 
-    public Sample cursorToSample(Cursor cursor) {
-        return new Sample(cursor.getLong(0),cursor.getInt(1),cursor.getLong(2),cursor.getInt(3),cursor.getFloat(4), cursor.getString(5));
+    Sample cursorToSample(Cursor cursor) {
+        return new Sample(cursor.getLong(0), cursor.getLong(1),cursor.getFloat(2));
     }
 
     public void saveSampleToDB(List<Sample> listSample){
         mDatabase.beginTransaction();
-        for(Sample s : listSample){
-            ContentValues values = new ContentValues();
-            values.put(OSADBHelper.SAMPLE_RECORD_ID,s.getR_id());
-            values.put(OSADBHelper.SAMPLE_RECORD_FRAGMENT_INDEX,s.getFragment_index());
-            values.put(OSADBHelper.SAMPLE_TIMESTAMP,s.getTimestamp());
-            values.put(OSADBHelper.SAMPLE_CHANNEL_ID,s.getCh_id());
-            values.put(OSADBHelper.SAMPLE_VALUE_FLOAT,s.getSample_data());
-            values.put(OSADBHelper.SAMPLE_VALUE_ANNO,s.getSample_anno());
+        try{
+            for(Sample s : listSample){
+                ContentValues values = new ContentValues();
+                values.put(OSADBHelper.SAMPLE_RECORD_ID,s.getR_id());
+                values.put(OSADBHelper.SAMPLE_TIMESTAMP,s.getTimestamp());
+                values.put(OSADBHelper.SAMPLE_VALUE,s.getSample_data());
 
-            mDatabase.insert(OSADBHelper.TABLE_SAMPLE, null, values);
+                mDatabase.insert(OSADBHelper.TABLE_SAMPLE, null, values);
+            }
+            mDatabase.setTransactionSuccessful();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            mDatabase.endTransaction();
         }
-        mDatabase.setTransactionSuccessful();
-        mDatabase.endTransaction();
+
     }
 
-    public Sample getSampleById(long r_id, int fragment_index, long timestamp, int ch_id) {
+    public short[] getShortValues(long r_id ,int from, int to){
+        short[] values = new short[to-from];
+        int COUNT = to - from;
+        String queryString = "SELECT "+ OSADBHelper.SAMPLE_TIMESTAMP+","+ OSADBHelper.SAMPLE_VALUE+" " +
+                "FROM "+OSADBHelper.TABLE_SAMPLE+ " WHERE "+OSADBHelper.SAMPLE_RECORD_ID +" = "+r_id +" ORDER BY "+OSADBHelper.SAMPLE_TIMESTAMP
+                + " LIMIT "+COUNT+" OFFSET "+from;
+        Cursor cursor = mDatabase.rawQuery(queryString, null);
+        if (cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            int i = 0;
+            while (!cursor.isAfterLast()) {
+                values[i++] = cursor.getShort(1);
+                cursor.moveToNext();
+            }
+        }
+        else return null;
+        cursor.close();
+        return values;
+    }
+
+    public Sample getSampleById(long r_id, long timestamp) {
         String condition = OSADBHelper.SAMPLE_RECORD_ID + " = ? AND "
-                +OSADBHelper.SAMPLE_RECORD_FRAGMENT_INDEX +" = ? AND "
-                +OSADBHelper.SAMPLE_TIMESTAMP +" = ? AND "
-                +OSADBHelper.SAMPLE_CHANNEL_ID +" = ?";
+                +OSADBHelper.SAMPLE_TIMESTAMP +" = ?  ";
         Cursor cursor = mDatabase.query(OSADBHelper.TABLE_SAMPLE, mAllColumns,condition,
-                new String[] {String.valueOf(r_id),String.valueOf(fragment_index), String.valueOf(timestamp), String.valueOf(ch_id)}, null, null, null);
+                new String[] {String.valueOf(r_id), String.valueOf(timestamp)}, null, null, null);
 
         Sample sample = null;
         if (cursor.getCount() != 0) {

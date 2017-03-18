@@ -14,10 +14,12 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADataBaseManager;
 
 
 public class RawQueryActivity extends AppCompatActivity {
@@ -47,16 +49,22 @@ public class RawQueryActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                File f = getApplicationContext().getDatabasePath(OSADBHelper.DATABASE_NAME);
+                long dbSize = f.length()/(1024*1024);
+                Toast.makeText(getApplicationContext(),"Database size "+String.valueOf(dbSize)+" MB",Toast.LENGTH_SHORT).show();
+
                 String queryString = txtSearch.getText().toString();
                 if(queryString.equals("")) return;
 
                 //clear result table
                 tableResult.removeAllViews();
 
-                OSADBHelper mDbHelper = new OSADBHelper(getApplication());
-                SQLiteDatabase mDatabase = mDbHelper.getWritableDatabase();
+                OSADataBaseManager.initializeInstance(new OSADBHelper(getApplication()));
+                OSADataBaseManager osaDataBaseManagerInstance = null;
 
                 try {
+                    osaDataBaseManagerInstance = OSADataBaseManager.getInstance();
+                    SQLiteDatabase mDatabase = osaDataBaseManagerInstance.openDatabase();
                     Cursor cursor = mDatabase.rawQuery(queryString, null);
                     cursor.moveToFirst();
                     Toast.makeText(getApplication(),"Total row: "+cursor.getCount(),Toast.LENGTH_SHORT).show();
@@ -100,7 +108,7 @@ public class RawQueryActivity extends AppCompatActivity {
                             }else if(cursor.getType(i) == Cursor.FIELD_TYPE_FLOAT) {
                                 column.setText(String.valueOf(cursor.getFloat(i)));
                             }else if(cursor.getType(i) == Cursor.FIELD_TYPE_INTEGER) {
-                                if(cursor.getColumnName(i).equals("timestamp")){
+                                if(cursor.getColumnName(i).equals("timestamp")|| cursor.getColumnName(i).equals("timekeeping")){
                                     sdf.setTimeZone(TimeZone.getTimeZone("UTC")); // give a timezone reference for formating (see comment at the bottom
                                     column.setText(sdf.format(cursor.getLong(i)));
                                 }else column.setText(String.valueOf(cursor.getLong(i)));
@@ -147,8 +155,7 @@ public class RawQueryActivity extends AppCompatActivity {
                             TableLayout.LayoutParams.WRAP_CONTENT));
                 }
 
-                mDatabase.close();
-                mDbHelper.close();
+                if(osaDataBaseManagerInstance != null) osaDataBaseManagerInstance.closeDatabase();
             }
         });
 

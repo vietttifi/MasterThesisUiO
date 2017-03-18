@@ -16,6 +16,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
+import no.uio.ifi.viettt.mscosa.DatabaseVisualisationActivity;
 import no.uio.ifi.viettt.mscosa.EDFExportActivity;
 import no.uio.ifi.viettt.mscosa.MainActivity;
 import no.uio.ifi.viettt.mscosa.R;
@@ -49,7 +50,9 @@ public class MiningFragment extends Fragment {
         ibtn_visualise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent myIntent = new Intent(getActivity(), DatabaseVisualisationActivity.class);
+                myIntent.putExtra("key", "TEST"); //Optional parameters
+                getActivity().startActivity(myIntent);
             }
         });
 

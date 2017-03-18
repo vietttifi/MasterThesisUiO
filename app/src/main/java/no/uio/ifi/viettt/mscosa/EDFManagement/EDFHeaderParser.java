@@ -61,44 +61,6 @@ public class EDFHeaderParser{
         }
     }
 
-    public static List<EDFAnnotation> parseAnnotations(byte[] b) {
-        List<EDFAnnotation> annotations = new ArrayList<>();
-        int inxOnSet = 0, inxDuration = -1, inxAnnotation = -1, inxEndAnn = -1;
-        for (int i = 0; i < b.length - 1; i++){
-
-            //duration begin after code 21 as specifying in edfplus.org
-            if (b[i] == 21){
-                inxDuration = i;
-            } else if (b[i] == 20 && inxOnSet > inxAnnotation){
-                //It is a next annotation
-                inxAnnotation = i;
-            } else if (b[i] == 20 && b[i + 1] == 0){
-                //End one annotation
-                inxEndAnn = i;
-            } else if (b[i] != 0 && inxOnSet < inxEndAnn){
-                //Collect an annotation information
-                if (inxDuration > inxOnSet){
-                    double onSetValue = Double.parseDouble(new String(b, inxOnSet, inxDuration - inxOnSet));
-                    double durationValue = Double.parseDouble(new String(b, inxDuration, inxAnnotation - inxDuration));
-                    String annotation = new String(b, inxAnnotation, inxEndAnn - inxAnnotation);
-                    //code 20 which is a separator between each annotation = u0014
-                    annotations.add(new EDFAnnotation(onSetValue, durationValue, annotation.split("[\u0014]")));
-                } else {
-                    double onSetValue = Double.parseDouble(new String(b, inxOnSet, inxAnnotation - inxOnSet));
-                    String annotation = new String(b, inxAnnotation, inxEndAnn - inxAnnotation);
-                    //code 20 which is a separator between each annotation = u0014
-                    annotations.add(new EDFAnnotation(onSetValue, 0, annotation.split("[\u0014]")));
-                }
-
-                inxOnSet = i;
-            } else{
-                System.out.println("Unexpected character in EDF format");
-            }
-        }
-
-        return annotations;
-    }
-
     private static String[] readASCIIStrings(InputStream is, int size, int length) throws IOException {
         String[] result = new String[length];
         for (int i = 0; i < length; i++) result[i] = readAnASCIIString(is, size);

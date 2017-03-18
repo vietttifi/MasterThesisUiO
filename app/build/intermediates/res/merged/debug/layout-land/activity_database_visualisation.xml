@@ -42,13 +42,6 @@
                     android:layout_weight="1"
                     android:textSize="12sp" />
 
-                <RadioButton
-                    android:text="Clinic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rdBtnClinic"
-                    android:layout_weight="1"
-                    android:textSize="12sp" />
             </RadioGroup>
         </LinearLayout>
 
@@ -142,12 +135,12 @@
 
         </LinearLayout>
 
-        <com.github.mikephil.charting.charts.LineChart
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/activity_database_visualisation"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/lineChartRP"
-            android:layout_weight="0.8">
-        </com.github.mikephil.charting.charts.LineChart>
+            android:layout_weight="0.8"
+            android:background="#000000" />
 
         <LinearLayout
             android:orientation="horizontal"

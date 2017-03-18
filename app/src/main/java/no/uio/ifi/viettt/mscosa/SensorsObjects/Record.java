@@ -10,29 +10,16 @@ import java.util.List;
 public class Record {
     private long r_id;
     private String s_id;
+    private int ch_nr;
     private String physician_id;
     private String patient_id;
     private long timestamp;
     private String descriptions;
-    private long frag_duration;
     private float frequency;
-    private String prefiltering;
     private String used_equip;
     private byte[] edf_reserved;
 
-    //NON DATABASE ATTRIBUTE
-    private int fragment_index = 0;
-
-
     public Record(){}
-
-    public RecordFragment getNextRecordFragment() {
-        RecordFragment recordFragment = new RecordFragment();
-        recordFragment.setR_id(r_id);
-        recordFragment.setIndex(fragment_index++);
-        recordFragment.setTimestamp(System.currentTimeMillis());
-        return recordFragment;
-    }
 
     public long getR_id() {
         return r_id;
@@ -82,28 +69,12 @@ public class Record {
         this.descriptions = descriptions;
     }
 
-    public long getFrag_duration() {
-        return frag_duration;
-    }
-
-    public void setFrag_duration(long frag_duration) {
-        this.frag_duration = frag_duration;
-    }
-
     public float getFrequency() {
         return frequency;
     }
 
     public void setFrequency(float frequency) {
         this.frequency = frequency;
-    }
-
-    public String getPrefiltering() {
-        return prefiltering;
-    }
-
-    public void setPrefiltering(String prefiltering) {
-        this.prefiltering = prefiltering;
     }
 
     public String getUsed_equip() {
@@ -121,4 +92,13 @@ public class Record {
     public void setEdf_reserved(byte[] edf_reserved) {
         this.edf_reserved = edf_reserved;
     }
+
+    public int getCh_nr() {
+        return ch_nr;
+    }
+
+    public void setCh_nr(int ch_nr) {
+        this.ch_nr = ch_nr;
+    }
+
 }

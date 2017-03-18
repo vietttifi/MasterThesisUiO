@@ -7,38 +7,61 @@
     tools:context="no.uio.ifi.viettt.mscosa.EDFExportActivity">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.08"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rdBtnSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Sensour Source"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/rdBtnPatient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Patient"
+                android:textSize="12sp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_weight="0.1"
         android:layout_height="0dp">
 
         <EditText
+            android:id="@+id/txtSearch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/txtSearch"
             android:hint="Your key search"
-            android:textSize="14sp"
             android:imeOptions="actionDone"
-            android:textAlignment="viewStart" />
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textSize="10sp" />
 
     </LinearLayout>
 
     <ListView
+        android:id="@+id/tblRecord"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#ffffff"
-        android:layout_weight="0.3"
-        android:id="@+id/tblSources">
-    </ListView>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#b6aeae"
-        android:layout_weight="0.5"
-        android:id="@+id/tblChannel">
+        android:layout_weight="0.72"
+        android:background="#b6aeae">
 
     </ListView>
 

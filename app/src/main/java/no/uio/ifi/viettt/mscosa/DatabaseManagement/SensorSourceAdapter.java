@@ -16,24 +16,20 @@ public class SensorSourceAdapter{
     public static final String TAG = "SensorSourceAdapter";
 
     private SQLiteDatabase mDatabase;
-    private OSADBHelper mDbHelper;
+    private OSADataBaseManager mDbManagerInstance;
     private String[] mAllColumns = {OSADBHelper.SENSOR_SOURCE_ID, OSADBHelper.SENSOR_SOURCE_NAME, OSADBHelper.SENSOR_SOURCE_TYPE};
 
     public SensorSourceAdapter(Context context){
-        mDbHelper = new OSADBHelper(context);
+        OSADataBaseManager.initializeInstance(new OSADBHelper(context));
         try{
-            open();
-        }catch (SQLException e){
+            mDbManagerInstance = OSADataBaseManager.getInstance();
+            mDatabase = mDbManagerInstance.openDatabase();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
-
-    public void open() throws SQLException{
-        mDatabase = mDbHelper.getWritableDatabase();
-    }
-
     public void close(){
-        mDbHelper.close();
+        mDbManagerInstance.closeDatabase();
     }
 
     SensorSource cursorToSensorSource(Cursor cursor) {

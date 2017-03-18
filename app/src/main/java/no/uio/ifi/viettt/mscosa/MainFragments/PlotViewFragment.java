@@ -435,27 +435,28 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
 
                     HashMap<String,Channel> channels = clientThread.getChannels();
                     ChannelAdapter channelAdapter = new ChannelAdapter(getContext());
-                    String recordDescription = "";
                     for(Channel c : channels.values()){
-                        recordDescription += c.getDescription() +"; ";
-                        c.setCh_id(channelAdapter.saveChannelToDB(c));
+                        channelAdapter.saveChannelToDB(c);
                     }
                     channelAdapter.close();
 
-                    Record record = new Record();
-                    record.setS_id(clientThread.getSensorSource().getS_id());
-                    record.setPhysician_id(physician.getP_id());
-                    record.setPatient_id(physician.getP_id());
-                    record.setTimestamp(System.currentTimeMillis());
-                    record.setDescriptions(recordDescription);
-                    record.setFrag_duration(1000*Integer.parseInt(txtFragmentDuration.getText().toString()));
-                    record.setFrequency(100);
-
                     RecordAdapter recordAdapter = new RecordAdapter(getContext());
-                    record.setR_id(recordAdapter.saveRecordToDB(record));
-                    recordAdapter.close();
-                    clientThread.setRecord(record);
+                    HashMap<String,Record> records = clientThread.getRecords();
+                    for(Channel c : channels.values()){
+                        Record record = new Record();
+                        record.setS_id(clientThread.getSensorSource().getS_id());
+                        record.setPhysician_id(physician.getP_id());
+                        record.setPatient_id(physician.getP_id());
+                        record.setTimestamp(System.currentTimeMillis());
+                        record.setDescriptions(c.getDescription());
+                        record.setFrequency(-1);
 
+                        record.setR_id(recordAdapter.saveRecordToDB(record));
+                        records.put(c.getCh_nr(),record);
+                    }
+                    recordAdapter.close();
+
+                    clientThread.setFrag_duration(1000*(Integer.parseInt(txtFragmentDuration.getText().toString())));
                     Toast.makeText(getContext(),"INFO have saved/updated to database",Toast.LENGTH_SHORT).show();
                     clientThread.setStoring(true);
                     mpopup.dismiss();

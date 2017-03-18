@@ -21,16 +21,16 @@ public class OSADBHelper extends SQLiteOpenHelper {
 
     //Channel table and its columns ---------- CHANNEL ------------
     public static final String TABLE_CHANNEL = "CHANNEL";
-    public static final String CHANNEL_ID = "ch_id";
     public static final String CHANNEL_S_ID = "s_id";
     public static final String CHANNEL_NR = "ch_nr";
     public static final String CHANNEL_NAME = "ch_name";
     public static final String CHANNEL_TRANSDUCER_TYPE = "transducer";
-    public static final String CHANNEL_DIMENSION = "dimension";
+    public static final String CHANNEL_DIMENSION = "metric";
     public static final String CHANNEL_PHYSICAL_MIN = "phy_min";
     public static final String CHANNEL_PHYSICAL_MAX = "phy_max";
     public static final String CHANNEL_DIGITAL_MIN = "dig_min";
     public static final String CHANNEL_DIGITAL_MAX = "dig_max";
+    public static final String CHANNEL_PREFILTERING = "prefiltering";
     public static final String CHANNEL_EDF_RESERVED = "s_edf_reserved";
 
 
@@ -38,30 +38,28 @@ public class OSADBHelper extends SQLiteOpenHelper {
     public static final String TABLE_RECORD = "RECORD";
     public static final String RECORD_ID = "r_id";
     public static final String RECORD_S_ID = "s_id";
+    public static final String RECORD_CH_NR = "ch_nr";
     public static final String RECORD_PHYSICIAN_ID = "p_collect";
     public static final String RECORD_PATIENT_ID = "p_owner";
     public static final String RECORD_TIMESTAMP = "timestamp";
     public static final String RECORD_DESCRIPTIONS = "descriptions";
-    public static final String RECORD_FRAGMENT_DURATION = "frag_duration";
     public static final String RECORD_FREQUENCY = "frequency";
-    public static final String RECORD_PREFILTERING = "prefiltering";
     public static final String RECORD_USED_EQUIPMENT = "used_equip";
     public static final String RECORD_EDF_RESERVED = "edf_reserved";
 
-    //Record fragment table and its columns ----------- RECORD FRAGMENT ---------
-    public static final String TABLE_RECORD_FRAGMENT = "FRAGMENT";
-    public static final String FRAGMENT_RECORD_ID = "r_id";
-    public static final String FRAGMENT_INDEX = "index_nr";
-    public static final String FRAGMENT_TIMESTAMP = "timestamp";
+    //Record fragment table and its columns ----------- ANNOTATION ---------
+    public static final String TABLE_RECORD_ANNOTATION = "ANNOTATION";
+    public static final String ANNOTATION_RECORD_ID = "r_id";
+    public static final String ANNOTATION_ONSET = "onset";
+    public static final String ANNOTATION_DURATION = "duration";
+    public static final String ANNOTATION_TIMEKEEPING = "timekeeping";
+    public static final String ANNOTATION_TEXT = "ann";
 
     //Sample table and its columns ----------- SAMPLE ---------
     public static final String TABLE_SAMPLE = "SAMPLE";
     public static final String SAMPLE_RECORD_ID = "r_id";
-    public static final String SAMPLE_CHANNEL_ID = "ch_id";
-    public static final String SAMPLE_RECORD_FRAGMENT_INDEX = "index_nr";
     public static final String SAMPLE_TIMESTAMP = "timestamp";
-    public static final String SAMPLE_VALUE_FLOAT = "sample_value_float";
-    public static final String SAMPLE_VALUE_ANNO = "sample_value_anno";
+    public static final String SAMPLE_VALUE = "sample_value";
 
     //Person table and its columns
     public static final String TABLE_PERSON = "PERSON";
@@ -77,13 +75,15 @@ public class OSADBHelper extends SQLiteOpenHelper {
     //PHYSICIAN table and its columns
     public static final String TABLE_PHYSICIAN = "PHYSICIAN";
     public static final String PHY_PERSON_ID = "p_id";
-    public static final String PHY_CLINIC_ID = "clinic_code_f";
+    public static final String PHY_CLINIC_ID = "clinic_code";
+    public static final String PHY_EMPLOYEE_NR = "employee_nr";
     public static final String PHY_TITLE = "title";
 
     //PATIENT table and its columns
     public static final String TABLE_PATIENT = "PATIENT";
     public static final String PATIENT_PER_ID = "p_id";
-    public static final String PATIENT_CLINIC_P = "clinic_code_p";
+    public static final String PATIENT_CLINIC_P = "clinic_code";
+    public static final String PATIENT_PATIENT_NR = "patientnr";
     public static final String PATIENT_HEIGHT = "height";
     public static final String PATIENT_WEIGHT = "weight";
     public static final String PATIENT_BMI = "BMI";
@@ -101,7 +101,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
 
 
     // ================ DATABASE NAME ==================================
-    private static final String DATABASE_NAME = "osamsc.db";
+    public static final String DATABASE_NAME = "osamsc.db";
     private static final int DATABASE_VERSION = 1;
     //==================================================================
 
@@ -118,7 +118,6 @@ public class OSADBHelper extends SQLiteOpenHelper {
     // SQL statement of the -------  CHANNEL ------ table creation
     private static final String SQL_CREATE_TABLE_CHANNEL =
             "CREATE TABLE " + TABLE_CHANNEL + "("
-                    + CHANNEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + CHANNEL_S_ID + " TEXT NOT NULL, "
                     + CHANNEL_NR + " INTEGER NOT NULL, "
                     + CHANNEL_NAME + " TEXT NOT NULL, "
@@ -128,8 +127,9 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + CHANNEL_PHYSICAL_MAX + " REAL, "
                     + CHANNEL_DIGITAL_MIN + " INTEGER, "
                     + CHANNEL_DIGITAL_MAX + " INTEGER, "
+                    + CHANNEL_PREFILTERING + " TEXT, "
                     + CHANNEL_EDF_RESERVED + " BLOB, "
-                    + " UNIQUE ("+ CHANNEL_NR +","+CHANNEL_S_ID+"), "
+                    + " PRIMARY KEY ("+ CHANNEL_NR +","+CHANNEL_S_ID+"), "
                     + " FOREIGN KEY( "+ CHANNEL_S_ID +" ) REFERENCES "+ TABLE_SENSOR_SOURCE +"("+ SENSOR_SOURCE_ID +") ON DELETE CASCADE "
                     +");";
 
@@ -138,44 +138,40 @@ public class OSADBHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_RECORD + "("
                     + RECORD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + RECORD_S_ID + " TEXT NOT NULL, "
+                    + RECORD_CH_NR + " INTEGER NOT NULL, "
                     + RECORD_PHYSICIAN_ID + " TEXT NOT NULL, "
                     + RECORD_PATIENT_ID + " TEXT NOT NULL, "
                     + RECORD_TIMESTAMP + " INTEGER NOT NULL, "
                     + RECORD_DESCRIPTIONS + " TEXT, "
-                    + RECORD_FRAGMENT_DURATION + " INTEGER NOT NULL, "
                     + RECORD_FREQUENCY + " REAL, "
-                    + RECORD_PREFILTERING + " TEXT, "
                     + RECORD_USED_EQUIPMENT + " TEXT, "
                     + RECORD_EDF_RESERVED + " BLOB, "
-                    + " UNIQUE ("+ RECORD_S_ID +","+RECORD_TIMESTAMP+","+RECORD_PHYSICIAN_ID+","+RECORD_PATIENT_ID+"), "
-                    + " FOREIGN KEY( "+ RECORD_S_ID +" ) REFERENCES "+ TABLE_SENSOR_SOURCE +"("+ SENSOR_SOURCE_ID +") ON DELETE CASCADE, "
+                    + " UNIQUE ("+ RECORD_S_ID +","+ RECORD_CH_NR +","+RECORD_TIMESTAMP+","+RECORD_PHYSICIAN_ID+","+RECORD_PATIENT_ID+"), "
+                    + " FOREIGN KEY( "+ RECORD_S_ID +","+ RECORD_CH_NR +" ) REFERENCES "+ TABLE_CHANNEL +"( "+ CHANNEL_S_ID + ", "+ CHANNEL_NR +") ON DELETE CASCADE, "
                     + " FOREIGN KEY( "+ RECORD_PHYSICIAN_ID +" ) REFERENCES "+ TABLE_PHYSICIAN +"("+ PHY_PERSON_ID +") ON DELETE CASCADE, "
                     + " FOREIGN KEY( "+ RECORD_PATIENT_ID +" ) REFERENCES "+ TABLE_PATIENT +"("+ PATIENT_PER_ID +") ON DELETE CASCADE "
                     +");";
 
     // SQL statement of the ---------- FRAGMENT ------- table creation
-    private static final String SQL_CREATE_TABLE_RECORD_FRAGMENT =
-            "CREATE TABLE " + TABLE_RECORD_FRAGMENT + "("
-                    + FRAGMENT_RECORD_ID + " INTEGER NOT NULL, "
-                    + FRAGMENT_INDEX + " INTEGER NOT NULL, "
-                    + FRAGMENT_TIMESTAMP + " INTEGER NOT NULL, "
-                    + " PRIMARY KEY ("+ FRAGMENT_RECORD_ID +","+FRAGMENT_INDEX+"), "
-                    + " FOREIGN KEY( "+ FRAGMENT_RECORD_ID +" ) REFERENCES "+ TABLE_RECORD +"("+ RECORD_ID +") ON DELETE CASCADE "
+    private static final String SQL_CREATE_TABLE_ANNOTATION =
+            "CREATE TABLE " + TABLE_RECORD_ANNOTATION + "("
+                    + ANNOTATION_RECORD_ID + " INTEGER NOT NULL, "
+                    + ANNOTATION_ONSET + " INTEGER NOT NULL, "
+                    + ANNOTATION_DURATION + " REAL, "
+                    + ANNOTATION_TIMEKEEPING + " INTEGER, "
+                    + ANNOTATION_TEXT + " TEXT, "
+                    + " PRIMARY KEY ("+ ANNOTATION_RECORD_ID +","+ANNOTATION_ONSET+","+ANNOTATION_DURATION+","+ANNOTATION_TIMEKEEPING+","+ANNOTATION_TEXT+"), "
+                    + " FOREIGN KEY( "+ ANNOTATION_RECORD_ID +" ) REFERENCES "+ TABLE_RECORD +"("+ RECORD_ID +") ON DELETE CASCADE "
                     +");";
 
     // SQL statement of the ------- SAMPLE ------ table creation
     private static final String SQL_CREATE_TABLE_SAMPLE =
             "CREATE TABLE " + TABLE_SAMPLE + "("
                     + SAMPLE_RECORD_ID + " INTEGER NOT NULL, "
-                    + SAMPLE_CHANNEL_ID + " INTEGER NOT NULL, "
-                    + SAMPLE_RECORD_FRAGMENT_INDEX + " INTEGER NOT NULL, "
                     + SAMPLE_TIMESTAMP + " INTEGER NOT NULL, "
-                    + SAMPLE_VALUE_FLOAT + " REAL , "
-                    + SAMPLE_VALUE_ANNO + " TEXT , "
-                    + " PRIMARY KEY ("+ SAMPLE_RECORD_ID +","+ SAMPLE_RECORD_FRAGMENT_INDEX +","+ SAMPLE_CHANNEL_ID +"," +SAMPLE_TIMESTAMP+"), "
-                    + " FOREIGN KEY( "+SAMPLE_CHANNEL_ID+") REFERENCES "+ TABLE_CHANNEL +"("+CHANNEL_ID+") ON DELETE CASCADE, "
-                    + " FOREIGN KEY("+ SAMPLE_RECORD_ID+","+ SAMPLE_RECORD_FRAGMENT_INDEX+") "
-                    + " REFERENCES "+ TABLE_RECORD_FRAGMENT +"("+ FRAGMENT_RECORD_ID +","+FRAGMENT_INDEX+") ON DELETE CASCADE "
+                    + SAMPLE_VALUE + " REAL NOT NULL, "
+                    + " PRIMARY KEY ("+ SAMPLE_RECORD_ID +","+ SAMPLE_TIMESTAMP +"), "
+                    + " FOREIGN KEY( "+SAMPLE_RECORD_ID+") REFERENCES "+ TABLE_RECORD +"("+RECORD_ID+") ON DELETE CASCADE "
                     +");";
 
     // SQL statement of the ---------- PERSON ------- table creation
@@ -206,8 +202,10 @@ public class OSADBHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_PHYSICIAN + "("
                     + PHY_PERSON_ID + " TEXT NOT NULL, "
                     + PHY_CLINIC_ID + " TEXT NOT NULL, "
+                    + PHY_EMPLOYEE_NR + " TEXT, "
                     + PHY_TITLE + " TEXT, "
                     + " PRIMARY KEY ("+ PHY_PERSON_ID +","+ PHY_CLINIC_ID +"), "
+                    + " UNIQUE ("+ PHY_CLINIC_ID +","+PHY_EMPLOYEE_NR+"), "
                     + " FOREIGN KEY("+ PHY_PERSON_ID+") REFERENCES "+ TABLE_PERSON +"("+ PERSON_ID +") ON DELETE CASCADE, "
                     + " FOREIGN KEY("+ PHY_CLINIC_ID+") REFERENCES "+ TABLE_CLINIC +"("+ CLINIC_ID +") ON DELETE CASCADE "
                     +");";
@@ -217,11 +215,13 @@ public class OSADBHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_PATIENT + "("
                     + PATIENT_PER_ID + " TEXT NOT NULL, "
                     + PATIENT_CLINIC_P + " TEXT NOT NULL, "
+                    + PATIENT_PATIENT_NR + " TEXT, "
                     + PATIENT_HEIGHT + " TEXT, "
                     + PATIENT_WEIGHT + " TEXT, "
                     + PATIENT_BMI + " TEXT, "
                     + PATIENT_HEALTH_ISSUES + " TEXT, "
                     + " PRIMARY KEY ("+ PATIENT_PER_ID +","+ PATIENT_CLINIC_P +"), "
+                    + " UNIQUE ("+ PATIENT_CLINIC_P +","+PATIENT_PATIENT_NR+"), "
                     + " FOREIGN KEY("+ PATIENT_PER_ID+") REFERENCES "+ TABLE_PERSON +"("+ PERSON_ID +") ON DELETE CASCADE,"
                     + " FOREIGN KEY("+ PATIENT_CLINIC_P+") REFERENCES "+ TABLE_CLINIC +"("+ CLINIC_ID +") ON DELETE CASCADE "
                     +");";
@@ -234,9 +234,6 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + " AFTER DELETE ON " +TABLE_SENSOR_SOURCE
                     + " FOR EACH ROW "
                     + " BEGIN "
-                    + " DELETE FROM "+ TABLE_RECORD
-                    + " WHERE "
-                    + RECORD_S_ID + " = OLD."+SENSOR_SOURCE_ID+"; "
                     + " DELETE FROM "+ TABLE_CHANNEL
                     + " WHERE "
                     + CHANNEL_S_ID + " = OLD."+SENSOR_SOURCE_ID+"; "
@@ -248,9 +245,10 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + " AFTER DELETE ON " +TABLE_CHANNEL
                     + " FOR EACH ROW "
                     + " BEGIN "
-                    + " DELETE FROM "+ TABLE_SAMPLE
+                    + " DELETE FROM "+ TABLE_RECORD
                     + " WHERE "
-                    + SAMPLE_CHANNEL_ID + " = OLD."+CHANNEL_ID+"; "
+                    + RECORD_S_ID + " = OLD."+CHANNEL_S_ID+ " AND "
+                    + RECORD_CH_NR + " = OLD."+CHANNEL_NR+"; "
                     + " END";
 
     // SQL TRIGGER WHEN DELETE DATA_RECORD
@@ -259,21 +257,12 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + " AFTER DELETE ON " +TABLE_RECORD
                     + " FOR EACH ROW "
                     + " BEGIN "
-                    + " DELETE FROM "+ TABLE_RECORD_FRAGMENT
-                    + " WHERE "
-                    + FRAGMENT_RECORD_ID + " = OLD."+RECORD_ID+"; "
-                    + " END";
-
-    // SQL TRIGGER WHEN DELETE DATA_RECORD_FRAGMENT
-    private static final String SQL_TRIGGER_DELETE_RECORD_FRAGMENT =
-            "CREATE TRIGGER Delete_data_record_fragment_trigger "
-                    + " AFTER DELETE ON " +TABLE_RECORD_FRAGMENT
-                    + " FOR EACH ROW "
-                    + " BEGIN "
                     + " DELETE FROM "+ TABLE_SAMPLE
                     + " WHERE "
-                    + SAMPLE_RECORD_FRAGMENT_INDEX + " = OLD."+FRAGMENT_INDEX+ " AND "
-                    + SAMPLE_RECORD_ID + " = OLD."+FRAGMENT_RECORD_ID+"; "
+                    + SAMPLE_RECORD_ID + " = OLD."+RECORD_ID+"; "
+                    + " DELETE FROM "+ TABLE_RECORD_ANNOTATION
+                    + " WHERE "
+                    + ANNOTATION_RECORD_ID + " = OLD."+RECORD_ID+"; "
                     + " END";
 
     // SQL TRIGGER WHEN DELETE PATIENT
@@ -336,7 +325,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_SENSOR_SOURCE);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_CHANNEL);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_RECORD);
-        sqLiteDatabase.execSQL(SQL_CREATE_TABLE_RECORD_FRAGMENT);
+        sqLiteDatabase.execSQL(SQL_CREATE_TABLE_ANNOTATION);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_SAMPLE);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_PERSON);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_CLINIC);
@@ -347,7 +336,6 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_PERSON);
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_PHYSICIAN);
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_PATIENT);
-        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_RECORD_FRAGMENT);
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_RECORD);
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_CHANNEL);
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_SENSOR_SOURCE);
@@ -361,7 +349,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_SENSOR_SOURCE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_CHANNEL);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_RECORD);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_RECORD_FRAGMENT);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+SQL_CREATE_TABLE_ANNOTATION);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_SAMPLE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_PERSON);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_CLINIC);

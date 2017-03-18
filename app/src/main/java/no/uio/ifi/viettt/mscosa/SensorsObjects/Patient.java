@@ -10,6 +10,7 @@ public class Patient extends Person{
     private float weight;
     private float BMI;
     private String otherHealthIssues;
+    private String patient_id_in_clinic;
 
     public String getOtherHealthIssues() {
         return otherHealthIssues;
@@ -49,5 +50,13 @@ public class Patient extends Person{
 
     public void setBMI(float BMI) {
         this.BMI = BMI;
+    }
+
+    public String getPatient_id_in_clinic() {
+        return patient_id_in_clinic;
+    }
+
+    public void setPatient_id_in_clinic(String patient_id_in_clinic) {
+        this.patient_id_in_clinic = patient_id_in_clinic;
     }
 }

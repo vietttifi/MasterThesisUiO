@@ -93,21 +93,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.jjoe64/graphview/4.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="987adec819c9a98faf215814f41195da48fc724e">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/pre-dexed/debug/com.jjoe64-graphview-4.2.1_e2815425afcb5d028e935869177829357b8e701e.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
         <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.1_34a924494ca7972a5d2602ad2af7768f429eb4e8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.jjoe64/graphview/4.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="987adec819c9a98faf215814f41195da48fc724e">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/pre-dexed/debug/com.jjoe64-graphview-4.2.1_e2815425afcb5d028e935869177829357b8e701e.jar" />
     </item>
     <item
         is-multidex="false"

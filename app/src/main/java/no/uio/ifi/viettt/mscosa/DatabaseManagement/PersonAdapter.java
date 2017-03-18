@@ -21,30 +21,25 @@ public class PersonAdapter {
     public static final String TAG = "PersonAdapter";
 
     private SQLiteDatabase mDatabase;
-    private OSADBHelper mDbHelper;
+    private OSADataBaseManager mDbManagerInstance;
     private String[] mAllColumnsPerson = {OSADBHelper.PERSON_ID, OSADBHelper.PERSON_NAME, OSADBHelper.PERSON_CITY, OSADBHelper.PERSON_PHONE,
             OSADBHelper.PERSON_EMAIL, OSADBHelper.PERSON_GENDER, OSADBHelper.PERSON_DAY_OF_BIRTH,
             OSADBHelper.PERSON_AGE};
-    private String[] mAllColumnsPatient = {OSADBHelper.PATIENT_PER_ID, OSADBHelper.PATIENT_CLINIC_P, OSADBHelper.PATIENT_HEIGHT, OSADBHelper.PATIENT_WEIGHT,
+    private String[] mAllColumnsPatient = {OSADBHelper.PATIENT_PER_ID, OSADBHelper.PATIENT_CLINIC_P, OSADBHelper.PATIENT_PATIENT_NR, OSADBHelper.PATIENT_HEIGHT, OSADBHelper.PATIENT_WEIGHT,
             OSADBHelper.PATIENT_BMI, OSADBHelper.PATIENT_HEALTH_ISSUES};
-    private String[] mAllColumnsPhysician = {OSADBHelper.PHY_PERSON_ID, OSADBHelper.PHY_CLINIC_ID, OSADBHelper.PHY_TITLE};
+    private String[] mAllColumnsPhysician = {OSADBHelper.PHY_PERSON_ID, OSADBHelper.PHY_CLINIC_ID, OSADBHelper.PHY_EMPLOYEE_NR, OSADBHelper.PHY_TITLE};
 
     public PersonAdapter(Context context){
-        mDbHelper = new OSADBHelper(context);
-
+        OSADataBaseManager.initializeInstance(new OSADBHelper(context));
         try{
-            open();
-        }catch (SQLException e){
+            mDbManagerInstance = OSADataBaseManager.getInstance();
+            mDatabase = mDbManagerInstance.openDatabase();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
-
-    public void open() throws SQLException{
-        mDatabase = mDbHelper.getWritableDatabase();
-    }
-
     public void close(){
-        mDbHelper.close();
+        mDbManagerInstance.closeDatabase();
     }
 
     void cursorToPerson(Cursor cursor, Person person) {
@@ -61,16 +56,18 @@ public class PersonAdapter {
     void cursorToPatient(Cursor cursor, Patient patient) {
         patient.setP_id(cursor.getString(0));
         patient.setClinic_code(cursor.getString(1));
-        patient.setHeight(cursor.getFloat(2));
-        patient.setWeight(cursor.getFloat(3));
-        patient.setBMI(cursor.getFloat(4));
-        patient.setOtherHealthIssues(cursor.getString(5));
+        patient.setPatient_id_in_clinic(cursor.getString(2));
+        patient.setHeight(cursor.getFloat(3));
+        patient.setWeight(cursor.getFloat(4));
+        patient.setBMI(cursor.getFloat(5));
+        patient.setOtherHealthIssues(cursor.getString(6));
     }
 
     void cursorToPhysician(Cursor cursor, Physician physician) {
         physician.setP_id(cursor.getString(0));
         physician.setClinic_code(cursor.getString(1));
-        physician.setTitle(cursor.getString(2));
+        physician.setEmployee_id(cursor.getString(2));
+        physician.setTitle(cursor.getString(3));
     }
 
     public void storeNewPerson(Person person){
@@ -90,6 +87,7 @@ public class PersonAdapter {
             Patient p = (Patient)person;
             values.put(OSADBHelper.PATIENT_PER_ID,p.getP_id());
             values.put(OSADBHelper.PATIENT_CLINIC_P,p.getClinic_code());
+            values.put(OSADBHelper.PATIENT_PATIENT_NR,p.getPatient_id_in_clinic());
             values.put(OSADBHelper.PATIENT_HEIGHT,p.getHeight());
             values.put(OSADBHelper.PATIENT_WEIGHT,p.getWeight());
             values.put(OSADBHelper.PATIENT_BMI,p.getBMI());
@@ -99,6 +97,7 @@ public class PersonAdapter {
             Physician p = (Physician)person;
             values.put(OSADBHelper.PHY_PERSON_ID,p.getP_id());
             values.put(OSADBHelper.PHY_CLINIC_ID,p.getClinic_code());
+            values.put(OSADBHelper.PHY_EMPLOYEE_NR,p.getEmployee_id());
             values.put(OSADBHelper.PHY_TITLE,p.getTitle());
             mDatabase.insertWithOnConflict(OSADBHelper.TABLE_PHYSICIAN, null, values, SQLiteDatabase.CONFLICT_REPLACE);
         }
@@ -170,7 +169,7 @@ public class PersonAdapter {
 
     public ArrayList<String> getAllPatientIDs(){
         ArrayList<String> ids = new ArrayList<>();
-        String rawQuery = "SELECT " + OSADBHelper.PATIENT_PER_ID +
+        String rawQuery = "SELECT DISTINCT " + OSADBHelper.PATIENT_PER_ID +
                 " FROM " + OSADBHelper.TABLE_PATIENT;
         Cursor cursor = mDatabase.rawQuery(rawQuery, null);
         if (cursor.getCount() != 0) {
@@ -186,7 +185,7 @@ public class PersonAdapter {
 
     public ArrayList<String> getAllPhysicianIDs(){
         ArrayList<String> ids = new ArrayList<>();
-        String rawQuery = "SELECT " + OSADBHelper.PHY_PERSON_ID +
+        String rawQuery = "SELECT DISTINCT " + OSADBHelper.PHY_PERSON_ID +
                 " FROM " + OSADBHelper.TABLE_PHYSICIAN;
         Cursor cursor = mDatabase.rawQuery(rawQuery, null);
         if (cursor.getCount() != 0) {

@@ -9,27 +9,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.TimeZone;
 
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordFragmentAdapter;
-import no.uio.ifi.viettt.mscosa.MainFragments.PlotViewFragment;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.AnnotationAdapter;
 import no.uio.ifi.viettt.mscosa.MainFragments.ServerFragment;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.Physician;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.RecordFragment;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
 
@@ -48,10 +41,13 @@ public class ClientThread extends Thread{
 
     private SensorSource sensorSource;
     private HashMap<String,Channel> channels = new HashMap<>();
-    private Record record;
-    private RecordFragment recordFragmentCurrent;
+    private HashMap<String,Record> records = new HashMap<>(); //key is channel nr, for that it is easy to retrieve record when save samples
     private Socket clientsSocket;
     private UpdateDBThread updateDBThread;
+
+    private long timeStamp;
+
+    private ArrayList<Sample> bufferSamples;
 
     //HELP ATTRIBUTE
     private Context context;
@@ -61,6 +57,8 @@ public class ClientThread extends Thread{
     private float maxFrequence = 1;
 
     private boolean firstTimeStamp;
+    //BUFFER SIZE IN SECOND FOR REAL TIME SOURCE
+    private int frag_duration;
 
     public ClientThread(Socket clientsSocket, Context context, Handler serverUpdateUI, ServerFragment serverFragment){
         this.clientsSocket = clientsSocket;
@@ -223,50 +221,65 @@ public class ClientThread extends Thread{
     private void manageIsStoring(BitalinoDataSample samples[]) {
         //FIRST TIME
         if(firstTimeStamp) {
-            recordFragmentCurrent.setTimestamp(samples[0].getCreatedDate());
-            record.setTimestamp(samples[0].getCreatedDate());
-            //update DB for RECORD and FIRST FRAGMENT
-            RecordFragmentAdapter recordFragmentAdapter = new RecordFragmentAdapter(context);
-            recordFragmentAdapter.updateRecordFragmentTimestamp(record.getR_id(),recordFragmentCurrent.getIndex(),samples[0].getCreatedDate());
-            recordFragmentAdapter.close();
+            timeStamp = samples[0].getCreatedDate();
+            //update DB for RECORDs
             RecordAdapter recordAdapter = new RecordAdapter(context);
-            recordAdapter.updateRecordTimestamp(record.getR_id(),samples[0].getCreatedDate());
+            for(Record r : records.values()){
+                r.setTimestamp(timeStamp);
+                recordAdapter.updateRecordTimestamp(r.getR_id(),timeStamp);
+            }
             recordAdapter.close();
             firstTimeStamp = false;
         }
 
         //if we need to save empty fragment n = (samples timestamp - fragment timestamp)/duration >=1
-        long n = (samples[0].getCreatedDate() - recordFragmentCurrent.getTimestamp())/record.getFrag_duration();
+        long n = (samples[0].getCreatedDate() - timeStamp)/(long)frag_duration;
         if(n >= 1){
             //send storing request to DB with current fragment as parameter
-            updateDBThread.requestDataBaseSaving(recordFragmentCurrent);
-            int numberOfEmptyFragment = (int) n;
-            RecordFragmentAdapter recordFragmentAdapter = new RecordFragmentAdapter(context);
-            do{
-                //create new current fragment
-                RecordFragment tmp = record.getNextRecordFragment();
-                //save n-1 empty fragment with timestamp = last timestamp + duration
-
-                long newTimeStamp = recordFragmentCurrent.getTimestamp()+record.getFrag_duration();
-                tmp.setTimestamp(newTimeStamp);
-                recordFragmentAdapter.saveRecordFragmentToDB(tmp);
-
-                recordFragmentCurrent = tmp;
-                numberOfEmptyFragment--;
-            }while(numberOfEmptyFragment > 1);
-            recordFragmentAdapter.close();
+            updateDBThread.requestDataBaseSaving(bufferSamples);
+            timeStamp = samples[0].getCreatedDate();
+            //create new current fragment
+            bufferSamples = new ArrayList<>();
         }
-
-
         //(samples timestamp - fragment timestamp)/duration < 1
         //add all samples to current fragment buffer
         for(BitalinoDataSample sample : samples){
             if(channels.get(sample.getChannel_nr()).isSelectedToSaveSample())
-                recordFragmentCurrent.getSamples_In_The_Same_Fragment().add(
-                    new Sample(record.getR_id(),
-                            recordFragmentCurrent.getIndex(),sample.getCreatedDate(),
-                            Integer.parseInt(sample.getChannel_nr()),sample.getSample_data(),null));
+                bufferSamples.add(new Sample(records.get(sample.getChannel_nr()).getR_id(),sample.getCreatedDate(),sample.getSample_data()));
         }
+    }
+
+    public void setStoring(boolean storing) {
+        System.out.println("STORING " + storing);
+        isStoring = storing;
+        if(storing){
+            updateDBThread = new UpdateDBThread(context);
+            updateDBThread.start();
+            bufferSamples = new ArrayList<>();
+            firstTimeStamp = true;
+        } else {
+            if(bufferSamples != null && !bufferSamples.isEmpty()) {
+                updateDBThread.requestDataBaseSaving(bufferSamples);
+            }
+            bufferSamples = null;
+            if(updateDBThread != null) updateDBThread.setStop(true);
+            File f = context.getDatabasePath(OSADBHelper.DATABASE_NAME);
+            long dbSize = f.length();
+            System.out.println("DB size: "+dbSize/(1024.0*1024.0)+" MB.");
+        }
+
+
+    }
+
+    public void setPlotting(boolean plotting, BeNotifiedComingSample plotViewFragment) {
+        isPlotting = plotting;
+        if(plotting){
+            this.plotViewFragment = plotViewFragment;
+        }
+    }
+
+    public boolean isPlotting() {
+        return isPlotting;
     }
 
     public String getThread_ID() {
@@ -279,36 +292,6 @@ public class ClientThread extends Thread{
 
     public boolean isStoring() {
         return isStoring;
-    }
-
-    public void setStoring(boolean storing) {
-        System.out.println("STORING " + storing);
-        isStoring = storing;
-        if(storing){
-            firstTimeStamp = true;
-            updateDBThread = new UpdateDBThread(context);
-            updateDBThread.start();
-            recordFragmentCurrent = record.getNextRecordFragment();
-        } else {
-            if(recordFragmentCurrent != null && !recordFragmentCurrent.getSamples_In_The_Same_Fragment().isEmpty()) {
-                updateDBThread.requestDataBaseSaving(recordFragmentCurrent);
-            }
-            recordFragmentCurrent = null;
-            if(updateDBThread != null) updateDBThread.setStop(true);
-        }
-
-
-    }
-
-    public boolean isPlotting() {
-        return isPlotting;
-    }
-
-    public void setPlotting(boolean plotting, BeNotifiedComingSample plotViewFragment) {
-        isPlotting = plotting;
-        if(plotting){
-            this.plotViewFragment = plotViewFragment;
-        }
     }
 
     public boolean isDisconnected() {
@@ -351,14 +334,6 @@ public class ClientThread extends Thread{
         this.clientsSocket = clientsSocket;
     }
 
-    public Record getRecord() {
-        return record;
-    }
-
-    public void setRecord(Record record) {
-        this.record = record;
-    }
-
     public boolean isReadyToUse() {
         return readyToUse;
     }
@@ -367,6 +342,19 @@ public class ClientThread extends Thread{
         this.readyToUse = readyToUse;
     }
 
+    public HashMap<String, Record> getRecords() {
+        return records;
+    }
 
+    public void setRecords(HashMap< String, Record> records) {
+        this.records = records;
+    }
 
+    public int getFrag_duration() {
+        return frag_duration;
+    }
+
+    public void setFrag_duration(int frag_duration) {
+        this.frag_duration = frag_duration;
+    }
 }

@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
 
 /**
@@ -16,27 +18,24 @@ public class RecordAdapter {
     public static final String TAG = "DataRecordAdapter";
 
     private SQLiteDatabase mDatabase;
-    private OSADBHelper mDbHelper;
-    private String[] mAllColumns = {OSADBHelper.RECORD_ID, OSADBHelper.RECORD_S_ID, OSADBHelper.RECORD_PHYSICIAN_ID, OSADBHelper.RECORD_PATIENT_ID, OSADBHelper.RECORD_TIMESTAMP,
-            OSADBHelper.RECORD_DESCRIPTIONS, OSADBHelper.RECORD_FRAGMENT_DURATION, OSADBHelper.RECORD_FREQUENCY, OSADBHelper.RECORD_PREFILTERING,
+    private OSADataBaseManager mDbManagerInstance;
+    private String[] mAllColumns = {OSADBHelper.RECORD_ID, OSADBHelper.RECORD_TIMESTAMP,
+            OSADBHelper.RECORD_S_ID, OSADBHelper.RECORD_CH_NR,
+            OSADBHelper.RECORD_PHYSICIAN_ID, OSADBHelper.RECORD_PATIENT_ID,
+            OSADBHelper.RECORD_DESCRIPTIONS, OSADBHelper.RECORD_FREQUENCY,
             OSADBHelper.RECORD_USED_EQUIPMENT, OSADBHelper.RECORD_EDF_RESERVED};
 
     public RecordAdapter(Context context){
-        mDbHelper = new OSADBHelper(context);
-
+        OSADataBaseManager.initializeInstance(new OSADBHelper(context));
         try{
-            open();
-        }catch (SQLException e){
+            mDbManagerInstance = OSADataBaseManager.getInstance();
+            mDatabase = mDbManagerInstance.openDatabase();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
-
-    public void open() throws SQLException{
-        mDatabase = mDbHelper.getWritableDatabase();
-    }
-
     public void close(){
-        mDbHelper.close();
+        mDbManagerInstance.closeDatabase();
     }
 
     public void updateRecordTimestamp(long r_id, long timestamp){
@@ -48,37 +47,35 @@ public class RecordAdapter {
     public Record cursorToRecord(Cursor cursor) {
         Record record = new Record();
         record.setR_id(cursor.getLong(0));
-        record.setS_id(cursor.getString(1));
-        record.setPhysician_id(cursor.getString(2));
-        record.setPatient_id(cursor.getString(3));
-        record.setTimestamp(cursor.getLong(4));
-        record.setDescriptions(cursor.getString(5));
-        record.setFrag_duration(cursor.getLong(6));
+        record.setTimestamp(cursor.getLong(1));
+        record.setS_id(cursor.getString(2));
+        record.setCh_nr(cursor.getInt(3));
+        record.setPhysician_id(cursor.getString(4));
+        record.setPatient_id(cursor.getString(5));
+        record.setDescriptions(cursor.getString(6));
         record.setFrequency(cursor.getFloat(7));
-        record.setPrefiltering(cursor.getString(8));
-        record.setUsed_equip(cursor.getString(9));
-        record.setEdf_reserved(cursor.getBlob(10));
+        record.setUsed_equip(cursor.getString(8));
+        record.setEdf_reserved(cursor.getBlob(9));
 
         return record;
     }
 
     public long saveRecordToDB(Record record){
         ContentValues values = new ContentValues();
+        values.put(OSADBHelper.RECORD_TIMESTAMP,record.getTimestamp());
         values.put(OSADBHelper.RECORD_S_ID,record.getS_id());
+        values.put(OSADBHelper.RECORD_CH_NR,record.getCh_nr());
         values.put(OSADBHelper.RECORD_PHYSICIAN_ID,record.getPhysician_id());
         values.put(OSADBHelper.RECORD_PATIENT_ID,record.getPatient_id());
-        values.put(OSADBHelper.RECORD_TIMESTAMP,record.getTimestamp());
         values.put(OSADBHelper.RECORD_DESCRIPTIONS,record.getDescriptions());
-        values.put(OSADBHelper.RECORD_FRAGMENT_DURATION,record.getFrag_duration());
         values.put(OSADBHelper.RECORD_FREQUENCY,record.getFrequency());
-        values.put(OSADBHelper.RECORD_PREFILTERING,record.getPrefiltering());
         values.put(OSADBHelper.RECORD_USED_EQUIPMENT,record.getUsed_equip());
         values.put(OSADBHelper.RECORD_EDF_RESERVED,record.getEdf_reserved());
 
-        return mDatabase.insert(OSADBHelper.TABLE_RECORD, null, values);
+        return mDatabase.insertWithOnConflict(OSADBHelper.TABLE_RECORD, null, values, SQLiteDatabase.CONFLICT_REPLACE);
     }
 
-    public Record getRecordById(int r_id) {
+    public Record getRecordById(long r_id) {
         Cursor cursor = mDatabase.query(OSADBHelper.TABLE_RECORD, mAllColumns,
                 OSADBHelper.RECORD_ID + " = ? ",
                 new String[] {String.valueOf(r_id)}, null, null, null);
@@ -92,11 +89,23 @@ public class RecordAdapter {
         return newRecord;
     }
 
-    public Record getRecordById(String source_id, String physician_id, String patient_id, long timestamp) {
-        String condition = OSADBHelper.RECORD_S_ID + " = ? AND "+OSADBHelper.RECORD_PHYSICIAN_ID + " = ? AND "+ OSADBHelper.RECORD_PATIENT_ID + " = ? AND "+
-                OSADBHelper.RECORD_TIMESTAMP + " = ? ";
+    public ArrayList<Record> getListRecordByListIds(ArrayList<String> recordIds){
+        ArrayList<Record> records = new ArrayList<>();
+        for(String rid : recordIds){
+            Record r = getRecordById(Long.parseLong(rid));
+            records.add(r);
+        }
+        return records;
+    }
+
+    public Record getRecordById(String source_id, String physician_id, String patient_id, int channel_nr, long timestamp) {
+        String condition = OSADBHelper.RECORD_S_ID + " = ? AND "
+                + OSADBHelper.RECORD_PHYSICIAN_ID + " = ? AND "
+                + OSADBHelper.RECORD_PATIENT_ID + " = ? AND "
+                + OSADBHelper.CHANNEL_NR + " = ? AND "
+                + OSADBHelper.RECORD_TIMESTAMP + " = ? ";
         Cursor cursor = mDatabase.query(OSADBHelper.TABLE_RECORD, mAllColumns, condition,
-                new String[] {source_id, physician_id, patient_id, String.valueOf(timestamp)}, null, null, null);
+                new String[] {source_id, physician_id, patient_id, String.valueOf(channel_nr), String.valueOf(timestamp)}, null, null, null);
 
         Record newRecord = null;
         if (cursor.getCount() != 0) {
@@ -105,6 +114,39 @@ public class RecordAdapter {
         }
         cursor.close();
         return newRecord;
+    }
+
+    public long getRecordDuration(long record_id){
+        long recordLength = -1;
+        String queryString = "SELECT (MAX("+OSADBHelper.SAMPLE_TIMESTAMP+") - MIN("+OSADBHelper.SAMPLE_TIMESTAMP+")) " +
+                "FROM "+OSADBHelper.TABLE_SAMPLE+ " WHERE "+OSADBHelper.SAMPLE_RECORD_ID +" = "+record_id;
+        Cursor cursor = mDatabase.rawQuery(queryString, null);
+        if (cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            recordLength = cursor.getLong(0);
+        }
+        cursor.close();
+        return recordLength;
+    }
+
+    public long getTotalSampleInRecord(long record_id){
+        long totalSample = -1;
+        String queryString = "SELECT COUNT(*) " +
+                "FROM "+OSADBHelper.TABLE_SAMPLE+ " WHERE "+OSADBHelper.SAMPLE_RECORD_ID +" = "+record_id;
+        Cursor cursor = mDatabase.rawQuery(queryString, null);
+        if (cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            totalSample = cursor.getLong(0);
+        }
+        cursor.close();
+        return totalSample;
+    }
+
+    public long getAverageSamplePerSecondRecord(long record_id){
+        long totalSam = getTotalSampleInRecord(record_id);
+        long recDur = getRecordDuration(record_id);
+        if(totalSam == -1 || recDur == -1) return -1;
+        else return totalSam/(recDur/1000);
     }
 
     public void deleteRecord(String r_id) {

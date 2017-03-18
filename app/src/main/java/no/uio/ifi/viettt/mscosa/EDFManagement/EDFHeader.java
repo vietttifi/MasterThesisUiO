@@ -23,6 +23,34 @@ public class EDFHeader
         private Integer[] numberOfSamples = null;
         private byte[][] reserveds = null;
 
+        public void printHeader(){
+            System.out.println("------------- THE HEADER RECORD CONTAINS -----------------");
+            System.out.println("8 ascii : version of this data format (0) ---> "+version);
+            System.out.println("80 ascii : local patient identification ---> "+patientInfo);
+            System.out.println("80 ascii : local recording identification ---> "+clinicInfo);
+            System.out.println("8 ascii : startdate of recording (dd.mm.yy) ---> "+startDate);
+            System.out.println("8 ascii : starttime of recording (hh.mm.ss). ---> "+startTime);
+            System.out.println("8 ascii : number of bytes in header record ---> "+bytesInHeader);
+            System.out.println("44 ascii : reserved ---> "+reservedFormat);
+            System.out.println("8 ascii : number of data records (-1 if unknown) ---> "+numberOfRecords);
+            System.out.println("8 ascii : duration of a data record, in seconds ---> "+durationOfRecords);
+            System.out.println("4 ascii : number of signals (ns) in data record ---> "+numberOfChannels);
+
+            System.out.println(" ----------------------- CHANNELS --------------------- ");
+            for(int i = 0; i<numberOfChannels;i++){
+                System.out.println("ns * 16 ascii : ns * label ---> "+channelLabels[i]);
+                System.out.println("ns * 80 ascii : ns * transducer type (e.g. AgAgCl electrode) ---> "+transducerTypes[i]);
+                System.out.println("ns * 8 ascii : ns * physical dimension (e.g. uV) ---> "+dimensions[i]);
+                System.out.println("ns * 8 ascii : ns * physical minimum (e.g. -500 or 34) ---> "+minInUnits[i]);
+                System.out.println("ns * 8 ascii : ns * physical maximum (e.g. 500 or 40) ---> "+maxInUnits[i]);
+                System.out.println("ns * 8 ascii : ns * digital minimum (e.g. -2048) ---> "+digitalMin[i]);
+                System.out.println("ns * 8 ascii : ns * digital maximum (e.g. 2047) ---> "+digitalMax[i]);
+                System.out.println("ns * 80 ascii : ns * prefiltering (e.g. HP:0.1Hz LP:75Hz) ---> "+prefilterings[i]);
+                System.out.println("ns * 8 ascii : ns * nr of samples in each data record ---> "+numberOfSamples[i]);
+                System.out.println("ns * 32 ascii : ns * reserved <-------      END           ------> ");
+            }
+        }
+
         public String getVersion() {
                 return version;
         }
@@ -182,4 +210,6 @@ public class EDFHeader
         public void setReserveds(byte[][] reserveds) {
                 this.reserveds = reserveds;
         }
+
+
 }

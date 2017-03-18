@@ -6,6 +6,7 @@ package no.uio.ifi.viettt.mscosa.SensorsObjects;
 
 public class Physician extends Person{
     private String clinic_code;
+    private String employee_id;
     private String title;
 
     public String getClinic_code() {
@@ -22,5 +23,13 @@ public class Physician extends Person{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(String employee_id) {
+        this.employee_id = employee_id;
     }
 }

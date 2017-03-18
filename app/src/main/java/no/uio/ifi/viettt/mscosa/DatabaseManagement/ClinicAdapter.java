@@ -18,25 +18,20 @@ public class ClinicAdapter {
     public static final String TAG = "ClinicAdapter";
 
     private SQLiteDatabase mDatabase;
-    private OSADBHelper mDbHelper;
+    private OSADataBaseManager mDbManagerInstance;
     private String[] mAllColumns = {OSADBHelper.CLINIC_ID, OSADBHelper.CLINIC_NAME, OSADBHelper.CLINIC_ADDRESS, OSADBHelper.CLINIC_PHONE_NR, OSADBHelper.CLINIC_EMAIL};
 
     public ClinicAdapter(Context context){
-        mDbHelper = new OSADBHelper(context);
-
+        OSADataBaseManager.initializeInstance(new OSADBHelper(context));
         try{
-            open();
-        }catch (SQLException e){
+            mDbManagerInstance = OSADataBaseManager.getInstance();
+            mDatabase = mDbManagerInstance.openDatabase();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
-
-    public void open() throws SQLException{
-        mDatabase = mDbHelper.getWritableDatabase();
-    }
-
     public void close(){
-        mDbHelper.close();
+        mDbManagerInstance.closeDatabase();
     }
 
     Clinic cursorToClinic(Cursor cursor) {

@@ -12,6 +12,7 @@ import no.uio.ifi.viettt.mscosa.MainFragments.PlotViewFragment;
 import no.uio.ifi.viettt.mscosa.MainFragments.SourceFromFileFragment;
 import no.uio.ifi.viettt.mscosa.MainFragments.MiningFragment;
 import no.uio.ifi.viettt.mscosa.MainFragments.ServerFragment;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
 
 public class MainActivity extends AppCompatActivity {
     public ServerFragment swf;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         mf = new MiningFragment();
 
         swf.setmMainActivityAndOther(this,ccsf);
-        //ef.setPointerToCurUI(this);
+        ef.setPointerToCurUI(this);
     }
 
     @Override
