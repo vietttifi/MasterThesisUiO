@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
 import no.uio.ifi.viettt.mscosa.DatabaseVisualisationActivity;
@@ -37,6 +38,7 @@ public class MiningFragment extends Fragment {
         ImageButton ibtn_visualise = (ImageButton) v.findViewById(R.id.btnVisualise);
         ImageButton ibtn_raw_query = (ImageButton) v.findViewById(R.id.btnRawQuery);
         ImageButton ibtn_exportEDF = (ImageButton) v.findViewById(R.id.btnExportEDF);
+        ImageButton ibtn_mining = (ImageButton) v.findViewById(R.id.btnEXTRA);
 
         ibtn_raw_query.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +64,13 @@ public class MiningFragment extends Fragment {
                 Intent myIntent = new Intent(getActivity(), EDFExportActivity.class);
                 myIntent.putExtra("key", "TEST"); //Optional parameters
                 getActivity().startActivity(myIntent);
+            }
+        });
+
+        ibtn_mining.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"FUTURE WORK - MINING METHODS",Toast.LENGTH_SHORT).show();
             }
         });
 

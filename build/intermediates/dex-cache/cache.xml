@@ -75,21 +75,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.1_77e7e84c570de16e2a5ca91f38980ca03e2e41cd.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
         <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.1_00390d73d1e7d12ec471b454aa7fa84d47b47a62.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="/Users/viettt/Desktop/MScOSA/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.1_77e7e84c570de16e2a5ca91f38980ca03e2e41cd.jar" />
     </item>
     <item
         is-multidex="false"

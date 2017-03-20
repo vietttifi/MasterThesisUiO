@@ -296,10 +296,15 @@ public class SourceFromFileFragment extends Fragment {
                         try {
                             // Get the file path from the URI
                             final String path = FileUtils.getPath(getContext(), uri);
-                            lblFilePath.setText(path);
-                            btn_addNewFile.setEnabled(true);
-                            Toast.makeText(getActivity(),
-                                    "File Selected: " + path, Toast.LENGTH_LONG).show();
+                            if(!path.substring(path.length()-3,path.length()).toLowerCase().equals("edf")){
+                                Toast.makeText(getActivity(), "Please choose file with edf/EDF extension", Toast.LENGTH_LONG).show();
+                            }else{
+                                lblFilePath.setText(path);
+                                btn_addNewFile.setEnabled(true);
+                                Toast.makeText(getActivity(),
+                                        "File Selected: " + path, Toast.LENGTH_LONG).show();
+                            }
+
                         } catch (Exception e) {
                             Log.e("FileS", "File select error", e);
                         }

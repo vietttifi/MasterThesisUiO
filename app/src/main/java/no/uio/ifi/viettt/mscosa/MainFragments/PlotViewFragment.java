@@ -520,6 +520,10 @@ public class PlotViewFragment extends Fragment implements BeNotifiedComingSample
     }
 
     void popUpSelectSensors(){
+        if(!isReady || visualiseSource == null){
+            Toast.makeText(getContext(),"Source has not been chosen or disconnected.",Toast.LENGTH_SHORT).show();
+            return;
+        }
         alertdialogbuilder = new AlertDialog.Builder(getActivity());
 
         String nameSensors[] = new String[alertDialogItems.length];

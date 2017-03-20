@@ -27,7 +27,6 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
@@ -38,7 +37,6 @@ import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
-import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.BitalinoDataSample;
 
 public class DatabaseVisualisationActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -54,7 +52,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
     AlertDialog.Builder alertdialogbuilder;
     String[] alertDialogItems;
     boolean[] selectedChannels;
-    HashMap<String, LineGraphSeries<DataPoint>> channelLines;
+    HashMap<String, LineGraphSeries<DataPoint>> channelLines = new HashMap<>();
 
     final int NR_ENTRIES_WINDOW = 300;
 
@@ -71,12 +69,12 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        initThing();
+    }
 
+    private void initThing(){
         setContentView(R.layout.activity_database_visualisation);
-
-
         rdSource = (RadioButton)findViewById(R.id.rdBtnSource);
         rdPatient = (RadioButton)findViewById(R.id.rdBtnPatient);
         graph = (GraphView)findViewById(R.id.graphview);
@@ -164,8 +162,6 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                 manageIbtnSaveAnns(view);
             }
         });
-
-
     }
 
     /*=======================  FUNCTIONS  ==========================*/
@@ -373,8 +369,8 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
     }
 
     private void initGraph(ArrayList<Record> records, ArrayList<Channel> channels){
-        graph.removeAllSeries();
-        channelLines = new HashMap<>();
+        initThing();
+        channelLines.clear();
         selectedChannels = new boolean[channels.size()];
         alertDialogItems = new String[channels.size()];
 
@@ -392,7 +388,6 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
         }
 
         drawGraph(-10,10);
-
         updateGUI = new UpdateGui(records,channels);
         updateGUI.start();
     }
@@ -439,6 +434,35 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
 
         @Override
         public void run() {
+
+            Thread manageGUIData = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    boolean pauseUpdate = pauseGUI;
+                    pauseGUI = true;
+                    HashMap<String,LineGraphSeries<DataPoint>> channel2 = channelLines;
+                    for(Record r: records){
+                        ArrayList<Sample> samples = r.getSamplesbuffer();
+                        while (!samples.isEmpty() && timestampPlot >= samples.get(0).getTimestamp()){
+                            Sample sample = samples.remove(0);
+                            if(minYY > sample.getSample_data()) minYY = ((int) sample.getSample_data())-1;
+                            if(maxYY < sample.getSample_data()) maxYY = ((int) sample.getSample_data())+1;
+                            LineGraphSeries<DataPoint> tmp = channel2.get(String.valueOf(r.getCh_nr()));
+                            if(tmp != null && (sample.getTimestamp()-r.getTimestamp()) > tmp.getHighestValueX()){
+                                tmp.appendData(new DataPoint(sample.getTimestamp()-r.getTimestamp(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
+                                //System.out.println(tmp.getHighestValueX()+ " "+sample.getSample_data() + ": "+sample.getTimestamp() + " :" + r.getTimestamp());
+                            }
+
+                        }
+                    }
+
+                    timestampPlot += waitTime;
+                    graph.getViewport().setMinY(minYY);
+                    graph.getViewport().setMaxY(maxYY);
+                    pauseGUI = pauseUpdate;
+                }
+            });
+
             boolean stop = false;
             while(!stop){
                 boolean allEmpty = true;
@@ -456,36 +480,14 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                 if(allEmpty) break;
                 try {
                     while(pauseGUI) sleep(waitTime);
+                    runOnUiThread(manageGUIData);
                 } catch (InterruptedException e) {
-                    stop = true;
                     e.printStackTrace();
+                    stop = true;
                 }
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        boolean pauseUpdate = pauseGUI;
-                        pauseGUI = true;
-                        for(Record r: records){
-                            ArrayList<Sample> samples = r.getSamplesbuffer();
-                            while (!samples.isEmpty() && timestampPlot >= samples.get(0).getTimestamp()){
-                                Sample sample = samples.remove(0);
-                                if(minYY > sample.getSample_data()) minYY = ((int) sample.getSample_data())-1;
-                                if(maxYY < sample.getSample_data()) maxYY = ((int) sample.getSample_data())+1;
-                                LineGraphSeries<DataPoint> tmp = channelLines.get(String.valueOf(r.getCh_nr()));
-                                try{
-                                    tmp.appendData(new DataPoint(sample.getTimestamp()-r.getTimestamp(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
-                                }catch (Exception e){e.printStackTrace();}
-                            }
-                        }
-                        timestampPlot += waitTime;
-                        graph.getViewport().setMinY(minYY);
-                        graph.getViewport().setMaxY(maxYY);
-                        graph.invalidate();
-                        pauseGUI = pauseUpdate;
-                    }
-                });
             }
+            System.out.println("IAM DIE "+this.toString());
 
         }
     }

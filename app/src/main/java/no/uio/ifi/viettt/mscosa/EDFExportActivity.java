@@ -416,7 +416,6 @@ public class EDFExportActivity extends AppCompatActivity{
             ArrayList<Annotation> recordAnno = annotationAdapter.getAnnotationsForRecordList(records);
             annotationAdapter.close();
 
-            for(Annotation annotation : recordAnno) System.out.println("---> "+annotation.getAnn_id()+" "+annotation.getAnn());
             if(!recordAnno.isEmpty()){
                 isAnnotation = true;
                 edfHeader.setBytesInHeader(edfHeader.getBytesInHeader()+aChannelSizeBytes());

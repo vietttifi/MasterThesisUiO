@@ -1,15 +1,15 @@
 [
     {
-        "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/fragment_chooser.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/ir.sohreco.androidfilechooser/android-file-chooser/1.1.0/res/layout/fragment_chooser.xml"
+        "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_template_lines_media.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
         "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_template_lines_media.xml"
+        "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/fragment_chooser.xml",
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/ir.sohreco.androidfilechooser/android-file-chooser/1.1.0/res/layout/fragment_chooser.xml"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
