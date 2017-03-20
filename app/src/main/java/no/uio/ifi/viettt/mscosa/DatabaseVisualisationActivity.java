@@ -448,8 +448,8 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                     if(r.getSamplesbuffer().size() ==  0){
                         r.setSamplesbuffer(sampleAdapter.getSamples(r.getR_id(),r.getOffset(),r.getOffset()+r.getLimit()));
                         r.setOffset(r.getOffset()+r.getLimit());
-                        if(r.getSamplesbuffer().isEmpty()) allEmpty = false;
                     }
+                    if(!r.getSamplesbuffer().isEmpty()) allEmpty = false;
                 }
                 sampleAdapter.close();
 
@@ -458,6 +458,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                     while(pauseGUI) sleep(waitTime);
                 } catch (InterruptedException e) {
                     stop = true;
+                    e.printStackTrace();
                 }
 
                 runOnUiThread(new Runnable() {
@@ -474,7 +475,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                                 LineGraphSeries<DataPoint> tmp = channelLines.get(String.valueOf(r.getCh_nr()));
                                 try{
                                     tmp.appendData(new DataPoint(sample.getTimestamp()-r.getTimestamp(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
-                                }catch (Exception e){}
+                                }catch (Exception e){e.printStackTrace();}
                             }
                         }
                         timestampPlot += waitTime;
@@ -485,6 +486,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                     }
                 });
             }
+
         }
     }
 
