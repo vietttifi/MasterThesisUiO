@@ -599,6 +599,7 @@ public class ServerFragment extends Fragment {
                         record.setS_id(clientThread.getSensorSource().getS_id());
                         record.setPhysician_id(physician.getP_id());
                         record.setPatient_id(physician.getP_id());
+                        record.setCh_nr(Integer.parseInt(c.getCh_nr()));
                         record.setTimestamp(System.currentTimeMillis());
                         record.setDescriptions(c.getDescription());
                         record.setFrequency(-1);

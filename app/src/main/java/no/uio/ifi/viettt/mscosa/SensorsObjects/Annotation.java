@@ -5,19 +5,12 @@ package no.uio.ifi.viettt.mscosa.SensorsObjects;
  */
 
 public class Annotation {
-    private long record_id;
+    private long ann_id;
     private double onset;
     private double duration;
     private double timeKeeping;
     private String ann;
 
-    public long getRecord_id() {
-        return record_id;
-    }
-
-    public void setRecord_id(long record_id) {
-        this.record_id = record_id;
-    }
 
     public double getOnset() {
         return onset;
@@ -49,5 +42,13 @@ public class Annotation {
 
     public void setAnn(String ann) {
         this.ann = ann;
+    }
+
+    public long getAnn_id() {
+        return ann_id;
+    }
+
+    public void setAnn_id(long ann_id) {
+        this.ann_id = ann_id;
     }
 }

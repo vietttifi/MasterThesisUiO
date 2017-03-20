@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sensordroid.bitalino">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity android:name=".SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.sensordroid.bitalino.Receivers.StartReceiver">
+            <intent-filter>
+                <action android:name="com.sensordroid.START" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".WrapperService" />
+
+        <receiver
+            android:name="com.sensordroid.bitalino.Receivers.RespondReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.sensordroid.HELLO" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.sensordroid.bitalino.Receivers.StopReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.sensordroid.STOP"/>
+            </intent-filter>
+        </receiver>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="81ce2154b9e79c29d7ef4eca92b5230f4ef79474" />
+    </application>
+
+</manifest>

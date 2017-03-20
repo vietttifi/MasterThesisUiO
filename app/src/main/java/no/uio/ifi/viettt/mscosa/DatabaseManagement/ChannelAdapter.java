@@ -85,6 +85,23 @@ public class ChannelAdapter{
         return newChannel;
     }
 
+    public ArrayList<Channel> getChannelsFromSource(String s_id){
+        ArrayList<Channel> channels = new ArrayList<>();
+        String condition = OSADBHelper.CHANNEL_S_ID + " = ? ";
+        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_CHANNEL, mAllColumns, condition,
+                new String[] {s_id}, null, null, null);
+
+        if (cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                channels.add(cursorToChannel(cursor));
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        return channels;
+    }
+
     public Channel[] getChannelsByListIds(List<String[]> channelsIDs){
         Channel[] channels = new Channel[channelsIDs.size()];
         int i = 0;

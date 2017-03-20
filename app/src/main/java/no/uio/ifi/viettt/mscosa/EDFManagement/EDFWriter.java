@@ -37,43 +37,53 @@ public class EDFWriter{
 
         //for each channel, put its data to buffer
         for(int i = 0; i < header.getChannelLabels().length; i++){
-            putString(byteBuffer,header.getChannelLabels()[i],EDFElementSize.LABEL_OF_CHANNEL_SIZE);
+            if(header.getChannelLabels()[i] != null)
+                putString(byteBuffer,header.getChannelLabels()[i],EDFElementSize.LABEL_OF_CHANNEL_SIZE);
         }
 
         for(int i = 0; i < header.getTransducerTypes().length; i++){
-            putString(byteBuffer,header.getTransducerTypes()[i],EDFElementSize.TRANSDUCER_TYPE_SIZE);
+            if(header.getTransducerTypes()[i] != null)
+                putString(byteBuffer,header.getTransducerTypes()[i],EDFElementSize.TRANSDUCER_TYPE_SIZE);
         }
 
         for(int i = 0; i < header.getDimensions().length; i++){
-            putString(byteBuffer,header.getDimensions()[i],EDFElementSize.PHYSICAL_DIMENSION_OF_CHANNEL_SIZE);
+            if(header.getDimensions()[i] != null)
+                putString(byteBuffer,header.getDimensions()[i],EDFElementSize.PHYSICAL_DIMENSION_OF_CHANNEL_SIZE);
         }
 
         for(int i = 0; i < header.getMinInUnits().length; i++){
-            putDouble(byteBuffer,header.getMinInUnits()[i],EDFElementSize.PHYSICAL_MIN_IN_UNITS_SIZE,shortFormatter);
+            if(header.getMinInUnits()[i] != null)
+                putDouble(byteBuffer,header.getMinInUnits()[i],EDFElementSize.PHYSICAL_MIN_IN_UNITS_SIZE,shortFormatter);
         }
 
         for(int i = 0; i < header.getMaxInUnits().length; i++){
-            putDouble(byteBuffer,header.getMaxInUnits()[i],EDFElementSize.PHYSICAL_MAX_IN_UNITS_SIZE,shortFormatter);
+            if(header.getMaxInUnits()[i] != null)
+                putDouble(byteBuffer,header.getMaxInUnits()[i],EDFElementSize.PHYSICAL_MAX_IN_UNITS_SIZE,shortFormatter);
         }
 
         for(int i = 0; i < header.getDigitalMin().length; i++){
-            putInt(byteBuffer,header.getDigitalMin()[i],EDFElementSize.DIGITAL_MIN_SIZE);
+            if(header.getDigitalMin()[i] != null)
+                putInt(byteBuffer,header.getDigitalMin()[i],EDFElementSize.DIGITAL_MIN_SIZE);
         }
 
         for(int i = 0; i < header.getDigitalMax().length; i++){
-            putInt(byteBuffer,header.getDigitalMax()[i],EDFElementSize.DIGITAL_MAX_SIZE);
+            if(header.getDigitalMax()[i] != null)
+                putInt(byteBuffer,header.getDigitalMax()[i],EDFElementSize.DIGITAL_MAX_SIZE);
         }
 
         for(int i = 0; i < header.getPrefilterings().length; i++){
-            putString(byteBuffer,header.getPrefilterings()[i],EDFElementSize.PREFILTERING_SIZE);
+            if(header.getPrefilterings()[i] != null)
+                putString(byteBuffer,header.getPrefilterings()[i],EDFElementSize.PREFILTERING_SIZE);
         }
 
         for(int i = 0; i < header.getNumberOfSamples().length; i++){
-            putInt(byteBuffer,header.getNumberOfSamples()[i],EDFElementSize.NUMBER_OF_SAMPLES_SIZE);
+            if(header.getNumberOfSamples()[i] != null)
+                putInt(byteBuffer,header.getNumberOfSamples()[i],EDFElementSize.NUMBER_OF_SAMPLES_SIZE);
         }
 
         for(int i = 0; i < header.getReserveds().length; i++){
-            byteBuffer.put(header.getReserveds()[i]);
+            if(header.getReserveds()[i] != null)
+                byteBuffer.put(header.getReserveds()[i]);
         }
 
         raf.write(byteBuffer.array());
@@ -85,7 +95,8 @@ public class EDFWriter{
 
     private static void putString(ByteBuffer byteBuffer, String value, int elemSize){
         ByteBuffer valueFormat = ByteBuffer.allocate(elemSize);
-        valueFormat.put(value.getBytes(Charset.forName("ASCII")));
+        if(value.length() >= elemSize) valueFormat.put(value.getBytes(Charset.forName("ASCII")),0,elemSize);
+        else valueFormat.put(value.getBytes(Charset.forName("ASCII")));
         while(valueFormat.remaining() > 0){
             valueFormat.put(" ".getBytes());
         }

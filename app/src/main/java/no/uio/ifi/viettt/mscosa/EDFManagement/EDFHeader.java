@@ -1,5 +1,7 @@
 package no.uio.ifi.viettt.mscosa.EDFManagement;
 
+import java.util.Arrays;
+
 public class EDFHeader
 {
         private String version = null;
@@ -49,6 +51,58 @@ public class EDFHeader
                 System.out.println("ns * 8 ascii : ns * nr of samples in each data record ---> "+numberOfSamples[i]);
                 System.out.println("ns * 32 ascii : ns * reserved <-------      END           ------> ");
             }
+        }
+
+        public void addAnnotationChannel(int nrOfSample){
+            reservedFormat = "EDF+C";
+            numberOfChannels++;
+            String channelLabelsExt[] = new String[numberOfChannels];
+            String transducerTypesExt[] = new String[numberOfChannels];
+            String dimensionsExt[] = new String[numberOfChannels];
+            Double minInUnitsExt[] = new Double[numberOfChannels];
+            Double maxInUnitsExt[] = new Double[numberOfChannels];
+            Integer digitalMinExt[] = new Integer[numberOfChannels];
+            Integer digitalMaxExt[] = new Integer[numberOfChannels];
+            String prefilteringsExt[] = new String[numberOfChannels];
+            Integer numberOfSamplesExt[] = new Integer[numberOfChannels];
+            byte reservedsExt[][] = new byte[numberOfChannels][];
+            int i = 0;
+            for(; i<numberOfChannels - 1;i++){
+                channelLabelsExt[i] = channelLabels[i];
+                transducerTypesExt[i] = transducerTypes[i];
+                dimensionsExt[i] = dimensions[i];
+                minInUnitsExt[i] = minInUnits[i];
+                maxInUnitsExt[i] = maxInUnits[i];
+
+                digitalMinExt[i] = digitalMin[i];
+                digitalMaxExt[i] = digitalMax[i];
+                prefilteringsExt[i] = prefilterings[i];
+                numberOfSamplesExt[i] = numberOfSamples[i];
+                reservedsExt[i] = reserveds[i];
+            }
+            channelLabelsExt[i] = "EDF Annotations";
+            transducerTypesExt[i] = "";
+            dimensionsExt[i] = "";
+            minInUnitsExt[i] = -100.0;
+            maxInUnitsExt[i] = 100.0;
+
+            digitalMinExt[i] = -32768;
+            digitalMaxExt[i] = 32767;
+            prefilteringsExt[i] = "";
+            numberOfSamplesExt[i] = nrOfSample;
+            reservedsExt[i] = new byte[EDFElementSize.RESERVED_SIZE];
+            Arrays.fill(reservedsExt[i],(byte)32);
+
+            channelLabels = channelLabelsExt;
+            transducerTypes = transducerTypesExt;
+            dimensions = dimensionsExt;
+            minInUnits = minInUnitsExt;
+            maxInUnits = maxInUnitsExt;
+            digitalMin = digitalMinExt;
+            digitalMax = digitalMaxExt;
+            prefilterings = prefilteringsExt;
+            numberOfSamples = numberOfSamplesExt;
+            reserveds = reservedsExt;
         }
 
         public String getVersion() {

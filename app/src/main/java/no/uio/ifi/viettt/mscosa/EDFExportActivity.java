@@ -30,9 +30,11 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.TimeZone;
 
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.AnnotationAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADataBaseManager;
@@ -42,11 +44,10 @@ import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFElementSize;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFHeader;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFWriter;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Annotation;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.Physician;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
-import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
 
 
 public class EDFExportActivity extends AppCompatActivity{
@@ -151,14 +152,10 @@ public class EDFExportActivity extends AppCompatActivity{
                 
                 File path = new File(Environment.getExternalStorageDirectory().getPath()+"/Download/");
                 if(!path.exists()) path.mkdir();
-                // fix
-                path.setExecutable(true);
                 path.setReadable(true);
                 path.setWritable(true);
-
-// initiate media scan and put the new things into the path array to
-// make the scanner aware of the location and the files you want to see
                 MediaScannerConnection.scanFile(getApplication(), new String[] {path.toString()}, null, null);
+
                 String fileName = path.getPath()+"/"+edittext.getText().toString() + ".edf";
                 Toast.makeText(getApplication(),"File save to: "+fileName,Toast.LENGTH_SHORT).show();
                 //Start thread that will export data to EDF file.
@@ -241,6 +238,7 @@ public class EDFExportActivity extends AppCompatActivity{
         private final Context context;
         private RandomAccessFile raf;
         private boolean isAnnotation = false;
+        int numberOfCharInAnno = Integer.MAX_VALUE;
         private EDFHeader edfHeader;
 
         ExportSourceToEDF(ArrayList<String> recordIDs, String fileName, String patientID){
@@ -279,16 +277,20 @@ public class EDFExportActivity extends AppCompatActivity{
                     EDFElementSize.DURATION_DATA_RECORDS_SIZE+
                     EDFElementSize.NUMBER_OF_DATA_RECORDS_SIZE+
                     EDFElementSize.NUMBER_OF_CHANNELS_SIZE+
-                    + records.length*(EDFElementSize.LABEL_OF_CHANNEL_SIZE+
-                            EDFElementSize.TRANSDUCER_TYPE_SIZE+
-                            EDFElementSize.PHYSICAL_DIMENSION_OF_CHANNEL_SIZE+
-                            EDFElementSize.PHYSICAL_MIN_IN_UNITS_SIZE+
-                            EDFElementSize.PHYSICAL_MAX_IN_UNITS_SIZE+
-                            EDFElementSize.DIGITAL_MIN_SIZE+
-                            EDFElementSize.DIGITAL_MAX_SIZE+
-                            EDFElementSize.PREFILTERING_SIZE+
-                            EDFElementSize.NUMBER_OF_SAMPLES_SIZE+
-                            EDFElementSize.RESERVED_SIZE);
+                    + records.length*(aChannelSizeBytes());
+        }
+
+        private int aChannelSizeBytes(){
+            return EDFElementSize.LABEL_OF_CHANNEL_SIZE+
+                    EDFElementSize.TRANSDUCER_TYPE_SIZE+
+                    EDFElementSize.PHYSICAL_DIMENSION_OF_CHANNEL_SIZE+
+                    EDFElementSize.PHYSICAL_MIN_IN_UNITS_SIZE+
+                    EDFElementSize.PHYSICAL_MAX_IN_UNITS_SIZE+
+                    EDFElementSize.DIGITAL_MIN_SIZE+
+                    EDFElementSize.DIGITAL_MAX_SIZE+
+                    EDFElementSize.PREFILTERING_SIZE+
+                    EDFElementSize.NUMBER_OF_SAMPLES_SIZE+
+                    EDFElementSize.RESERVED_SIZE;
         }
 
         private void buildEDFheader() throws IOException {
@@ -300,7 +302,7 @@ public class EDFExportActivity extends AppCompatActivity{
             Patient patient = personAdapter.getPatientByIds(this.patientID);
             personAdapter.close();
 
-            String localPatientID = (patient.getPatient_id_in_clinic().equals("") ? "X" : patient.getPatient_id_in_clinic()) + " "+
+            String localPatientID = ((patient.getPatient_id_in_clinic() == null || patient.getPatient_id_in_clinic().equals("")) ? "X" : patient.getPatient_id_in_clinic()) + " "+
                     ((patient.getGender() == null || patient.getGender().equals("")) ? "X" : patient.getGender()) +" "+
                     ((patient.getDayOfBirth() == null || patient.getDayOfBirth().equals("")) ? "X" : patient.getDayOfBirth()) +" "+
                     ((patient.getName() == null || patient.getName().equals("")) ? "X" : (patient.getName()));
@@ -330,7 +332,7 @@ public class EDFExportActivity extends AppCompatActivity{
             edfHeader.setStartDate(sdfStartDate.format(minTimeStamp));
             edfHeader.setStartTime(sdfStartTime.format(minTimeStamp));
             edfHeader.setBytesInHeader(numberOfByteInHeader());
-            edfHeader.setReservedFormat(isAnnotation ? "EDF+C" : "");
+            edfHeader.setReservedFormat(isAnnotation ? "EDF+C" : " ");
             edfHeader.setNumberOfRecords(-1);
             edfHeader.setDurationOfRecords(DURATION);
             edfHeader.setNumberOfChannels(numberOfChannels);
@@ -346,19 +348,52 @@ public class EDFExportActivity extends AppCompatActivity{
             Integer[] numberOfSamples = new Integer[numberOfChannels];
             byte[][] reserveds = new byte[numberOfChannels][];
 
+            RecordAdapter recordAdapter = new RecordAdapter(context);
             for (int i = 0; i < channels.length; i++) {
-                System.out.println(channels[i].getCh_nr()+" <----- ");
                 channelLabels[i] = channels[i].getCh_name();
-                transducerTypes[i] = channels[i].getTransducer();
+                if(channels[i].getTransducer() == null) transducerTypes[i] = " ";
+                else transducerTypes[i] = channels[i].getTransducer();
                 dimensions[i] = channels[i].getDimension();
                 minInUnits[i] = channels[i].getPhy_min();
                 maxInUnits[i] = channels[i].getPhy_max();
                 digitalMin[i] = channels[i].getDig_min();
                 digitalMax[i] = channels[i].getDig_max();
-                prefilterings[i] = channels[i].getPrefiltering();
+                if(channels[i].getPrefiltering() == null) prefilterings[i] = " ";
+                else prefilterings[i] = channels[i].getPrefiltering();
+                if(channels[i].getPhy_min() >= channels[i].getPhy_max()){
+                    double a = (double)recordAdapter.getRecordMinSample(records[i].getR_id());
+                    double b = (double)recordAdapter.getRecordMaxSample(records[i].getR_id());
+                    minInUnits[i] = a;
+                    maxInUnits[i] = b;
+                    if(a == b){
+                        maxInUnits[i] = b +1;
+                    }else if (a > b){
+                        minInUnits[i] = (double)-32768;
+                        maxInUnits[i] = (double)32767;
+                    }
+
+                }
+                if(channels[i].getDig_min() >= channels[i].getDig_max()){
+                    int a = (int)recordAdapter.getRecordMinSample(records[i].getR_id());
+                    int b = (int)recordAdapter.getRecordMaxSample(records[i].getR_id());
+                    digitalMin[i] = a;
+                    digitalMax[i] = b;
+                    if(a == b){
+                        digitalMax[i] = b +1;
+                    }else if (a > b){
+                        digitalMin[i] = -32768;
+                        digitalMax[i] = 32767;
+                    }
+                }
                 numberOfSamples[i] = (int)(records[i].getFrequency()*DURATION);
-                reserveds[i] = channels[i].getEdf_reserved();
+                if(numberOfSamples[i] < numberOfCharInAnno) numberOfCharInAnno  = numberOfSamples[i];
+                if(channels[i].getEdf_reserved() == null) {
+                    reserveds[i] = new byte[EDFElementSize.RESERVED_SIZE];
+                    Arrays.fill(reserveds[i],(byte)32);
+                }
+                else reserveds[i] = channels[i].getEdf_reserved();
             }
+            recordAdapter.close();
 
             edfHeader.setChannelLabels(channelLabels);
             edfHeader.setTransducerTypes(transducerTypes);
@@ -371,19 +406,34 @@ public class EDFExportActivity extends AppCompatActivity{
             edfHeader.setNumberOfSamples(numberOfSamples);
             edfHeader.setReserveds(reserveds);
 
-            EDFWriter.writeEDFHeaderToFile(raf,edfHeader);
-            raf.seek(edfHeader.getBytesInHeader());
-
+            if(numberOfCharInAnno < 64) numberOfCharInAnno = 64;
         }
 
         private void storeDataRecord() throws IOException{
+            int oneTEST = 0;
+
+            AnnotationAdapter annotationAdapter = new AnnotationAdapter(context);
+            ArrayList<Annotation> recordAnno = annotationAdapter.getAnnotationsForRecordList(records);
+            annotationAdapter.close();
+
+            for(Annotation annotation : recordAnno) System.out.println("---> "+annotation.getAnn_id()+" "+annotation.getAnn());
+            if(!recordAnno.isEmpty()){
+                isAnnotation = true;
+                edfHeader.setBytesInHeader(edfHeader.getBytesInHeader()+aChannelSizeBytes());
+                if(numberOfCharInAnno%2 != 0) numberOfCharInAnno++;
+                edfHeader.addAnnotationChannel(numberOfCharInAnno/2);
+            }
+
+            EDFWriter.writeEDFHeaderToFile(raf,edfHeader);
+            raf.seek(edfHeader.getBytesInHeader());
 
             int dataRecordSize = 0;
             for(int i = 0; i<records.length; i++){
                 dataRecordSize += edfHeader.getNumberOfSamples()[i];
             }
+            if(isAnnotation) dataRecordSize += (numberOfCharInAnno/2);
 
-            System.out.println(dataRecordSize);
+            System.out.println("DATA RECORD SIZE: "+dataRecordSize);
             SampleAdapter sampleAdapter = new SampleAdapter(getApplication());
             int dataRecordCnt = 1;
             boolean stop = false;
@@ -397,7 +447,6 @@ public class EDFExportActivity extends AppCompatActivity{
                     if(valuesRecord != null) {
                         //System.out.println("BUFF LENGTH "+byteBuffer.limit()+ ", values length"+valuesRecord.length);
                         for(int j = 0 ; j<valuesRecord.length; j++){
-                            //System.out.println(valuesRecord[j]);
                             byteBuffer.putShort(valuesRecord[j]);
                         }
                     } else {
@@ -405,8 +454,31 @@ public class EDFExportActivity extends AppCompatActivity{
                     }
                 }
                 if(!stop){
+                    if(isAnnotation){
+                        byte[] buffByte = new byte[numberOfCharInAnno];
+                        Arrays.fill(buffByte,(byte)0);
+
+                        //recordAnno is sorted after Onset.
+                        buffByte[0] = 43;
+                        byte[] onsetBytes = String.valueOf(oneTEST).getBytes();
+                        System.arraycopy(onsetBytes,0,buffByte,1,onsetBytes.length);
+                        int pos = onsetBytes.length+1;
+                        buffByte[pos++] = 20;
+                        buffByte[pos++] = 20;
+                        for(Annotation ann : recordAnno){
+                            if(ann.getOnset()>= oneTEST*edfHeader.getDurationOfRecords() && ann.getOnset()<(oneTEST*edfHeader.getDurationOfRecords() + edfHeader.getDurationOfRecords())){
+                                System.arraycopy(ann.getAnn().getBytes(),0,buffByte,pos,ann.getAnn().getBytes().length);
+                                pos+=ann.getAnn().getBytes().length;
+                                buffByte[pos] = 20;
+                            }
+                        }
+
+                        byteBuffer.put(buffByte);
+                        oneTEST += edfHeader.getDurationOfRecords();
+                    }
+
                     raf.seek(edfHeader.getBytesInHeader()+(dataRecordCnt-1)*dataRecordSize*2);
-                    System.out.println("A data record "+dataRecordCnt + " at "+(edfHeader.getBytesInHeader()+(dataRecordCnt-1)*dataRecordSize*2));
+                    //System.out.println("A data record "+dataRecordCnt + " at "+(edfHeader.getBytesInHeader()+(dataRecordCnt-1)*dataRecordSize*2));
                     raf.write(byteBuffer.array());
                     dataRecordCnt++;
                 }
@@ -414,6 +486,7 @@ public class EDFExportActivity extends AppCompatActivity{
             }
             sampleAdapter.close();
             System.out.println("NR OF DATA RECORD "+(dataRecordCnt-1));
+
             edfHeader.setNumberOfRecords(dataRecordCnt-1);
             //UPDATE TOTAL RECORD
             edfHeader.printHeader();

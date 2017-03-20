@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
@@ -75,6 +76,25 @@ public class SampleAdapter {
             }
         }
         else return null;
+        cursor.close();
+        return values;
+    }
+
+    public ArrayList<Sample> getSamples(long r_id , int from, int to){
+        ArrayList<Sample> values = new ArrayList<>();
+        int COUNT = to - from;
+        String queryString = "SELECT "+ OSADBHelper.SAMPLE_RECORD_ID+ "," + OSADBHelper.SAMPLE_TIMESTAMP+","+ OSADBHelper.SAMPLE_VALUE+" " +
+                "FROM "+OSADBHelper.TABLE_SAMPLE+ " WHERE "+OSADBHelper.SAMPLE_RECORD_ID +" = "+r_id +" ORDER BY "+OSADBHelper.SAMPLE_TIMESTAMP
+                + " LIMIT "+COUNT+" OFFSET "+from;
+        Cursor cursor = mDatabase.rawQuery(queryString, null);
+        if (cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            int i = 0;
+            while (!cursor.isAfterLast()) {
+                values.add(cursorToSample(cursor));
+                cursor.moveToNext();
+            }
+        }
         cursor.close();
         return values;
     }

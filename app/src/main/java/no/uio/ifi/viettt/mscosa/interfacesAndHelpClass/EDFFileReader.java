@@ -24,6 +24,7 @@ import no.uio.ifi.viettt.mscosa.DatabaseManagement.ClinicAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.PersonAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.AnnotationAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAnnotationAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.SensorSourceAdapter;
 import no.uio.ifi.viettt.mscosa.EDFManagement.EDFAnnotation;
@@ -36,6 +37,7 @@ import no.uio.ifi.viettt.mscosa.SensorsObjects.Clinic;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Patient;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Physician;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.RecordAnnotation;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
 
@@ -187,9 +189,16 @@ public class EDFFileReader extends Thread{
 
         //Store annotations to DB if any
         if(!annotationsList.isEmpty()){
-            AnnotationAdapter annotationAdapter = new AnnotationAdapter(mMainActivity);
-            annotationAdapter.saveListFragmentsToDB(annotationsList);
-            annotationAdapter.close();
+            RecordAnnotationAdapter recordAnnotationAdapter = new RecordAnnotationAdapter(mMainActivity);
+            for(Annotation a : annotationsList){
+                for(Record r: records.values()){
+                    RecordAnnotation recordAnnotation = new RecordAnnotation();
+                    recordAnnotation.setAnn_id(a.getAnn_id());
+                    recordAnnotation.setRecord_id(r.getR_id());
+                    recordAnnotationAdapter.saveAnnotationToDB(recordAnnotation);
+                }
+            }
+            recordAnnotationAdapter.close();
         }
 
     }
@@ -221,6 +230,14 @@ public class EDFFileReader extends Thread{
 
     private void createAndPutAnnotationToBuffer(ArrayList<Sample> samplesBuffer, ByteBuffer buffer, Channel currentChannel, int fragmentInx){
         //System.out.println("Annotations");
+        //byte[] tmpp = buffer.array();
+        //for(int k = 0; k < tmpp.length; k++){
+          //  if(tmpp[k] == 20) System.out.print("20");
+        // else if (tmpp[k] == 21) System.out.print("21");
+            //else if(tmpp[k] == 0) System.out.print("0");
+          //  else if(Character.isLetterOrDigit((char)tmpp[k])) System.out.print((char)tmpp[k]);
+            //else System.out.print((int)tmpp[k]);
+        //}
         int buffLength = buffer.array().length;
         ArrayList<EDFAnnotation> annotations = new ArrayList<>();
         for (int i = 0; i < buffLength - 1;){
@@ -296,18 +313,19 @@ public class EDFFileReader extends Thread{
                 annotations.add(ann);
             }
         }
-
+        AnnotationAdapter annotationAdapter = new AnnotationAdapter(mMainActivity);
         for(EDFAnnotation edfAnnotation: annotations){
             for(String ann : edfAnnotation.getAnnotationsList()){
                 Annotation annotation = new Annotation();
-                annotation.setRecord_id(records.get(currentChannel.getCh_nr()).getR_id());
                 annotation.setOnset(edfAnnotation.getOnSet());
                 annotation.setDuration(edfAnnotation.getDuration());
                 annotation.setTimeKeeping(edfAnnotation.getTimestampRecord());
                 annotation.setAnn(ann);
+                annotation.setAnn_id(annotationAdapter.saveAnnotationToDB(annotation));
                 annotationsList.add(annotation);
             }
         }
+        annotationAdapter.close();
     }
 
     private void createAndStoreSensorSource(EDFHeader header){

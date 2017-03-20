@@ -47,9 +47,14 @@ public class OSADBHelper extends SQLiteOpenHelper {
     public static final String RECORD_USED_EQUIPMENT = "used_equip";
     public static final String RECORD_EDF_RESERVED = "edf_reserved";
 
+    //Record fragment table and its columns ----------- RECORD_ANNOTATION ---------
+    public static final String TABLE_RECORD_ANNOTATION = "RECORDANNOTATION";
+    public static final String RECORD_ANNOTATION_ID = "ann_id";
+    public static final String RECORD_ANNOTATION_R_ID = "r_id";
+
     //Record fragment table and its columns ----------- ANNOTATION ---------
-    public static final String TABLE_RECORD_ANNOTATION = "ANNOTATION";
-    public static final String ANNOTATION_RECORD_ID = "r_id";
+    public static final String TABLE_ANNOTATION = "ANNOTATION";
+    public static final String ANNOTATION_ID = "ann_id";
     public static final String ANNOTATION_ONSET = "onset";
     public static final String ANNOTATION_DURATION = "duration";
     public static final String ANNOTATION_TIMEKEEPING = "timekeeping";
@@ -152,16 +157,24 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + " FOREIGN KEY( "+ RECORD_PATIENT_ID +" ) REFERENCES "+ TABLE_PATIENT +"("+ PATIENT_PER_ID +") ON DELETE CASCADE "
                     +");";
 
-    // SQL statement of the ---------- FRAGMENT ------- table creation
+    // SQL statement of the ---------- ANNOTAION ------- table creation
     private static final String SQL_CREATE_TABLE_ANNOTATION =
-            "CREATE TABLE " + TABLE_RECORD_ANNOTATION + "("
-                    + ANNOTATION_RECORD_ID + " INTEGER NOT NULL, "
+            "CREATE TABLE " + TABLE_ANNOTATION + "("
+                    + ANNOTATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + ANNOTATION_ONSET + " INTEGER NOT NULL, "
                     + ANNOTATION_DURATION + " REAL, "
                     + ANNOTATION_TIMEKEEPING + " INTEGER, "
-                    + ANNOTATION_TEXT + " TEXT, "
-                    + " PRIMARY KEY ("+ ANNOTATION_RECORD_ID +","+ANNOTATION_ONSET+","+ANNOTATION_DURATION+","+ANNOTATION_TIMEKEEPING+","+ANNOTATION_TEXT+"), "
-                    + " FOREIGN KEY( "+ ANNOTATION_RECORD_ID +" ) REFERENCES "+ TABLE_RECORD +"("+ RECORD_ID +") ON DELETE CASCADE "
+                    + ANNOTATION_TEXT + " TEXT "
+                    +");";
+
+    // SQL statement of the ---------- RECORD_ANNOTAION ------- table creation
+    private static final String SQL_CREATE_TABLE_RECORD_ANNOTATION =
+            "CREATE TABLE " + TABLE_RECORD_ANNOTATION + "("
+                    + RECORD_ANNOTATION_ID + " INTEGER NOT NULL, "
+                    + RECORD_ANNOTATION_R_ID + " INTEGER NOT NULL, "
+                    + " PRIMARY KEY ("+ RECORD_ANNOTATION_ID +","+RECORD_ANNOTATION_R_ID+"), "
+                    + " FOREIGN KEY( "+ RECORD_ANNOTATION_R_ID +" ) REFERENCES "+ TABLE_RECORD +"("+ RECORD_ID +") ON DELETE CASCADE, "
+                    + " FOREIGN KEY( "+ RECORD_ANNOTATION_ID +" ) REFERENCES "+ TABLE_ANNOTATION +"("+ ANNOTATION_ID +") ON DELETE CASCADE "
                     +");";
 
     // SQL statement of the ------- SAMPLE ------ table creation
@@ -262,7 +275,29 @@ public class OSADBHelper extends SQLiteOpenHelper {
                     + SAMPLE_RECORD_ID + " = OLD."+RECORD_ID+"; "
                     + " DELETE FROM "+ TABLE_RECORD_ANNOTATION
                     + " WHERE "
-                    + ANNOTATION_RECORD_ID + " = OLD."+RECORD_ID+"; "
+                    + RECORD_ANNOTATION_ID + " = OLD."+RECORD_ID+"; "
+                    + " END";
+
+    // SQL TRIGGER WHEN DELETE RECORD_ANNOTATION
+    private static final String SQL_TRIGGER_DELETE_RECORD_ANNOTATION =
+            "CREATE TRIGGER Delete_record_annotation_trigger "
+                    + " AFTER DELETE ON " +TABLE_RECORD_ANNOTATION
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_ANNOTATION
+                    + " WHERE "
+                    + ANNOTATION_ID + " = OLD."+RECORD_ANNOTATION_ID+"; "
+                    + " END";
+
+    // SQL TRIGGER WHEN DELETE ANNOTATION
+    private static final String SQL_TRIGGER_DELETE_ANNOTATION =
+            "CREATE TRIGGER Delete_annotation_trigger "
+                    + " AFTER DELETE ON " +TABLE_ANNOTATION
+                    + " FOR EACH ROW "
+                    + " BEGIN "
+                    + " DELETE FROM "+ TABLE_RECORD_ANNOTATION
+                    + " WHERE "
+                    + RECORD_ANNOTATION_ID + " = OLD."+ANNOTATION_ID+"; "
                     + " END";
 
     // SQL TRIGGER WHEN DELETE PATIENT
@@ -326,6 +361,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_CHANNEL);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_RECORD);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_ANNOTATION);
+        sqLiteDatabase.execSQL(SQL_CREATE_TABLE_RECORD_ANNOTATION);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_SAMPLE);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_PERSON);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_CLINIC);
@@ -339,6 +375,8 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_RECORD);
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_CHANNEL);
         sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_SENSOR_SOURCE);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_RECORD_ANNOTATION);
+        sqLiteDatabase.execSQL(SQL_TRIGGER_DELETE_ANNOTATION);
     }
 
     @Override
@@ -350,6 +388,7 @@ public class OSADBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_CHANNEL);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_RECORD);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+SQL_CREATE_TABLE_ANNOTATION);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+SQL_CREATE_TABLE_RECORD_ANNOTATION);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_SAMPLE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_PERSON);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_CLINIC);

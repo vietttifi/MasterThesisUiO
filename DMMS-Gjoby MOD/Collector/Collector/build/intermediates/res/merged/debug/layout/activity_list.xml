@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#a4c639">
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:padding="10dp"
+        android:text="@string/some_text" android:textSize="20sp"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:background="#787878"
+        android:textColor="#ffffff"
+        android:id="@+id/SelectText" />
+
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_below="@id/SelectText"
+        android:layout_width="fill_parent"
+        android:layout_height="433dp"
+        android:layout_above="@+id/findSelected" />
+
+    <Button
+        android:id="@+id/findSelected"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Start collecting" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Settings"
+        android:id="@+id/buttonConfigure"
+        android:layout_above="@+id/findSelected"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Bitalino</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="channel_prompt">Choose a datatype</string>
+
+    <string-array name="channel_arrays">
+        <item>ACC</item>
+        <item>ECG</item>
+        <item>EMG</item>
+        <item>LUX</item>
+        <item>EDA</item>
+    </string-array>
+</resources>

@@ -765,7 +765,6 @@ int id action_sensorWrapper 0x7f0e011d
 int id action_text 0x7f0e00b7
 int id actions 0x7f0e00c4
 int id activity_chooser_view_content 0x7f0e0047
-int id activity_database_visualisation 0x7f0e007c
 int id add 0x7f0e001e
 int id address 0x7f0e00ae
 int id alertTitle 0x7f0e005b
@@ -844,6 +843,7 @@ int id firstName 0x7f0e00ac
 int id fixed 0x7f0e0042
 int id fragment_container 0x7f0e0084
 int id gender 0x7f0e00aa
+int id graphview 0x7f0e007c
 int id home 0x7f0e0004
 int id homeAsUp 0x7f0e0013
 int id icon 0x7f0e004c

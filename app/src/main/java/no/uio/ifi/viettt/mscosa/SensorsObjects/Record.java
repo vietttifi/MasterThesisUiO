@@ -19,6 +19,11 @@ public class Record {
     private String used_equip;
     private byte[] edf_reserved;
 
+    //REPLAY ATTRIBUTE.
+    private ArrayList<Sample> samplesbuffer = new ArrayList<>();
+    private int offset = 0, limit = 1000;
+
+
     public Record(){}
 
     public long getR_id() {
@@ -101,4 +106,27 @@ public class Record {
         this.ch_nr = ch_nr;
     }
 
+    public ArrayList<Sample> getSamplesbuffer() {
+        return samplesbuffer;
+    }
+
+    public void setSamplesbuffer(ArrayList<Sample> samplesbuffer) {
+        this.samplesbuffer = samplesbuffer;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
 }

@@ -187,6 +187,8 @@ public class ClientThread extends Thread{
             if(channel.has("digital_min"))
                 channelNew.setDig_min((channel.getString("digital_min") != null) ? Integer.parseInt(channel.getString("digital_min")): Integer.MIN_VALUE);
             if(channel.has("description")) channelNew.setDescription(channel.getString("description"));
+            if(channel.has("frequency"))
+                channelNew.setFrequency((channel.getString("frequency") != null) ? Float.parseFloat(channel.getString("frequency")): 1);
             channels.put(channelNew.getCh_nr(),channelNew);
         }
 
@@ -225,8 +227,10 @@ public class ClientThread extends Thread{
             //update DB for RECORDs
             RecordAdapter recordAdapter = new RecordAdapter(context);
             for(Record r : records.values()){
+                System.out.println(r.getR_id());
                 r.setTimestamp(timeStamp);
-                recordAdapter.updateRecordTimestamp(r.getR_id(),timeStamp);
+                r.setFrequency(channels.get(String.valueOf(r.getCh_nr())).getFrequency());
+                recordAdapter.updateRecordTimestamp(r.getR_id(),timeStamp, r.getFrequency());
             }
             recordAdapter.close();
             firstTimeStamp = false;
@@ -240,6 +244,10 @@ public class ClientThread extends Thread{
             timeStamp = samples[0].getCreatedDate();
             //create new current fragment
             bufferSamples = new ArrayList<>();
+            File f = context.getDatabasePath(OSADBHelper.DATABASE_NAME);
+            long dbSize = f.length();
+            System.out.println("DB size: "+dbSize/(1024.0*1024.0)+" MB.");
+            if((dbSize/(1024.0*1024.0)) > 700.0) this.closeConnection();
         }
         //(samples timestamp - fragment timestamp)/duration < 1
         //add all samples to current fragment buffer

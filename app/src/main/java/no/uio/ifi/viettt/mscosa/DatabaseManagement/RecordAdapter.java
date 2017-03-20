@@ -38,10 +38,11 @@ public class RecordAdapter {
         mDbManagerInstance.closeDatabase();
     }
 
-    public void updateRecordTimestamp(long r_id, long timestamp){
+    public void updateRecordTimestamp(long r_id, long timestamp, float frequency){
         ContentValues values = new ContentValues();
         values.put(OSADBHelper.RECORD_TIMESTAMP,timestamp);
-        mDatabase.update(OSADBHelper.TABLE_RECORD,values,OSADBHelper.RECORD_ID + " = " + r_id,null);
+        values.put(OSADBHelper.RECORD_FREQUENCY,frequency);
+        mDatabase.updateWithOnConflict(OSADBHelper.TABLE_RECORD,values,OSADBHelper.RECORD_ID + " = " + r_id,null,SQLiteDatabase.CONFLICT_REPLACE);
     }
 
     public Record cursorToRecord(Cursor cursor) {
@@ -98,6 +99,24 @@ public class RecordAdapter {
         return records;
     }
 
+    public ArrayList<Record> getAllRecordForSourse(String s_id, long timestamp){
+        ArrayList<Record> records = new ArrayList<>();
+        String condition = OSADBHelper.RECORD_S_ID + " = ? AND "
+                + OSADBHelper.RECORD_TIMESTAMP + " = ? ";
+        Cursor cursor = mDatabase.query(OSADBHelper.TABLE_RECORD, mAllColumns, condition,
+                new String[] {s_id, String.valueOf(timestamp)}, null, null, null);
+
+        if (cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                records.add(cursorToRecord(cursor));
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        return records;
+    }
+
     public Record getRecordById(String source_id, String physician_id, String patient_id, int channel_nr, long timestamp) {
         String condition = OSADBHelper.RECORD_S_ID + " = ? AND "
                 + OSADBHelper.RECORD_PHYSICIAN_ID + " = ? AND "
@@ -116,37 +135,30 @@ public class RecordAdapter {
         return newRecord;
     }
 
-    public long getRecordDuration(long record_id){
-        long recordLength = -1;
-        String queryString = "SELECT (MAX("+OSADBHelper.SAMPLE_TIMESTAMP+") - MIN("+OSADBHelper.SAMPLE_TIMESTAMP+")) " +
+    public float getRecordMaxSample(long record_id){
+        float maxSample = 0;
+        String queryString = "SELECT MAX("+OSADBHelper.SAMPLE_VALUE+") " +
                 "FROM "+OSADBHelper.TABLE_SAMPLE+ " WHERE "+OSADBHelper.SAMPLE_RECORD_ID +" = "+record_id;
         Cursor cursor = mDatabase.rawQuery(queryString, null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
-            recordLength = cursor.getLong(0);
+            maxSample = cursor.getFloat(0);
         }
         cursor.close();
-        return recordLength;
+        return maxSample;
     }
 
-    public long getTotalSampleInRecord(long record_id){
-        long totalSample = -1;
-        String queryString = "SELECT COUNT(*) " +
+    public float getRecordMinSample(long record_id){
+        float minSample = 0;
+        String queryString = "SELECT MIN("+OSADBHelper.SAMPLE_VALUE+") " +
                 "FROM "+OSADBHelper.TABLE_SAMPLE+ " WHERE "+OSADBHelper.SAMPLE_RECORD_ID +" = "+record_id;
         Cursor cursor = mDatabase.rawQuery(queryString, null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
-            totalSample = cursor.getLong(0);
+            minSample = cursor.getFloat(0);
         }
         cursor.close();
-        return totalSample;
-    }
-
-    public long getAverageSamplePerSecondRecord(long record_id){
-        long totalSam = getTotalSampleInRecord(record_id);
-        long recDur = getRecordDuration(record_id);
-        if(totalSam == -1 || recDur == -1) return -1;
-        else return totalSam/(recDur/1000);
+        return minSample;
     }
 
     public void deleteRecord(String r_id) {

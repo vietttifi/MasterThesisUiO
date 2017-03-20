@@ -2854,7 +2854,6 @@ containing a value of this type.
         public static final int action_text=0x7f0e00b7;
         public static final int actions=0x7f0e00c4;
         public static final int activity_chooser_view_content=0x7f0e0047;
-        public static final int activity_database_visualisation=0x7f0e007c;
         public static final int add=0x7f0e001e;
         public static final int address=0x7f0e00ae;
         public static final int alertTitle=0x7f0e005b;
@@ -2933,6 +2932,7 @@ containing a value of this type.
         public static final int fixed=0x7f0e0042;
         public static final int fragment_container=0x7f0e0084;
         public static final int gender=0x7f0e00aa;
+        public static final int graphview=0x7f0e007c;
         public static final int home=0x7f0e0004;
         public static final int homeAsUp=0x7f0e0013;
         public static final int icon=0x7f0e004c;

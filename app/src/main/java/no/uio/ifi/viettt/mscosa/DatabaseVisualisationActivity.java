@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,8 +20,25 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LegendRenderer;
+import com.jjoe64.graphview.Viewport;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.ChannelAdapter;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADataBaseManager;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAdapter;
+import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
+import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
+import no.uio.ifi.viettt.mscosa.interfacesAndHelpClass.BitalinoDataSample;
 
 public class DatabaseVisualisationActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -32,17 +50,24 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
     TableLayout tblLayout;
 
     //GUI
+    GraphView graph;
     AlertDialog.Builder alertdialogbuilder;
     String[] alertDialogItems;
     boolean[] selectedChannels;
+    HashMap<String, LineGraphSeries<DataPoint>> channelLines;
+
     final int NR_ENTRIES_WINDOW = 300;
 
     String source_ID, patient_ID;
+    long timestamp = 0;
 
     //Thread query and update
     //ConsumerDataRecord updateGUI;
     //ProducerDataRecord queryDataForGUI;
     final int BUFF_SIZE = 20;
+
+    Thread updateGUI = null;
+    boolean pauseGUI = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +79,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
 
         rdSource = (RadioButton)findViewById(R.id.rdBtnSource);
         rdPatient = (RadioButton)findViewById(R.id.rdBtnPatient);
+        graph = (GraphView)findViewById(R.id.graphview);
 
         keySearch = (EditText)findViewById(R.id.txtSearchRP);
         lblSelectedSource = (TextView)findViewById(R.id.lblSelectedSource);
@@ -69,8 +95,6 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
         selectChannelRP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialogItems = new String[]{"TEST1", "TEST 2"};
-                selectedChannels = new boolean[]{true,true};
                 popUpSelectSensors();
             }
         });
@@ -161,7 +185,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
         if(charSequence.toString().length() < 3) return;
 
         String queryString = "SELECT DISTINCT "
-                + " p_owner as Patient, s_id as Source "
+                + " p_owner as Patient, s_id as Source , timestamp"
                 + " FROM RECORD ";
 
         if(rdSource.isChecked()){
@@ -218,7 +242,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                     }else if(cursor.getType(k) == Cursor.FIELD_TYPE_FLOAT) {
                         column.setText(String.valueOf(cursor.getFloat(k)));
                     }else if(cursor.getType(k) == Cursor.FIELD_TYPE_INTEGER) {
-                        column.setText(String.valueOf(cursor.getInt(k)));
+                        column.setText(String.valueOf(cursor.getLong(k)));
                     }else {
                         column.setText(cursor.getString(k));
                     }
@@ -258,24 +282,37 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
     }
 
     private void manageBtnApply(View view){
+        if(updateGUI != null) updateGUI.interrupt();
+        pauseGUI = true;
         Toast.makeText(getApplication(),"APPLY "+source_ID+" "+patient_ID,Toast.LENGTH_SHORT).show();
         btnApply.setEnabled(false);
+        RecordAdapter recordAdapter = new RecordAdapter(getApplication());
+        ArrayList<Record> records = recordAdapter.getAllRecordForSourse(source_ID, timestamp);
+        recordAdapter.close();
+        ChannelAdapter channelAdapter = new ChannelAdapter(getApplication());
+        ArrayList<Channel> channels = channelAdapter.getChannelsFromSource(source_ID);
+        channelAdapter.close();
+        //for(Record r : records) System.out.println(r.getR_id()+" "+r.getCh_nr()+" "+r.getTimestamp());
+        //for(Channel c : channels) System.out.println(c.getCh_name() + " "+c.getCh_nr());
+        initGraph(records,channels);
     }
 
     private void manageIbtnPlay(View view){
         Toast.makeText(getApplication(),"Play click",Toast.LENGTH_SHORT).show();
+        pauseGUI = false;
     }
 
     private void manageIbtnStop(View view){
         Toast.makeText(getApplication(),"Stop click",Toast.LENGTH_SHORT).show();
+        pauseGUI = true;
     }
 
     private void manageIbtnAddAnns(View view){
-        Toast.makeText(getApplication(),"Annotation added click",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplication(),"Future work, where "+ annotations.getText().toString() +" will be added to annotation list at the current timestamp",Toast.LENGTH_SHORT).show();
     }
 
     private void manageIbtnSaveAnns(View view){
-        Toast.makeText(getApplication(),"All annotations have saved click",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplication(),"Future work, where the annotation list will be saved into DB",Toast.LENGTH_SHORT).show();
     }
 
 
@@ -285,14 +322,16 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
             TableRow tr = (TableRow)view;
             patient_ID = ((TextView) tr.getChildAt(0)).getText().toString();
             source_ID = ((TextView) tr.getChildAt(1)).getText().toString();
+            timestamp = Long.parseLong(((TextView) tr.getChildAt(2)).getText().toString());
             lblSelectedSource.setText(source_ID);
             btnApply.setEnabled(true);
         }
     }
 
     private void popUpSelectSensors(){
+        final boolean tempPause = pauseGUI;
+        pauseGUI = true;
         alertdialogbuilder = new AlertDialog.Builder(DatabaseVisualisationActivity.this);
-
         String nameSensors[] = new String[alertDialogItems.length];
 
         for(int i = 0; i < alertDialogItems.length; i ++) {
@@ -312,7 +351,14 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
         alertdialogbuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                graph.removeAllSeries();
+                for(int i = 0; i < selectedChannels.length;i++){
+                    if(selectedChannels[i]){
+                        String ch_nr = alertDialogItems[i].split(": ")[0];
+                        graph.addSeries(channelLines.get(ch_nr));
+                    }
+                }
+                pauseGUI = tempPause;
             }
         });
 
@@ -326,4 +372,125 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
         dialog.show();
     }
 
+    private void initGraph(ArrayList<Record> records, ArrayList<Channel> channels){
+        graph.removeAllSeries();
+        channelLines = new HashMap<>();
+        selectedChannels = new boolean[channels.size()];
+        alertDialogItems = new String[channels.size()];
+
+        for(Channel c : channels){
+            channelLines.put(c.getCh_nr(),new LineGraphSeries<DataPoint>());
+            graph.addSeries(channelLines.get(c.getCh_nr()));
+            channelLines.get(c.getCh_nr()).setTitle(c.getCh_name()+"(" +((c.getDimension()==null) ? "": c.getDimension().trim())+")");
+            channelLines.get(c.getCh_nr()).setColor(Color.rgb((int) (Math.random() * Integer.MAX_VALUE),
+                    (int) (Math.random() * Integer.MAX_VALUE), (int) (Math.random() * Integer.MAX_VALUE)));
+        }
+        int inx = 0;
+        for(Channel c : channels){
+            alertDialogItems[inx] = c.getCh_nr()+": "+c.getCh_name();
+            selectedChannels[inx++] = true;
+        }
+
+        drawGraph(-10,10);
+
+        updateGUI = new UpdateGui(records,channels);
+        updateGUI.start();
+    }
+
+    private void drawGraph(int minY, int maxY){
+        // customize a little bit viewport
+        Viewport viewport = graph.getViewport();
+        viewport.setScalable(true);
+        viewport.setScalableY(true);
+        viewport.setXAxisBoundsManual(true);
+        viewport.setYAxisBoundsManual(true);
+        viewport.setMaxX(0);
+        viewport.setMaxX(210);
+        viewport.setMinY(minY);
+        viewport.setMaxY(maxY);
+        viewport.setBackgroundColor(Color.BLACK);
+        graph.getGridLabelRenderer().setGridColor(Color.DKGRAY);
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
+        graph.getGridLabelRenderer().setHorizontalAxisTitle("Time from visualising in second/10");
+        graph.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.GREEN);
+        graph.getGridLabelRenderer().setVerticalAxisTitle("Metric in legend");
+        graph.getGridLabelRenderer().setVerticalAxisTitleColor(Color.GREEN);
+        graph.getGridLabelRenderer().setHumanRounding(true);
+        graph.getLegendRenderer().setVisible(true);
+        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+    }
+
+    private class UpdateGui extends Thread{
+        private ArrayList<Record> records;
+        private ArrayList<Channel> channels;
+        private long waitTime = 0;
+        long timestampPlot = -1;
+        int maxYY = 300, minYY = -300;
+
+        UpdateGui(ArrayList<Record> records, ArrayList<Channel> channels){
+            this.records = records;
+            this.channels = channels;
+            for(Record r : records){
+                if(waitTime<(1.0/r.getFrequency())*1000) waitTime = (int)((1.0/r.getFrequency())*1000)+1;
+                timestampPlot = r.getTimestamp();
+            }
+        }
+
+        @Override
+        public void run() {
+            boolean stop = false;
+            while(!stop){
+                boolean allEmpty = true;
+                //query data for each records if empty
+                SampleAdapter sampleAdapter = new SampleAdapter(getApplication());
+                for(Record r : records){
+                    if(r.getSamplesbuffer().size() ==  0){
+                        r.setSamplesbuffer(sampleAdapter.getSamples(r.getR_id(),r.getOffset(),r.getOffset()+r.getLimit()));
+                        r.setOffset(r.getOffset()+r.getLimit());
+                        if(r.getSamplesbuffer().isEmpty()) allEmpty = false;
+                    }
+                }
+                sampleAdapter.close();
+
+                if(allEmpty) break;
+                try {
+                    while(pauseGUI) sleep(waitTime);
+                } catch (InterruptedException e) {
+                    stop = true;
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        boolean pauseUpdate = pauseGUI;
+                        pauseGUI = true;
+                        for(Record r: records){
+                            ArrayList<Sample> samples = r.getSamplesbuffer();
+                            while (!samples.isEmpty() && timestampPlot >= samples.get(0).getTimestamp()){
+                                Sample sample = samples.remove(0);
+                                if(minYY > sample.getSample_data()) minYY = ((int) sample.getSample_data())-1;
+                                if(maxYY < sample.getSample_data()) maxYY = ((int) sample.getSample_data())+1;
+                                LineGraphSeries<DataPoint> tmp = channelLines.get(String.valueOf(r.getCh_nr()));
+                                try{
+                                    tmp.appendData(new DataPoint(sample.getTimestamp()-r.getTimestamp(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
+                                }catch (Exception e){}
+                            }
+                        }
+                        timestampPlot += waitTime;
+                        graph.getViewport().setMinY(minYY);
+                        graph.getViewport().setMaxY(maxYY);
+                        graph.invalidate();
+                        pauseGUI = pauseUpdate;
+                    }
+                });
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(updateGUI != null) updateGUI.interrupt();
+    }
 }

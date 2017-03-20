@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Mar 18 11:33:13 CET 2017
+#Sat Mar 18 19:14:41 CET 2017
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/resources-debug.ap_/res/color/abc_primary_text_disable_only_material_dark.xml
