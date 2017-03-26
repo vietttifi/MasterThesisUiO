@@ -149,22 +149,17 @@ public class ServerFragment extends Fragment {
     private void startServerButton(){
         serverPort = Integer.parseInt(txtServerPort.getText().toString());
         final Context CONTEXT = getContext();
-
         Thread server = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     //Create a server socket object, bind it to server_port
                     sockServer = new ServerSocket(serverPort);
-
-                    //Create server side with client socket reference
                     //Multi clients management
                     while (true) {
                         //Accept the client connection, then give it to ServerThread with client socket
                         Socket socClient = sockServer.accept();
-
                         final String clientIP = socClient.getRemoteSocketAddress().toString();
-                        //System.out.println("------->"+serverPort+" "+clientIP);
                         serverUpdateUI.post(new Runnable() {
                             @Override
                             public void run() {
@@ -187,7 +182,6 @@ public class ServerFragment extends Fragment {
                 }
             }
         });
-
         startServer.setEnabled(false);
         stopListening.setEnabled(true);
         stopAll.setEnabled(true);
@@ -314,9 +308,9 @@ public class ServerFragment extends Fragment {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        currentSelected = adapterContextMenuInfo.position;
         switch (item.getItemId()){
             case R.id.visualiseSelected:
-                Toast.makeText(getContext(),"I will implement it when I have time - low priority",Toast.LENGTH_SHORT).show();
                 if(!((ClientThread)listView.getItemAtPosition(currentSelected)).isReadyToUse() || ((ClientThread)listView.getItemAtPosition(currentSelected)).isDisconnected()){
                     Toast.makeText(getContext(),"Source is not ready to use",Toast.LENGTH_SHORT).show();
                 } else{

@@ -67,6 +67,8 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
     Thread updateGUI = null;
     boolean pauseGUI = true;
 
+    private final Object lock = new Object();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -295,7 +297,11 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
 
     private void manageIbtnPlay(View view){
         Toast.makeText(getApplication(),"Play click",Toast.LENGTH_SHORT).show();
-        pauseGUI = false;
+            synchronized (lock){
+                pauseGUI = false;
+                lock.notify();
+            }
+
     }
 
     private void manageIbtnStop(View view){
@@ -325,8 +331,11 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
     }
 
     private void popUpSelectSensors(){
-        final boolean tempPause = pauseGUI;
-        pauseGUI = true;
+        final boolean tempPause;
+        synchronized (lock){
+            tempPause = pauseGUI;
+            pauseGUI = true;
+        }
         alertdialogbuilder = new AlertDialog.Builder(DatabaseVisualisationActivity.this);
         String nameSensors[] = new String[alertDialogItems.length];
 
@@ -354,7 +363,11 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                         graph.addSeries(channelLines.get(ch_nr));
                     }
                 }
-                pauseGUI = tempPause;
+                synchronized (lock){
+                    pauseGUI = tempPause;
+                    lock.notify();
+                }
+
             }
         });
 
@@ -407,7 +420,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
         graph.getGridLabelRenderer().setGridColor(Color.DKGRAY);
         graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
         graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
-        graph.getGridLabelRenderer().setHorizontalAxisTitle("Time from visualising in second/10");
+        graph.getGridLabelRenderer().setHorizontalAxisTitle("Time from visualising in nano second");
         graph.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.GREEN);
         graph.getGridLabelRenderer().setVerticalAxisTitle("Metric in legend");
         graph.getGridLabelRenderer().setVerticalAxisTitleColor(Color.GREEN);
@@ -427,6 +440,7 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
             this.records = records;
             this.channels = channels;
             for(Record r : records){
+                System.out.println(r.getFrequency()+" "+(1.0/r.getFrequency())*1000);
                 if(waitTime<(1.0/r.getFrequency())*1000) waitTime = (int)((1.0/r.getFrequency())*1000)+1;
                 timestampPlot = r.getTimestamp();
             }
@@ -438,8 +452,12 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
             Thread manageGUIData = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    boolean pauseUpdate = pauseGUI;
-                    pauseGUI = true;
+                    boolean pauseUpdate;
+                    synchronized (lock){
+                        pauseUpdate = pauseGUI;
+                        pauseGUI = true;
+                    }
+
                     HashMap<String,LineGraphSeries<DataPoint>> channel2 = channelLines;
                     for(Record r: records){
                         ArrayList<Sample> samples = r.getSamplesbuffer();
@@ -459,7 +477,10 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
                     timestampPlot += waitTime;
                     graph.getViewport().setMinY(minYY);
                     graph.getViewport().setMaxY(maxYY);
-                    pauseGUI = pauseUpdate;
+                    synchronized (lock){
+                        pauseGUI = pauseUpdate;
+                        lock.notifyAll();
+                    }
                 }
             });
 
@@ -479,7 +500,12 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
 
                 if(allEmpty) break;
                 try {
-                    while(pauseGUI) sleep(waitTime);
+                    while(pauseGUI) {
+                        synchronized (lock) {
+                            lock.wait();
+                        }
+                    }
+                    sleep(waitTime);
                     runOnUiThread(manageGUIData);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -24,7 +24,7 @@ public class UpdateDBThread extends Thread{
     public void run() {
         while(!stop || !bufferList.isEmpty()){
             ArrayList<Sample> aSamplesBuff = getAFragment();
-            System.out.println("GOT CHA ---> "+bufferList.size());
+            System.out.println("buffer waiting in list: "+bufferList.size());
             if(aSamplesBuff != null){
                 SampleAdapter sampleAdapter = new SampleAdapter(context);
                 sampleAdapter.saveSampleToDB(aSamplesBuff);
@@ -54,7 +54,6 @@ public class UpdateDBThread extends Thread{
         }
         return ret;
     }
-
 
     public void setStop(boolean stop) {
         synchronized (lock){

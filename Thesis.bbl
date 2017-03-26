@@ -1,67 +1,9 @@
-\begin{thebibliography}{64}
+\begin{thebibliography}{71}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[sleep and tmj center(2016)]{HudsonOSA}
-Hudson sleep and tmj center.
-\newblock Obstructive sleep apnea.
-\newblock 2016.
-\newblock URL \url{http://sleeptmjdr.com/obstructive-sleep-apnea/}.
-
-\bibitem[heart.org(June 2001)]{Advan}
-heart.org.
-\newblock Sleep as a teaching tool for integrating respiratory physiology and
-  motor control.
-\newblock June 2001.
-\newblock URL \url{http://advan.physiology.org/content/25/2/29}.
-
-\bibitem[BITalino(2016{\natexlab{a}})]{BITalino_board}
-BITalino.
-\newblock Bitalino (r)evolution board kit data sheet.
-\newblock 2016{\natexlab{a}}.
-\newblock URL
-  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Board_Kit_Datasheet.pdf}.
-
-\bibitem[BITalino(2016{\natexlab{b}})]{BITalino_plugged}
-BITalino.
-\newblock Bitalino (r)evolution plugged kit data sheet.
-\newblock 2016{\natexlab{b}}.
-\newblock URL
-  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Plugged_Kit_Datasheet.pdf}.
-
-\bibitem[BITalino(2016{\natexlab{c}})]{BITalino_Freestyle}
-BITalino.
-\newblock Bitalino (r)evolution freestyle kit data sheet.
-\newblock 2016{\natexlab{c}}.
-\newblock URL
-  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Freestyle_Kit_Datasheet.pdf}.
-
-\bibitem[edfplus.info({\natexlab{a}})]{EDF2}
-edfplus.info.
-\newblock Full specification of edf.
-\newblock {\natexlab{a}}.
-\newblock URL \url{http://www.edfplus.info/specs/edf.html}.
-
-\bibitem[edfplus.info({\natexlab{b}})]{EDFpluss}
-edfplus.info.
-\newblock Full specification of edf+.
-\newblock {\natexlab{b}}.
-\newblock URL \url{http://www.edfplus.info/specs/edfplus.html}.
-
-\bibitem[Gjørby(2016)]{SP}
-Svein~Petter Gjørby.
-\newblock Generic data acquisition for mobile platforms.
-\newblock 2016.
-
-\bibitem[et.al(2011{\natexlab{a}})]{StorageBIT}
-Charles~Hansen et.al.
-\newblock Storagebit a metadata-aware, extensible, semantic, and hierarchical
-  database for biosignals.
-\newblock 2011{\natexlab{a}}.
-\newblock URL \url{http://www.lx.it.pt/~afred/papers/StorageBIT.pdf}.
 
 \bibitem[for~the Public(May 2009)]{NHLBI}
 Health~Information for~the Public.
@@ -83,6 +25,12 @@ American~Academy of~Sleep~Medicine.
 \newblock The international classification of sleep disorders : diagnostic and
   coding manual.
 \newblock \emph{Obstructive Sleep Apnea Syndrome}, page~52, 2005.
+
+\bibitem[sleep and tmj center(2016)]{HudsonOSA}
+Hudson sleep and tmj center.
+\newblock Obstructive sleep apnea.
+\newblock 2016.
+\newblock URL \url{http://sleeptmjdr.com/obstructive-sleep-apnea/}.
 
 \bibitem[Wikipedia(2016)]{OSAWiki}
 Wikipedia.
@@ -120,6 +68,13 @@ Muhammad~Talha Khan and Rose~Amy Franco.
 \newblock Complex sleep apnea syndrome.
 \newblock February 16, 2014.
 \newblock URL \url{http://www.hindawi.com/journals/sd/2014/798487/}.
+
+\bibitem[heart.org(June 2001)]{Advan}
+heart.org.
+\newblock Sleep as a teaching tool for integrating respiratory physiology and
+  motor control.
+\newblock June 2001.
+\newblock URL \url{http://advan.physiology.org/content/25/2/29}.
 
 \bibitem[heart.org(April, 2016)]{HEARTORG_HR}
 heart.org.
@@ -193,10 +148,10 @@ heart.org.
 \newblock URL
   \url{http://www.heart.org/HEARTORG/Conditions/HighBloodPressure/AboutHighBloodPressure/Understanding-Blood-Pressure-Readings_UCM_301764_Article.jsp#.V7sFAWWDBug}.
 
-\bibitem[edfplus.info({\natexlab{c}})]{EDF1}
+\bibitem[edfplus.info({\natexlab{a}})]{EDF1}
 edfplus.info.
 \newblock Edf info.
-\newblock {\natexlab{c}}.
+\newblock {\natexlab{a}}.
 \newblock URL \url{http://www.edfplus.info}.
 
 \bibitem[Thomas(August 26th 2016)]{Thomas}
@@ -205,24 +160,45 @@ Line Thomas.
   plagemann (university of oslo).
 \newblock August 26th 2016.
 
-\bibitem[BITalino(2016{\natexlab{d}})]{BITalinoPubs}
+\bibitem[BITalino(2016{\natexlab{a}})]{BITalinoPubs}
 BITalino.
 \newblock Publications.
-\newblock 2016{\natexlab{d}}.
+\newblock 2016{\natexlab{a}}.
 \newblock URL \url{http://www.bitalino.com/index.php/community/publications}.
 
-\bibitem[BITalino(2016{\natexlab{e}})]{BITalino}
+\bibitem[BITalino(2016{\natexlab{b}})]{BITalino}
 BITalino.
 \newblock Disclaimer.
-\newblock 2016{\natexlab{e}}.
+\newblock 2016{\natexlab{b}}.
 \newblock URL \url{http://plux.info/index.php/en/policies/119-privacy-policy}.
 
-\bibitem[BITalino(2016{\natexlab{f}})]{BITalino_MCU}
+\bibitem[BITalino(2016{\natexlab{c}})]{BITalino_MCU}
 BITalino.
 \newblock Microcontroller unit (mcu) block data sheet.
-\newblock 2016{\natexlab{f}}.
+\newblock 2016{\natexlab{c}}.
 \newblock URL
   \url{http://bitalino.com/datasheets/REVOLUTION_MCU_Block_Datasheet.pdf}.
+
+\bibitem[BITalino(2016{\natexlab{d}})]{BITalino_board}
+BITalino.
+\newblock Bitalino (r)evolution board kit data sheet.
+\newblock 2016{\natexlab{d}}.
+\newblock URL
+  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Board_Kit_Datasheet.pdf}.
+
+\bibitem[BITalino(2016{\natexlab{e}})]{BITalino_plugged}
+BITalino.
+\newblock Bitalino (r)evolution plugged kit data sheet.
+\newblock 2016{\natexlab{e}}.
+\newblock URL
+  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Plugged_Kit_Datasheet.pdf}.
+
+\bibitem[BITalino(2016{\natexlab{f}})]{BITalino_Freestyle}
+BITalino.
+\newblock Bitalino (r)evolution freestyle kit data sheet.
+\newblock 2016{\natexlab{f}}.
+\newblock URL
+  \url{http://bitalino.com/datasheets/REVOLUTION_BITalino_Freestyle_Kit_Datasheet.pdf}.
 
 \bibitem[et.al(1984)]{LOGICALSENSOR_1}
 C.Hansen et.al.
@@ -243,10 +219,10 @@ Payam~Barnaghi et.al.
 \newblock URL
   \url{http://personal.ee.surrey.ac.uk/Personal/P.Barnaghi/doc/PID2479545.pdf}.
 
-\bibitem[et.al(2011{\natexlab{b}})]{LOGICALSENSOR_3}
+\bibitem[et.al(2011{\natexlab{a}})]{LOGICALSENSOR_3}
 Carlos~Carreiras et.al.
 \newblock Logical sensor specification.
-\newblock 2011{\natexlab{b}}.
+\newblock 2011{\natexlab{a}}.
 \newblock URL \url{http://www.cs.utah.edu/~tch/publications/pub30.pdf}.
 
 \bibitem[et.al({\natexlab{b}})]{PhysioNet_Intro}
@@ -334,6 +310,30 @@ physionet.org.
 \newblock URL
   \url{https://www.physionet.org/cgi-bin/atm/ATM?tool=&database=shhpsgdb&rbase=&srecord=&annotator=&signal=&sfreq=&tstart=&tdur=&tfinal=&action=&tfmt=&dfmt=&nbwidth=}.
 
+\bibitem[edfplus.info({\natexlab{b}})]{EDF2}
+edfplus.info.
+\newblock Full specification of edf.
+\newblock {\natexlab{b}}.
+\newblock URL \url{http://www.edfplus.info/specs/edf.html}.
+
+\bibitem[edfplus.info({\natexlab{c}})]{EDFpluss}
+edfplus.info.
+\newblock Full specification of edf+.
+\newblock {\natexlab{c}}.
+\newblock URL \url{http://www.edfplus.info/specs/edfplus.html}.
+
+\bibitem[Gjørby(2016)]{SP}
+Svein~Petter Gjørby.
+\newblock Generic data acquisition for mobile platforms.
+\newblock 2016.
+
+\bibitem[et.al(2011{\natexlab{b}})]{StorageBIT}
+Charles~Hansen et.al.
+\newblock Storagebit a metadata-aware, extensible, semantic, and hierarchical
+  database for biosignals.
+\newblock 2011{\natexlab{b}}.
+\newblock URL \url{http://www.lx.it.pt/~afred/papers/StorageBIT.pdf}.
+
 \bibitem[Thalheim(2011)]{CONCEPTUAL_BOOK}
 David W. Embley ·~Bernhard Thalheim.
 \newblock Handbook of conceptual modeling.
@@ -416,5 +416,51 @@ MIOB.
 \newblock Java-parser for the file formats edf and edf+.
 \newblock 2017.
 \newblock URL \url{https://github.com/MIOB/EDF4J}.
+
+\bibitem[netmarketshare.com(2017)]{NETMARKETSHARE}
+netmarketshare.com.
+\newblock operating system market share.
+\newblock 2017.
+\newblock URL
+  \url{https://www.netmarketshare.com/operating-system-market-share.aspx?qprid=8&qpcustomd=1}.
+
+\bibitem[developer android(2017{\natexlab{a}})]{DEVELOPERANDROIDAPI}
+developer android.
+\newblock Dashboards.
+\newblock 2017{\natexlab{a}}.
+\newblock URL \url{https://developer.android.com/about/dashboards/index.html}.
+
+\bibitem[developer android(2017{\natexlab{b}})]{DEVELOPERANDROIDSQL}
+developer android.
+\newblock android.database.sqlite.
+\newblock 2017{\natexlab{b}}.
+\newblock URL
+  \url{https://developer.android.com/reference/android/database/sqlite/package-summary.html}.
+
+\bibitem[IANA(2017)]{IANAPORT}
+IANA.
+\newblock service names and port numbers.
+\newblock 2017.
+\newblock URL
+  \url{https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt}.
+
+\bibitem[WIKIPEDIA(2017)]{CONSUMERPRODUCER}
+WIKIPEDIA.
+\newblock Producer and consumer problem.
+\newblock 2017.
+\newblock URL \url{https://en.wikipedia.org/wiki/Producer–consumer_problem}.
+
+\bibitem[grapview(2017{\natexlab{a}})]{GRAPHVIEWMAIN}
+grapview.
+\newblock Graph view android.
+\newblock 2017{\natexlab{a}}.
+\newblock URL \url{http://www.android-graphview.org}.
+
+\bibitem[grapview(2017{\natexlab{b}})]{GRAPHVIEW}
+grapview.
+\newblock Linegraphseries java file.
+\newblock 2017{\natexlab{b}}.
+\newblock URL
+  \url{https://github.com/appsthatmatter/GraphView/blob/master/src/main/java/com/jjoe64/graphview/series/LineGraphSeries.java}.
 
 \end{thebibliography}

@@ -12,14 +12,16 @@
 \usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
 \usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
 \usepackage{afterpage}
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{caption}
 \usepackage{changepage}   % for the adjustwidth environment
  %\captionsetup[figure]{labelfont=sc}
 \usepackage{caption}
-\DeclareCaptionType{code}[Listing][List of Code Listings]
 
+\DeclareCaptionType{code}[Listing][List of Code Listings]
+\restylefloat{table}
 \hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
 \newcommand\blankpage{%
     \null
@@ -58,7 +60,6 @@
 % Define the page headers using the FancyHdr package and set up for one-sided printing
 \fancyhead{}  % Clears all page headers and footers
 \rhead{\thepage}  % Sets the right side header to show the page number
-\lhead{}  % Clears the left side page header
 
 \pagestyle{fancy}  % Finally, use the "fancy" page style to implement the FancyHdr headers
 
@@ -75,7 +76,7 @@ Which metadata.
 Which relationships.
 Functional requirement.
 Non-functional.
-->Data model schema.
+Data model schema.
 
 PART II:
 Extract data from physionet and stream to data acquisition tool from "Svein Pette"
@@ -115,20 +116,16 @@ The acknowledgements and the people to thank go here, don't forget to include yo
 \blankpage
 
 %% ----------------------------------------------------------------
-\lhead{\emph{Contents}}  % Set the left side page header to "Contents"
 \tableofcontents  % Write out the Table of Contents
 
 \afterpage{\blankpage}
 %% ----------------------------------------------------------------
-\lhead{\emph{List of Figures}}  % Set the left side page header to "List if Figures"
 \listoffigures  % Write out the List of Figures
 
 %% ----------------------------------------------------------------
-\lhead{\emph{List of Tables}}  % Set the left side page header to "List of Tables"
 \listoftables  % Write out the List of Tables
 
 %% ----------------------------------------------------------------
-\lhead{\emph{Listings}}  % Set the left side page header to "List of Tables"
 \listofcodes  % Write out the List of Listing
 
 %% ----------------------------------------------------------------
@@ -184,25 +181,19 @@ The acknowledgements and the people to thank go here, don't forget to include yo
 
 
 \input{Chapters/Chapter1} % Introduction
-\lhead{\emph{Introduction}}
 
 \input{Chapters/Chapter2} % Sleep Apnoea
-\lhead{\emph{Sleep Apnoea}}
 
 \input{Chapters/Chapter3} % Event modeling and processing
-\lhead{\emph{Data sources and data formats}}
 
 \input{Chapters/Chapter4} % Design
-\lhead{\emph{Database modeling}}
 
 \input{Chapters/Chapter5} % Implement
-\lhead{\emph{Implement}}
 
 \input{Chapters/Chapter6} % Evaluation
-\lhead{\emph{Evaluation}}
 
 \input{Chapters/Chapter7} % Conclusion
-\lhead{\emph{Conclusion}}
+
 
 %% ----------------------------------------------------------------
 % Now begin the Appendices, including them as separate files
@@ -213,7 +204,7 @@ The acknowledgements and the people to thank go here, don't forget to include yo
 \appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
 
 \input{Appendices/AppendixA}	% Appendix Title
-\lhead{\emph{Appendix A}}
+%\lhead{\emph{Appendix A}}
 %\input{Appendices/AppendixB} % Appendix Title
 
 %\input{Appendices/AppendixC} % Appendix Title
@@ -223,7 +214,7 @@ The acknowledgements and the people to thank go here, don't forget to include yo
 
 %% ----------------------------------------------------------------
 \label{Bibliography}
-\lhead{\emph{Bibliography}}  % Change the left side page header to "Bibliography"
+%\lhead{\emph{Bibliography}}  % Change the left side page header to "Bibliography"
 \bibliographystyle{unsrtnat}  % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 \bibliography{Bibliography}  % The references (bibliography) information are stored in the file named "Bibliography.bib"
 

@@ -1,4 +1,3 @@
-\lhead{\emph{Data sources and data formats}}
 \chapter{Data sources and data formats}
 Signals for OSA come from many different sensor data sources. Moreover, the quality of these signals is diverse. Signals that come from clinical grade sensors are used in the medical domain, while signals that come from consumer electronic sensors are often used for fitness trackers, research, etc. In other words, consumer electronic sensors are not allowed in medicine, because they have not been approved yet. Therefore, a hypothesis is made that the signals from clinical sensors have better quality than the consumer electronic sensors. This chapter presents two corresponding sensor data sources for these two types of sensors. Consumer electronic signals come from BITalino sensors while clinic grade signals are stored in the Physionet database and captured with clinical grade sensors. In addition, different sensor data sources provide different formats to obtain and store the signals. Therefore, this chapter also presents a description of data formatting for each of the sensor data sources. In Section 3.1, an overview of data sources is presented. Section 3.2 presents different methods to format data signals. Standard formats, which are the European Data Format (EDF)\cite{EDF1} and the European Data Format plus (EDF+) are presented in Section 3.2. Section 3.3 presents two data acquisition tools that can be used to obtain biosignals from sensor sources.
 \section{Data sources}
@@ -9,21 +8,21 @@ Signals for OSA come from many different sensor data sources. Moreover, the qual
             BITalino has a wide rang of sensors. Those sensors have the capability to measure either bio-electrical or bio-mechanical signals. BITalino has three major components that together form a basic bio-harvesting device. The first component is the power management which provides and manages power for biosignals acquisition. The BITalino power component uses a 3.7V LiPo battery to power its analog and digital parts. The second component is the micro controller unit (MCU) which is designed for accurate and reliable real-time streaming. It can control up to 6 analog inputs, 1 output, 2 digital inputs and 2 digital outputs at up to 1kHz \cite{BITalino_MCU}. The third component is data transfer. Data transfer is either bluetooth (BT) or bluetooth low energy (BLE), and is a ready-to-use module. The rest of the components are organized as independent modules that can be attached to the main board on demand.
             
             BITalino provides three kits: BITalino (r)evolution board, BITalino (r)evolution freestyle and BITalino (r)evolution plugged.\footnote{The evolution version is discontinued. The next generation of the BITalino is revolution, it has almost 2x the blocks and up to 60\% smaller sensors.}\\
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \includegraphics[width=1.0\textwidth]{Figures/BITalino_board.png}
                 \caption{BITalino (r)evolution Board with Bluetooth connectivity \cite{BITalino_board}}
                 \label{fig:Figures/BITalino_board}
             \end{figure}\\
             Figure 3.1 illustrates the BITalino (r)evolution board\cite{BITalino_board}. The size of the board is 100x65x6mm, and it is powered by a 3.7V recharge battery. The board consists of analog ports (4in - 10bit, 2in - 6bit, 1in - battery, 1out - 8bit) and digital ports (2in - 1bit, 2out - 1bit). In addition, it has either BT or BLE which have a range about 10m. There are seven sensors which are integrated on the board. They are electromyography (EMG), electrocardiography (ECG), electro-dermal activity (EDA), electroencephalography (EEG), accelerometer (ACC), light (LUX) and pushbutton (BTN). The board kit is designed as all-in-one device. The board connects all the necessary components which are the power management, MCU, BT and sensors into one board which is ready to use. This kit is made for biosignal exploration and lab activities. In conjunction with the OpenSignals software, it provides real-time biosignal data visualization.\\
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \includegraphics[width=1.0\textwidth]{Figures/BITalino_plugged.png}
                 \caption{BITalino (r)evolution Plugged with Bluetooth connectivity \cite{BITalino_plugged}}
                 \label{fig:Figures/BITalino_plugged}
             \end{figure}\\
             Figure 3.2 illustrates the BITalino (r)evolution plugged\cite{BITalino_plugged}. It is similar to the board kit, however the main board contains only three major components which are power management, MCU and BT. The main board also provides analog and digital ports to the inputs and outputs. The sensors do not integrate on the main board, they are separated from the board and connected as plug and play on demand. Therefore, the plugged kit provides maximum flexible configuration.\\
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \includegraphics[width=1.0\textwidth]{Figures/BITalino_Freestyle.png}
                 \caption{BITalino (r)evolution Freestyle with Bluetooth connectivity \cite{BITalino_Freestyle}}
@@ -61,10 +60,10 @@ Signals for OSA come from many different sensor data sources. Moreover, the qual
         Apnea annotations are stored in the .apn and .qrs files\cite{Apnea_ecg_annotation}. In the .apn files, a one-minute interval is used between annotations. A "A" annotation presents that apnea was in progress at the beginning of the fellowed minute while a "N" annotation shows that apnea was not in progress at the beginning of the fellowed minute. Rdann\footnote{Rdann is a program that reads and converts the binary annotations files into text, one annotation per line.} needs to be used for converting the binary annotations in these files into text for viewing. However, the .qrs files can be viewed by using sqrs125\footnote{sqrs125 is a program that locates QRS complexes in an ECG signal in the specified record.}. In the .qrs files, all observed heart beats are marked with "N" annotations, and QRS-like artifacts are marked with "\textbar" annotations\cite{Apnea_ecg_annotation}.\\
         \textbf{St. Vincent's University Hospital database: }\\
         Unlike the way Apnea-ECG database stores its annotations (encoded its annotations), St. Vincent's University Hospital database has the annotations in a text file, the *\_stage.txt and *\_respevt.txt files. Figure 3.4 presents two tables for annotations in these files:
-        \begin{figure}[h]
+        \begin{figure}[ht]
         \centering     %%% not \center
-        \subfigure[Annotations for *\_stage.txt\cite{STVinceUniversity_ann}]{\label{fig:stage}\includegraphics[width=50mm]{Figures/VUH_ANN.png}}
-        \subfigure[Annotations for *\_respevt.txt\cite{STVinceUniversity_ann}]{\label{fig:respevt}\includegraphics[width=90mm]{Figures/VUH_ANN_respevt.png}}
+        \subfigure[Annotations for *\_stage.txt\cite{STVinceUniversity_ann}]{\label{fig:VUH_ANN_S}\includegraphics[width=50mm]{Figures/VUH_ANN.png}}
+        \subfigure[Annotations for *\_respevt.txt\cite{STVinceUniversity_ann}]{\label{fig:VUH_ANN_R}\includegraphics[width=90mm]{Figures/VUH_ANN_respevt.png}}
         \caption{Annotations for St. Vincent's University Hospital database}
         \end{figure}\\
         \textbf{MIT-BIH polysomnographic database: }\\
@@ -73,7 +72,7 @@ Signals for OSA come from many different sensor data sources. Moreover, the qual
         The annotations of this database can be read by using PhysioBank ATM\cite{SHSH_Physiobank} which is free to use from Physionet. The PhysioBank ATM can export the annotations to many different data formats, for example CVS, EDF, Matlab etc. The .hypn contains annotations for sleep stage, the .arou files contains the information on arousal event type and duration, the .oart files contains annotations which present oxygen saturation (SaO2) and their duration, the .resp files contains the annotations for apnea event together with their duration and percent decrease in SaO2, minimum SaO2. The database has also .comp files that are compressed files. The .comp files contains all of the annotations that are stored in the .hypn, .arou, .resp, and .oart files.
     \subsection{EDF and EDF+ formats}
         In recent decades, many efforts to standardize the data format for biosignals have been done. One of them is the European Data Format (EDF). EDF is used for exchanging and storing multichannel biological and physical signals in a simple and flexible way. It was first introduced in 1987 at the Sleep Congress in Copenhagen and then contributed by all participating labs in August 1990\cite{EDF1}. The first publication of EDF was in 1992 in Electroencephalography and Clinical Neurophysiology 82, pages 391-393. The next version of EDF is EDF plus. It was published in 2003 and is compatible to the original EDF version. This is to say all existing EDF viewer programs can use EDF+. On the other hand, EDF+ can contain interrupted recordings as well as annotations, stimuli, and events. It has also fixed some problems that existed in EDF such as Y2K problem, comma vs dot, little-endian integers. Moreover, the EDF+ also supports UTF-8 format. The EDF+ is used in polysomnography, EEG, ECG, EMG and sleep scoring applications. Last but not least, EDF and EDF+ are free to use, and the users and developers can get supports from the EDF site via free downloads of files and software.
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \includegraphics[width=1.0\textwidth]{Figures/EDFFILE.png}
             \caption{EDF and EDF+ file structure \cite{EDF2}}
@@ -84,7 +83,7 @@ Signals for OSA come from many different sensor data sources. Moreover, the qual
         The differences between EDF and EDF+ are the information in the 44 bytes reserved field and additional specifications are added to EDF+. In the reserved field, when a record is EDF+ and continuous, it must start with EDF+C, and EDF+D if it is discrete. There are 12 additional specifications in EDF+ which are some rules for the header, date-time, local patient and local recording identification, digital maximum and minimum, separator for digital grouping, endian format, standard texts and polarity rules etc.\cite{EDFpluss}.\\
         The EDF+ data files are coded in a way that they can store both annotations and events. The EDF software can read EDF+ annotations as the physical sensor signals. Because the annotations are treated as signal, the results that are presented in the EDF viewers are strange.\\
         Beside containing ordinary signals, EDF+ can contain annotations signals. The annotations signal is defined by giving it the label "EDF Annotations". Then instead of storing ordinary signal samples, this field can be used for storing notation. This EDF annotations signal can be used for coding the text, time-keeping, events and stimuli as text. The annotations are kept in lists that are named Time-stamped Annotations Lists (TALs).
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \includegraphics[width=1.0\textwidth]{Figures/Scoringsample.png}
             \caption{Sleep scoring sample\cite{EDFpluss}}
@@ -97,14 +96,14 @@ Signals for OSA come from many different sensor data sources. Moreover, the qual
     CESAR is a project that is under developed by a group of universities (University of Oslo, National University of Singapore and Oslo University Hospital). In the Master Thesis by Gjøby\cite{SP}, a generic data acquisition tool for mobile platforms (the Android platform) is presented. This tool is designed such that it is independent from data management and data analysis, and new data sources are also supported by it. An other tool which can be used to obtain biosignals for CESAR is StorageBIT. This tool was developed by Carlos Carreiras et.al \cite{StorageBIT}. StorageBIT is not only a data acquisition tool, but also a database model used for storing biosignals in an efficient way. Regarding the scope of this section, only data acquisition part of StorageBIT is presented in the section.
     \subsection{Generic Data Acquisition for Mobile Platforms}
     Gjøby finished his master degree with the project title "Generic Data Acquisition for Mobile Platforms" at the Department of Informatics at the University of Oslo in spring 2016. He worked on designing and developing an extensible system which allows applications to collect external and built-in sensor data through one common interface. He chose to design and implement a system for Android platform in his master thesis. He presents the overview of the system in the chapter "Not Android Specific". In this chapter, he explains how to design sensor wrappers and providers. A sensor wrapper establishes a connection to a specific data source in order to collect data, after that it sends the collected data to the provider application. Hence, the sensor wrapper needs to be designed to fit the technology of the link layer and communication protocol of the specific data source. Therefore, each data source has its own sensor wrapper. A provider is an extended sensor wrapper management which can use any of the available sensor wrappers. Figure 3.7 illustrates an overview of how sensor wrappers connect to a provider, and a way provider serves multiple applications.
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
         \includegraphics[width=0.5\textwidth]{Figures/provider_SW.png}
         \caption{Sharing the collected data between multiple applications\cite{SP}}
         \label{fig:provider_SW}
     \end{figure}\\
     In the chapter "Android Specific", he implements this design on the Android platform after discussing on the suitable components and functions that Android provides. To collect data from physical sensors and send the collected data to a user application, he defines two JSON structures as illustrates in the Figure 3.8. 
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering     %%% not \center
         \subfigure[A JSON structure describing the encoding of the metadata]{\label{fig:stage}\includegraphics[width=70mm]{Figures/JSONmeta.png}}
         \subfigure[A JSON structure describing the encoding of a data reading]{\label{fig:respevt}\includegraphics[width=75mm]{Figures/JSONdata.png}}
@@ -112,7 +111,7 @@ Signals for OSA come from many different sensor data sources. Moreover, the qual
         \end{figure}\\
     His application immediately sends a metadata to the application when it receives a connection demand. He defines the metadata in form of a JSON-Object which has as the first element a tuple("type","data"). The second and third elements are name and ID of the sensor wrapper, the remaining elements are the data from the channels, which belong to the sensor wrapper, in form of a JSON-Object array. Each channel has a unique id, type (ACC,ECG,EMG, etc.), metric and description. The JSON-Object is converted to a string and sent to the application. After connected to the BITalino board, the application retrieves data from physical sensors and submits to the application. The connection to the BITalino board should be stopped after receiving a stop signal from the application.\\
     As Gjøby presents in chapter "Not Android specific", the context of the data acquisition is specified as metadata for that it can be used for one common interface. After a comparison between JSON, XML and binary buffer, he decided to use JSON for streaming sensor data in his tool. At first, a metadata which contains general, unchanged information under acquisition (also known as a described context of the collected data from sensor wrapper) is sent, then the collected data from sensors are sent as soon as they are available to avoid overhead. The tool provides a common interface by combining the sensor wrapper ID and the channel ID as abstract level to identify each channel in the system. Figure 3.9 presents a sample of the metadata for BITalino by using a JSON structure. An existing sensor database can be treated as a sensor wrapper with a unique ID. The requested data for a channel in the sensor database can be obtained by using the database ID together with the ID of the requested channel. In other words, the metadata in form of JSON structure for all sensor sources are the same such that they can be used by a provider via one common interface.
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
         \includegraphics[width=0.5\textwidth]{Figures/metadata.png}
         \caption{A JSON structure sample of the metadata from BITalino}
@@ -122,7 +121,7 @@ Signals for OSA come from many different sensor data sources. Moreover, the qual
     Another important component in this tool is a provider. The provider can be considered as a bridge to connect the sensor wrappers with the applications. The provider works as a sensor wrapper management and data processing. It discovers sensor wrappers dynamically by broadcasting a discovery message, then it registers the responded sensor wrappers for later harvesting data. The collected data from sensor wrappers are pushed to the provider by using earlier mentioned JSON structure. Then, the provider processes the data, i.e, stores or forwards the data to an application.
     \subsection{StorageBIT data acquisition}
     Carlos Carreiras et.al \cite{StorageBIT} have done research on storing biosignals from BITalino. This tool can convert sensor data from different sources into their data model. Although the tool mainly supports the BITalino kit, it can also manage other sources by mirroring these sources into its data model. At first they make a comparison of the existing data formats which are the Extensible Biosignal File Format (EBS), the European Data Format (EDF and EDF+), the Medical Waveform Format Encoding Rules (MFER) and the Waveform Database(WFDB) based on eight properties which are compression, non-sequential access, cross platform support, events support, extensibility, metadata, multi modality and querying. After that, they make a data model which has "Records" as the basic abstract entities for storage. Each record consists of header, audit, biosignals and events and is stored in form of JSON-Object as presented in Figure 3.10. 
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
         \includegraphics[width=0.5\textwidth]{Figures/metadata2.png}
         \caption{Mirroring of the EDF+ file structure onto the Data Model \cite{StorageBIT}}

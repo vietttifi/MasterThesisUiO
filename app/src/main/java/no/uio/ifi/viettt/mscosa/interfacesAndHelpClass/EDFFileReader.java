@@ -90,16 +90,12 @@ public class EDFFileReader extends Thread{
                 sendMessageToHandler(FILE_IS_LOADED, file_source.getIndex());
                 return;
             }
-
-            header.printHeader();
-
             createAndStoreSensorSource(header);
             createAndSavePatientPhysicianClinic(header);
             createAndSaveRecord(header);
             createAndStoreChannels(header);
 
             saveRecordFragmentAndSample(header);
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -423,7 +419,7 @@ public class EDFFileReader extends Thread{
             }
             if(date != null) timeStamp = date.getTime();
 
-            record.setTimestamp(timeStamp);
+            record.setTimestamp(timeStamp);//ns
             record.setFrequency(header.getNumberOfSamples()[i]/(float)header.getDurationOfRecords());
             record.setR_id(recordAdapter.saveRecordToDB(record));
             records.put(String.valueOf(i),record);
@@ -475,7 +471,7 @@ public class EDFFileReader extends Thread{
             channels[i].setMaxSamplesPerDataRecord(channel_max_sample_per_dataRecord);
             channels[i].setEdf_reserved(channel_reserved);
             channels[i].setFrequency(channel_max_sample_per_dataRecord/(float)header.getDurationOfRecords());
-            channels[i].setPeriod(1000*((float)1 /channels[i].getFrequency()));
+            channels[i].setPeriod(1000*((float)1.0 /channels[i].getFrequency()));//ms
             channels[i].setTimeStampReading(records.get(String.valueOf(i)).getTimestamp());
 
             if(!channels[i].getCh_name().toLowerCase().equals("edf annotations"))

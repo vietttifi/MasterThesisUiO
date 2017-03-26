@@ -116,7 +116,7 @@ public class ClientThread extends Thread{
             }
 
         }catch (IOException e){
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
         try {
@@ -197,15 +197,11 @@ public class ClientThread extends Thread{
 
     void updateSample(JSONObject jsonObj) throws JSONException{
         if(!isPlotting && !isStoring) return;
-        //for(Channel c : channels.values()) System.out.println(" selected -------> "+c.getCh_name()+ " "+ c.isSelectedToSaveSample());
-        String source_id = jsonObj.getString("id");
-
         long timeStamp = jsonObj.getLong("time");
         //  CHANNELS DATA  Getting JSON Array node
         JSONArray channelsData = jsonObj.getJSONArray("data");
         BitalinoDataSample[] samples = new BitalinoDataSample[channelsData.length()];
         for(int i = 0; i < channelsData.length(); i++){
-
             JSONObject channelData = channelsData.getJSONObject(i);
             String channel_nr = channelData.getString("id");
             float channel_data = Float.parseFloat(channelData.getString("value"));

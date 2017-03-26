@@ -94,7 +94,7 @@ public class RawQueryActivity extends AppCompatActivity {
                     tableResult.addView(trSep, new TableLayout.LayoutParams(
                             TableLayout.LayoutParams.MATCH_PARENT,
                             TableLayout.LayoutParams.WRAP_CONTENT));
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS z"); // the format of your date
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSSSS z"); // the format of your date
                     while (!cursor.isAfterLast() && cnt++ < LIMIT) {
                         tr = new TableRow(getApplication());
                         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));

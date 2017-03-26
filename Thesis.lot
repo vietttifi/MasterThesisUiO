@@ -2,23 +2,24 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces A summary of data items from CESAR acquisition and EDF/EDF+ file format\relax }}{37}{table.caption.53}
-\contentsline {table}{\numberline {4.2}{\ignorespaces A summary of user requirements\relax }}{38}{table.caption.54}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Classified entities with their attributes\relax }}{40}{table.caption.56}
-\contentsline {table}{\numberline {4.4}{\ignorespaces OSA entities with their attributes and FDs\relax }}{47}{table.caption.64}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Classified entities with their primary/candidate keys\relax }}{48}{table.caption.66}
-\contentsline {table}{\numberline {4.6}{\ignorespaces An overview of normal forms\relax }}{49}{table.caption.68}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Transforming Person into SQLite table\relax }}{55}{table.caption.74}
-\contentsline {table}{\numberline {4.8}{\ignorespaces Transforming Patient into SQLite table\relax }}{55}{table.caption.75}
-\contentsline {table}{\numberline {4.9}{\ignorespaces Transforming Physician into SQLite table\relax }}{56}{table.caption.76}
-\contentsline {table}{\numberline {4.10}{\ignorespaces Transforming Clinic into SQLite table\relax }}{56}{table.caption.77}
-\contentsline {table}{\numberline {4.11}{\ignorespaces Transforming SensorSource into SQLite table\relax }}{56}{table.caption.78}
-\contentsline {table}{\numberline {4.12}{\ignorespaces Transforming Record into SQLite table\relax }}{56}{table.caption.79}
-\contentsline {table}{\numberline {4.13}{\ignorespaces Transforming RecordFragment into SQLite table\relax }}{57}{table.caption.80}
-\contentsline {table}{\numberline {4.14}{\ignorespaces Transforming Sample into SQLite table\relax }}{57}{table.caption.81}
-\contentsline {table}{\numberline {4.15}{\ignorespaces Transforming Channel into SQLite table\relax }}{57}{table.caption.82}
+\contentsline {table}{\numberline {4.1}{\ignorespaces A summary of data items from CESAR acquisition and EDF/EDF+ file format\relax }}{37}{table.53}
+\contentsline {table}{\numberline {4.2}{\ignorespaces A summary of user requirements\relax }}{38}{table.54}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Classified entities with their attributes\relax }}{40}{table.56}
+\contentsline {table}{\numberline {4.4}{\ignorespaces OSA entities with their attributes and FDs\relax }}{48}{table.65}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Classified entities with their primary/candidate keys\relax }}{50}{table.67}
+\contentsline {table}{\numberline {4.6}{\ignorespaces An overview of normal forms\relax }}{51}{table.69}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Transforming Person into SQLite table\relax }}{57}{table.75}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Transforming Patient into SQLite table\relax }}{58}{table.76}
+\contentsline {table}{\numberline {4.9}{\ignorespaces Transforming Physician into SQLite table\relax }}{58}{table.77}
+\contentsline {table}{\numberline {4.10}{\ignorespaces Transforming Clinic into SQLite table\relax }}{58}{table.78}
+\contentsline {table}{\numberline {4.11}{\ignorespaces Transforming SensorSource into SQLite table\relax }}{58}{table.79}
+\contentsline {table}{\numberline {4.12}{\ignorespaces Transforming Record into SQLite table\relax }}{59}{table.80}
+\contentsline {table}{\numberline {4.13}{\ignorespaces Transforming RecordAnnotation into SQLite table\relax }}{59}{table.81}
+\contentsline {table}{\numberline {4.14}{\ignorespaces Transforming Annotation into SQLite table\relax }}{59}{table.82}
+\contentsline {table}{\numberline {4.15}{\ignorespaces Transforming Sample into SQLite table\relax }}{59}{table.83}
+\contentsline {table}{\numberline {4.16}{\ignorespaces Transforming Channel into SQLite table\relax }}{60}{table.84}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces A summary of the database system application requirements\relax }}{63}{table.caption.103}
+\contentsline {table}{\numberline {5.1}{\ignorespaces A summary of the database system application requirements\relax }}{65}{table.105}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

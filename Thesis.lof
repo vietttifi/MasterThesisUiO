@@ -19,21 +19,28 @@
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Mirroring of the EDF+ file structure onto the Data Model \cite {StorageBIT}\relax }}{33}{figure.caption.50}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Example of a recording from a source\relax }}{41}{figure.caption.57}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces View where Recording is presented as an entity\relax }}{42}{figure.caption.58}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces View where Recording is presented as a relationship\relax }}{43}{figure.caption.59}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Binary relationships\relax }}{44}{figure.caption.62}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Recursive and n-ary relationships\relax }}{45}{figure.caption.63}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Logical model of the OSA database - Person and Clinic\relax }}{53}{figure.caption.69}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Logical model of the OSA database - Source and Recording\relax }}{54}{figure.caption.70}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Physical database model\relax }}{59}{figure.caption.100}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces View where Recording is presented as an entity\relax }}{43}{figure.caption.58}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces View where Recording is presented as an entity\relax }}{44}{figure.caption.59}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces View where Recording is presented as a relationship\relax }}{44}{figure.caption.60}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Binary relationships\relax }}{46}{figure.caption.63}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Recursive and n-ary relationships\relax }}{47}{figure.caption.64}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Logical model of the OSA database - Person and Clinic\relax }}{55}{figure.caption.70}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Logical model of the OSA database - Source and Recording\relax }}{56}{figure.caption.71}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Physical database model\relax }}{61}{figure.caption.102}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces The context of the OSA database system application\relax }}{64}{figure.caption.104}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Example of fixed and sliding windows \cite {DSMS_WINDOW}\relax }}{67}{figure.caption.107}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Process model of server thread\relax }}{68}{figure.caption.108}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Process model of client thread\relax }}{69}{figure.caption.109}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces High level design of real-time wrapper\relax }}{70}{figure.caption.110}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Process model of EDF importer\relax }}{73}{figure.caption.113}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Process model of EDF exporter\relax }}{74}{figure.caption.115}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces The context of the OSA database system application\relax }}{66}{figure.caption.106}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Example of fixed and sliding windows \cite {DSMS_WINDOW}\relax }}{69}{figure.caption.109}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Process model of server thread\relax }}{70}{figure.caption.110}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Process model of client thread\relax }}{71}{figure.caption.111}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces High level design of real-time wrapper\relax }}{72}{figure.caption.112}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Process model of EDF importer\relax }}{74}{figure.caption.115}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Process model of EDF exporter\relax }}{76}{figure.caption.117}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Graphic user interface of the wrapper for CESAR acquisition tool\relax }}{79}{figure.caption.161}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Form for getting user input for Patient, Physician, and Clinic\relax }}{82}{figure.caption.206}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces EDF wrapper\relax }}{86}{figure.caption.243}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {EDF import GUI}}}{86}{figure.caption.243}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {EDF export GUI}}}{86}{figure.caption.243}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Replay samples from the database GUI\relax }}{88}{figure.caption.288}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

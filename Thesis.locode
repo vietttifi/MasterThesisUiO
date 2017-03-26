@@ -2,8 +2,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {code}{\numberline {4.1}{\ignorespaces SQLite code for creating table Channel}}{58}{code.caption.83}
+\contentsline {code}{\numberline {4.1}{\ignorespaces SQLite code for creating table Channel}}{60}{code.caption.85}
 \addvspace {10\p@ }
+\contentsline {code}{\numberline {5.1}{\ignorespaces SQLite connection management}}{78}{code.caption.120}
+\contentsline {code}{\numberline {5.2}{\ignorespaces Server management}}{81}{code.caption.162}
+\contentsline {code}{\numberline {5.3}{\ignorespaces Update real-time samples}}{83}{code.caption.207}
+\contentsline {code}{\numberline {5.4}{\ignorespaces SQLite insert samples transaction}}{84}{code.caption.225}
+\contentsline {code}{\numberline {5.5}{\ignorespaces EDF file reader}}{87}{code.caption.246}
+\contentsline {code}{\numberline {5.6}{\ignorespaces EDF file writer}}{87}{code.caption.272}
+\contentsline {code}{\numberline {5.7}{\ignorespaces appendData interface\cite {GRAPHVIEW}}}{88}{code.caption.289}
+\contentsline {code}{\numberline {5.8}{\ignorespaces Update samples to GUI}}{88}{code.caption.301}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

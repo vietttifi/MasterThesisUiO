@@ -16,12 +16,12 @@
         "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_light.9.png"
     },
     {
-        "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png",
-        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
-    },
-    {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
         "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png",
+        "source": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
     },
     {
         "merged": "/Users/viettt/Desktop/MScOSA/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",

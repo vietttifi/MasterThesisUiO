@@ -202,8 +202,8 @@ public class EDFExportActivity extends AppCompatActivity{
             chosenPatients = new String[cursor.getCount()];
 
             int cnt = 0;
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS z"); // the format of your date
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC")); // give a timezone reference for formating (see comment at the bottom
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS z");
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
             while (!cursor.isAfterLast()) {
                 choiceList[cnt] = "R_ID: "+cursor.getLong(0) +"\nP_ID: "+ cursor.getString(1) +"\nSID: "+ cursor.getString(2)
                         +"\nCH_NR: "+ cursor.getInt(3)+"\nCH_NAME: "+cursor.getString(4) + "\nP_PHY: "+cursor.getString(5)+"\nDATE: "+sdf.format(cursor.getLong(6));
@@ -258,12 +258,13 @@ public class EDFExportActivity extends AppCompatActivity{
                 raf = new RandomAccessFile(this.fileName, "rw");
                 buildEDFheader();
                 storeDataRecord();
+                //UPDATE TOTAL RECORD
+                raf.seek(0);
+                EDFWriter.writeEDFHeaderToFile(raf,edfHeader);
                 raf.close();
             }catch (Exception e){
                 e.printStackTrace();
             }
-
-            System.out.println("----> FINISHED WRITE TO FILE "+this.fileName);
         }
 
         private int numberOfByteInHeader(){
@@ -485,12 +486,7 @@ public class EDFExportActivity extends AppCompatActivity{
             }
             sampleAdapter.close();
             System.out.println("NR OF DATA RECORD "+(dataRecordCnt-1));
-
             edfHeader.setNumberOfRecords(dataRecordCnt-1);
-            //UPDATE TOTAL RECORD
-            edfHeader.printHeader();
-            raf.seek(0);
-            EDFWriter.writeEDFHeaderToFile(raf,edfHeader);
 
         }
 

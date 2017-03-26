@@ -22,7 +22,8 @@ public class OSADataBaseManager {
 
     public static synchronized OSADataBaseManager getInstance() throws Exception{
         if (instance == null) {
-            throw new Exception(OSADataBaseManager.class.getSimpleName() + " is not initialized, call initializeInstance(..) to initialize instance.");
+            throw new Exception(OSADataBaseManager.class.getSimpleName()
+                    + " is not initialized, call initializeInstance(..) to initialize instance.");
         }
         return instance;
     }
