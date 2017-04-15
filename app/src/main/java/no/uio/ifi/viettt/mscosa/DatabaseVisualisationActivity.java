@@ -452,33 +452,29 @@ public class DatabaseVisualisationActivity extends AppCompatActivity implements 
             Thread manageGUIData = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    boolean pauseUpdate;
                     synchronized (lock){
-                        pauseUpdate = pauseGUI;
+                        boolean bk = pauseGUI;
                         pauseGUI = true;
-                    }
+                        HashMap<String,LineGraphSeries<DataPoint>> channel2 = channelLines;
+                        for(Record r: records){
+                            ArrayList<Sample> samples = r.getSamplesbuffer();
+                            while (!samples.isEmpty() && timestampPlot >= samples.get(0).getTimestamp()){
+                                Sample sample = samples.remove(0);
+                                if(minYY > sample.getSample_data()) minYY = ((int) sample.getSample_data())-1;
+                                if(maxYY < sample.getSample_data()) maxYY = ((int) sample.getSample_data())+1;
+                                LineGraphSeries<DataPoint> tmp = channel2.get(String.valueOf(r.getCh_nr()));
+                                if(tmp != null && (sample.getTimestamp()-r.getTimestamp()) > tmp.getHighestValueX()){
+                                    tmp.appendData(new DataPoint(sample.getTimestamp()-r.getTimestamp(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
+                                    //System.out.println(tmp.getHighestValueX()+ " "+sample.getSample_data() + ": "+sample.getTimestamp() + " :" + r.getTimestamp());
+                                }
 
-                    HashMap<String,LineGraphSeries<DataPoint>> channel2 = channelLines;
-                    for(Record r: records){
-                        ArrayList<Sample> samples = r.getSamplesbuffer();
-                        while (!samples.isEmpty() && timestampPlot >= samples.get(0).getTimestamp()){
-                            Sample sample = samples.remove(0);
-                            if(minYY > sample.getSample_data()) minYY = ((int) sample.getSample_data())-1;
-                            if(maxYY < sample.getSample_data()) maxYY = ((int) sample.getSample_data())+1;
-                            LineGraphSeries<DataPoint> tmp = channel2.get(String.valueOf(r.getCh_nr()));
-                            if(tmp != null && (sample.getTimestamp()-r.getTimestamp()) > tmp.getHighestValueX()){
-                                tmp.appendData(new DataPoint(sample.getTimestamp()-r.getTimestamp(),sample.getSample_data()),true,NR_ENTRIES_WINDOW);
-                                //System.out.println(tmp.getHighestValueX()+ " "+sample.getSample_data() + ": "+sample.getTimestamp() + " :" + r.getTimestamp());
                             }
-
                         }
-                    }
 
-                    timestampPlot += waitTime;
-                    graph.getViewport().setMinY(minYY);
-                    graph.getViewport().setMaxY(maxYY);
-                    synchronized (lock){
-                        pauseGUI = pauseUpdate;
+                        timestampPlot += waitTime;
+                        graph.getViewport().setMinY(minYY);
+                        graph.getViewport().setMaxY(maxYY);
+                        pauseGUI = bk;
                         lock.notifyAll();
                     }
                 }

@@ -360,24 +360,27 @@ public class EDFFileReader extends Thread{
         patient.setClinic_code(clinic.getCl_id());
         patient.setPatient_id_in_clinic(patient.getP_id());
 
-        if(!patient_line[1].toLowerCase().equals("x")) {
+        if(patient_line.length > 1 && !patient_line[1].toLowerCase().equals("x")) {
             patient.setGender(patient_line[1]);
         }
 
-        if(!patient_line[2].toLowerCase().equals("x")) {
+        if(patient_line.length > 2 && !patient_line[2].toLowerCase().equals("x")) {
             patient.setDayOfBirth(patient_line[2]);
         }
 
-        if(!patient_line[3].toLowerCase().equals("x")) {
+        if(patient_line.length > 3 && !patient_line[3].toLowerCase().equals("x")) {
             patient.setName(patient_line[3]);
         }
 
         //Fill physician info
         String phy_line[] = header.getClinicInfo().split(" ");
-        if(phy_line[3].toLowerCase().equals("x")){
+        System.out.println(header.getClinicInfo());
+        if(phy_line.length > 3 && phy_line[3].toLowerCase().equals("x")){
             physician.setP_id(sensorSource.getS_name());
-        }else{
+        }else if (phy_line.length > 3){
             physician.setP_id(phy_line[3]+phy_line[1]);
+        } else{
+            physician.setP_id(phy_line[1]);
         }
         physician.setClinic_code(clinic.getCl_id());
         physician.setEmployee_id(physician.getP_id());
@@ -400,7 +403,7 @@ public class EDFFileReader extends Thread{
             record.setCh_nr(i);
             record.setPatient_id(patient.getP_id());
             record.setPhysician_id(physician.getP_id());
-            record.setUsed_equip(header.getClinicInfo().split(" ")[4]);
+            if(header.getClinicInfo().split(" ").length > 4) record.setUsed_equip(header.getClinicInfo().split(" ")[4]);
 
             String startDate[] = header.getStartDate().split("\\.");
             String startTime[] = header.getStartTime().split("\\.");

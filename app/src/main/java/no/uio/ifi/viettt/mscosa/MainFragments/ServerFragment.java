@@ -73,7 +73,6 @@ public class ServerFragment extends Fragment {
     private Button startServer, stopListening, stopAll;
     private EditText txtServerPort;
     ListView listView;
-    private int currentSelected = 0;
     //The handler for manage GUI
     private Handler serverUpdateUI = new Handler();
 
@@ -203,7 +202,7 @@ public class ServerFragment extends Fragment {
         }
     }
 
-    private void stopAllConnection(){
+    public void stopAllConnection(){
         for(ClientThread s : connectedSources){
             s.closeConnection();
         }
@@ -308,10 +307,9 @@ public class ServerFragment extends Fragment {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        currentSelected = adapterContextMenuInfo.position;
         switch (item.getItemId()){
             case R.id.visualiseSelected:
-                if(!((ClientThread)listView.getItemAtPosition(currentSelected)).isReadyToUse() || ((ClientThread)listView.getItemAtPosition(currentSelected)).isDisconnected()){
+                if(!((ClientThread)listView.getItemAtPosition(adapterContextMenuInfo.position)).isReadyToUse() || ((ClientThread)listView.getItemAtPosition(adapterContextMenuInfo.position)).isDisconnected()){
                     Toast.makeText(getContext(),"Source is not ready to use",Toast.LENGTH_SHORT).show();
                 } else{
                     ClientThread ss = (ClientThread) listView.getItemAtPosition(adapterContextMenuInfo.position);
@@ -328,16 +326,17 @@ public class ServerFragment extends Fragment {
 
                 break;
             case  R.id.deleteSource:
-                if(listView == null || listView.getItemAtPosition(currentSelected) == null){
+                if(listView == null || listView.getItemAtPosition(adapterContextMenuInfo.position) == null){
                     Toast.makeText(getContext(),"Invalid selection.",Toast.LENGTH_SHORT).show();
                 }else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    final int kk = adapterContextMenuInfo.position;
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which)
                         {
-                            ClientThread ss = (ClientThread) listView.getItemAtPosition(currentSelected);
+                            ClientThread ss = (ClientThread) listView.getItemAtPosition(kk);
                             ss.closeConnection();
                             removeSourceFromList(ss);
                             invalidateSourceList();
@@ -354,7 +353,7 @@ public class ServerFragment extends Fragment {
                         }
                     });
 
-                    builder.setMessage("Delete "+((ClientThread) listView.getItemAtPosition(currentSelected)).getThread_ID()+" ?");
+                    builder.setMessage("Delete "+((ClientThread) listView.getItemAtPosition(adapterContextMenuInfo.position)).getThread_ID()+" ?");
                     builder.setTitle("Warning...");
 
                     AlertDialog dialog_show = builder.create();
@@ -362,21 +361,21 @@ public class ServerFragment extends Fragment {
                 }
                 break;
             case R.id.startCollecting:
-                if(!((ClientThread)listView.getItemAtPosition(currentSelected)).isReadyToUse()){
+                if(!((ClientThread)listView.getItemAtPosition(adapterContextMenuInfo.position)).isReadyToUse()){
                     Toast.makeText(getContext(),"Source is not ready to use",Toast.LENGTH_SHORT).show();
-                } else if(((ClientThread)listView.getItemAtPosition(currentSelected)).isStoring()){
+                } else if(((ClientThread)listView.getItemAtPosition(adapterContextMenuInfo.position)).isStoring()){
                     Toast.makeText(getContext(),"Source is currently used, stop it if you want to record new.",Toast.LENGTH_SHORT).show();
                 } else{
-                    savePersonClinicInfo(((ClientThread)listView.getItemAtPosition(currentSelected)));
+                    savePersonClinicInfo(((ClientThread)listView.getItemAtPosition(adapterContextMenuInfo.position)));
                     invalidateSourceList();
                 }
                 break;
             case R.id.stopCollecting:
-                if(!((ClientThread)listView.getItemAtPosition(currentSelected)).isStoring()){
+                if(!((ClientThread)listView.getItemAtPosition(adapterContextMenuInfo.position)).isStoring()){
                     Toast.makeText(getContext(),"Source is not used, start it if you want to record new.",Toast.LENGTH_SHORT).show();
                 } else{
-                    SensorSource record = ((ClientThread)listView.getItemAtPosition(currentSelected)).getSensorSource();
-                    ((ClientThread)listView.getItemAtPosition(currentSelected)).setStoring(false);
+                    SensorSource record = ((ClientThread)listView.getItemAtPosition(adapterContextMenuInfo.position)).getSensorSource();
+                    ((ClientThread)listView.getItemAtPosition(adapterContextMenuInfo.position)).setStoring(false);
                     invalidateSourceList();
                     if(record != null) Toast.makeText(getContext(),record.getS_name()+" has been saved to database",Toast.LENGTH_SHORT).show();
                 }

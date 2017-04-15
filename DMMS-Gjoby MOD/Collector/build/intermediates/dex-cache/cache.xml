@@ -12,12 +12,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Collector/Collector/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.0"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Collector/Collector/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_704a2c7ebdc388b4d23b23c3e18065bde2e4cba0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Collector/Collector/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.0"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Collector/Collector/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_94b20d98894967913f0ef8b05ec2de8b098c3e78.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/viettt/Desktop/DMMS-master/Collector/Collector/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.0"
         sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
         <dex dex="/Users/viettt/Desktop/DMMS-master/Collector/Collector/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_08fe423980b7554ada87176269dfad7ef98153c1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Collector/Collector/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.0"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Collector/Collector/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_512b449af8771f5a5cabe4f19ea481d6035e64ab.jar" />
     </item>
     <item
         is-multidex="false"

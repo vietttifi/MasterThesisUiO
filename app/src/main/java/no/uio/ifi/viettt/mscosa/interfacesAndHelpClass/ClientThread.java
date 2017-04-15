@@ -60,6 +60,8 @@ public class ClientThread extends Thread{
     //BUFFER SIZE IN SECOND FOR REAL TIME SOURCE
     private int frag_duration;
 
+    private int cnt = 0;
+
     public ClientThread(Socket clientsSocket, Context context, Handler serverUpdateUI, ServerFragment serverFragment){
         this.clientsSocket = clientsSocket;
         this.context = context;
@@ -87,6 +89,7 @@ public class ClientThread extends Thread{
             String jsonStringFromBITalino = null;
             BufferedReader bf = new BufferedReader(new InputStreamReader(clientsSocket.getInputStream()));
             while ((jsonStringFromBITalino = bf.readLine()) != null && !jsonStringFromBITalino.equals("END") && !isDisconnected){
+                //System.out.println("have gotten "+cnt++);
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStringFromBITalino);
                     String type = jsonObj.getString("type");
@@ -112,7 +115,6 @@ public class ClientThread extends Thread{
                         }
                     });
                 }
-
             }
 
         }catch (IOException e){
@@ -242,8 +244,8 @@ public class ClientThread extends Thread{
             bufferSamples = new ArrayList<>();
             File f = context.getDatabasePath(OSADBHelper.DATABASE_NAME);
             long dbSize = f.length();
-            System.out.println("DB size: "+dbSize/(1024.0*1024.0)+" MB.");
-            if((dbSize/(1024.0*1024.0)) > 700.0) this.closeConnection();
+            //System.out.println("DB size: "+dbSize/(1024.0*1024.0)+" MB.");
+            //if((dbSize/(1024.0*1024.0)) > 700.0) this.closeConnection();
         }
         //(samples timestamp - fragment timestamp)/duration < 1
         //add all samples to current fragment buffer
@@ -269,7 +271,9 @@ public class ClientThread extends Thread{
             if(updateDBThread != null) updateDBThread.setStop(true);
             File f = context.getDatabasePath(OSADBHelper.DATABASE_NAME);
             long dbSize = f.length();
-            System.out.println("DB size: "+dbSize/(1024.0*1024.0)+" MB.");
+
+            System.out.println("Thread ID: "+thread_ID+". DB size: "+dbSize/(1024.0*1024.0)+" MB. Total used time"+updateDBThread.getUsedTimeForSQL());
+
         }
 
 

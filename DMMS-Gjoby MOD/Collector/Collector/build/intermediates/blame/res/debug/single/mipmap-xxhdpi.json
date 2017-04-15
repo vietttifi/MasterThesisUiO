@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Collector/Collector/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Collector/Collector/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/Users/viettt/Desktop/DMMS-master/Collector/Collector/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
         "source": "/Users/viettt/Desktop/DMMS-master/Collector/Collector/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     }

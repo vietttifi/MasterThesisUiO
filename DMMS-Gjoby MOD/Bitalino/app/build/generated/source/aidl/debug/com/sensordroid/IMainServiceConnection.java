@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /Users/viettt/Desktop/DMMS-master/Bitalino/app/src/main/aidl/com/sensordroid/IMainServiceConnection.aidl
+ * Original file: /Users/viettt/Desktop/MScOSA/DMMS-Gjoby MOD/Bitalino/app/src/main/aidl/com/sensordroid/IMainServiceConnection.aidl
  */
 package com.sensordroid;
 public interface IMainServiceConnection extends android.os.IInterface

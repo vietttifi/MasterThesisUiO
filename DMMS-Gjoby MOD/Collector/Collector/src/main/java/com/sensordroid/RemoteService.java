@@ -72,6 +72,7 @@ public class RemoteService extends Service {
             if (toFile) {
                 executor.submit(new DispatchFileHandler(json, fileOut));
             } else {
+                System.out.println("-> "+count);
                 executor.submit(new DispatchTCPHandler(json, output, printWriter));
             }
 
