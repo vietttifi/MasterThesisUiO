@@ -1,0 +1,59 @@
+\chapter{Evaluation}
+The database modeling and the user requirements in Chapter 4 and Chapter 5 are evaluated in this chapter by performing four experiments, which are real-time data collecting, importing data from EDF file format, exporting data from the database to EDF file format, querying data from the database. In addition to the four experiments, a mixed of the experiments together with graphical visualization is also evaluated. When performing a database evaluation, the most important metrics under evaluating are the read/write speed and the size of the database. That is, time to retrieve data and space to store data must meet the user requirements. On the other hand, the database application must ensure no data lost, or data corrupted when storing and retrieving. With respect to mobile platforms, which are usually limited resources and battery driven, the database application must also use the resources in an efficient way. Since a database connection is shared for many activities while the application is used, it needs to evaluate time each activity uses the connection.\\
+The extensibility for future use is clearly presented in the design chapter, and therefore not be evaluated in this section. As discussed in the design chapter, the database design is a platform independent, it can easily be implemented on a bio-signals collector application such as CESAR acquisition tool to minimize the sending and receiving overhead between collectors and the database application server. There are some common experiments when evaluating a database design and database application. The evaluated experiments in this chapter, therefore, inspire applications which want to implement the database design.
+The goals of the experiments are to evaluate the feasibility of the database model, and to convince the reader that the functional and non-functional requirements for the database modeling and the database application are satisfied by measuring performance of the read/write on the database, performance of the database application, and storage capacity. In this section, each experiment is evaluated with respect to reasons it is performed, workloads used, evaluated metrics, procedure to evaluate, and the results from the experiment.\\
+A BITalino plugged kit, two Android devices, and a CESAR acquisition simulator run on macOS Sierra are using for the experiments. Table \ref{tab:DevicesSpecs} presents specifications for the used devices in this chapter.
+\begin{table}
+\begin{center}
+\begin{tabular}{ |p{2cm}|p{2.6cm}|p{2.7cm}|p{2.8cm}|p{3cm}|}
+ \hline
+ Technology&ASUS Nexus 7\newline ME370T&Xiaomi Mi5& MacBook Retina\newline 15 Late 2013&BITalino BT\newline plugged kit\\
+ \hline
+ OS&Android 4.4.4&Android 7.0& macOS Sierra&n/a\\
+ \hline
+ RAM&1GB&3GB&16GB&n/a\\
+ \hline
+ CHIP&Nvidia Tegra 3\newline 4 core 1.2GHz&Snapdragon 820\newline 4 core 1.8GHz&Intel core i7\newline 4 core 2.3GHz&MCU with sampling rate 1, 10, 100, or 1000Hz\\
+ \hline
+ Wi-Fi&802.11 b/n/g&802.11\newline a/b/g/n/ac& 802.11\newline a/b/g/ac&n/a\\
+ \hline
+ Bluetooth&v3.0&v4.2&v4.0&v2.0, range 10m\\
+ \hline
+ Battery&4325mAh&3000mAh&8440mAh&700mAh\\
+ \hline
+\end{tabular}
+\end{center}
+\caption{Used devices specifications}
+\label{tab:DevicesSpecs}
+\end{table}
+
+\section{Real-time data collecting experiment}
+\subsection{Description}
+\subsection{Experiment workloads}
+\subsection{Experiment metrics}
+\subsection{Experiment setup}
+\subsection{Experiment result}
+\section{EDF importing experiment}
+\subsection{Description}
+\subsection{Experiment workloads}
+\subsection{Experiment metrics}
+\subsection{Experiment setup}
+\subsection{Experiment result}
+\section{EDF exporting experiment}
+\subsection{Description}
+\subsection{Experiment workloads}
+\subsection{Experiment metrics}
+\subsection{Experiment setup}
+\subsection{Experiment result}
+\section{Querying data experiment}
+\subsection{Description}
+\subsection{Experiment workloads}
+\subsection{Experiment metrics}
+\subsection{Experiment setup}
+\subsection{Experiment result}
+\section{Visualization with mixed tasks experiments}
+\subsection{Description}
+\subsection{Experiment workloads}
+\subsection{Experiment metrics}
+\subsection{Experiment setup}
+\subsection{Experiment result}

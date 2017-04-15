@@ -1,0 +1,50 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Obstructive Sleep apnea \citep {HudsonOSA}\relax }}{8}{figure.caption.16}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Observable Signals \citep {Advan}\relax }}{12}{figure.caption.19}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces BITalino (r)evolution Board with Bluetooth connectivity \citep {BITalino_board}\relax }}{17}{figure.caption.25}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces BITalino (r)evolution Plugged with Bluetooth connectivity \citep {BITalino_plugged}\relax }}{18}{figure.caption.26}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces BITalino (r)evolution Freestyle with Bluetooth connectivity \citep {BITalino_Freestyle}\relax }}{19}{figure.caption.27}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Annotations for St. Vincent's University Hospital database\relax }}{23}{figure.caption.35}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Annotations for *\_stage.txt\citep {STVinceUniversity_ann}}}}{23}{figure.caption.35}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Annotations for *\_respevt.txt\citep {STVinceUniversity_ann}}}}{23}{figure.caption.35}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces EDF and EDF+ file structure \citep {EDF2}\relax }}{25}{figure.caption.39}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Sleep scoring sample\citep {EDFpluss}\relax }}{26}{figure.caption.40}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Sharing the collected data between multiple applications\citep {SP}\relax }}{28}{figure.caption.43}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces A JSON structures used to send and receive sensor data.\citep {SP}\relax }}{30}{figure.caption.44}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A JSON structure describing the encoding of the metadata}}}{30}{figure.caption.44}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A JSON structure describing the encoding of a data reading}}}{30}{figure.caption.44}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces A JSON structure sample of the metadata from BITalino\relax }}{31}{figure.caption.47}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Mirroring of the EDF+ file structure onto the Data Model \citep {StorageBIT}\relax }}{32}{figure.caption.49}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of a recording from a source\relax }}{38}{figure.caption.56}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces View where Recording is presented as an entity\relax }}{41}{figure.caption.57}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces View where Recording is presented as an entity\relax }}{42}{figure.caption.58}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces View where Recording is presented as a relationship\relax }}{42}{figure.caption.59}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Binary relationships\relax }}{43}{figure.caption.62}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Recursive and n-ary relationships\relax }}{44}{figure.caption.63}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Logical model of the OSA database - Person and Clinic\relax }}{51}{figure.caption.69}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Logical model of the OSA database - Source and Recording\relax }}{52}{figure.caption.70}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Physical database model\relax }}{58}{figure.caption.100}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces The context of the OSA database system application\relax }}{61}{figure.caption.104}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Example of fixed and sliding windows \citep {DSMS_WINDOW}\relax }}{64}{figure.caption.107}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Process model of server thread\relax }}{65}{figure.caption.108}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Process model of client thread\relax }}{66}{figure.caption.109}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces High level design of real-time wrapper\relax }}{67}{figure.caption.110}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Process model of EDF importer\relax }}{69}{figure.caption.113}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Process model of EDF exporter\relax }}{70}{figure.caption.115}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Graphic user interface of the wrapper for CESAR acquisition tool\relax }}{72}{figure.caption.118}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Form for getting user input for Patient, Physician, and Clinic\relax }}{77}{figure.caption.210}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces EDF wrapper\relax }}{81}{figure.caption.254}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {EDF import GUI}}}{81}{figure.caption.254}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {EDF export GUI}}}{81}{figure.caption.254}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Replay samples from the database GUI\relax }}{83}{figure.caption.297}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

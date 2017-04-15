@@ -1,0 +1,3278 @@
+This is LuaTeX, Version 0.95.0 (TeX Live 2016)  (format=lualatex 2016.8.24)  15 APR 2017 13:26
+ restricted system commands enabled.
+**main
+(./main.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
+(./MastersDoctoralThesis.cls
+Document Class: MastersDoctoralThesis 2016/11/22 v1.5 LaTeXTemplates.com
+(/usr/local/texlive/2016/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count79
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2016/05/18 v6512 L3 programming layer (loader) 
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2016/05/18 v6512 L3 programming layer (code)
+L3 Module: l3bootstrap 2016/02/12 v6412 L3 Bootstrap code
+\ucharcat@table=\catcodetable5
+L3 Module: l3names 2016/03/11 v6433 L3 Namespace for primitives
+L3 Module: l3basics 2015/11/22 v6315 L3 Basic definitions
+L3 Module: l3expan 2015/09/10 v5983 L3 Argument expansion
+L3 Module: l3tl 2016/03/26 v6465 L3 Token lists
+L3 Module: l3str 2016/03/24 v6441 L3 Strings
+L3 Module: l3seq 2015/08/05 v5777 L3 Sequences and stacks
+L3 Module: l3int 2016/03/24 v6441 L3 Integers
+\c_max_int=\count80
+\l_tmpa_int=\count81
+\l_tmpb_int=\count82
+\g_tmpa_int=\count83
+\g_tmpb_int=\count84
+L3 Module: l3quark 2015/08/17 v5855 L3 Quarks
+L3 Module: l3prg 2015/11/01 v6216 L3 Control structures
+\g__prg_map_int=\count85
+L3 Module: l3clist 2015/09/02 v5901 L3 Comma separated lists
+L3 Module: l3token 2016/04/03 v6470 L3 Experimental token manipulation
+L3 Module: l3prop 2016/01/05 v6366 L3 Property lists
+L3 Module: l3msg 2016/03/26 v6464 L3 Messages
+L3 Module: l3file 2016/03/25 v6458 L3 File and I/O operations
+\l_iow_line_count_int=\count86
+\l__iow_target_count_int=\count87
+\l__iow_current_line_int=\count88
+\l__iow_current_word_int=\count89
+\l__iow_current_indentation_int=\count90
+L3 Module: l3skip 2016/01/05 v6366 L3 Dimensions and skips
+\c_zero_dim=\dimen102
+\c_max_dim=\dimen103
+\l_tmpa_dim=\dimen104
+\l_tmpb_dim=\dimen105
+\g_tmpa_dim=\dimen106
+\g_tmpb_dim=\dimen107
+\c_zero_skip=\skip41
+\c_max_skip=\skip42
+\l_tmpa_skip=\skip43
+\l_tmpb_skip=\skip44
+\g_tmpa_skip=\skip45
+\g_tmpb_skip=\skip46
+\c_zero_muskip=\muskip10
+\c_max_muskip=\muskip11
+\l_tmpa_muskip=\muskip12
+\l_tmpb_muskip=\muskip13
+\g_tmpa_muskip=\muskip14
+\g_tmpb_muskip=\muskip15
+L3 Module: l3keys 2015/11/17 v6284 L3 Key-value interfaces
+\g__keyval_level_int=\count91
+\l_keys_choice_int=\count92
+L3 Module: l3fp 2016/03/26 v6465 L3 Floating points
+\c__fp_leading_shift_int=\count93
+\c__fp_middle_shift_int=\count94
+\c__fp_trailing_shift_int=\count95
+\c__fp_big_leading_shift_int=\count96
+\c__fp_big_middle_shift_int=\count97
+\c__fp_big_trailing_shift_int=\count98
+\c__fp_Bigg_leading_shift_int=\count99
+\c__fp_Bigg_middle_shift_int=\count100
+\c__fp_Bigg_trailing_shift_int=\count101
+L3 Module: l3box 2015/08/09 v5822 L3 Experimental boxes
+\c_empty_box=\box26
+\l_tmpa_box=\box27
+\l_tmpb_box=\box28
+\g_tmpa_box=\box29
+\g_tmpb_box=\box30
+L3 Module: l3coffins 2016/05/17 v6508 L3 Coffin code layer
+\l__coffin_internal_box=\box31
+\l__coffin_internal_dim=\dimen108
+\l__coffin_offset_x_dim=\dimen109
+\l__coffin_offset_y_dim=\dimen110
+\l__coffin_x_dim=\dimen111
+\l__coffin_y_dim=\dimen112
+\l__coffin_x_prime_dim=\dimen113
+\l__coffin_y_prime_dim=\dimen114
+\c_empty_coffin=\box32
+\l__coffin_aligned_coffin=\box33
+\l__coffin_aligned_internal_coffin=\box34
+\l_tmpa_coffin=\box35
+\l_tmpb_coffin=\box36
+\l__coffin_display_coffin=\box37
+\l__coffin_display_coord_coffin=\box38
+\l__coffin_display_pole_coffin=\box39
+\l__coffin_display_offset_dim=\dimen115
+\l__coffin_display_x_dim=\dimen116
+\l__coffin_display_y_dim=\dimen117
+L3 Module: l3color 2014/08/23 v5354 L3 Experimental color support
+L3 Module: l3sys 2015/09/25 v6087 L3 Experimental system/runtime functions
+L3 Module: l3candidates 2016/05/13 v6484 L3 Experimental additions to l3kernel
+\l__box_top_dim=\dimen118
+\l__box_bottom_dim=\dimen119
+\l__box_left_dim=\dimen120
+\l__box_right_dim=\dimen121
+\l__box_top_new_dim=\dimen122
+\l__box_bottom_new_dim=\dimen123
+\l__box_left_new_dim=\dimen124
+\l__box_right_new_dim=\dimen125
+\l__box_internal_box=\box40
+\l__coffin_bounding_shift_dim=\dimen126
+\l__coffin_left_corner_dim=\dimen127
+\l__coffin_right_corner_dim=\dimen128
+\l__coffin_bottom_corner_dim=\dimen129
+\l__coffin_top_corner_dim=\dimen130
+\l__coffin_scaled_total_height_dim=\dimen131
+\l__coffin_scaled_width_dim=\dimen132
+L3 Module: l3luatex 2016/03/26 v6465 L3 Experimental LuaTeX-specific functions
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
+File: l3pdfmode.def 2016/03/26 v6465 L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count102
+\l__driver_tmp_box=\box41
+))
+Package: xparse 2016/05/18 v6512 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count103
+\l__xparse_m_args_int=\count104
+\l__xparse_mandatory_args_int=\count105
+\l__xparse_processor_int=\count106
+\l__xparse_v_nesting_int=\count107
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/bk11.clo
+File: bk11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count108
+\c@chapter=\count109
+\c@section=\count110
+\c@subsection=\count111
+\c@subsubsection=\count112
+\c@paragraph=\count113
+\c@subparagraph=\count114
+\c@figure=\count115
+\c@table=\count116
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen133
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \abovechapterskip with sig. '' on line 60.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \chapterbelowskip with sig. '' on line 61.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \chapterinbetweenskip with sig. '' on line 62.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \autodot with sig. '' on line 63.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \mdtChapapp with sig. '' on line 64.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \chapteralign with sig. '' on line 65.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \chapterfont with sig. '' on line 66.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \chapterprefixfont with sig. '' on line 67.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \@makechapterhead with sig. ' m ' on line 86.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \addchap with sig. ' s o m ' on line 112.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \addsec with sig. ' s o m ' on line 127.
+.................................................
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2016/04/23 3.9r The Babel package
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/luababel.def
+\l@dumylang=\language1
+\l@nohyphenation=\language2
+\l@german-x-2014-05-21=\language3
+\l@ngerman-x-2014-05-21=\language4
+\l@afrikaans=\language5
+\l@ancientgreek=\language6
+\l@ibycus=\language7
+\l@arabic=\language8
+\l@armenian=\language9
+\l@basque=\language10
+\l@bulgarian=\language11
+\l@catalan=\language12
+\l@pinyin=\language13
+\l@churchslavonic=\language14
+\l@coptic=\language15
+\l@croatian=\language16
+\l@czech=\language17
+\l@danish=\language18
+\l@dutch=\language19
+\l@ukenglish=\language20
+\l@usenglishmax=\language21
+\l@esperanto=\language22
+\l@estonian=\language23
+\l@ethiopic=\language24
+\l@farsi=\language25
+\l@finnish=\language26
+\l@french=\language27
+\l@friulan=\language28
+\l@galician=\language29
+\l@georgian=\language30
+\l@german=\language31
+\l@ngerman=\language32
+\l@swissgerman=\language33
+\l@monogreek=\language34
+\l@greek=\language35
+\l@hungarian=\language36
+\l@icelandic=\language37
+\l@assamese=\language38
+\l@bengali=\language39
+\l@gujarati=\language40
+\l@hindi=\language41
+\l@kannada=\language42
+\l@malayalam=\language43
+\l@marathi=\language44
+\l@oriya=\language45
+\l@panjabi=\language46
+\l@tamil=\language47
+\l@telugu=\language48
+\l@indonesian=\language49
+\l@interlingua=\language50
+\l@irish=\language51
+\l@italian=\language52
+\l@kurmanji=\language53
+\l@latin=\language54
+\l@classiclatin=\language55
+\l@liturgicallatin=\language56
+\l@latvian=\language57
+\l@lithuanian=\language58
+\l@mongolian=\language59
+\l@mongolianlmc=\language60
+\l@bokmal=\language61
+\l@nynorsk=\language62
+\l@occitan=\language63
+\l@piedmontese=\language64
+\l@polish=\language65
+\l@portuguese=\language66
+\l@romanian=\language67
+\l@romansh=\language68
+\l@russian=\language69
+\l@sanskrit=\language70
+\l@serbian=\language71
+\l@serbianc=\language72
+\l@slovak=\language73
+\l@slovenian=\language74
+\l@spanish=\language75
+\l@swedish=\language76
+\l@thai=\language77
+\l@turkish=\language78
+\l@turkmen=\language79
+\l@ukrainian=\language80
+\l@uppersorbian=\language81
+\l@welsh=\language82
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2016/04/23 3.9r Babel common definitions
+\babel@savecnt=\count117
+\U@D=\dimen134
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/luababel.def))
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2016/05/10 v3.20 KOMA-Script package (KOMA-Script-independent b
+asics and keyval usage)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2016/05/10 v3.20 KOMA-Script package (loading files)
+
+Package scrlfile, 2016/05/10 v3.20 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+)) (/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrhack.sty
+Package: scrhack 2016/05/10 v3.20 KOMA-Script package 
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2016/05/10 v3.20 KOMA-Script package (KOMA-Script-dependent ba
+sics and keyval usage)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/xpatch/xpatch.sty
+Package: xpatch 2012/10/02 v0.3 Extending etoolbox patching commands
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchcmd with sig. '' on line 125.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretocmd with sig. '' on line 126.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xapptocmd with sig. '' on line 127.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshowcmd with sig. '' on line 128.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchbibmacro with sig. 'm' on line 131.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretobibmacro with sig. 'm' on line 133.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xapptobibmacro with sig. 'm' on line 135.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshowbibmacro with sig. 'm' on line 137.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchfieldformat with sig. 'O{*}m' on line 139.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretofieldformat with sig. 'O{*}m' on line 141.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xapptofieldformat with sig. 'O{*}m' on line 143.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshowfieldformat with sig. 'O{*}m' on line 145.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchnameformat with sig. 'O{*}m' on line 147.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretonameformat with sig. 'O{*}m' on line 149.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xapptonameformat with sig. 'O{*}m' on line 151.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshownameformat with sig. 'O{*}m' on line 153.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchlistformat with sig. 'O{*}m' on line 155.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretolistformat with sig. 'O{*}m' on line 157.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xapptolistformat with sig. 'O{*}m' on line 159.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshowlistformat with sig. 'O{*}m' on line 161.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchindexfieldformat with sig. 'O{*}m' on line 163.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretoindexfieldformat with sig. 'O{*}m' on line 165.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xapptoindexfieldformat with sig. 'O{*}m' on line 167.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshowindexfieldformat with sig. 'O{*}m' on line 169.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchindexnameformat with sig. 'O{*}m' on line 171.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretoindexnameformat with sig. 'O{*}m' on line 173.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xapptoindexnameformat with sig. 'O{*}m' on line 175.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshowindexnameformat with sig. 'O{*}m' on line 177.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchindexlistformat with sig. 'O{*}m' on line 179.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretoindexlistformat with sig. 'O{*}m' on line 181.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xappindextolistformat with sig. 'O{*}m' on line 183.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshowindexlistformat with sig. 'O{*}m' on line 185.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpatchbibdriver with sig. 'm' on line 187.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xpretobibdriver with sig. 'm' on line 189.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xapptobibdriver with sig. 'm' on line 191.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xshowbibdriver with sig. 'm' on line 193.
+.................................................
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+Package scrhack Info: loading setspace hack on input line 192.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/setspace.hak
+File: setspace.hak 2016/05/10 v3.20 KOMA-Script package (hacking package setspac
+e)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip49
+\LTright=\skip50
+\LTpre=\skip51
+\LTpost=\skip52
+\LTchunksize=\count118
+\LTcapwidth=\dimen135
+\LT@head=\box42
+\LT@firsthead=\box43
+\LT@foot=\box44
+\LT@lastfoot=\box45
+\LT@cols=\count119
+\LT@rows=\count120
+\c@LT@tables=\count121
+\c@LT@chunks=\count122
+\LT@p@ftn=\toks15
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/siunitx/siunitx.sty
+Package: siunitx 2016/03/01 v2.6q A comprehensive (SI) units package
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen136
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen137
+\extrarowheight=\dimen138
+\NC@list=\toks17
+\extratabsurround=\skip53
+\backup@length=\skip54
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2016/05/18 v6512 LaTeX2e option processing using LaTeX3 keys
+)
+\l__siunitx_tmp_box=\box46
+\l__siunitx_tmp_dim=\dimen139
+\l__siunitx_tmp_int=\count123
+\l__siunitx_number_mantissa_length_int=\count124
+\l__siunitx_number_uncert_length_int=\count125
+\l__siunitx_round_int=\count126
+\l__siunitx_process_decimal_int=\count127
+\l__siunitx_process_uncertainty_int=\count128
+\l__siunitx_process_fixed_int=\count129
+\l__siunitx_process_integer_min_int=\count130
+\l__siunitx_process_precision_int=\count131
+\l__siunitx_group_min_int=\count132
+\l__siunitx_angle_marker_box=\box47
+\l__siunitx_angle_unit_box=\box48
+\l__siunitx_angle_marker_dim=\dimen140
+\l__siunitx_angle_unit_dim=\dimen141
+\l__siunitx_unit_int=\count133
+\l__siunitx_unit_denominator_int=\count134
+\l__siunitx_unit_numerator_int=\count135
+\l__siunitx_unit_prefix_int=\count136
+\l__siunitx_unit_prefix_base_int=\count137
+\l__siunitx_unit_prefix_gram_int=\count138
+\l__siunitx_number_product_int=\count139
+\c__siunitx_one_fill_skip=\skip55
+\l__siunitx_table_unit_align_skip=\skip56
+\l__siunitx_table_exponent_dim=\dimen142
+\l__siunitx_table_integer_dim=\dimen143
+\l__siunitx_table_mantissa_dim=\dimen144
+\l__siunitx_table_marker_dim=\dimen145
+\l__siunitx_table_result_dim=\dimen146
+\l__siunitx_table_uncert_dim=\dimen147
+\l__siunitx_table_fill_pre_dim=\dimen148
+\l__siunitx_table_fill_post_dim=\dimen149
+\l__siunitx_table_fill_mid_dim=\dimen150
+\l__siunitx_table_pre_box=\box49
+\l__siunitx_table_post_box=\box50
+\l__siunitx_table_mantissa_box=\box51
+\l__siunitx_table_result_box=\box52
+\l__siunitx_table_number_align_skip=\skip57
+\l__siunitx_table_text_align_skip=\skip58
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareBinaryPrefix with sig. 'mmm' on line 7218.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPostPower with sig. 'mm' on line 7221.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPrefix with sig. 'mmm' on line 7224.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPrePower with sig. 'mm' on line 7227.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIQualifier with sig. 'mm' on line 7230.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIUnit with sig. 'O{}mm' on line 7233.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIUnitWithOptions with sig. 'mmm' on line 7236.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ang with sig. 'o>{\SplitArgument {2}{;}}m' on line 7251.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \num with sig. 'om' on line 7260.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \numlist with sig. 'o>{\SplitList {;}}m' on line 7269.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \numrange with sig. 'omm' on line 7278.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIlist with sig. 'o>{\SplitList {;}}mm' on line 7290.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIrange with sig. 'ommm' on line 7302.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SI with sig. 'omom' on line 7314.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \sisetup with sig. 'm' on line 7317.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \tablenum with sig. 'om' on line 7332.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \si with sig. 'om' on line 7344.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_num:w with sig. 'om' on line 7391.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_numrange:w with sig. 'omm' on line
+. 7393.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_SI:w with sig. 'omom' on line 7395.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_SIlist:w with sig. 'omm' on line 7397.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_SIrange:w with sig. 'ommm' on line
+. 7399.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_si:w with sig. 'om' on line 7400.
+.................................................
+\g__file_internal_ior=\read1
+(/usr/local/texlive/2016/texmf-dist/tex/latex/beamer/translator/translator.sty
+Package: translator 2010/06/12 ver 1.10
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/beamer/translator/translator-lang
+uage-mappings.tex)))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 96.
+
+(/usr/local/texlive/2016/texmf-dist/tex/lualatex/luatex-def/luatex.def
+File: luatex.def 2016/01/23 v0.01b Graphics/Color for luaTeX
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count140
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen153
+\lightrulewidth=\dimen154
+\cmidrulewidth=\dimen155
+\belowrulesep=\dimen156
+\belowbottomsep=\dimen157
+\aboverulesep=\dimen158
+\abovetopsep=\dimen159
+\cmidrulesep=\dimen160
+\cmidrulekern=\dimen161
+\defaultaddspace=\dimen162
+\@cmidla=\count141
+\@cmidlb=\count142
+\@aboverulesep=\dimen163
+\@belowrulesep=\dimen164
+\@thisruleclass=\count143
+\@lastruleclass=\count144
+\@thisrulewidth=\dimen165
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen166
+\captionmargin@=\dimen167
+\captionwidth=\dimen168
+\caption@tempdima=\dimen169
+\caption@indent=\dimen170
+\caption@parindent=\dimen171
+\caption@hangindent=\dimen172
+)
+\c@ContinuedFloat=\count145
+Package caption Info: longtable package is loaded.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+))
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \thesistitle with sig. ' o m ' on line 214.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \author with sig. ' m ' on line 216.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \supervisor with sig. ' m ' on line 217.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \examiner with sig. ' m ' on line 218.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \degree with sig. ' m ' on line 219.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \addresses with sig. ' m ' on line 220.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \university with sig. ' m ' on line 221.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \department with sig. ' m ' on line 222.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \group with sig. ' m ' on line 223.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \faculty with sig. ' m ' on line 224.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \subject with sig. ' m ' on line 225.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \keywords with sig. ' m ' on line 226.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \bhrule with sig. '' on line 233.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \tttypeout with sig. 'm' on line 234.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \addchaptertocentry with sig. ' m ' on line 242.
+.................................................
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count146
+\Gm@cntv=\count147
+\c@Gm@tempcnt=\count148
+\Gm@bindingoffset=\dimen173
+\Gm@wd@mp=\dimen174
+\Gm@odd@mp=\dimen175
+\Gm@even@mp=\dimen176
+\Gm@layoutwidth=\dimen177
+\Gm@layoutheight=\dimen178
+\Gm@layouthoffset=\dimen179
+\Gm@layoutvoffset=\dimen180
+\Gm@dimlist=\toks18
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrlayer-scrpage.sty
+Package: scrlayer-scrpage 2016/05/10 v3.20 KOMA-Script package (end user interfa
+ce for scrlayer)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrlayer.sty
+Package: scrlayer 2016/05/10 v3.20 KOMA-Script package (defining layers and page
+ styles)
+\footheight=\skip59
+Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 1975
+.
+)
+Package scrbase Info: Unknown processing state.
+(scrbase)             Processing option `markcase=used'
+(scrbase)             of member `.scrlayer-scrpage.sty' of family
+(scrbase)             `KOMA' doesn't set
+(scrbase)             a valid state. This will be interpreted
+(scrbase)             as \FamilyKeyStateProcessed on input line 698.
+)
+Package scrlayer-scrpage Info: auto-selection of `pagestyleset=standard'.
+
+1: chapter
+1: chapter
+1: section
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \blank@p@gestyle with sig. '' on line 304.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \blankpagestyle with sig. ' m ' on line 308.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setblankpagestyle with sig. ' m ' on line 309.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \cleardoublepage with sig. '' on line 316.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'abbreviations' with sig. ' m ' on line 333.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \abstractauthorfont with sig. '' on line 339.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \abstracttitlefont with sig. '' on line 340.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'abstract' with sig. ' O{\null \vfill } ' on line 379.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'extraAbstract' with sig. ' O{\null \vfill } ' on line
+. 404.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'acknowledgements' with sig. '' on line 432.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'declaration' with sig. '' on line 454.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'constants' with sig. ' m ' on line 496.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'symbols' with sig. ' m ' on line 514.
+.................................................
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/palatino.sty
+Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2016/02/01 v2.5a Font selection for XeLaTeX and LuaLaTeX
+
+(/usr/local/texlive/2016/texmf-dist/tex/luatex/luaotfload/luaotfload.sty
+Package: luaotfload 2016/04/21 v2.7 OpenType layout system
+Lua module: luaotfload-main 2016/04/21 2.70002 OpenType layout system.
+Lua module: lualibs 2016-04-06 2.4 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2016-04-06 2.4 ConTeXt Lua libraries -- extended co
+llection.(using cache: /usr/local/texlive/2016/texmf-var/luatex-cache/generic)
+luaotfload | conf : Root cache directory is /usr/local/texlive/2016/texmf-var/lu
+atex-cache/generic/names.
+luaotfload | init : Loading fontloader “fontloader-2016-05-04.lua” from kpse
+-resolved path “/usr/local/texlive/2016/texmf-dist/tex/luatex/luaotfload/fontl
+oader-2016-05-04.lua”.
+Lua-only attribute luaotfload@state = 1
+Lua-only attribute luaotfload@noligature = 2
+Lua-only attribute luaotfload@syllabe = 3
+luaotfload | init : Context OpenType loader version “3.019”
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 4
+luaotfload | conf : Root cache directory is /usr/local/texlive/2016/texmf-var/lu
+atex-cache/generic/names.
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
+.
+luaotfload | main : initialization completed in 0.114 seconds)
+Lua module: fontspec 2016/02/01 2.5a Advanced font selection for LuaLaTeX.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+Package: fontspec-luatex 2016/02/01 v2.5a Font selection for XeLaTeX and LuaLaTe
+X
+\l_fontspec_script_int=\count149
+\l_fontspec_language_int=\count150
+\l_fontspec_strnum_int=\count151
+\l__fontspec_tmpa_dim=\dimen181
+\l__fontspec_tmpb_dim=\dimen182
+\l__fontspec_tmpc_dim=\dimen183
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/euenc/eu2enc.def
+File: eu2enc.def 2010/05/27 v0.1h Experimental Unicode font encodings
+)
+LaTeX Font Info:    Try loading font information for EU2+lmr on input line 105.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/euenc/eu2lmr.fd
+File: eu2lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+luaotfload | db : Font names database loaded from /usr/local/texlive/2016/texmf-
+var/luatex-cache/generic/names/luaotfload-names.luc(load luc: /usr/local/texlive
+/2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc)) (/usr/lo
+cal/texlive/2016/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+File: xunicode.sty 2011/09/09 v0.981 provides access to latin accents and many o
+ther characters in Unicode lower plane
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tipa/t3enc.def
+File: t3enc.def 2001/12/31 T3 encoding
+(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmro
+manslant10-regular.luc)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache
+/generic/fonts/otl/lmroman10-italic.luc)(load luc: /usr/local/texlive/2016/texmf
+-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc)
+LaTeX Font Info:    Try loading font information for EU2+lmss on input line 357.
+
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/euenc/eu2lmss.fd
+File: eu2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lms
+ans10-regular.luc))
+\tipaTiiicode=\count152
+\tipasavetokens=\toks19
+\tipachecktokens=\toks20
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__fontspec_post_arg:w with sig. 'mmO{}' on line 356.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \fontspec with sig. 'om' on line 358.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmainfont with sig. 'om' on line 368.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setsansfont with sig. 'om' on line 378.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmonofont with sig. 'om' on line 388.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmathrm with sig. 'om' on line 402.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setboldmathrm with sig. 'om' on line 410.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmathsf with sig. 'om' on line 418.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmathtt with sig. 'om' on line 426.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontfamily with sig. 'mom' on line 440.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontface with sig. 'mom' on line 456.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \defaultfontfeatures with sig. 't+om' on line 470.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \addfontfeatures with sig. 'm' on line 533.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontfeature with sig. 'mm' on line 544.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newAATfeature with sig. 'mmmm' on line 552.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newopentypefeature with sig. 'mmm' on line 560.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \aliasfontfeature with sig. 'mm' on line 581.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \aliasfontfeatureoption with sig. 'mmm' on line 590.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontscript with sig. 'mm' on line 594.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontlanguage with sig. 'mm' on line 598.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareFontsExtensions with sig. 'm' on line 603.
+.................................................
+\l__fontspec_tmp_int=\count153
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/fontspec/fontspec.cfg)
+LaTeX Info: Redefining \itshape on input line 2629.
+LaTeX Info: Redefining \slshape on input line 2634.
+LaTeX Info: Redefining \scshape on input line 2639.
+LaTeX Info: Redefining \upshape on input line 2644.
+\l__fontspec_em_int=\count154
+\l__fontspec_emdef_int=\count155
+LaTeX Info: Redefining \em on input line 2660.
+LaTeX Info: Redefining \emph on input line 2666.
+LaTeX Info: Redefining \- on input line 2670.
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \oldstylenums with sig. 'm' on line 2765.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \liningnums with sig. 'm' on line 2769.
+.................................................
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2016/05/14 v3.4 programmable bibliographies (PK/JW/AB)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, a
+nd LuaTeX
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO)
+
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX detected.
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/luatex-loader.sty
+Package: luatex-loader 2016/05/16 v0.6 Lua module loader (HO)
+
+(/usr/local/texlive/2016/texmf-dist/scripts/oberdiek/oberdiek.luatex.lua))
+\pdftexcmds@toks=\toks21
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+)))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count156
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2016/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write3
+\integerpart=\count157
+\decimalpart=\count158
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+\c@tabx@nest=\count159
+\c@listtotal=\count160
+\c@listcount=\count161
+\c@liststart=\count162
+\c@liststop=\count163
+\c@citecount=\count164
+\c@citetotal=\count165
+\c@multicitecount=\count166
+\c@multicitetotal=\count167
+\c@instcount=\count168
+\c@maxnames=\count169
+\c@minnames=\count170
+\c@maxitems=\count171
+\c@minitems=\count172
+\c@citecounter=\count173
+\c@savedcitecounter=\count174
+\c@uniquelist=\count175
+\c@uniquename=\count176
+\c@refsection=\count177
+\c@refsegment=\count178
+\c@maxextratitle=\count179
+\c@maxextratitleyear=\count180
+\c@maxextrayear=\count181
+\c@maxextraalpha=\count182
+\c@abbrvpenalty=\count183
+\c@highnamepenalty=\count184
+\c@lownamepenalty=\count185
+\c@maxparens=\count186
+\c@parenlevel=\count187
+\blx@tempcnta=\count188
+\blx@tempcntb=\count189
+\blx@tempcntc=\count190
+\blx@maxsection=\count191
+\blx@maxsegment@0=\count192
+\blx@notetype=\count193
+\blx@parenlevel@text=\count194
+\blx@parenlevel@foot=\count195
+\blx@sectionciteorder@0=\count196
+\labelnumberwidth=\skip60
+\labelalphawidth=\skip61
+\biblabelsep=\skip62
+\bibitemsep=\skip63
+\bibnamesep=\skip64
+\bibinitsep=\skip65
+\bibparsep=\skip66
+\bibhang=\skip67
+\blx@bcfin=\read2
+\blx@bcfout=\write4
+\c@mincomprange=\count197
+\c@maxcomprange=\count198
+\c@mincompwidth=\count199
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/blx-dm.def)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'authoryear.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count266
+\c@savedafterword=\count267
+\c@annotator=\count268
+\c@savedannotator=\count269
+\c@author=\count270
+\c@savedauthor=\count271
+\c@bookauthor=\count272
+\c@savedbookauthor=\count273
+\c@commentator=\count274
+\c@savedcommentator=\count275
+\c@editor=\count276
+\c@savededitor=\count277
+\c@editora=\count278
+\c@savededitora=\count279
+\c@editorb=\count280
+\c@savededitorb=\count281
+\c@editorc=\count282
+\c@savededitorc=\count283
+\c@foreword=\count284
+\c@savedforeword=\count285
+\c@holder=\count286
+\c@savedholder=\count287
+\c@introduction=\count288
+\c@savedintroduction=\count289
+\c@namea=\count290
+\c@savednamea=\count291
+\c@nameb=\count292
+\c@savednameb=\count293
+\c@namec=\count294
+\c@savednamec=\count295
+\c@translator=\count296
+\c@savedtranslator=\count297
+\c@shortauthor=\count298
+\c@savedshortauthor=\count299
+\c@shorteditor=\count300
+\c@savedshorteditor=\count301
+\c@labelname=\count302
+\c@savedlabelname=\count303
+\c@institution=\count304
+\c@savedinstitution=\count305
+\c@lista=\count306
+\c@savedlista=\count307
+\c@listb=\count308
+\c@savedlistb=\count309
+\c@listc=\count310
+\c@savedlistc=\count311
+\c@listd=\count312
+\c@savedlistd=\count313
+\c@liste=\count314
+\c@savedliste=\count315
+\c@listf=\count316
+\c@savedlistf=\count317
+\c@location=\count318
+\c@savedlocation=\count319
+\c@organization=\count320
+\c@savedorganization=\count321
+\c@origlocation=\count322
+\c@savedoriglocation=\count323
+\c@origpublisher=\count324
+\c@savedorigpublisher=\count325
+\c@publisher=\count326
+\c@savedpublisher=\count327
+\c@language=\count328
+\c@savedlanguage=\count329
+\c@pageref=\count330
+\c@savedpageref=\count331
+\shorthandwidth=\skip68
+\shortjournalwidth=\skip69
+\shortserieswidth=\skip70
+\shorttitlewidth=\skip71
+\shortauthorwidth=\skip72
+\shorteditorwidth=\skip73
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2016/05/14 v3.4 biblatex compatibility (PK/JW/AB)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2016/05/14 v3.4 biblatex compatibility (PK/JW/AB)
+\c@textcitecount=\count332
+\c@textcitetotal=\count333
+\c@textcitemaxnames=\count334
+\c@biburlnumpenalty=\count335
+\c@biburlucpenalty=\count336
+\c@biburllcpenalty=\count337
+\c@smartand=\count338
+)
+Package biblatex Info: Trying to load natbib compatibility...
+Package biblatex Info: ... file 'blx-natbib.def' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/blx-natbib.def
+File: blx-natbib.def 2016/05/14 v3.4 biblatex compatibility (PK/JW/AB)
+)
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/bbx/authoryear.bbx
+File: authoryear.bbx 2016/05/14 v3.4 biblatex bibliography style (PK/JW/AB)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2016/05/14 v3.4 biblatex bibliography style (PK/JW/AB)
+\c@bbx:relatedcount=\count339
+\c@bbx:relatedtotal=\count340
+))
+Package biblatex Info: Trying to load citation style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.cbx' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/cbx/authoryear.cbx
+File: authoryear.cbx 2016/05/14 v3.4 biblatex citation style (PK/JW/AB)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/csquotes/csquotes.sty
+Package: csquotes 2016/01/31 v5.1g context-sensitive quotations (JAW)
+\csq@reset=\count341
+\csq@gtype=\count342
+\csq@glevel=\count343
+\csq@qlevel=\count344
+\csq@maxlvl=\count345
+\csq@tshold=\count346
+\csq@ltx@everypar=\toks22
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/csquotes/csquotes.def
+File: csquotes.def 2016/01/31 v5.1g csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/csquotes/csquotes.cfg
+File: csquotes.cfg 
+)
+Package csquotes Info: Enabling multilingual quotes.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip74
+\subfigcapskip=\skip75
+\subfigcaptopadj=\dimen184
+\subfigbottomskip=\skip76
+\subfigcapmargin=\dimen185
+\subfiglabelskip=\skip77
+\c@subfigure=\count347
+\c@lofdepth=\count348
+\c@subtable=\count349
+\c@lotdepth=\count350
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/local/texlive/2016/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip78
+\subfig@bottom=\skip79
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count351
+\lst@gtempboxa=\box53
+\lst@token=\toks23
+\lst@length=\count352
+\lst@currlwidth=\dimen186
+\lst@column=\count353
+\lst@pos=\count354
+\lst@lostspace=\dimen187
+\lst@width=\dimen188
+\lst@newlines=\count355
+\lst@lineno=\count356
+\lst@maxwidth=\dimen189
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count357
+\lst@skipnumbers=\count358
+\lst@framebox=\box54
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package scrhack Info: loading listings hack on input line 53.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/listings.hak
+File: listings.hak 2016/05/10 v3.20 KOMA-Script package (hacking package listing
+s)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2016/05/10 v3.20 KOMA-Scriptpackage(handling toc-files)
+\scr@dte@tocline@numberwidth=\skip80
+\scr@dte@tocline@numbox=\box55
+)
+Package tocbasic Info: setting babel extension for `lol' on input line 137.
+Package scrhack Info: redefining \lstlistoflistings on input line 137.
+)
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/changepage/changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count359
+\cp@tempcnt=\count360
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2016/05/16 v1.17 At begin shipout hook (HO)
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen190
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/epigraph/epigraph.sty
+Package: epigraph 2009/09/02 v1.5c typesetting epigraphs
+\beforeepigraphskip=\skip81
+\afterepigraphskip=\skip82
+\epigraphwidth=\skip83
+\epigraphrule=\skip84
+)
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \@title with sig. ' ' on line 90.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ttitle with sig. ' ' on line 90.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \supname with sig. ' ' on line 91.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \examname with sig. ' ' on line 92.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \degreename with sig. ' ' on line 93.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \authorname with sig. ' ' on line 94.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \@author with sig. ' ' on line 94.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \addressname with sig. ' ' on line 95.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \subjectname with sig. ' ' on line 97.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \keywordnames with sig. ' ' on line 98.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \univname with sig. ' ' on line 99.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \deptname with sig. ' ' on line 100.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \groupname with sig. ' ' on line 101.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \facname with sig. ' ' on line 102.
+.................................................
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2016/05/05 v6.83n Hypertext links for LaTeX
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/luatex85/luatex85.sty
+Package: luatex85 2016/03/01 v1.0 pdftex aliases for luatex
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package hobsub Info: Skipping package `luatex-loader' (already loaded).
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO)
+
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package hobsub Info: Skipping package `atbegshi' (already loaded).
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen191
+\Hy@linkcounter=\count361
+\Hy@pagecounter=\count362
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count363
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4446.
+Package hyperref Info: Link nesting OFF on input line 4451.
+Package hyperref Info: Hyper index ON on input line 4454.
+Package hyperref Info: Plain pages OFF on input line 4461.
+Package hyperref Info: Backreferencing OFF on input line 4466.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4691.
+\c@Hy@tempcnt=\count364
+LaTeX Info: Redefining \url on input line 5044.
+\XeTeXLinkMargin=\dimen192
+\Fld@menulength=\count365
+\Field@Width=\dimen193
+\Fld@charsize=\dimen194
+Package hyperref Info: Hyper figures OFF on input line 6298.
+Package hyperref Info: Link nesting OFF on input line 6303.
+Package hyperref Info: Hyper index ON on input line 6306.
+Package hyperref Info: backreferencing OFF on input line 6313.
+Package hyperref Info: Link coloring OFF on input line 6318.
+Package hyperref Info: Link coloring with OCG OFF on input line 6323.
+Package hyperref Info: PDF/A mode OFF on input line 6328.
+LaTeX Info: Redefining \ref on input line 6368.
+LaTeX Info: Redefining \pageref on input line 6372.
+\Hy@abspage=\count366
+\c@Item=\count367
+\c@Hfootnote=\count368
+)
+Package scrhack Info: hyperref hack deactivated because of
+(scrhack)             detection of hyperref version, that doesn't
+(scrhack)             need that hack, on input line 108.
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2016/05/05 v6.83n Hyperref driver for pdfTeX
+\Fld@listcount=\count369
+\c@bookmark@seq@number=\count370
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
+2.
+)
+\Hy@SectionHShift=\skip85
+)
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 108.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 108.
+Package hyperref Info: Option `colorlinks' set `true' on input line 108.
+Package hyperref Info: Option `unicode' set `true' on input line 108.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2016/05/05 v6.83n Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 108.
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2016/05/14 v3.4 biblatex localization (PK/JW/AB)
+)
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... found 'babel' package.
+
+(./main.aux (./Chapters/Chapter1.aux) (./Chapters/Chapter2.aux)
+(./Chapters/Chapter3.aux) (./Chapters/Chapter4.aux) (./Chapters/Chapter5.aux)
+(./Chapters/Chapter6.aux) (./Chapters/Chapter7.aux) (./Appendices/AppendixA.aux
+) (./Appendices/AppendixB.aux))
+\openout1 = main.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for EU2/lmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 108.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 108.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tipa/t3cmr.fd
+File: t3cmr.fd 2001/12/31 TIPA font definitions
+)
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/beamer/translator/dicts/translato
+r-basic-dictionary/translator-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
+File: siunitx-abbreviations.cfg 2016/03/01 v2.6q siunitx: Abbreviated units
+) (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count371
+\scratchdimen=\dimen195
+\scratchbox=\box56
+\nofMPsegments=\count372
+\nofMParguments=\count373
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count374
+\MPscratchDim=\dimen196
+\MPnumerator=\count375
+\makeMPintoPDFobject=\count376
+\everyMPtoPDFconversion=\toks25
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 43
+8.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG
+,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: subfigure package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* bindingoffset: 14.22636pt
+* modes: includehead includefoot twoside 
+* h-part:(L,W,R)=(71.13188pt, 404.02908pt, 108.12054pt)
+* v-part:(T,H,B)=(42.67912pt, 759.6886pt, 42.67912pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=404.02908pt
+* \textheight=693.47404pt
+* \oddsidemargin=13.08826pt
+* \evensidemargin=35.85056pt
+* \topmargin=-29.59087pt
+* \headheight=18.8778pt
+* \headsep=19.8738pt
+* \topskip=11.0pt
+* \footskip=27.46295pt
+* \marginparwidth=116.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package scrlayer Info: Setting magic \footheight to \baselineskip while
+(scrlayer)             \begin{document} on input line 108.
+Package scrbase Info: activating english \abbrevname on input line 108.
+Package scrbase Info: activating english \byname on input line 108.
+Package scrbase Info: activating english \acknowledgementname on input line 108.
+
+Package scrbase Info: activating english \authorshipname on input line 108.
+Package scrbase Info: activating english \constantsname on input line 108.
+Package scrbase Info: activating english \symbolsname on input line 108.
+.................................................
+. fontspec info: "setup-math"
+. 
+. Adjusting the maths setup (use [no-math] to avoid this).
+.................................................
+\symlegacymaths=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 108.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 108.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 108.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 108.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 108.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 108.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 108.
+LaTeX Font Info:    Redeclaring math accent \check on input line 108.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 108.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 108.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 108.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 108.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 108.
+LaTeX Font Info:    Encoding `OT1' has changed to `EU2' for symbol font
+(Font)              `operators' in the math version `normal' on input line 108.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> EU2/lmr/m/n on input line 108.
+LaTeX Font Info:    Encoding `OT1' has changed to `EU2' for symbol font
+(Font)              `operators' in the math version `bold' on input line 108.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> EU2/lmr/m/n on input line 108.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  EU2/lmr/m/n --> EU2/lmr/m/n on input line 108.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> EU2/lmr/m/it on input line 108.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> EU2/lmr/bx/n on input line 108.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> EU2/lmss/m/n on input line 108.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> EU2/lmtt/m/n on input line 108.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  EU2/lmr/m/n --> EU2/lmr/bx/n on input line 108.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> EU2/lmr/bx/it on input line 108.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> EU2/lmss/bx/n on input line 108.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> EU2/lmtt/bx/n on input line 108.
+Package biblatex Info: LuaTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+
+\openout4 = main.bcf
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'main.bbl' found.
+(./main.bbl)
+Package biblatex Info: Reference section=0 on input line 108.
+Package biblatex Info: Reference segment=0 on input line 108.
+\c@lstlisting=\count377
+Package scrhack Info: undefining \float@addtolists on input line 108.
+\AtBeginShipoutBox=\box57
+Package hyperref Info: Option `colorlinks' set `false' on input line 108.
+Package hyperref Info: Link coloring OFF on input line 108.
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count378
+)
+LaTeX Info: Redefining \ref on input line 108.
+LaTeX Info: Redefining \pageref on input line 108.
+LaTeX Info: Redefining \nameref on input line 108.
+
+(./main.out) (./main.out)
+\@outlinefile=\write5
+
+\openout5 = main.out
+\c__siunitx_mathsf_int=\count379
+(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmro
+man8-regular.luc)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/gener
+ic/fonts/otl/lmroman6-regular.luc)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 108.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 108.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 108.
+(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmsa
+ns8-regular.luc)
+\c__siunitx_mathtt_int=\count380
+LaTeX Font Info:    Try loading font information for EU2+lmtt on input line 108.
+
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/euenc/eu2lmtt.fd
+File: eu2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmm
+ono10-regular.luc)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/gene
+ric/fonts/otl/lmmono8-regular.luc)
+1: section
+(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmro
+mancaps10-regular.luc)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/
+generic/fonts/otl/lmroman17-regular.luc)(load luc: /usr/local/texlive/2016/texmf
+-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc)(load luc: /usr/local/tex
+live/2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-regular.luc)(load l
+uc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-i
+talic.luc) <Thesis.pdf, id=358, 598.1477pt x 845.90027pt>
+File: Thesis.pdf Graphic file (type pdf)
+
+<use Thesis.pdf>
+Package luatex.def Info: Thesis.pdf used on input line 152.
+(luatex.def)             Requested size: 597.5256pt x 845.0205pt.
+ [1
+
+
+
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./Thesis.
+pdf>] [2
+
+]
+--------------------
+ Abstract
+--------------------
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--200
+
+ []
+
+1: section
+[3
+
+] [4] [5] [6
+
+]
+--------------------
+ Acknowledgements
+--------------------
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--213
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--213
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--213
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--213
+
+ []
+
+(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmro
+man7-regular.luc)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/gener
+ic/fonts/otl/lmroman5-regular.luc)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 213.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 213.
+
+1: section
+[7] [8
+
+] (./main.toc
+1: section
+[9] [10])
+\tf@toc=\write6
+
+\openout6 = main.toc
+ [11] [12
+
+] (./main.lof
+1: section
+[13])
+\tf@lof=\write7
+
+\openout7 = main.lof
+ [14] (./main.lot)
+\tf@lot=\write8
+
+\openout8 = main.lot
+
+1: section
+[15
+
+] [16
+
+] (./main.lol)
+\tf@lol=\write9
+
+\openout9 = main.lol
+
+1: section
+[17] [18
+
+]
+1: section
+
+\openout2 = Chapters/Chapter1.aux
+(./Chapters/Chapter1.tex
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--23
+
+ []
+
+1: section
+[1
+
+
+] [2]) [3] [4]
+\openout2 = Chapters/Chapter2.aux
+ (./Chapters/Chapter2.tex
+Chapter 2.
+1: section
+[5
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 21--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--28
+
+ []
+
+[6] [7]
+<Figures/ObstructionVentilationApnea.png, id=828, 803.0pt x 223.83624pt>
+File: Figures/ObstructionVentilationApnea.png Graphic file (type png)
+
+<use Figures/ObstructionVentilationApnea.png>
+Package luatex.def Info: Figures/ObstructionVentilationApnea.png used on input l
+ine 38.
+(luatex.def)             Requested size: 404.02908pt x 112.62483pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--49
+
+ []
+
+[8<./Figures/ObstructionVentilationApnea.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 50--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--60
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 61--67
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--67
+
+ []
+
+[10] <Figures/humanbody.jpg, id=857, 620.3175pt x 516.93124pt>
+File: Figures/humanbody.jpg Graphic file (type jpg)
+
+<use Figures/humanbody.jpg>
+Package luatex.def Info: Figures/humanbody.jpg used on input line 76.
+(luatex.def)             Requested size: 404.02908pt x 336.68756pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
+
+[11] [12<./Figures/humanbody.jpg>])
+Underfull \hbox (badness 10000) in paragraph at lines 88--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--286
+
+ []
+
+[13] [14]
+\openout2 = Chapters/Chapter3.aux
+ (./Chapters/Chapter3.tex
+Chapter 3.
+1: section
+[15
+
+
+
+](load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmr
+oman9-regular.luc)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 16.
+(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmsa
+ns9-regular.luc)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generi
+c/fonts/otl/lmmono9-regular.luc)
+<Figures/BITalino_board.png, id=916, 711.65875pt x 421.575pt>
+File: Figures/BITalino_board.png Graphic file (type png)
+
+<use Figures/BITalino_board.png>
+Package luatex.def Info: Figures/BITalino_board.png used on input line 19.
+(luatex.def)             Requested size: 404.02908pt x 239.33533pt.
+
+<Figures/BITalino_plugged.png, id=920, 704.6325pt x 456.70625pt>
+File: Figures/BITalino_plugged.png Graphic file (type png)
+
+<use Figures/BITalino_plugged.png>
+Package luatex.def Info: Figures/BITalino_plugged.png used on input line 26.
+(luatex.def)             Requested size: 404.02908pt x 261.87233pt.
+
+<Figures/BITalino_Freestyle.png, id=924, 701.62125pt x 464.73625pt>
+File: Figures/BITalino_Freestyle.png Graphic file (type png)
+
+<use Figures/BITalino_Freestyle.png>
+Package luatex.def Info: Figures/BITalino_Freestyle.png used on input line 33.
+(luatex.def)             Requested size: 404.02908pt x 267.62546pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--38
+
+ []
+
+[16] [17<./Figures/BITalino_board.png>] [18<./Figures/BITalino_plugged.png>]
+[19<./Figures/BITalino_Freestyle.png>]
+Overfull \hbox (20.54842pt too wide) in paragraph at lines 51--61
+\EU2/lmr/bx/n/10.95 The SHHS polysomnog-ra-phy database:  \EU2/lmr/m/n/10.95 Th
+e Sleep Heart Health Study polysomnog-
+ []
+
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+
+ []
+
+[22] <Figures/VUH_ANN.png, id=1007, 281.05pt x 282.05376pt>
+File: Figures/VUH_ANN.png Graphic file (type png)
+
+<use Figures/VUH_ANN.png>
+Package luatex.def Info: Figures/VUH_ANN.png used on input line 71.
+(luatex.def)             Requested size: 142.26378pt x 142.76955pt.
+(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmro
+man9-italic.luc)
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+[]\EU2/lmr/m/it/9 (a) \EU2/lmr/m/n/9 An-no-ta-tions for
+ []
+
+<Figures/VUH_ANN_respevt.png, id=1010, 513.92pt x 262.9825pt>
+File: Figures/VUH_ANN_respevt.png Graphic file (type png)
+
+<use Figures/VUH_ANN_respevt.png>
+Package luatex.def Info: Figures/VUH_ANN_respevt.png used on input line 72.
+(luatex.def)             Requested size: 256.0748pt x 131.03748pt.
+ [23<./Figures/VUH_ANN.png><./Figures/VUH_ANN_respevt.png>] <Figures/EDFFILE.pn
+g, id=1030, 726.715pt x 516.93124pt>
+File: Figures/EDFFILE.png Graphic file (type png)
+
+<use Figures/EDFFILE.png>
+Package luatex.def Info: Figures/EDFFILE.png used on input line 83.
+(luatex.def)             Requested size: 404.02908pt x 287.40504pt.
+
+<Figures/Scoringsample.png, id=1034, 670.505pt x 359.3425pt>
+File: Figures/Scoringsample.png Graphic file (type png)
+
+<use Figures/Scoringsample.png>
+Package luatex.def Info: Figures/Scoringsample.png used on input line 94.
+(luatex.def)             Requested size: 404.02908pt x 216.52832pt.
+ [24] [25<./Figures/EDFFILE.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
+
+ []
+
+[26<./Figures/Scoringsample.png>]
+<Figures/provider_SW.png, id=1060, 572.1375pt x 417.56pt>
+File: Figures/provider_SW.png Graphic file (type png)
+
+<use Figures/provider_SW.png>
+Package luatex.def Info: Figures/provider_SW.png used on input line 107.
+(luatex.def)             Requested size: 202.01454pt x 147.43521pt.
+
+<Figures/JSONmeta.png, id=1063, 450.68375pt x 517.935pt>
+File: Figures/JSONmeta.png Graphic file (type png)
+
+<use Figures/JSONmeta.png>
+Package luatex.def Info: Figures/JSONmeta.png used on input line 114.
+(luatex.def)             Requested size: 199.16928pt x 228.88788pt.
+
+<Figures/JSONdata.png, id=1064, 437.635pt x 392.46625pt>
+File: Figures/JSONdata.png Graphic file (type png)
+
+<use Figures/JSONdata.png>
+Package luatex.def Info: Figures/JSONdata.png used on input line 115.
+(luatex.def)             Requested size: 213.39566pt x 191.36993pt.
+
+<Figures/metadata.png, id=1067, 377.41pt x 500.87125pt>
+File: Figures/metadata.png Graphic file (type png)
+
+<use Figures/metadata.png>
+Package luatex.def Info: Figures/metadata.png used on input line 122.
+(luatex.def)             Requested size: 202.01454pt x 268.09721pt.
+ [27] [28<./Figures/provider_SW.png>]
+<Figures/metadata2.png, id=1080, 382.42876pt x 830.10126pt>
+File: Figures/metadata2.png Graphic file (type png)
+
+<use Figures/metadata2.png>
+Package luatex.def Info: Figures/metadata2.png used on input line 132.
+(luatex.def)             Requested size: 202.01454pt x 438.49495pt.
+) [29] [30<./Figures/JSONmeta.png><./Figures/JSONdata.png>] [31<./Figures/metada
+ta.png>] [32<./Figures/metadata2.png>]
+\openout2 = Chapters/Chapter4.aux
+
+(./Chapters/Chapter4.tex
+Chapter 4.
+1: section
+[33
+
+
+
+]
+Overfull \hbox (62.7622pt too wide) in paragraph at lines 17--72
+ [] 
+ []
+
+[34] [35] [36] <Figures/ARecord.png, id=1136, 1119.18124pt x 349.305pt>
+File: Figures/ARecord.png Graphic file (type png)
+
+<use Figures/ARecord.png>
+Package luatex.def Info: Figures/ARecord.png used on input line 144.
+(luatex.def)             Requested size: 404.02908pt x 126.10147pt.
+ [37] [38<./Figures/ARecord.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+<Figures/USEDORM.png, id=1159, 569.12625pt x 1090.0725pt>
+File: Figures/USEDORM.png Graphic file (type png)
+
+<use Figures/USEDORM.png>
+Package luatex.def Info: Figures/USEDORM.png used on input line 171.
+(luatex.def)             Requested size: 282.81912pt x 541.72491pt.
+
+<Figures/ConceptDB1.png, id=1161, 901.3675pt x 381.425pt>
+File: Figures/ConceptDB1.png Graphic file (type png)
+
+<use Figures/ConceptDB1.png>
+Package luatex.def Info: Figures/ConceptDB1.png used on input line 182.
+(luatex.def)             Requested size: 404.02908pt x 170.97035pt.
+
+<Figures/ConceptDB2.png, id=1162, 897.3525pt x 385.44pt>
+File: Figures/ConceptDB2.png Graphic file (type png)
+
+<use Figures/ConceptDB2.png>
+Package luatex.def Info: Figures/ConceptDB2.png used on input line 188.
+(luatex.def)             Requested size: 404.02908pt x 173.5405pt.
+ [39] [40] [41<./Figures/USEDORM.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
+
+ []
+
+[42<./Figures/ConceptDB1.png><./Figures/ConceptDB2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
+
+ []
+
+<Figures/RelationshipBinary.png, id=1186, 970.62625pt x 776.9025pt>
+File: Figures/RelationshipBinary.png Graphic file (type png)
+
+<use Figures/RelationshipBinary.png>
+Package luatex.def Info: Figures/RelationshipBinary.png used on input line 209.
+(luatex.def)             Requested size: 404.02908pt x 323.39246pt.
+
+<Figures/NaryAndRecursive.png, id=1187, 722.7pt x 809.0225pt>
+File: Figures/NaryAndRecursive.png Graphic file (type png)
+
+<use Figures/NaryAndRecursive.png>
+Package luatex.def Info: Figures/NaryAndRecursive.png used on input line 215.
+(luatex.def)             Requested size: 404.02908pt x 452.28415pt.
+
+Underfull \hbox (badness 1681) in paragraph at lines 229--229
+\EU2/lmr/m/n/10.95 name (B), chan-nel num-ber
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 229--229
+\EU2/lmr/m/n/10.95 i-cal min-i-mum (H), dig-i-tal
+ []
+
+
+Underfull \hbox (badness 1337) in paragraph at lines 229--229
+\EU2/lmr/m/n/10.95 max-i-mum (I), dig-i-tal min-i-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+[]|\EU2/lmr/m/n/10.95 Record-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+[]|\EU2/lmr/m/n/10.95 record-ing id (A), source
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 231--231
+\EU2/lmr/m/n/10.95 ber (C), id per-son col-lects
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+\EU2/lmr/m/n/10.95 record-ing (D), id per-son
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+\EU2/lmr/m/n/10.95 times-tamp (F), record-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+\EU2/lmr/m/n/10.95 de-scrip-tion (G), fre-quency
+ []
+
+
+Underfull \hbox (badness 2547) in paragraph at lines 231--231
+\EU2/lmr/m/n/10.95 (K), an-no-ta-tion on-set (L),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+\EU2/lmr/m/n/10.95 an-no-ta-tion du-ra-tion (M),
+ []
+
+
+Underfull \hbox (badness 4181) in paragraph at lines 231--231
+\EU2/lmr/m/n/10.95 an-no-ta-tion text (O), used
+ []
+
+
+Underfull \hbox (badness 2922) in paragraph at lines 233--233
+[]|\EU2/lmr/m/n/10.95 per-son id (A), name (B),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+\EU2/lmr/m/n/10.95 weight(J), BMI(K), clinic
+ []
+
+
+Underfull \hbox (badness 5756) in paragraph at lines 233--233
+\EU2/lmr/m/n/10.95 physi-cian(M), other health
+ []
+
+
+Overfull \hbox (5.85669pt too wide) in paragraph at lines 225--238
+ [] 
+ []
+
+[43<./Figures/RelationshipBinary.png>] [44<./Figures/NaryAndRecursive.png>]
+[45] [46]
+Underfull \hbox (badness 10000) in paragraph at lines 260--270
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+[]|\EU2/lmr/m/n/10.95 Sec-ond nor-mal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--308
+[]|\EU2/lmr/m/n/10.95 Third nor-mal
+ []
+
+
+Underfull \hbox (badness 1286) in paragraph at lines 313--313
+[]|\EU2/lmr/m/n/10.95 Boyce-Codd nor-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 317--317
+[]|\EU2/lmr/m/n/10.95 Fourth nor-mal
+ []
+
+
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 294--322
+ [] 
+ []
+
+[47]
+Overfull \hbox (7.45561pt too wide) in paragraph at lines 328--336
+\EU2/lmr/m/n/10.95 2. For each of FDs, BCNF check-ing and de-com-pos-ing pro-ce
+sses as fol-low([]Munthe-
+ []
+
+[48] <Figures/LogicalModelDB1.png, id=1237, 616.3025pt x 681.54625pt>
+File: Figures/LogicalModelDB1.png Graphic file (type png)
+
+<use Figures/LogicalModelDB1.png>
+Package luatex.def Info: Figures/LogicalModelDB1.png used on input line 370.
+(luatex.def)             Requested size: 404.02908pt x 446.80605pt.
+
+<Figures/LogicalModelDB2.png, id=1238, 820.06375pt x 882.29625pt>
+File: Figures/LogicalModelDB2.png Graphic file (type png)
+
+<use Figures/LogicalModelDB2.png>
+Package luatex.def Info: Figures/LogicalModelDB2.png used on input line 376.
+(luatex.def)             Requested size: 404.02908pt x 434.6984pt.
+
+Overfull \hbox (39.53325pt too wide) in paragraph at lines 343--381
+\OML/cmm/m/it/10.95 A; BCDEF \OMS/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 G; BCDEF
+ \OMS/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 H; BCDEF \OMS/cmsy/m/n/10.95 ! \OML/
+cmm/m/it/10.95 I; BCDEF \OMS/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 L; BCDEF \OMS
+/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 M; BCDEF \OMS/cmsy/m/n/10.95 !
+ []
+
+[49] [50] [51<./Figures/LogicalModelDB1.png>] [52<./Figures/LogicalModelDB2.png>
+]
+Underfull \hbox (badness 10000) in paragraph at lines 387--388
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 389--390
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 390--391
+
+ []
+
+[53]
+Underfull \hbox (badness 1043) in paragraph at lines 405--406
+[]|\EU2/lmr/m/n/10.95 per-son id can con-tains al-pha-betic
+ []
+
+
+Underfull \hbox (badness 1360) in paragraph at lines 507--508
+[]|\EU2/lmr/m/n/10.95 Unix time when the record-ing is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 545--545
+[]|\EU2/lmr/m/n/10.95 an-no-ta-tion_time-Keep-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 588--588
+[]|\EU2/lmr/m/n/10.95 EDF_chan-nel_re-
+ []
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+LaTeX Font Info:    Font shape `EU2/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `EU2/lmtt/b/n' tried instead on input line 599.
+(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmmo
+nolt10-bold.luc) <Figures/FinalTable.png, id=1280, 754.82pt x 902.37125pt>
+File: Figures/FinalTable.png Graphic file (type png)
+
+<use Figures/FinalTable.png>
+Package luatex.def Info: Figures/FinalTable.png used on input line 619.
+(luatex.def)             Requested size: 404.02908pt x 483.0048pt.
+) [54] [55] [56] [57] [58<./Figures/FinalTable.png>]
+\openout2 = Chapters/Chapter5.aux
+ (./Chapters/Chapter5.tex
+Chapter 5.
+
+Underfull \hbox (badness 3724) in paragraph at lines 15--15
+[]|\EU2/lmr/m/n/10.95 User re-quire-
+ []
+
+
+Underfull \hbox (badness 4492) in paragraph at lines 15--15
+\EU2/lmr/m/n/10.95 ments def-i-ni-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\EU2/lmr/m/n/10.95 Sys-tem non-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+[]|\EU2/lmr/m/n/10.95 The ap-pli-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\EU2/lmr/m/n/10.95 ca-tion must
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\EU2/lmr/m/n/10.95 ac-qui-si-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\EU2/lmr/m/n/10.95 data from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--24
+\EU2/lmr/m/n/10.95 ity, per-for-mance,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--24
+\EU2/lmr/m/n/10.95 - Or-ga-ni-za-tion:
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 22--24
+\EU2/lmr/m/n/10.95 An-droid op-er-a-tive
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--24
+\EU2/lmr/m/n/10.95 tion of per-sonal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]|\EU2/lmr/m/n/10.95 The ap-pli-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\EU2/lmr/m/n/10.95 ca-tion must
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\EU2/lmr/m/n/10.95 sup-port im-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\EU2/lmr/m/n/10.95 port-ing and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\EU2/lmr/m/n/10.95 ex-port-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--37
+\EU2/lmr/m/n/10.95 ity, per-for-mance,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--37
+\EU2/lmr/m/n/10.95 - Or-ga-ni-za-tion:
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 35--37
+\EU2/lmr/m/n/10.95 An-droid op-er-a-tive
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--37
+\EU2/lmr/m/n/10.95 tion of per-sonal
+ []
+
+
+Underfull \hbox (badness 1082) in paragraph at lines 38--42
+\EU2/lmr/m/n/10.95 - Out-put: store/-ex-port
+ []
+
+
+Underfull \hbox (badness 3449) in paragraph at lines 38--42
+\EU2/lmr/m/n/10.95 EDF header and data
+ []
+
+
+Underfull \hbox (badness 5787) in paragraph at lines 43--43
+\EU2/lmr/m/n/10.95 can be per-
+ []
+
+
+Underfull \hbox (badness 4673) in paragraph at lines 43--43
+\EU2/lmr/m/n/10.95 form by us-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+\EU2/lmr/m/n/10.95 ity, per-for-mance,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+\EU2/lmr/m/n/10.95 - Or-ga-ni-za-tion:
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 46--47
+\EU2/lmr/m/n/10.95 An-droid op-er-a-tive
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 48--52
+\EU2/lmr/m/n/10.95 - Out-put: re-sult from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--53
+[]|\EU2/lmr/m/n/10.95 Col-lected
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--53
+\EU2/lmr/m/n/10.95 data could
+ []
+
+
+Underfull \hbox (badness 5133) in paragraph at lines 53--53
+\EU2/lmr/m/n/10.95 be vi-su-al-ized
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--53
+\EU2/lmr/m/n/10.95 in real-time
+ []
+
+
+Underfull \hbox (badness 4036) in paragraph at lines 53--53
+\EU2/lmr/m/n/10.95 data, or re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+\EU2/lmr/m/n/10.95 ity, per-for-mance,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+\EU2/lmr/m/n/10.95 - Or-ga-ni-za-tion:
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 56--57
+\EU2/lmr/m/n/10.95 An-droid op-er-a-tive
+ []
+
+
+Underfull \hbox (badness 4229) in paragraph at lines 58--62
+[]|\EU2/lmr/m/n/10.95 - In-put: BITal-ino or
+ []
+
+
+Underfull \hbox (badness 2134) in paragraph at lines 58--62
+\EU2/lmr/m/n/10.95 - Source: BITal-ino or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[]|\EU2/lmr/m/n/10.95 An-no-ta-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+\EU2/lmr/m/n/10.95 tions could
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+\EU2/lmr/m/n/10.95 be added
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+\EU2/lmr/m/n/10.95 man-u-ally
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 63--63
+\EU2/lmr/m/n/10.95 to a cer-tain
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+\EU2/lmr/m/n/10.95 ity, per-for-mance,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+\EU2/lmr/m/n/10.95 - Or-ga-ni-za-tion:
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 65--66
+\EU2/lmr/m/n/10.95 An-droid op-er-a-tive
+ []
+
+
+Underfull \hbox (badness 2409) in paragraph at lines 67--71
+\EU2/lmr/m/n/10.95 - Out-put: an-no-ta-tions
+ []
+
+
+Overfull \hbox (52.84535pt too wide) in paragraph at lines 13--73
+[][] 
+ []
+
+<Figures/OSADBSContext.png, id=1324, 863.225pt x 391.4625pt>
+File: Figures/OSADBSContext.png Graphic file (type png)
+
+<use Figures/OSADBSContext.png>
+Package luatex.def Info: Figures/OSADBSContext.png used on input line 83.
+(luatex.def)             Requested size: 404.02908pt x 183.22282pt.
+
+1: section
+[59
+
+
+
+] [60] [61<./Figures/OSADBSContext.png>] [62]
+<Figures/WINDOWDSMS.png, id=1352, 735.74875pt x 512.91624pt>
+File: Figures/WINDOWDSMS.png Graphic file (type png)
+
+<use Figures/WINDOWDSMS.png>
+Package luatex.def Info: Figures/WINDOWDSMS.png used on input line 99.
+(luatex.def)             Requested size: 242.4199pt x 168.99678pt.
+
+<Figures/ServerActivity.png, id=1356, 623.32875pt x 373.395pt>
+File: Figures/ServerActivity.png Graphic file (type png)
+
+<use Figures/ServerActivity.png>
+Package luatex.def Info: Figures/ServerActivity.png used on input line 110.
+(luatex.def)             Requested size: 404.02908pt x 242.03156pt.
+
+<Figures/ClientThreadAc.png, id=1358, 1137.24875pt x 617.30624pt>
+File: Figures/ClientThreadAc.png Graphic file (type png)
+
+<use Figures/ClientThreadAc.png>
+Package luatex.def Info: Figures/ClientThreadAc.png used on input line 118.
+(luatex.def)             Requested size: 404.02908pt x 219.31009pt.
+
+<Figures/ThreadsDBPlot.png, id=1361, 760.8425pt x 783.92876pt>
+File: Figures/ThreadsDBPlot.png Graphic file (type png)
+
+<use Figures/ThreadsDBPlot.png>
+Package luatex.def Info: Figures/ThreadsDBPlot.png used on input line 126.
+(luatex.def)             Requested size: 404.02908pt x 416.29367pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--130
+
+ []
+
+[63] [64<./Figures/WINDOWDSMS.png>] [65<./Figures/ServerActivity.png>] [66<./Fig
+ures/ClientThreadAc.png>] [67<./Figures/ThreadsDBPlot.png>]
+<Figures/EDFImporter.png, id=1395, 896.34875pt x 715.67375pt>
+File: Figures/EDFImporter.png Graphic file (type png)
+
+<use Figures/EDFImporter.png>
+Package luatex.def Info: Figures/EDFImporter.png used on input line 139.
+(luatex.def)             Requested size: 404.02908pt x 322.5853pt.
+ [68]
+<Figures/EDFExporter.png, id=1404, 951.555pt x 874.26625pt>
+File: Figures/EDFExporter.png Graphic file (type png)
+
+<use Figures/EDFExporter.png>
+Package luatex.def Info: Figures/EDFExporter.png used on input line 147.
+(luatex.def)             Requested size: 404.02908pt x 371.21806pt.
+ [69<./Figures/EDFImporter.png>]
+Overfull \hbox (2.6101pt too wide) in paragraph at lines 152--155
+\EU2/lmr/m/n/10.95 Subsection 5.3.1 presents a short dis-cus-sion on how to man
+-age multi-threaded database
+ []
+
+[70<./Figures/EDFExporter.png>]
+<Figures/CESARGUIWrapper.png, id=1422, 1084.05pt x 1927.2pt>
+File: Figures/CESARGUIWrapper.png Graphic file (type png)
+
+<use Figures/CESARGUIWrapper.png>
+Package luatex.def Info: Figures/CESARGUIWrapper.png used on input line 161.
+(luatex.def)             Requested size: 161.60916pt x 287.30313pt.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) [71]
+[72<./Figures/CESARGUIWrapper.png>](load luc: /usr/local/texlive/2016/texmf-var/
+luatex-cache/generic/fonts/otl/lmmono10-italic.luc) [73] [74]
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
+
+ []
+
+[75] <Figures/clinicpatient.png, id=1523, 1084.05pt x 1927.2pt>
+File: Figures/clinicpatient.png Graphic file (type png)
+
+<use Figures/clinicpatient.png>
+Package luatex.def Info: Figures/clinicpatient.png used on input line 267.
+(luatex.def)             Requested size: 161.60916pt x 287.30313pt.
+ [76] [77<./Figures/clinicpatient.png>] [78]
+[79] <Figures/EDFimport.png, id=1598, 1084.05pt x 1927.2pt>
+File: Figures/EDFimport.png Graphic file (type png)
+
+<use Figures/EDFimport.png>
+Package luatex.def Info: Figures/EDFimport.png used on input line 331.
+(luatex.def)             Requested size: 170.71652pt x 303.47679pt.
+
+<Figures/EDFexport.png, id=1599, 1084.05pt x 1927.2pt>
+File: Figures/EDFexport.png Graphic file (type png)
+
+<use Figures/EDFexport.png>
+Package luatex.def Info: Figures/EDFexport.png used on input line 332.
+(luatex.def)             Requested size: 170.71652pt x 303.47679pt.
+ [80] [81<./Figures/EDFimport.png><./Figures/EDFexport.png>] [82] <Figures/NONP
+LOT.png, id=1659, 1927.2pt x 1084.05pt>
+File: Figures/NONPLOT.png Graphic file (type png)
+
+<use Figures/NONPLOT.png>
+Package luatex.def Info: Figures/NONPLOT.png used on input line 384.
+(luatex.def)             Requested size: 363.6237pt x 204.53255pt.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 388--289
+
+ []
+
+[83<./Figures/NONPLOT.png>] [84] [85]
+\openout2 = Chapters/Chapter6.aux
+ (./Chapters/Chapter6.tex [86
+
+
+
+]
+Chapter 6.
+
+Underfull \hbox (badness 1077) in paragraph at lines 21--22
+[]|\EU2/lmr/m/n/10.95 MCU with sam-
+ []
+
+1: section
+[87] [88]
+Overfull \hbox (12.20343pt too wide) in paragraph at lines 85--99
+ [][] 
+ []
+
+[89] [90] [91] [92]
+Underfull \hbox (badness 10000) in paragraph at lines 177--180
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--180
+
+ []
+
+[93] [94] [95] [96] [97]
+Overfull \hbox (25.75839pt too wide) in paragraph at lines 283--285
+\EU2/lmtt/m/n/10.95 select count(*) from SensorSource, Patient, Physician, Clin
+ic, Person,
+ []
+
+
+Overfull \hbox (37.25589pt too wide) in paragraph at lines 285--287
+\EU2/lmtt/m/n/10.95 select * from SensorSource, Patient, Physician, Clinic, Per
+son, Channel,
+ []
+
+
+Overfull \hbox (37.43814pt too wide) in paragraph at lines 291--300
+ [][] 
+ []
+
+[98]
+Overfull \vbox (13.59999pt too high) detected at line 344
+ []
+
+) [99] [100] [101]
+\openout2 = Chapters/Chapter7.aux
+ (./Chapters/Chapter7.tex [102
+
+
+
+]
+Chapter 7.
+1: section
+[103] [104] [105]
+Underfull \hbox (badness 10000) in paragraph at lines 29--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--34
+
+ []
+
+[106])
+Underfull \hbox (badness 10000) in paragraph at lines 35--291
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--291
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--291
+
+ []
+
+[107] [108]
+\openout2 = Appendices/AppendixA.aux
+ (./Appendices/AppendixA.tex
+Appendix A.
+)
+1: section
+[109
+
+
+
+]
+\openout2 = Appendices/AppendixB.aux
+ (./Appendices/AppendixB.tex [110
+
+
+
+]
+Appendix B.
+1: section
+[111] [112] [113]) [114]
+Overfull \hbox (3.88583pt too wide) in paragraph at lines 310--310
+\EU2/lmtt/m/n/10.95 bitalino . com / datasheets / REVOLUTION _ BITalino _ Frees
+tyle _ Kit _ Datasheet .
+ []
+
+1: section
+[115
+
+
+]
+Overfull \hbox (1.57285pt too wide) in paragraph at lines 310--310
+\EU2/lmr/m/n/10.95 logic Sig-nals”. In: \EU2/lmr/m/sc/10.95 url\EU2/lmr/m/n/1
+0.95 : []$\EU2/lmtt/m/n/10.95 http : / / ecg . mit . edu / george / publication
+s / physionet -
+ []
+
+
+Overfull \hbox (2.04538pt too wide) in paragraph at lines 310--310
+[][]\EU2/lmr/m/n/10.95 grapview (2017a). “  Graph View An-droid”. In: \EU2/
+lmr/m/sc/10.95 url\EU2/lmr/m/n/10.95 : []$\EU2/lmtt/m/n/10.95 http : / / www . 
+android - graphview .
+ []
+
+[116]
+Overfull \hbox (21.49818pt too wide) in paragraph at lines 310--310
+[][][]\EU2/lmr/m/n/10.95 (2017b). “  Line-Graph-Series java file”. In: \EU2
+/lmr/m/sc/10.95 url\EU2/lmr/m/n/10.95 : []$\EU2/lmtt/m/n/10.95 https : / / gith
+ub . com / appsthatmatter /
+ []
+
+
+Overfull \hbox (21.13208pt too wide) in paragraph at lines 310--310
+\EU2/lmtt/m/n/10.95 heart . org / HEARTORG / Conditions / HighBloodPressure / A
+boutHighBloodPressure /
+ []
+
+
+Overfull \hbox (35.67368pt too wide) in paragraph at lines 310--310
+\EU2/lmtt/m/n/10.95 Understanding - Blood - Pressure - Readings _ UCM _ 301764 
+_ Article . jsp # .V7sFAWWDBug$[]\EU2/lmr/m/n/10.95 . 
+ []
+
+
+Overfull \hbox (38.37833pt too wide) in paragraph at lines 310--310
+\EU2/lmtt/m/n/10.95 emner / matnat / ifi / INF3100 / v16 / undervisningsmateria
+le / forelesningsmateriale /
+ []
+
+
+Overfull \hbox (15.38333pt too wide) in paragraph at lines 310--310
+[]$\EU2/lmtt/m/n/10.95 https : / / www . ncbi . nlm . nih . gov / pmc / article
+s / PMC2645248 / pdf / PROCATS52136 .
+ []
+
+[117]
+Overfull \hbox (18.80806pt too wide) in paragraph at lines 310--310
+[][][]\EU2/lmr/m/n/10.95 “  Sub-jects”. In: \EU2/lmr/m/it/10.95 MIT-BIH Pol
+ysomno-graphic Database\EU2/lmr/m/n/10.95 . \EU2/lmr/m/sc/10.95 url\EU2/lmr/m/n
+/10.95 : []$\EU2/lmtt/m/n/10.95 https : / / www . physionet .
+ []
+
+[118]
+Overfull \hbox (43.53493pt too wide) in paragraph at lines 310--310
+[][]\EU2/lmr/m/n/10.95 Sleep-Foun-da-tion (2017). “  Rec-om-mends new sleep t
+imes”. In: \EU2/lmr/m/sc/10.95 url\EU2/lmr/m/n/10.95 : []$\EU2/lmtt/m/n/10.95
+ https : / / sleepfoundation .
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 314.
+[119]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 314.
+ (./main.aux (./Chapters/Chapter1.aux) (./Chapters/Chapter2.aux)
+(./Chapters/Chapter3.aux) (./Chapters/Chapter4.aux) (./Chapters/Chapter5.aux)
+(./Chapters/Chapter6.aux) (./Chapters/Chapter7.aux) (./Appendices/AppendixA.aux
+) (./Appendices/AppendixB.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 314.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 314.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: EC0426AF10A9BD7FFAE04BB10D392E81;14784.
+Package logreq Info: Writing requests to 'main.run.xml'.
+
+\openout1 = main.run.xml
+)
+
+Here is how much of LuaTeX's memory you used:
+ 41825 strings out of 495119
+ 305237,1373583 words of node,token memory allocated
+ 20980 words of node memory still in use:
+   3 hlist, 1 vlist, 1 rule, 2445 glue, 739 attribute, 66 glue_spec, 739 attribu
+te_list, 1 write, 78 pdf_action nodes
+   avail lists: 1:7,2:4473,3:729,4:138,5:4879,6:9843,7:6021,8:3092,9:7308,10:35,
+11:965
+ 43251 multiletter control sequences out of 65536+600000
+ 83 fonts using 7982271 bytes
+ 63i,20n,84p,2556b,2460s stack positions out of 5000i,500n,10000p,200000b,100000s
+</usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf
+></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.ot
+f></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.
+otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold
+.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmroman9-itali
+c.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmroman9-regu
+lar.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmroman6-re
+gular.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmroman8-
+regular.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmroman
+slant10-regular.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm
+/lmroman10-italic.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/
+lm/lmroman10-bold.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/public/
+lm/lmroman10-regular.otf></usr/local/texlive/2016/texmf-dist/fonts/opentype/publ
+ic/lm/lmromancaps10-regular.otf></usr/local/texlive/2016/texmf-dist/fonts/openty
+pe/public/lm/lmroman12-regular.otf></usr/local/texlive/2016/texmf-dist/fonts/ope
+ntype/public/lm/lmroman12-italic.otf></usr/local/texlive/2016/texmf-dist/fonts/o
+pentype/public/lm/lmroman12-bold.otf></usr/local/texlive/2016/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb>
+Output written on main.pdf (137 pages, 12382762 bytes).
+
+PDF statistics: 2333 PDF objects out of 2487 (max. 8388607)
+ 2031 compressed objects within 21 object streams
+ 708 named destinations out of 1000 (max. 131072)
+ 697 words of extra memory for PDF output out of 10000 (max. 10000000)
+

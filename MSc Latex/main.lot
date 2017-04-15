@@ -1,0 +1,43 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces A summary of data items from CESAR acquisition and EDF/EDF+ file format\relax }}{35}{table.caption.52}
+\contentsline {table}{\numberline {4.2}{\ignorespaces A summary of user requirements\relax }}{36}{table.caption.53}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Classified entities with their attributes\relax }}{38}{table.caption.55}
+\contentsline {table}{\numberline {4.4}{\ignorespaces OSA entities with their attributes and FDs\relax }}{46}{table.caption.64}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Classified entities with their primary/candidate keys\relax }}{47}{table.caption.66}
+\contentsline {table}{\numberline {4.6}{\ignorespaces An overview of normal forms\relax }}{48}{table.caption.68}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Transforming Person into SQLite table\relax }}{54}{table.caption.74}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Transforming Patient into SQLite table\relax }}{54}{table.caption.75}
+\contentsline {table}{\numberline {4.9}{\ignorespaces Transforming Physician into SQLite table\relax }}{55}{table.caption.76}
+\contentsline {table}{\numberline {4.10}{\ignorespaces Transforming Clinic into SQLite table\relax }}{55}{table.caption.77}
+\contentsline {table}{\numberline {4.11}{\ignorespaces Transforming SensorSource into SQLite table\relax }}{55}{table.caption.78}
+\contentsline {table}{\numberline {4.12}{\ignorespaces Transforming Record into SQLite table\relax }}{55}{table.caption.79}
+\contentsline {table}{\numberline {4.13}{\ignorespaces Transforming RecordAnnotation into SQLite table\relax }}{56}{table.caption.80}
+\contentsline {table}{\numberline {4.14}{\ignorespaces Transforming Annotation into SQLite table\relax }}{56}{table.caption.81}
+\contentsline {table}{\numberline {4.15}{\ignorespaces Transforming Sample into SQLite table\relax }}{56}{table.caption.82}
+\contentsline {table}{\numberline {4.16}{\ignorespaces Transforming Channel into SQLite table\relax }}{56}{table.caption.83}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces A summary of the database system application requirements\relax }}{60}{table.caption.103}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Used devices specifications\relax }}{88}{table.caption.323}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Buffer duration\relax }}{90}{table.caption.346}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Arrival rate\relax }}{90}{table.caption.347}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Number of channels\relax }}{91}{table.caption.348}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Number of files simultaneously read\relax }}{93}{table.caption.357}
+\contentsline {table}{\numberline {6.6}{\ignorespaces Number of samples in batch\relax }}{93}{table.caption.358}
+\contentsline {table}{\numberline {6.7}{\ignorespaces Number of exporting records\relax }}{95}{table.caption.364}
+\contentsline {table}{\numberline {6.8}{\ignorespaces Duration of a data record in EDF file\relax }}{95}{table.caption.365}
+\contentsline {table}{\numberline {6.9}{\ignorespaces Datasets in the database\relax }}{97}{table.caption.369}
+\contentsline {table}{\numberline {6.10}{\ignorespaces Query statistics for the queries\relax }}{98}{table.caption.372}
+\contentsline {table}{\numberline {6.11}{\ignorespaces Executing time and resource usage for the queries\relax }}{98}{table.caption.373}
+\contentsline {table}{\numberline {6.12}{\ignorespaces SQLite connection time usage\relax }}{99}{table.caption.379}
+\contentsline {table}{\numberline {6.13}{\ignorespaces Mixed tasks with real-time visualization\relax }}{100}{table.caption.380}
+\contentsline {table}{\numberline {6.14}{\ignorespaces Mixed tasks with visualization data from the database\relax }}{101}{table.caption.381}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

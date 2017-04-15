@@ -1,0 +1,154 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Thesis.aux
+The style file: unsrtnat.bst
+Database file #1: Bibliography.bib
+Too many commas in name 1 of "T Penzel, GB Moody, RG Mark, AL Goldberger, JH Peter" for entry Apnea_ecg_db
+while executing---line 1233 of file unsrtnat.bst
+Too many commas in name 1 of "T Penzel, GB Moody, RG Mark, AL Goldberger, JH Peter" for entry Apnea_ecg_db
+while executing---line 1233 of file unsrtnat.bst
+Name 1 in "Emanuele Panigati, Fabio A. Schreiber, and Carlo Zaniolo" has a comma at the end for entry DSMS_WINDOW
+while executing---line 1233 of file unsrtnat.bst
+Warning--empty journal in NHLBI
+Warning--empty journal in Akershus
+Warning--empty journal in HudsonOSA
+Warning--empty journal in OSAWiki
+Warning--empty journal in ChestWorldCongress
+Warning--empty journal in MAYOCLINIC
+Warning--empty journal in ScienceDaily
+Warning--empty journal in Hindawi
+Warning--empty journal in Advan
+Warning--empty journal in HEARTORG_HR
+Warning--empty journal in BersainReyes
+Warning--empty journal in IEEEOSAEEG
+Warning--empty journal in NCBIEGEPILEPSY
+Warning--empty journal in SDEMG
+Warning--empty journal in JSREM
+Warning--empty journal in RESEARCHGATE
+Warning--empty journal in WIKIHOW
+Warning--empty journal in HINDIWAAIRFLOW
+Warning--empty journal in HEARTORG
+Warning--empty journal in EDF1
+Warning--empty year in EDF1
+Warning--empty journal in Thomas
+Warning--empty journal in BITalinoPubs
+Warning--empty journal in BITalino
+Warning--empty journal in BITalino_MCU
+Warning--empty journal in BITalino_board
+Warning--empty journal in BITalino_plugged
+Warning--empty journal in BITalino_Freestyle
+Warning--empty journal in LOGICALSENSOR_1
+Warning--empty journal in LOGICALSENSOR_0
+Warning--empty journal in SensorDataAbstract
+Warning--empty year in SensorDataAbstract
+Warning--empty journal in LOGICALSENSOR_3
+Warning--empty journal in PhysioNet_Intro
+Warning--empty year in PhysioNet_Intro
+Warning--empty journal in PhysioNet_Training
+Warning--empty year in PhysioNet_Training
+Warning--empty journal in PhysioNet_Contributing
+Warning--empty year in PhysioNet_Contributing
+Too many commas in name 1 of "T Penzel, GB Moody, RG Mark, AL Goldberger, JH Peter" for entry Apnea_ecg_db
+while executing---line 1315 of file unsrtnat.bst
+Too many commas in name 1 of "T Penzel, GB Moody, RG Mark, AL Goldberger, JH Peter" for entry Apnea_ecg_db
+while executing---line 1315 of file unsrtnat.bst
+Too many commas in name 1 of "T Penzel, GB Moody, RG Mark, AL Goldberger, JH Peter" for entry Apnea_ecg_db
+while executing---line 1315 of file unsrtnat.bst
+Too many commas in name 1 of "T Penzel, GB Moody, RG Mark, AL Goldberger, JH Peter" for entry Apnea_ecg_db
+while executing---line 1315 of file unsrtnat.bst
+Warning--empty year in Apnea_ecg_db
+Warning--empty year in Apnea_ecg_db
+Warning--empty year in CinC2000
+Warning--empty year in Apnea_ecg
+Warning--empty year in STVinceUniversity
+Warning--empty journal in MIT_BIH_slpdb
+Warning--empty year in MIT_BIH_slpdb
+Warning--empty year in MIT_BIH_slpdb
+Warning--empty journal in SHSH_SleepData
+Warning--empty year in SHSH_SleepData
+Warning--empty year in SHSH_SleepData
+Warning--empty journal in SHSH_NationalSleepData
+Warning--empty year in SHSH_NationalSleepData
+Warning--empty year in SHSH_NationalSleepData
+Warning--empty journal in Apnea_ecg_annotation
+Warning--empty year in Apnea_ecg_annotation
+Warning--empty year in STVinceUniversity_ann
+Warning--empty journal in MIT_BIH_WFDB
+Warning--empty year in MIT_BIH_WFDB
+Warning--empty year in MIT_BIH_WFDB
+Warning--empty journal in SHSH_Physiobank
+Warning--empty year in SHSH_Physiobank
+Warning--empty year in SHSH_Physiobank
+Warning--empty journal in EDF2
+Warning--empty year in EDF2
+Warning--empty journal in EDFpluss
+Warning--empty year in EDFpluss
+Warning--empty journal in SP
+Warning--empty journal in StorageBIT
+Warning--empty journal in CONCEPTUAL_BOOK
+Warning--empty journal in DATABASEMODELING_BOOK
+Warning--empty journal in ORMdotNET
+Warning--empty journal in Wiki_ORM
+Warning--empty journal in ORMdotNET2
+Warning--empty journal in INF3100_Recipe_book
+Warning--empty journal in INF3100
+Warning--empty journal in SQLITEORG
+Warning--empty journal in INF1050BOOK
+Warning--empty journal in OWASP
+Name 1 in "Emanuele Panigati, Fabio A. Schreiber, and Carlo Zaniolo" has a comma at the end for entry DSMS_WINDOW
+while executing---line 1315 of file unsrtnat.bst
+Name 1 in "Emanuele Panigati, Fabio A. Schreiber, and Carlo Zaniolo" has a comma at the end for entry DSMS_WINDOW
+while executing---line 1315 of file unsrtnat.bst
+Warning--empty journal in DSMS_WINDOW
+Warning--empty journal in SQLITEORG_INSERT
+Warning--empty journal in EDFLIB
+Warning--empty journal in EDF4J
+Warning--empty journal in NETMARKETSHARE
+Warning--empty journal in DEVELOPERANDROIDAPI
+Warning--empty journal in DEVELOPERANDROIDSQL
+Warning--empty journal in IANAPORT
+Warning--empty journal in CONSUMERPRODUCER
+Warning--empty journal in GRAPHVIEWMAIN
+Warning--empty journal in GRAPHVIEW
+You've used 71 entries,
+            2481 wiz_defined-function locations,
+            909 strings with 14491 characters,
+and the built_in function-call counts, 19732 in all, are:
+= -- 1724
+> -- 537
+< -- 73
++ -- 312
+- -- 152
+* -- 1047
+:= -- 3225
+add.period$ -- 273
+call.type$ -- 71
+change.case$ -- 142
+chr.to.int$ -- 53
+cite$ -- 160
+duplicate$ -- 1294
+empty$ -- 2009
+format.name$ -- 233
+if$ -- 4139
+int.to.chr$ -- 19
+int.to.str$ -- 72
+missing$ -- 71
+newline$ -- 423
+num.names$ -- 213
+pop$ -- 747
+preamble$ -- 1
+purify$ -- 71
+quote$ -- 0
+skip$ -- 730
+stack$ -- 0
+substring$ -- 174
+swap$ -- 119
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 497
+warning$ -- 89
+while$ -- 145
+width$ -- 0
+write$ -- 915
+(There were 9 error messages)
