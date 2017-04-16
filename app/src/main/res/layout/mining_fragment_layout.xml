@@ -2,7 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -44,12 +43,6 @@
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
                 android:padding="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
             <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -65,25 +58,8 @@
                 android:adjustViewBounds="true"
                 android:padding="20dp"/>
 
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/edf_export"
-                android:background="#AAA9B1"
-                android:id="@+id/btnEXTRA"
-                android:layout_weight="0.2"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:padding="20dp"/>
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </TableLayout>
 </LinearLayout>

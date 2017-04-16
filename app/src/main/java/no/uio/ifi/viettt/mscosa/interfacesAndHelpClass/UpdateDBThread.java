@@ -1,7 +1,11 @@
 package no.uio.ifi.viettt.mscosa.interfacesAndHelpClass;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Environment;
+import android.os.IBinder;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,12 +13,16 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.SampleAdapter;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
+import no.uio.ifi.viettt.mscosa.Services.Constants;
+import no.uio.ifi.viettt.mscosa.Services.ForegroundDBService;
 
 /**
  * Created by viettt on 07/02/2017.
  */
 
 public class UpdateDBThread extends Thread{
+    public ForegroundDBService foregroundDBService;
+    public boolean isBinded = false, firsttime = false;
 
     private long usedTimeForSQL = 0, totalInserttion = 0;
     private Context context;
@@ -30,6 +38,12 @@ public class UpdateDBThread extends Thread{
         path.setReadable(true);
         path.setWritable(true);
         fileName = path.getPath()+"/"+"UsageTime30Seconds.txt";
+
+        Intent i = new Intent(context, ForegroundDBService.class);
+        if(isBinded) return;
+        i.setAction(Constants.ACTION.STARTFOREGROUND_ACTION);
+        context.startService(i);
+        context.bindService(i, mConnection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -40,9 +54,10 @@ public class UpdateDBThread extends Thread{
             if(aSamplesBuff != null){
                 totalInserttion += aSamplesBuff.size();
                 long begintrans = System.currentTimeMillis();
-                SampleAdapter sampleAdapter = new SampleAdapter(context);
-                sampleAdapter.saveSampleToDB(aSamplesBuff);
-                sampleAdapter.close();
+                //SampleAdapter sampleAdapter = new SampleAdapter(context);
+                //sampleAdapter.saveSampleToDB(aSamplesBuff);
+                //sampleAdapter.close();
+                foregroundDBService.manageIsStoring(getId(),aSamplesBuff);
                 usedTimeForSQL += (System.currentTimeMillis() - begintrans);
             }
         }
@@ -83,9 +98,31 @@ public class UpdateDBThread extends Thread{
         }catch (Exception e){
             e.printStackTrace();
         }
+        unBoundDBService();
     }
 
     public long getUsedTimeForSQL(){
         return usedTimeForSQL;
+    }
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            ForegroundDBService.DBService dbService = (ForegroundDBService.DBService)iBinder;
+            foregroundDBService = dbService.getService();
+            isBinded = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            isBinded = false;
+        }
+    };
+
+    public void unBoundDBService(){
+        if(isBinded){
+            //context.unbindService(mConnection);
+            isBinded = false;
+        }
     }
 }

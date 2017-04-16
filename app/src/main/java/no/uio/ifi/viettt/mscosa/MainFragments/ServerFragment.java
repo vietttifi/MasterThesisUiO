@@ -80,7 +80,7 @@ public class ServerFragment extends Fragment {
     public final ServerFragment selv;
 
     //Pointer to other fragments
-    private MainActivity mainActivity;
+    public MainActivity mainActivity;
     private PlotViewFragment plotViewFragment;
 
     //lock object used for add things to list

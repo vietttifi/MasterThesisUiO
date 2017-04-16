@@ -35,10 +35,10 @@ public class MiningFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.mining_fragment_layout, container, false);
 
+
         ImageButton ibtn_visualise = (ImageButton) v.findViewById(R.id.btnVisualise);
         ImageButton ibtn_raw_query = (ImageButton) v.findViewById(R.id.btnRawQuery);
         ImageButton ibtn_exportEDF = (ImageButton) v.findViewById(R.id.btnExportEDF);
-        ImageButton ibtn_mining = (ImageButton) v.findViewById(R.id.btnEXTRA);
 
         ibtn_raw_query.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +67,7 @@ public class MiningFragment extends Fragment {
             }
         });
 
-        ibtn_mining.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(),"FUTURE WORK - MINING METHODS",Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         return v;
     }

@@ -1,5 +1,10 @@
 package no.uio.ifi.viettt.mscosa;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +18,8 @@ import no.uio.ifi.viettt.mscosa.MainFragments.SourceFromFileFragment;
 import no.uio.ifi.viettt.mscosa.MainFragments.MiningFragment;
 import no.uio.ifi.viettt.mscosa.MainFragments.ServerFragment;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
+import no.uio.ifi.viettt.mscosa.Services.Constants;
+import no.uio.ifi.viettt.mscosa.Services.ForegroundDBService;
 
 public class MainActivity extends AppCompatActivity {
     public ServerFragment swf;
@@ -66,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     @Override
@@ -73,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         swf.stopAllConnection();
     }
+
 
 }
 

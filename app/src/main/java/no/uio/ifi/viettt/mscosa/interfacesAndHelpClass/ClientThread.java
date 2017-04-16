@@ -19,12 +19,12 @@ import java.util.HashMap;
 
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.OSADBHelper;
 import no.uio.ifi.viettt.mscosa.DatabaseManagement.RecordAdapter;
-import no.uio.ifi.viettt.mscosa.DatabaseManagement.AnnotationAdapter;
 import no.uio.ifi.viettt.mscosa.MainFragments.ServerFragment;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Channel;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Record;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.Sample;
 import no.uio.ifi.viettt.mscosa.SensorsObjects.SensorSource;
+import no.uio.ifi.viettt.mscosa.Services.ForegroundDBService;
 
 /**
  * Created by viettt on 05/01/2017.
@@ -250,20 +250,22 @@ public class ClientThread extends Thread{
         //(samples timestamp - fragment timestamp)/duration < 1
         //add all samples to current fragment buffer
         for(BitalinoDataSample sample : samples){
-            if(channels.get(sample.getChannel_nr()).isSelectedToSaveSample())
+            if(channels.get(sample.getChannel_nr()).isSelectedToSaveSample() && bufferSamples != null)
                 bufferSamples.add(new Sample(records.get(sample.getChannel_nr()).getR_id(),sample.getCreatedDate(),sample.getSample_data()));
         }
     }
 
     public void setStoring(boolean storing) {
         System.out.println("STORING " + storing);
-        isStoring = storing;
         if(storing){
+            status = "storing";
+            serverFragment.invalidateSourceList();
             updateDBThread = new UpdateDBThread(context);
             updateDBThread.start();
             bufferSamples = new ArrayList<>();
             firstTimeStamp = true;
         } else {
+            isStoring = false;
             if(bufferSamples != null && !bufferSamples.isEmpty()) {
                 updateDBThread.requestDataBaseSaving(bufferSamples);
             }
@@ -271,11 +273,12 @@ public class ClientThread extends Thread{
             if(updateDBThread != null) updateDBThread.setStop(true);
             File f = context.getDatabasePath(OSADBHelper.DATABASE_NAME);
             long dbSize = f.length();
-
-            System.out.println("Thread ID: "+thread_ID+". DB size: "+dbSize/(1024.0*1024.0)+" MB. Total used time"+updateDBThread.getUsedTimeForSQL());
+            if(updateDBThread != null)
+                System.out.println("Thread ID: "+thread_ID+". DB size: "+dbSize/(1024.0*1024.0)+" MB. Total used time"+updateDBThread.getUsedTimeForSQL());
 
         }
 
+        isStoring = storing;
 
     }
 
@@ -283,6 +286,8 @@ public class ClientThread extends Thread{
         isPlotting = plotting;
         if(plotting){
             this.plotViewFragment = plotViewFragment;
+            status = "Plotting";
+            serverFragment.invalidateSourceList();
         }
     }
 
