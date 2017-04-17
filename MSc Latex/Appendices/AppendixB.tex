@@ -1,0 +1,104 @@
+% Appendix B
+
+\chapter{SQLite code for creating tables} % Main appendix title
+\label{AppendixB} % For referencing this appendix elsewhere, use \ref{AppendixB}
+\begin{lstlisting}[caption={SQLite code for creating table SensorSource}, label = {listing:SQLSensorSource},language=SQL]
+    CREATE TABLE SENSORSOURCE(
+	    SOURCE_ID               TEXT PRIMARY KEY,
+	    SOURCE_NAME             TEXT,
+	    SOURCE_TYPE             TEXT
+	);
+\end{lstlisting}
+\begin{lstlisting}[caption={SQLite code for creating table Patient}, label = {listing:SQLPerson},language=SQL]
+    CREATE TABLE PERSON(
+	    PERSON_ID               TEXT PRIMARY KEY,
+        PERSON_NAME             TEXT, 
+        PERSON_CITY             TEXT, 
+        PERSON_PHONE            TEXT, 
+        PERSON_EMAIL            TEXT, 
+        PERSON_GENDER           TEXT, 
+        PERSON_DAY_OF_BIRTH     TEXT, 
+        PERSON_AGE              INTEGER
+    );
+\end{lstlisting}
+\begin{lstlisting}[caption={SQLite code for creating table Patient}, label = {listing:SQLPatient},language=SQL]
+    CREATE TABLE PATIENT(
+    	PATIENT_PER_ID          TEXT NOT NULL, 
+        PATIENT_CLINIC_P        TEXT NOT NULL, 
+        PATIENT_PATIENT_NR      TEXT, 
+        PATIENT_HEIGHT          TEXT, 
+        PATIENT_WEIGHT          TEXT, 
+        PATIENT_BMI             TEXT, 
+        PATIENT_HEALTH_ISSUES   TEXT, 
+        PRIMARY KEY (PATIENT_PER_ID , PATIENT_CLINIC_P), 
+        UNIQUE (PATIENT_CLINIC_P ,PATIENT_PATIENT_NR), 
+        FOREIGN KEY(PATIENT_PER_ID) REFERENCES TABLE_PERSON (PERSON_ID) ON DELETE CASCADE,
+        FOREIGN KEY(PATIENT_CLINIC_P) REFERENCES TABLE_CLINIC (CLINIC_ID) ON DELETE CASCADE 
+    );
+\end{lstlisting}
+\begin{lstlisting}[caption={SQLite code for creating table Physician}, label = {listing:SQLPhysician},language=SQL]
+    CREATE TABLE PHYSICIAN(
+    	PHY_PERSON_ID          TEXT NOT NULL, 
+        PHY_CLINIC_ID          TEXT NOT NULL, 
+        PHY_EMPLOYEE_NR        TEXT, 
+        PHY_TITLE              TEXT, 
+        PRIMARY KEY (PHY_PERSON_ID, PHY_CLINIC_ID), 
+        UNIQUE (PHY_CLINIC_ID,PHY_EMPLOYEE_NR), 
+        FOREIGN KEY(PHY_PERSON_ID) REFERENCES TABLE_PERSON (PERSON_ID) ON DELETE CASCADE, 
+        FOREIGN KEY(PHY_CLINIC_ID) REFERENCES TABLE_CLINIC (CLINIC_ID) ON DELETE CASCADE 
+    );
+\end{lstlisting}
+\begin{lstlisting}[caption={SQLite code for creating table Clinic}, label = {listing:SQLClinic},language=SQL]
+    CREATE TABLE CHANNEL(
+    	CLINIC_ID         TEXT PRIMARY KEY, 
+        CLINIC_NAME       TEXT, 
+        CLINIC_ADDRESS    TEXT, 
+        CLINIC_PHONE_NR   TEXT, 
+        CLINIC_EMAIL      TEXT 
+    );
+\end{lstlisting}
+\begin{lstlisting}[caption={SQLite code for creating table Record}, label = {listing:SQLRecord},language=SQL]
+    CREATE TABLE RECORD(
+    	RECORD_ID             INTEGER PRIMARY KEY AUTOINCREMENT, 
+        RECORD_S_ID           TEXT NOT NULL, 
+        RECORD_CH_NR          INTEGER NOT NULL, 
+        RECORD_PHYSICIAN_ID   TEXT NOT NULL, 
+        RECORD_PATIENT_ID     TEXT NOT NULL, 
+        RECORD_TIMESTAMP      INTEGER NOT NULL, 
+        RECORD_DESCRIPTIONS   TEXT, 
+        RECORD_FREQUENCY      REAL, 
+        RECORD_USED_EQUIPMENT TEXT, 
+        RECORD_EDF_RESERVED   BLOB, 
+        UNIQUE (RECORD_S_ID,RECORD_CH_NR, RECORD_TIMESTAMP, RECORD_PHYSICIAN_ID, RECORD_PATIENT_ID),
+        FOREIGN KEY(RECORD_S_ID, RECORD_CH_NR) REFERENCES TABLE_CHANNEL (CHANNEL_S_ID, CHANNEL_NR) ON DELETE CASCADE,
+        FOREIGN KEY(RECORD_PHYSICIAN_ID) REFERENCES TABLE_PHYSICIAN (PHY_PERSON_ID) ON DELETE CASCADE,
+        FOREIGN KEY(RECORD_PATIENT_ID) REFERENCES TABLE_PATIENT (PATIENT_PER_ID) ON DELETE CASCADE
+    );
+\end{lstlisting}
+\begin{lstlisting}[caption={SQLite code for creating table RecordAnnotation}, label = {listing:SQLRecordAnnotation},language=SQL]
+    CREATE TABLE RECORDANNOTATION(
+        RECORD_ANNOTATION_ID     INTEGER NOT NULL, 
+        RECORD_ANNOTATION_R_ID   INTEGER NOT NULL, 
+        PRIMARY KEY (RECORD_ANNOTATION_ID, RECORD_ANNOTATION_R_ID), 
+        FOREIGN KEY (RECORD_ANNOTATION_R_ID) REFERENCES TABLE_RECORD (RECORD_ID) ON DELETE CASCADE, 
+        FOREIGN KEY (RECORD_ANNOTATION_ID) REFERENCES TABLE_ANNOTATION (ANNOTATION_ID) ON DELETE CASCADE 
+    );
+\end{lstlisting}
+\begin{lstlisting}[caption={SQLite code for creating table Annotation}, label = {listing:SQLAnnotation},language=SQL]
+    CREATE TABLE ANNOTATION(
+        ANNOTATION_ID           INTEGER PRIMARY KEY AUTOINCREMENT, 
+        ANNOTATION_ONSET        INTEGER NOT NULL, 
+        ANNOTATION_DURATION     REAL, 
+        ANNOTATION_TIMEKEEPING  INTEGER, 
+        ANNOTATION_TEXT         TEXT 
+    );";
+\end{lstlisting}
+\begin{lstlisting}[caption={SQLite code for creating table Sample}, label = {listing:SQLSample},language=SQL]
+    CREATE TABLE SAMPLE(
+        SAMPLE_RECORD_ID      INTEGER NOT NULL,
+        SAMPLE_TIMESTAMP      INTEGER NOT NULL, 
+        SAMPLE_VALUE          REAL NOT NULL, 
+        PRIMARY KEY (SAMPLE_RECORD_ID, SAMPLE_TIMESTAMP), 
+        FOREIGN KEY (SAMPLE_RECORD_ID) REFERENCES TABLE_RECORD (RECORD_ID) ON DELETE CASCADE 
+    );
+\end{lstlisting}

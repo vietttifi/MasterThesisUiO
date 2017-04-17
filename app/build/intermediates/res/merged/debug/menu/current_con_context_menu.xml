@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/visualiseSelected"
+        android:title="Visualise select source"
+        />
+    <item
+        android:id="@+id/deleteSource"
+        android:title="Delete source"
+        />
+    <item
+        android:id="@+id/startCollecting"
+        android:title="Collect sample"
+        />
+    <item
+        android:id="@+id/stopCollecting"
+        android:title="Stop collect source"
+        />
+</menu>

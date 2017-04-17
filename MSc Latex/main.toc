@@ -1,0 +1,90 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\contentsline {chapter}{Abstract}{iv}{section*.1}
+\contentsline {chapter}{Acknowledgements}{vii}{section*.2}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.7}
+\contentsline {section}{\numberline {1.1}Background and Motivation}{1}{section.8}
+\contentsline {section}{\numberline {1.2}Problem Statement}{2}{section.9}
+\contentsline {section}{\numberline {1.3}Contributions}{3}{section.10}
+\contentsline {section}{\numberline {1.4}Structure of the Thesis}{3}{section.11}
+\contentsline {chapter}{\numberline {2}Sleep Apnea}{5}{chapter.12}
+\contentsline {section}{\numberline {2.1}Taxonomy of sleep apnea}{5}{section.13}
+\contentsline {subsection}{\numberline {2.1.1}Central sleep apnea}{6}{subsection.14}
+\contentsline {subsection}{\numberline {2.1.2}Obstructive sleep apnea}{7}{subsection.15}
+\contentsline {subsection}{\numberline {2.1.3}Mixed sleep apnea}{11}{subsection.17}
+\contentsline {section}{\numberline {2.2}Observable characteristics of obstructive sleep apnea}{11}{section.18}
+\contentsline {chapter}{\numberline {3}Data sources and data formats}{15}{chapter.20}
+\contentsline {section}{\numberline {3.1}Data sources}{15}{section.21}
+\contentsline {subsection}{\numberline {3.1.1}Data from BITalino sensors}{16}{subsection.22}
+\contentsline {subsubsection}{BITalino Kit}{16}{section*.23}
+\contentsline {subsubsection}{BITalino sensors}{18}{section*.28}
+\contentsline {subsubsection}{Logical sensors}{20}{section*.29}
+\contentsline {subsection}{\numberline {3.1.2}Physionet sensor databases}{20}{subsection.30}
+\contentsline {section}{\numberline {3.2}Data formats}{22}{section.31}
+\contentsline {subsection}{\numberline {3.2.1}Physionet sensor database formats}{23}{subsection.32}
+\contentsline {subsection}{\numberline {3.2.2}EDF and EDF+ formats}{24}{subsection.38}
+\contentsline {section}{\numberline {3.3}CESAR data acquisition tools}{27}{section.41}
+\contentsline {subsection}{\numberline {3.3.1}Generic Data Acquisition for Mobile Platforms}{27}{subsection.42}
+\contentsline {subsection}{\numberline {3.3.2}StorageBIT data acquisition}{29}{subsection.48}
+\contentsline {chapter}{\numberline {4}Database modeling}{33}{chapter.50}
+\contentsline {section}{\numberline {4.1}OSA database system requirements}{34}{section.51}
+\contentsline {section}{\numberline {4.2}Conceptual data modeling}{37}{section.54}
+\contentsline {section}{\numberline {4.3}Logical data modeling}{40}{section.60}
+\contentsline {subsection}{\numberline {4.3.1}Relationships between different entities}{42}{subsection.61}
+\contentsline {subsection}{\numberline {4.3.2}Normalization}{47}{subsection.67}
+\contentsline {section}{\numberline {4.4}Physical data modeling}{53}{section.71}
+\contentsline {subsection}{\numberline {4.4.1}SQLite database management system}{53}{subsection.72}
+\contentsline {subsection}{\numberline {4.4.2}Transforming the logical data model to SQL}{54}{subsection.73}
+\contentsline {chapter}{\numberline {5}Implementation}{59}{chapter.101}
+\contentsline {section}{\numberline {5.1}Requirements for database application}{61}{section.102}
+\contentsline {section}{\numberline {5.2}Database application modeling}{62}{section.105}
+\contentsline {subsection}{\numberline {5.2.1}Real-time wrapper}{63}{subsection.106}
+\contentsline {subsection}{\numberline {5.2.2}Non real-time wrapper}{66}{subsection.111}
+\contentsline {subsubsection}{EDF importer}{68}{section*.112}
+\contentsline {subsubsection}{EDF exporter}{69}{section*.114}
+\contentsline {section}{\numberline {5.3}Database application implementation}{70}{section.116}
+\contentsline {subsection}{\numberline {5.3.1}SQLite and Multi-threaded database accessing}{71}{subsection.117}
+\contentsline {subsection}{\numberline {5.3.2}CESAR wrapper}{74}{subsection.158}
+\contentsline {subsection}{\numberline {5.3.3}EDF wrapper}{80}{subsection.253}
+\contentsline {subsection}{\numberline {5.3.4}Real-time and non-real-time visualization}{83}{subsection.296}
+\contentsline {chapter}{\numberline {6}Evaluation}{87}{chapter.321}
+\contentsline {section}{\numberline {6.1}Real-time data collecting experiment}{88}{section.322}
+\contentsline {subsection}{\numberline {6.1.1}Experiment workloads}{88}{subsection.324}
+\contentsline {subsection}{\numberline {6.1.2}Experiment metrics}{89}{subsection.325}
+\contentsline {subsection}{\numberline {6.1.3}Experiment setup and results}{90}{subsection.327}
+\contentsline {subsection}{\numberline {6.1.4}Discussion}{92}{subsection.350}
+\contentsline {section}{\numberline {6.2}EDF importing experiment}{92}{section.351}
+\contentsline {subsection}{\numberline {6.2.1}Experiment workloads}{92}{subsection.352}
+\contentsline {subsection}{\numberline {6.2.2}Experiment metrics}{93}{subsection.353}
+\contentsline {subsection}{\numberline {6.2.3}Experiment setup and results}{93}{subsection.354}
+\contentsline {subsection}{\numberline {6.2.4}Discussion}{94}{subsection.360}
+\contentsline {section}{\numberline {6.3}EDF exporting experiment}{94}{section.361}
+\contentsline {subsection}{\numberline {6.3.1}Experiment workloads}{95}{subsection.362}
+\contentsline {subsection}{\numberline {6.3.2}Experiment metrics}{95}{subsection.363}
+\contentsline {subsection}{\numberline {6.3.3}Experiment setup and results}{96}{subsection.364}
+\contentsline {subsection}{\numberline {6.3.4}Discussion}{96}{subsection.367}
+\contentsline {section}{\numberline {6.4}Querying data experiment}{97}{section.368}
+\contentsline {subsection}{\numberline {6.4.1}Experiment workloads}{97}{subsection.369}
+\contentsline {subsection}{\numberline {6.4.2}Experiment metrics}{98}{subsection.371}
+\contentsline {subsection}{\numberline {6.4.3}Experiment setup and results}{99}{subsection.372}
+\contentsline {subsection}{\numberline {6.4.4}Discussion}{99}{subsection.375}
+\contentsline {section}{\numberline {6.5}Stress test with visualization and mixed tasks experiment}{99}{section.376}
+\contentsline {subsection}{\numberline {6.5.1}Experiment workloads and metrics}{100}{subsection.377}
+\contentsline {subsection}{\numberline {6.5.2}Experiment setup and results}{100}{subsection.378}
+\contentsline {subsection}{\numberline {6.5.3}Discussion}{100}{subsection.379}
+\contentsline {chapter}{\numberline {7}Conclusion}{103}{chapter.382}
+\contentsline {section}{\numberline {7.1}General summarization}{103}{section.383}
+\contentsline {section}{\numberline {7.2}Related works}{104}{section.384}
+\contentsline {section}{\numberline {7.3}Contributions}{105}{section.385}
+\contentsline {section}{\numberline {7.4}Open problems}{106}{section.386}
+\contentsline {section}{\numberline {7.5}Future works}{107}{section.387}
+\contentsline {chapter}{\numberline {A}User manual for the database application}{109}{appendix.388}
+\contentsline {section}{\numberline {A.1}Setup the application}{109}{section.389}
+\contentsline {section}{\numberline {A.2}Real time wrapper}{109}{section.390}
+\contentsline {section}{\numberline {A.3}Import EDF files}{109}{section.391}
+\contentsline {section}{\numberline {A.4}Visualize samples}{109}{section.392}
+\contentsline {section}{\numberline {A.5}Export EDF files}{109}{section.393}
+\contentsline {section}{\numberline {A.6}Raw query}{109}{section.394}
+\contentsline {chapter}{\numberline {B}SQLite code for creating tables}{111}{appendix.395}
+\contentsline {chapter}{Bibliography}{115}{appendix*.487}
