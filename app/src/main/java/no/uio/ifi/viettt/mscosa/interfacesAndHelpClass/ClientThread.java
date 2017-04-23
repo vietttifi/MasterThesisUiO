@@ -78,7 +78,8 @@ public class ClientThread extends Thread{
             setStoring(false);
             setPlotting(false,null);
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("DISCONNECTED");
         }
     }
 
@@ -118,7 +119,8 @@ public class ClientThread extends Thread{
             }
 
         }catch (IOException e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("DISCONNECTED");
         }
 
         try {

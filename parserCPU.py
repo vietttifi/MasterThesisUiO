@@ -31,7 +31,7 @@ if __name__ == "__main__":
 	pp.plot(numpy.arange(0, len(matches1)*5,5), matches1)
 	pp.plot(numpy.arange(0, len(matches2)*5,5), matches2)
 
-	pp.legend(['buffer 5s', 'buffer 10s', 'buffer 15s'], loc='upper left')
+	pp.legend(['buffer 10s', 'buffer 20s', 'buffer 30s'], loc='upper left')
 	pp.xlabel('seconds')
 	pp.ylabel('%CPU')
 	pp.title('CPU USAGE')

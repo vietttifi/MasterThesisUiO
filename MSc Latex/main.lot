@@ -25,18 +25,19 @@
 \contentsline {table}{\numberline {5.1}{\ignorespaces A summary of the database system application requirements\relax }}{60}{table.caption.103}
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {6.1}{\ignorespaces Used devices specifications\relax }}{88}{table.caption.323}
-\contentsline {table}{\numberline {6.2}{\ignorespaces Buffer duration\relax }}{91}{table.caption.347}
-\contentsline {table}{\numberline {6.3}{\ignorespaces Arrival rate\relax }}{91}{table.caption.348}
-\contentsline {table}{\numberline {6.4}{\ignorespaces Number of channels\relax }}{92}{table.caption.349}
-\contentsline {table}{\numberline {6.5}{\ignorespaces Number of files simultaneously read\relax }}{94}{table.caption.358}
-\contentsline {table}{\numberline {6.6}{\ignorespaces Number of samples in batch\relax }}{94}{table.caption.359}
-\contentsline {table}{\numberline {6.7}{\ignorespaces Number of exporting records\relax }}{96}{table.caption.365}
-\contentsline {table}{\numberline {6.8}{\ignorespaces Duration of a data record in EDF file\relax }}{96}{table.caption.366}
-\contentsline {table}{\numberline {6.9}{\ignorespaces Datasets in the database\relax }}{98}{table.caption.370}
-\contentsline {table}{\numberline {6.10}{\ignorespaces Query statistics for the queries\relax }}{98}{table.caption.373}
-\contentsline {table}{\numberline {6.11}{\ignorespaces Executing time and resource usage for the queries\relax }}{99}{table.caption.374}
-\contentsline {table}{\numberline {6.12}{\ignorespaces Mixed tasks with real-time visualization\relax }}{101}{table.caption.380}
-\contentsline {table}{\numberline {6.13}{\ignorespaces Mixed tasks with visualization data from the database\relax }}{102}{table.caption.381}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Buffer duration\relax }}{90}{table.caption.327}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Arrival rate\relax }}{91}{table.caption.328}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Number of channels\relax }}{91}{table.caption.329}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Overnight experiment\relax }}{93}{table.caption.339}
+\contentsline {table}{\numberline {6.6}{\ignorespaces Number of files simultaneously read\relax }}{96}{table.caption.349}
+\contentsline {table}{\numberline {6.7}{\ignorespaces Number of samples in batch\relax }}{96}{table.caption.350}
+\contentsline {table}{\numberline {6.8}{\ignorespaces Number of exporting records\relax }}{99}{table.caption.359}
+\contentsline {table}{\numberline {6.9}{\ignorespaces Datasets in the database\relax }}{100}{table.caption.367}
+\contentsline {table}{\numberline {6.10}{\ignorespaces Query statistics for the queries\relax }}{101}{table.caption.370}
+\contentsline {table}{\numberline {6.11}{\ignorespaces Executing time and resource usage for the queries\relax }}{102}{table.caption.371}
+\contentsline {table}{\numberline {6.12}{\ignorespaces Mixed tasks with real-time visualization\relax }}{103}{table.caption.377}
+\contentsline {table}{\numberline {6.13}{\ignorespaces Mixed tasks with visualization data from the database\relax }}{103}{table.caption.378}
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

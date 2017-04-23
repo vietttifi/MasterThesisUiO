@@ -55,7 +55,7 @@ public class EDFFileReader extends Thread{
     //Assume overhead is 40bytes for each sample.
     //then, long + long + float = 20
     //so, it is about 60 bytes/ sample. 100000 samples is about 600KB
-    private final int SAMPLE_BUFF_SIZE_IN_SAMPLE_NUMBER = 50000;
+    private final int SAMPLE_BUFF_SIZE_IN_SAMPLE_NUMBER = 150000;
     private MainActivity mMainActivity;
     private File_Sensor_Source file_source;
     private List<LogReadFile> logReadFiles;
@@ -91,7 +91,7 @@ public class EDFFileReader extends Thread{
             if(!path.exists()) path.mkdir();
             path.setReadable(true);
             path.setWritable(true);
-            String fileName = path.getPath()+"/"+"UsageTimeA01Seconds.txt";
+            String fileName = path.getPath()+"/"+"UsageTimeEDFI2files"+getId()+".txt";
 
             EDFHeader header = null;
             InputStream is = new BufferedInputStream(new FileInputStream(new File(filePath)));

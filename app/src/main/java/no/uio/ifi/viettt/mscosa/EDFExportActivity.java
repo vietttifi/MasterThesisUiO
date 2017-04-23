@@ -24,7 +24,9 @@ import android.widget.Toast;
 
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -240,6 +242,7 @@ public class EDFExportActivity extends AppCompatActivity{
         private boolean isAnnotation = false;
         int numberOfCharInAnno = Integer.MAX_VALUE;
         private EDFHeader edfHeader;
+        private long sqlUsageTime = 0, totalInsertion =0;
 
         ExportSourceToEDF(ArrayList<String> recordIDs, String fileName, String patientID){
             this.context = getApplication();
@@ -255,6 +258,12 @@ public class EDFExportActivity extends AppCompatActivity{
         @Override
         public void run(){
             try{
+                File path = new File(Environment.getExternalStorageDirectory().getPath()+"/Download/");
+                if(!path.exists()) path.mkdir();
+                path.setReadable(true);
+                path.setWritable(true);
+                String fileName = path.getPath()+"/"+"UsageTimeEDFI2files"+getId()+".txt";
+
                 raf = new RandomAccessFile(this.fileName, "rw");
                 buildEDFheader();
                 storeDataRecord();
@@ -262,6 +271,10 @@ public class EDFExportActivity extends AppCompatActivity{
                 raf.seek(0);
                 EDFWriter.writeEDFHeaderToFile(raf,edfHeader);
                 raf.close();
+
+                PrintWriter pw = new PrintWriter(new FileOutputStream(fileName));
+                pw.println("total used time: "+sqlUsageTime+" ms. Total insertion: "+totalInsertion);
+                pw.close();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -443,7 +456,10 @@ public class EDFExportActivity extends AppCompatActivity{
 
                 for(int i = 0; i<records.length; i++){
                     //dataRecordSize += edfHeader.getNumberOfSamples()[i];
+                    long timmer = System.currentTimeMillis();
                     short[] valuesRecord = sampleAdapter.getShortValues(records[i].getR_id(),(dataRecordCnt - 1)*edfHeader.getNumberOfSamples()[i],dataRecordCnt*edfHeader.getNumberOfSamples()[i]);
+                    sqlUsageTime += (System.currentTimeMillis() - timmer);
+                    totalInsertion += valuesRecord.length;
                     if(valuesRecord != null) {
                         //System.out.println("BUFF LENGTH "+byteBuffer.limit()+ ", values length"+valuesRecord.length);
                         for(int j = 0 ; j<valuesRecord.length; j++){

@@ -37,7 +37,7 @@ public class UpdateDBThread extends Thread{
         if(!path.exists()) path.mkdir();
         path.setReadable(true);
         path.setWritable(true);
-        fileName = path.getPath()+"/"+"UsageTime30Seconds.txt";
+        fileName = path.getPath()+"/"+"UsageTime10Seconds.txt";
 
         Intent i = new Intent(context, ForegroundDBService.class);
         if(isBinded) return;

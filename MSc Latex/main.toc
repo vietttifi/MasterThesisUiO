@@ -2,12 +2,12 @@
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \contentsline {chapter}{Abstract}{iv}{section*.1}
-\contentsline {chapter}{Acknowledgements}{vii}{section*.2}
+\contentsline {chapter}{Acknowledgements}{v}{section*.2}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.7}
 \contentsline {section}{\numberline {1.1}Background and Motivation}{1}{section.8}
 \contentsline {section}{\numberline {1.2}Problem Statement}{2}{section.9}
 \contentsline {section}{\numberline {1.3}Contributions}{3}{section.10}
-\contentsline {section}{\numberline {1.4}Structure of the Thesis}{3}{section.11}
+\contentsline {section}{\numberline {1.4}Structure of the Thesis}{4}{section.11}
 \contentsline {chapter}{\numberline {2}Sleep Apnea}{5}{chapter.12}
 \contentsline {section}{\numberline {2.1}Taxonomy of sleep apnea}{5}{section.13}
 \contentsline {subsection}{\numberline {2.1.1}Central sleep apnea}{6}{subsection.14}
@@ -52,39 +52,45 @@
 \contentsline {section}{\numberline {6.1}Real-time data collecting experiment}{88}{section.322}
 \contentsline {subsection}{\numberline {6.1.1}Experiment workloads}{88}{subsection.324}
 \contentsline {subsection}{\numberline {6.1.2}Experiment metrics}{89}{subsection.325}
-\contentsline {subsection}{\numberline {6.1.3}Experiment setup and results}{90}{subsection.327}
-\contentsline {subsection}{\numberline {6.1.4}Discussion}{92}{subsection.350}
-\contentsline {section}{\numberline {6.2}EDF importing experiment}{92}{section.351}
-\contentsline {subsection}{\numberline {6.2.1}Experiment workloads}{92}{subsection.352}
-\contentsline {subsection}{\numberline {6.2.2}Experiment metrics}{93}{subsection.353}
-\contentsline {subsection}{\numberline {6.2.3}Experiment setup and results}{93}{subsection.354}
-\contentsline {subsection}{\numberline {6.2.4}Discussion}{94}{subsection.360}
-\contentsline {section}{\numberline {6.3}EDF exporting experiment}{94}{section.361}
-\contentsline {subsection}{\numberline {6.3.1}Experiment workloads}{95}{subsection.362}
-\contentsline {subsection}{\numberline {6.3.2}Experiment metrics}{95}{subsection.363}
-\contentsline {subsection}{\numberline {6.3.3}Experiment setup and results}{96}{subsection.364}
-\contentsline {subsection}{\numberline {6.3.4}Discussion}{96}{subsection.367}
-\contentsline {section}{\numberline {6.4}Querying data experiment}{97}{section.368}
-\contentsline {subsection}{\numberline {6.4.1}Experiment workloads}{97}{subsection.369}
-\contentsline {subsection}{\numberline {6.4.2}Experiment metrics}{98}{subsection.371}
-\contentsline {subsection}{\numberline {6.4.3}Experiment setup and results}{99}{subsection.372}
-\contentsline {subsection}{\numberline {6.4.4}Discussion}{99}{subsection.375}
-\contentsline {section}{\numberline {6.5}Stress test with visualization and mixed tasks experiment}{99}{section.376}
-\contentsline {subsection}{\numberline {6.5.1}Experiment workloads and metrics}{100}{subsection.377}
-\contentsline {subsection}{\numberline {6.5.2}Experiment setup and results}{100}{subsection.378}
-\contentsline {subsection}{\numberline {6.5.3}Discussion}{100}{subsection.379}
-\contentsline {chapter}{\numberline {7}Conclusion}{103}{chapter.382}
-\contentsline {section}{\numberline {7.1}General summarization}{103}{section.383}
-\contentsline {section}{\numberline {7.2}Related works}{104}{section.384}
-\contentsline {section}{\numberline {7.3}Contributions}{105}{section.385}
-\contentsline {section}{\numberline {7.4}Open problems}{106}{section.386}
-\contentsline {section}{\numberline {7.5}Future works}{107}{section.387}
-\contentsline {chapter}{\numberline {A}User manual for the database application}{109}{appendix.388}
-\contentsline {section}{\numberline {A.1}Setup the application}{109}{section.389}
-\contentsline {section}{\numberline {A.2}Real time wrapper}{109}{section.390}
-\contentsline {section}{\numberline {A.3}Import EDF files}{109}{section.391}
-\contentsline {section}{\numberline {A.4}Visualize samples}{109}{section.392}
-\contentsline {section}{\numberline {A.5}Export EDF files}{109}{section.393}
-\contentsline {section}{\numberline {A.6}Raw query}{109}{section.394}
-\contentsline {chapter}{\numberline {B}SQLite code for creating tables}{111}{appendix.395}
-\contentsline {chapter}{Bibliography}{115}{appendix*.487}
+\contentsline {subsection}{\numberline {6.1.3}Experiment setup}{89}{subsection.326}
+\contentsline {subsection}{\numberline {6.1.4}Results and discussion}{91}{subsection.335}
+\contentsline {section}{\numberline {6.2}Overnight experiment}{91}{section.336}
+\contentsline {subsection}{\numberline {6.2.1}Experiment workloads and metrics}{92}{subsection.337}
+\contentsline {subsection}{\numberline {6.2.2}Experiment setup}{92}{subsection.338}
+\contentsline {subsection}{\numberline {6.2.3}Results and discussion}{93}{subsection.340}
+\contentsline {section}{\numberline {6.3}EDF importing experiment}{94}{section.342}
+\contentsline {subsection}{\numberline {6.3.1}Experiment workloads}{95}{subsection.343}
+\contentsline {subsection}{\numberline {6.3.2}Experiment metrics}{95}{subsection.344}
+\contentsline {subsection}{\numberline {6.3.3}Experiment setup}{95}{subsection.345}
+\contentsline {subsection}{\numberline {6.3.4}Results and discussion}{96}{subsection.351}
+\contentsline {section}{\numberline {6.4}EDF exporting experiment}{97}{section.355}
+\contentsline {subsection}{\numberline {6.4.1}Experiment workloads}{98}{subsection.356}
+\contentsline {subsection}{\numberline {6.4.2}Experiment metrics}{98}{subsection.357}
+\contentsline {subsection}{\numberline {6.4.3}Experiment setup}{98}{subsection.358}
+\contentsline {subsection}{\numberline {6.4.4}Results and discussion}{99}{subsection.364}
+\contentsline {section}{\numberline {6.5}Querying data experiment}{99}{section.365}
+\contentsline {subsection}{\numberline {6.5.1}Experiment workloads}{100}{subsection.366}
+\contentsline {subsection}{\numberline {6.5.2}Experiment metrics}{101}{subsection.368}
+\contentsline {subsection}{\numberline {6.5.3}Experiment setup}{101}{subsection.369}
+\contentsline {subsection}{\numberline {6.5.4}Results and discussion}{102}{subsection.372}
+\contentsline {section}{\numberline {6.6}Stress test with visualization and mixed tasks experiment}{102}{section.373}
+\contentsline {subsection}{\numberline {6.6.1}Experiment workloads and metrics}{102}{subsection.374}
+\contentsline {subsection}{\numberline {6.6.2}Experiment setup}{103}{subsection.375}
+\contentsline {subsection}{\numberline {6.6.3}Results and discussion}{103}{subsection.376}
+\contentsline {chapter}{\numberline {7}Conclusion}{105}{chapter.379}
+\contentsline {section}{\numberline {7.1}General summarization}{105}{section.380}
+\contentsline {section}{\numberline {7.2}Related works}{106}{section.381}
+\contentsline {section}{\numberline {7.3}Contributions}{107}{section.382}
+\contentsline {section}{\numberline {7.4}Open problems}{108}{section.383}
+\contentsline {section}{\numberline {7.5}Future works}{109}{section.384}
+\contentsline {chapter}{\numberline {A}User manual for the database application}{111}{appendix.385}
+\contentsline {section}{\numberline {A.1}Real time wrapper}{111}{section.391}
+\contentsline {section}{\numberline {A.2}Import EDF files}{111}{section.392}
+\contentsline {section}{\numberline {A.3}Visualize samples}{111}{section.393}
+\contentsline {section}{\numberline {A.4}Export EDF files}{113}{section.394}
+\contentsline {section}{\numberline {A.5}Raw query}{113}{section.395}
+\contentsline {chapter}{\numberline {B}SQLite code for creating tables}{115}{appendix.396}
+\contentsline {chapter}{\numberline {C}Python code for parsing CPU usage}{119}{appendix.488}
+\contentsline {section}{\numberline {C.1}How to parse the output from Busybox}{119}{section.489}
+\contentsline {section}{\numberline {C.2}Python code for parsing}{120}{section.507}
+\contentsline {chapter}{Bibliography}{123}{appendix*.547}

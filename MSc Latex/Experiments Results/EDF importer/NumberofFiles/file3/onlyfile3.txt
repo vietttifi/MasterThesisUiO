@@ -1,0 +1,1 @@
+total used time: 237634 ms. Total insertion: 3100006

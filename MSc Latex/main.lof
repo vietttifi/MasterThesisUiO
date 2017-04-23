@@ -45,7 +45,16 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {EDF export GUI}}}{81}{figure.caption.254}
 \contentsline {figure}{\numberline {5.11}{\ignorespaces Replay samples from the database GUI\relax }}{83}{figure.caption.297}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Battery usage\relax }}{89}{figure.caption.326}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Battery usage under overnight experiment\relax }}{94}{figure.caption.341}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces CPU usage for the EDF import experiment\relax }}{97}{figure.caption.352}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Number of file}}}{97}{figure.caption.352}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Buffer size}}}{97}{figure.caption.352}
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Main fragments of the database application\relax }}{112}{figure.caption.386}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Real time}}}{112}{figure.caption.386}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {EDF import}}}{112}{figure.caption.386}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {EDF export}}}{112}{figure.caption.386}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Database tasks}}}{112}{figure.caption.386}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
