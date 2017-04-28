@@ -1,0 +1,141 @@
+adb server is out of date.  killing...
+* daemon started successfully *
+[H[JMem: 2714452K used, 45512K free, 0K shrd, 10416K buff, 528K cached
+CPU: 21.6% usr 26.6% sys  0.0% nic 46.6% idle  0.0% io  1.6% irq  3.3% sirq
+Load average: 6.98 6.93 7.70 3/2364 8361
+[7m  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND[0m
+  453     1 1036     S    47728  1.7   0 18.2 /system/bin/logd
+23908     1 shell    S    17432  0.6   0 13.3 /sbin/adbd --root_seclabel=u:r:su:
+ 8360 23908 shell    R     1364  0.0   2  8.3 busybox top d 5
+ 8320 23908 shell    S     8120  0.2   1  3.3 logcat -v long
+22806   762 app_249  S    2293m 84.6   0  1.6 {i.viettt.mscosa} no.uio.ifi.viett
+  330     2 root     RW       0  0.0   1  1.6 [cfinteractive]
+ 1407   762 system   S <  2496m 92.1   1  0.0 system_server
+ 1761   762 system   S    2376m 87.7   1  0.0 {ndroid.systemui} com.android.syst
+ 2639   762 app_27   S    2303m 85.0   2  0.0 com.miui.home
+19640   762 app_92   S    2269m 83.7   0  0.0 {droid.apps.maps} com.google.andro
+ 2466   762 app_45   S    2250m 83.0   2  0.0 {hbox:interactor} com.google.andro
+21246   762 app_109  S    2225m 82.1   0  0.0 {oid.apps.photos} com.google.andro
+22091   762 9801     S    2216m 81.8   0  0.0 {id.thememanager} com.android.them
+  762     1 root     S    2113m 78.0   2  0.0 {main} zygote64
+17911   762 app_16   S    1988m 73.4   0  0.0 {gle.android.gms} com.google.andro
+20426   762 app_0    S    1924m 71.0   0  0.0 {d.process.acore} android.process.
+21499   763 app_117  S <  1922m 70.9   0  0.0 {facebook.katana} com.facebook.kat
+ 2434   762 app_16   S    1893m 69.8   1  0.0 {.gms.persistent} com.google.andro
+18681   762 app_44   S    1871m 69.0   0  0.0 {android.vending} com.android.vend
+ 5912   762 app_120  S    1856m 68.5   2  0.0 {chtype.swiftkey} com.touchtype.sw[H[JMem: 2719300K used, 40664K free, 0K shrd, 10416K buff, 528K cached
+CPU: 12.5% usr 19.5% sys  0.0% nic 65.4% idle  0.0% io  0.9% irq  1.5% sirq
+Load average: 6.90 6.91 7.69 3/2364 8434
+[7m  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND[0m
+ 8320 23908 shell    S     8120  0.2   3  8.1 logcat -v long
+22806   762 app_249  R    2296m 84.7   2  5.1 {i.viettt.mscosa} no.uio.ifi.viett
+  453     1 1036     S    47728  1.7   0  4.7 /system/bin/logd
+23908     1 shell    S    17432  0.6   3  3.9 /sbin/adbd --root_seclabel=u:r:su:
+  578     1 system   S <   161m  5.9   1  1.6 /system/bin/surfaceflinger
+21209     2 root     SW       0  0.0   3  1.0 [kworker/3:7]
+23787     2 root     SW       0  0.0   2  0.9 [kworker/2:5]
+  330     2 root     SW       0  0.0   1  0.5 [cfinteractive]
+ 7438     2 root     DW       0  0.0   3  0.5 [mdss_fb0]
+ 1407   762 system   S <  2496m 92.1   0  0.3 system_server
+23112     2 root     SW       0  0.0   0  0.3 [kworker/0:2]
+23624     2 root     SW       0  0.0   3  0.3 [kworker/3:0]
+17911   762 app_16   S    1988m 73.4   0  0.3 {gle.android.gms} com.google.andro
+ 6173     2 root     SW<      0  0.0   0  0.3 [VosMCThread]
+23136     2 root     SW       0  0.0   0  0.3 [kworker/u8:4]
+    7     2 root     SW       0  0.0   0  0.2 [rcu_preempt]
+23736     2 root     SW       0  0.0   0  0.2 [kworker/u8:0]
+  594     1 system   S    68152  2.4   3  0.2 /system/vendor/bin/mm-pp-dpps
+    3     2 root     SW       0  0.0   0  0.2 [ksoftirqd/0]
+23594     2 root     SW       0  0.0   1  0.2 [kworker/u8:6][H[JMem: 2712536K used, 47428K free, 0K shrd, 10416K buff, 528K cached
+CPU: 12.5% usr 12.9% sys  0.0% nic 72.3% idle  0.0% io  1.0% irq  1.1% sirq
+Load average: 6.83 6.90 7.69 4/2364 8502
+[7m  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND[0m
+22806   762 app_249  S    2294m 84.6   1  6.3 {i.viettt.mscosa} no.uio.ifi.viett
+  578     1 system   S <   161m  5.9   1  6.2 /system/bin/surfaceflinger
+ 1407   762 system   S <  2496m 92.1   1  2.2 system_server
+23908     1 shell    S    17432  0.6   1  1.6 /sbin/adbd --root_seclabel=u:r:su:
+ 8320 23908 shell    S     8120  0.2   1  1.5 logcat -v long
+ 7438     2 root     DW       0  0.0   0  0.9 [mdss_fb0]
+  453     1 1036     S    47728  1.7   0  0.7 /system/bin/logd
+  594     1 system   S    68152  2.4   3  0.7 /system/vendor/bin/mm-pp-dpps
+  577     1 system   S     9424  0.3   1  0.5 /system/bin/servicemanager
+23112     2 root     SW       0  0.0   0  0.4 [kworker/0:2]
+  330     2 root     SW       0  0.0   2  0.4 [cfinteractive]
+    7     2 root     SW       0  0.0   0  0.4 [rcu_preempt]
+ 6173     2 root     SW<      0  0.0   0  0.3 [VosMCThread]
+23136     2 root     SW       0  0.0   0  0.3 [kworker/u8:4]
+23594     2 root     SW       0  0.0   1  0.3 [kworker/u8:6]
+ 2802     2 root     SW       0  0.0   1  0.3 [kworker/u8:7]
+23624     2 root     SW       0  0.0   3  0.3 [kworker/3:0]
+ 8360 23908 shell    R     1416  0.0   0  0.2 busybox top d 5
+   12     2 root     SW       0  0.0   1  0.2 [ksoftirqd/1]
+   41     2 root     RW       0  0.0   0  0.2 [smem_native_rpm][H[JMem: 2707080K used, 52884K free, 0K shrd, 10416K buff, 528K cached
+CPU:  6.3% usr  7.6% sys  0.0% nic 84.3% idle  0.1% io  0.8% irq  0.7% sirq
+Load average: 6.76 6.88 7.68 2/2364 8571
+[7m  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND[0m
+  578     1 system   S <   161m  5.9   1  2.5 /system/bin/surfaceflinger
+22806   762 app_249  S    2294m 84.6   1  1.7 {i.viettt.mscosa} no.uio.ifi.viett
+23908     1 shell    S    17432  0.6   1  1.2 /sbin/adbd --root_seclabel=u:r:su:
+ 1407   762 system   S <  2478m 91.5   1  1.1 system_server
+ 7438     2 root     DW       0  0.0   2  0.5 [mdss_fb0]
+  330     2 root     SW       0  0.0   2  0.4 [cfinteractive]
+23136     2 root     SW       0  0.0   0  0.4 [kworker/u8:4]
+ 6173     2 root     SW<      0  0.0   0  0.3 [VosMCThread]
+23112     2 root     SW       0  0.0   0  0.3 [kworker/0:2]
+  594     1 system   S    68152  2.4   3  0.3 /system/vendor/bin/mm-pp-dpps
+    7     2 root     SW       0  0.0   1  0.3 [rcu_preempt]
+ 2802     2 root     SW       0  0.0   1  0.3 [kworker/u8:7]
+  577     1 system   S     9424  0.3   1  0.2 /system/bin/servicemanager
+ 8360 23908 shell    R     1416  0.0   2  0.2 busybox top d 5
+   41     2 root     SW       0  0.0   1  0.2 [smem_native_rpm]
+   12     2 root     SW       0  0.0   1  0.2 [ksoftirqd/1]
+23594     2 root     SW       0  0.0   1  0.2 [kworker/u8:6]
+24617     2 root     SW       0  0.0   0  0.2 [kworker/0:1]
+  405     2 root     DW       0  0.0   0  0.1 [msm-core:sampli]
+    3     2 root     SW       0  0.0   0  0.1 [ksoftirqd/0][H[JMem: 2697100K used, 62864K free, 0K shrd, 10416K buff, 528K cached
+CPU:  4.0% usr  5.6% sys  0.0% nic 87.8% idle  0.0% io  0.5% irq  1.9% sirq
+Load average: 6.70 6.87 7.67 2/2365 8644
+[7m  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND[0m
+22806   762 app_249  S    2294m 84.6   0  1.7 {i.viettt.mscosa} no.uio.ifi.viett
+23908     1 shell    S    17432  0.6   1  1.3 /sbin/adbd --root_seclabel=u:r:su:
+ 1407   762 system   S <  2479m 91.5   1  0.7 system_server
+  578     1 system   S <   161m  5.9   1  0.6 /system/bin/surfaceflinger
+ 1761   762 system   S    2375m 87.7   1  0.4 {ndroid.systemui} com.android.syst
+ 6173     2 root     SW<      0  0.0   1  0.4 [VosMCThread]
+ 2448   762 system   S    1727m 63.7   0  0.3 {tycenter.remote} com.miui.securit
+  330     2 root     SW       0  0.0   3  0.3 [cfinteractive]
+23594     2 root     SW       0  0.0   0  0.3 [kworker/u8:6]
+ 8360 23908 shell    R     1416  0.0   2  0.2 busybox top d 5
+23136     2 root     SW       0  0.0   0  0.2 [kworker/u8:4]
+23112     2 root     SW       0  0.0   0  0.2 [kworker/0:2]
+   41     2 root     SW       0  0.0   1  0.2 [smem_native_rpm]
+  405     2 root     DW       0  0.0   1  0.2 [msm-core:sampli]
+    7     2 root     SW       0  0.0   0  0.2 [rcu_preempt]
+    3     2 root     SW       0  0.0   0  0.1 [ksoftirqd/0]
+ 7438     2 root     DW       0  0.0   3  0.1 [mdss_fb0]
+  453     1 1036     S    47728  1.7   0  0.1 /system/bin/logd
+24617     2 root     SW       0  0.0   0  0.1 [kworker/0:1]
+ 2802     2 root     SW       0  0.0   1  0.1 [kworker/u8:7][H[JMem: 2690820K used, 69144K free, 0K shrd, 10416K buff, 529K cached
+CPU:  3.8% usr  5.7% sys  0.0% nic 89.1% idle  0.0% io  0.4% irq  0.8% sirq
+Load average: 6.73 6.87 7.66 2/2362 8713
+[7m  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND[0m
+22806   762 app_249  S    2291m 84.5   1  1.9 {i.viettt.mscosa} no.uio.ifi.viett
+23908     1 shell    S    17432  0.6   2  1.3 /sbin/adbd --root_seclabel=u:r:su:
+  578     1 system   S <   161m  5.9   0  0.5 /system/bin/surfaceflinger
+ 6173     2 root     SW<      0  0.0   1  0.5 [VosMCThread]
+  330     2 root     SW       0  0.0   3  0.4 [cfinteractive]
+23112     2 root     SW       0  0.0   0  0.3 [kworker/0:2]
+23594     2 root     SW       0  0.0   1  0.3 [kworker/u8:6]
+   41     2 root     SW       0  0.0   0  0.2 [smem_native_rpm]
+23136     2 root     SW       0  0.0   3  0.2 [kworker/u8:4]
+ 2802     2 root     SW       0  0.0   0  0.2 [kworker/u8:7]
+ 8360 23908 shell    R     1416  0.0   2  0.2 busybox top d 5
+    7     2 root     SW       0  0.0   1  0.2 [rcu_preempt]
+ 7438     2 root     DW       0  0.0   3  0.2 [mdss_fb0]
+ 1407   762 system   S <  2479m 91.5   1  0.1 system_server
+  405     2 root     DW       0  0.0   0  0.1 [msm-core:sampli]
+    3     2 root     SW       0  0.0   0  0.1 [ksoftirqd/0]
+24617     2 root     SW       0  0.0   0  0.1 [kworker/0:1]
+ 6184   787 wifi     S    10032  0.3   0  0.1 /system/bin/hostapd -e /data/misc/
+ 5912   762 app_120  S    1856m 68.5   2  0.0 {chtype.swiftkey} com.touchtype.sw
+ 2448   762 system   S    1727m 63.7   0  0.0 {tycenter.remote} com.miui.securit

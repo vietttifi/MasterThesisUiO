@@ -11,17 +11,16 @@
 \contentsline {lstlisting}{\numberline {5.8}EDF file writer}{83}{lstlisting.282}
 \contentsline {lstlisting}{\numberline {5.9}appendData interface\citep {GRAPHVIEW}}{84}{lstlisting.298}
 \contentsline {lstlisting}{\numberline {5.10}Update samples to GUI}{85}{lstlisting.308}
-\contentsline {lstlisting}{\numberline {6.1}Get the size of a SQLite database in the Android}{91}{lstlisting.330}
-\contentsline {lstlisting}{\numberline {6.2}Convert mit2edf by using terminal}{95}{lstlisting.346}
-\contentsline {lstlisting}{\numberline {6.3}Pseudo SQLite code for calculating data size for returned rows}{99}{lstlisting.360}
-\contentsline {lstlisting}{\numberline {B.1}SQLite code for creating table SensorSource}{115}{lstlisting.397}
-\contentsline {lstlisting}{\numberline {B.2}SQLite code for creating table Patient}{115}{lstlisting.403}
-\contentsline {lstlisting}{\numberline {B.3}SQLite code for creating table Patient}{115}{lstlisting.414}
-\contentsline {lstlisting}{\numberline {B.4}SQLite code for creating table Physician}{116}{lstlisting.428}
-\contentsline {lstlisting}{\numberline {B.5}SQLite code for creating table Clinic}{116}{lstlisting.439}
-\contentsline {lstlisting}{\numberline {B.6}SQLite code for creating table Record}{116}{lstlisting.447}
-\contentsline {lstlisting}{\numberline {B.7}SQLite code for creating table RecordAnnotation}{117}{lstlisting.464}
-\contentsline {lstlisting}{\numberline {B.8}SQLite code for creating table Annotation}{117}{lstlisting.472}
-\contentsline {lstlisting}{\numberline {B.9}SQLite code for creating table Sample}{117}{lstlisting.480}
-\contentsline {lstlisting}{\numberline {C.1}A sample of five seconds fragment output from the text file}{119}{lstlisting.490}
-\contentsline {lstlisting}{\numberline {C.2}Python code for parsing CPU usage}{121}{lstlisting.508}
+\contentsline {lstlisting}{\numberline {6.1}Get the size of a SQLite database in the Android}{90}{lstlisting.330}
+\contentsline {lstlisting}{\numberline {6.2}Convert mit2edf by using terminal}{96}{lstlisting.346}
+\contentsline {lstlisting}{\numberline {B.1}SQLite code for creating table SensorSource}{117}{lstlisting.392}
+\contentsline {lstlisting}{\numberline {B.2}SQLite code for creating table Patient}{117}{lstlisting.398}
+\contentsline {lstlisting}{\numberline {B.3}SQLite code for creating table Patient}{117}{lstlisting.409}
+\contentsline {lstlisting}{\numberline {B.4}SQLite code for creating table Physician}{118}{lstlisting.423}
+\contentsline {lstlisting}{\numberline {B.5}SQLite code for creating table Clinic}{118}{lstlisting.434}
+\contentsline {lstlisting}{\numberline {B.6}SQLite code for creating table Record}{118}{lstlisting.442}
+\contentsline {lstlisting}{\numberline {B.7}SQLite code for creating table RecordAnnotation}{119}{lstlisting.459}
+\contentsline {lstlisting}{\numberline {B.8}SQLite code for creating table Annotation}{119}{lstlisting.467}
+\contentsline {lstlisting}{\numberline {B.9}SQLite code for creating table Sample}{119}{lstlisting.475}
+\contentsline {lstlisting}{\numberline {C.1}A sample of five seconds fragment output from the text file}{121}{lstlisting.485}
+\contentsline {lstlisting}{\numberline {C.2}Python code for parsing CPU usage}{123}{lstlisting.503}

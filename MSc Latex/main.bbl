@@ -19,6 +19,28 @@
 
 \refsection{0}
   \sortlist[entry]{nyt/global/}
+    \entry{Alfonso}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=65ddd5da7370f787ac412fcd4753a214}{%
+           family={Alfonso},
+           family_i={A\bibinitperiod},
+           given={Et.al},
+           given_i={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{65ddd5da7370f787ac412fcd4753a214}
+      \strng{fullhash}{65ddd5da7370f787ac412fcd4753a214}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelyear}{retrieved 2017}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Management of Streaming Body Sensor Data for Medical Information Systems}
+      \field{year}{retrieved 2017}
+      \verb{url}
+      \verb http://ai2-s2-pdfs.s3.amazonaws.com/e1d6/7eac67173b03966b4d038bdfaa1f6acd0986.pdf
+      \endverb
+    \endentry
     \entry{AndroidAPIProcessLifeCycle}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,hash=e84e30b9390cdb64db6db2c9ab87846d}{%
@@ -155,26 +177,6 @@
       \field{year}{04.2016}
       \verb{url}
       \verb http://journal.publications.chestnet.org/data/Journals/CHEST/935163/02594.pdf
-      \endverb
-    \endentry
-    \entry{IEEESLEEPAP}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,hash=d720498c49ad3f9467036e6ccad45f9d}{%
-           family={Behar},
-           family_i={B\bibinitperiod}}}%
-      }
-      \strng{namehash}{d720498c49ad3f9467036e6ccad45f9d}
-      \strng{fullhash}{d720498c49ad3f9467036e6ccad45f9d}
-      \field{sortinit}{B}
-      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
-      \field{labelyear}{2013}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{SleepAp: An Automated Obstructive Sleep Apnoea Screening Application for Smartphones}
-      \field{year}{2013}
-      \verb{url}
-      \verb http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6712460
       \endverb
     \endentry
     \entry{BITalino_board}{article}{}
@@ -665,7 +667,7 @@
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Generic data acquisition for mobile platforms}
+      \field{title}{Generic data acquisition for mobile platforms, the CESAR acquisition toll}
       \field{year}{2016}
     \endentry
     \entry{GRAPHVIEWMAIN}{article}{}
@@ -1102,24 +1104,24 @@
       \verb http://www.nhlbi.nih.gov/health/health-topics/topics/sleepapnea/
       \endverb
     \endentry
-    \entry{noxmedical}{article}{}
+    \entry{Nicolas}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=94f1054c82fbcf9237877fac4e414f30}{%
-           family={noxmedical},
-           family_i={n\bibinitperiod}}}%
+        {{uniquename=0,hash=d9fd932e114c21309e61c08496bdc78e}{%
+           family={Nicolas},
+           family_i={N\bibinitperiod}}}%
       }
-      \strng{namehash}{94f1054c82fbcf9237877fac4e414f30}
-      \strng{fullhash}{94f1054c82fbcf9237877fac4e414f30}
-      \field{sortinit}{n}
+      \strng{namehash}{d9fd932e114c21309e61c08496bdc78e}
+      \strng{fullhash}{d9fd932e114c21309e61c08496bdc78e}
+      \field{sortinit}{N}
       \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
       \field{labelyear}{retrieved 2017}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Advancing sleep diagnostics through simplification, increased efficiency and comfort for all patients}
+      \field{title}{A Database in Every Sensor}
       \field{year}{retrieved 2017}
       \verb{url}
-      \verb http://www.noxmedical.com
+      \verb http://dunkels.com/adam/tsiftes11database.pdf
       \endverb
     \endentry
     \entry{PhysioNet_Contributing}{article}{}
@@ -1239,26 +1241,6 @@
       \verb https://physionet.org/pn3/ucddb/#annotations
       \endverb
     \endentry
-    \entry{MIT_BIH}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,hash=328261e6924fb7dc12841741d98e3262}{%
-           family={Physionet},
-           family_i={P\bibinitperiod}}}%
-      }
-      \strng{namehash}{328261e6924fb7dc12841741d98e3262}
-      \strng{fullhash}{328261e6924fb7dc12841741d98e3262}
-      \field{sortinit}{P}
-      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
-      \field{extrayear}{5}
-      \field{labelyear}{nodate}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{MIT-BIH Polysomnographic Database}
-      \field{title}{Subjects}
-      \verb{url}
-      \verb https://www.physionet.org/physiobank/database/slpdb/
-      \endverb
-    \endentry
     \entry{CinC2000}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,hash=328261e6924fb7dc12841741d98e3262}{%
@@ -1269,7 +1251,7 @@
       \strng{fullhash}{328261e6924fb7dc12841741d98e3262}
       \field{sortinit}{P}
       \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
-      \field{extrayear}{6}
+      \field{extrayear}{5}
       \field{labelyear}{nodate}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
@@ -1404,26 +1386,6 @@
       \field{title}{National Sleep Research Resource}
       \verb{url}
       \verb https://sleepdata.org
-      \endverb
-    \endentry
-    \entry{sleepfoundation}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,hash=d25a023e53eb3d8a009631642131c3ae}{%
-           family={SleepFoundation},
-           family_i={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{d25a023e53eb3d8a009631642131c3ae}
-      \strng{fullhash}{d25a023e53eb3d8a009631642131c3ae}
-      \field{sortinit}{S}
-      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelyear}{2017}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Recommends new sleep times}
-      \field{year}{2017}
-      \verb{url}
-      \verb https://sleepfoundation.org/press-release/national-sleep-foundation-recommends-new-sleep-times
       \endverb
     \endentry
     \entry{INF1050BOOK}{article}{}

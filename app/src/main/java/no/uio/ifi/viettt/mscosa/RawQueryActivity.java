@@ -65,9 +65,12 @@ public class RawQueryActivity extends AppCompatActivity {
                 try {
                     osaDataBaseManagerInstance = OSADataBaseManager.getInstance();
                     SQLiteDatabase mDatabase = osaDataBaseManagerInstance.openDatabase();
+                    long timer = System.currentTimeMillis();
                     Cursor cursor = mDatabase.rawQuery(queryString, null);
                     cursor.moveToFirst();
-                    Toast.makeText(getApplication(),"Total row: "+cursor.getCount(),Toast.LENGTH_SHORT).show();
+                    long endTimer = System.currentTimeMillis() - timer;
+                    System.out.println("Total time for query: "+endTimer);
+                    Toast.makeText(getApplication(),"Total row: "+cursor.getCount()+ "Total time for query: "+endTimer,Toast.LENGTH_SHORT).show();
                     int cnt = 0;
 
                     int columnCount = cursor.getColumnCount();

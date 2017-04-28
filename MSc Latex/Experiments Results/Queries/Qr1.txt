@@ -1,0 +1,49 @@
+adb server is out of date.  killing...
+* daemon started successfully *
+[H[JMem: 2704344K used, 55620K free, 0K shrd, 10416K buff, 535K cached
+CPU: 27.0% usr 27.0% sys  0.0% nic 43.7% idle  0.0% io  0.0% irq  2.0% sirq
+Load average: 7.56 8.46 8.85 4/2348 25213
+[7m  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND[0m
+  453     1 1036     S    47728  1.7   0 20.8 /system/bin/logd
+23908     1 shell    S    15384  0.5   2 14.5 /sbin/adbd --root_seclabel=u:r:su:
+22806   762 app_249  S    2271m 83.8   0  4.1 {i.viettt.mscosa} no.uio.ifi.viett
+25212 23908 shell    R     1416  0.0   3  4.1 busybox top d 5
+  578     1 system   S <   134m  4.9   1  2.0 /system/bin/surfaceflinger
+25173 23908 shell    S     8120  0.2   2  2.0 logcat -v long
+    7     2 root     SW       0  0.0   2  2.0 [rcu_preempt]
+22452     2 root     DW       0  0.0   2  2.0 [mdss_fb0]
+ 1407   762 system   S <  2502m 92.3   0  0.0 system_server
+ 1761   762 system   S    2375m 87.6   1  0.0 {ndroid.systemui} com.android.syst
+ 2639   762 app_27   S    2303m 85.0   2  0.0 com.miui.home
+19640   762 app_92   S    2269m 83.7   0  0.0 {droid.apps.maps} com.google.andro
+ 2466   762 app_45   S    2250m 83.0   2  0.0 {hbox:interactor} com.google.andro
+22182   762 app_45   S    2248m 83.0   0  0.0 {earchbox:search} com.google.andro
+21246   762 app_109  S    2225m 82.1   0  0.0 {oid.apps.photos} com.google.andro
+22091   762 9801     S    2216m 81.8   0  0.0 {id.thememanager} com.android.them
+  762     1 root     S    2113m 78.0   2  0.0 {main} zygote64
+17911   762 app_16   S    1988m 73.4   0  0.0 {gle.android.gms} com.google.andro
+20426   762 app_0    S    1924m 71.0   0  0.0 {d.process.acore} android.process.
+21499   763 app_117  S <  1922m 70.9   0  0.0 {facebook.katana} com.facebook.kat[H[JMem: 2712500K used, 47464K free, 0K shrd, 10416K buff, 535K cached
+CPU: 11.1% usr 18.3% sys  0.0% nic 68.0% idle  0.0% io  0.9% irq  1.4% sirq
+Load average: 7.59 8.45 8.84 4/2351 25289
+[7m  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND[0m
+25173 23908 shell    R     8120  0.2   2  7.5 logcat -v long
+  453     1 1036     S    47728  1.7   0  5.4 /system/bin/logd
+23908     1 shell    S    15384  0.5   0  4.7 /sbin/adbd --root_seclabel=u:r:su:
+22806   762 app_249  S    2271m 83.8   1  1.6 {i.viettt.mscosa} no.uio.ifi.viett
+ 1407   762 system   S <  2502m 92.3   0  1.4 system_server
+  578     1 system   S <   154m  5.6   0  1.4 /system/bin/surfaceflinger
+21209     2 root     SW       0  0.0   3  0.8 [kworker/3:7]
+23788     2 root     SW       0  0.0   2  0.8 [kworker/2:6]
+ 5912   762 app_120  S    1851m 68.3   0  0.7 {chtype.swiftkey} com.touchtype.sw
+  330     2 root     SW       0  0.0   2  0.6 [cfinteractive]
+24617     2 root     DW       0  0.0   0  0.4 [kworker/0:1]
+ 1761   762 system   S    2375m 87.6   1  0.3 {ndroid.systemui} com.android.syst
+23443     2 root     SW       0  0.0   3  0.3 [kworker/u8:5]
+ 6173     2 root     SW<      0  0.0   1  0.2 [VosMCThread]
+22452     2 root     DW       0  0.0   0  0.2 [mdss_fb0]
+23736     2 root     SW       0  0.0   2  0.2 [kworker/u8:0]
+23787     2 root     SW       0  0.0   2  0.2 [kworker/2:5]
+  405     2 root     DW       0  0.0   1  0.2 [msm-core:sampli]
+    7     2 root     SW       0  0.0   3  0.2 [rcu_preempt]
+23047     2 root     SW       0  0.0   2  0.2 [kworker/2:0]

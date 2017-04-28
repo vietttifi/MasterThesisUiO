@@ -430,7 +430,7 @@ public class EDFExportActivity extends AppCompatActivity{
             ArrayList<Annotation> recordAnno = annotationAdapter.getAnnotationsForRecordList(records);
             annotationAdapter.close();
 
-            if(!recordAnno.isEmpty()){
+            if(recordAnno != null && !recordAnno.isEmpty()){
                 isAnnotation = true;
                 edfHeader.setBytesInHeader(edfHeader.getBytesInHeader()+aChannelSizeBytes());
                 if(numberOfCharInAnno%2 != 0) numberOfCharInAnno++;
@@ -459,7 +459,7 @@ public class EDFExportActivity extends AppCompatActivity{
                     long timmer = System.currentTimeMillis();
                     short[] valuesRecord = sampleAdapter.getShortValues(records[i].getR_id(),(dataRecordCnt - 1)*edfHeader.getNumberOfSamples()[i],dataRecordCnt*edfHeader.getNumberOfSamples()[i]);
                     sqlUsageTime += (System.currentTimeMillis() - timmer);
-                    totalInsertion += valuesRecord.length;
+                    if(valuesRecord != null) totalInsertion += valuesRecord.length;
                     if(valuesRecord != null) {
                         //System.out.println("BUFF LENGTH "+byteBuffer.limit()+ ", values length"+valuesRecord.length);
                         for(int j = 0 ; j<valuesRecord.length; j++){
@@ -494,7 +494,7 @@ public class EDFExportActivity extends AppCompatActivity{
                     }
 
                     raf.seek(edfHeader.getBytesInHeader()+(dataRecordCnt-1)*dataRecordSize*2);
-                    //System.out.println("A data record "+dataRecordCnt + " at "+(edfHeader.getBytesInHeader()+(dataRecordCnt-1)*dataRecordSize*2));
+                    System.out.println("A data record "+dataRecordCnt + " at "+(edfHeader.getBytesInHeader()+(dataRecordCnt-1)*dataRecordSize*2));
                     raf.write(byteBuffer.array());
                     dataRecordCnt++;
                 }
