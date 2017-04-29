@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016)  (format=lualatex 2016.8.24)  28 APR 2017 16:12
+This is LuaTeX, Version 0.95.0 (TeX Live 2016)  (format=lualatex 2016.8.24)  29 APR 2017 15:17
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -1044,7 +1044,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.118 seconds)
+luaotfload | main : initialization completed in 0.115 seconds)
 Lua module: fontspec 2016/02/01 2.5a Advanced font selection for LuaLaTeX.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 Package: fontspec-luatex 2016/02/01 v2.5a Font selection for XeLaTeX and LuaLaTe
@@ -1758,7 +1758,23 @@ Package csquotes Info: ... found 'babel' package.
 (./main.aux (./Chapters/Chapter1.aux) (./Chapters/Chapter2.aux)
 (./Chapters/Chapter3.aux) (./Chapters/Chapter4.aux) (./Chapters/Chapter5.aux)
 (./Chapters/Chapter6.aux) (./Chapters/Chapter7.aux) (./Appendices/AppendixA.aux
-) (./Appendices/AppendixB.aux) (./Appendices/AppendixC.aux))
+) (./Appendices/AppendixB.aux
+
+LaTeX Warning: Label `fig:Figures/STRESSTEST' multiply defined.
+
+
+LaTeX Warning: Label `fig:Figures/STRESSTEST' multiply defined.
+
+
+LaTeX Warning: Label `fig:Figures/STRESSTEST' multiply defined.
+
+
+LaTeX Warning: Label `fig:Figures/STRESSTEST' multiply defined.
+
+
+LaTeX Warning: Label `fig:Figures/STRESSTEST' multiply defined.
+
+) (./Appendices/AppendixC.aux) (./Appendices/AppendixD.aux))
 \openout1 = main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
@@ -1990,7 +2006,7 @@ generic/fonts/otl/lmroman17-regular.luc)(load luc: /usr/local/texlive/2016/texmf
 -var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc)(load luc: /usr/local/tex
 live/2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-regular.luc)(load l
 uc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-i
-talic.luc) <Thesis.pdf, id=382, 598.1477pt x 845.90027pt>
+talic.luc) <Thesis.pdf, id=406, 598.1477pt x 845.90027pt>
 File: Thesis.pdf Graphic file (type pdf)
 
 <use Thesis.pdf>
@@ -2108,6 +2124,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--23
 \openout2 = Chapters/Chapter2.aux
  (./Chapters/Chapter2.tex
 Chapter 2.
+
+Overfull \hbox (151.39494pt too wide) in paragraph at lines 19--20
+\EU2/lmr/m/it/10.95 tory ef-fort dur-ing sleep and is usu-ally as-so-ci-ated wi
+th oxy-gen de-sat-u-ra-tion.”\EU2/lmr/m/n/10.95 ([]American_Academy_of_Sleep_
+Medicine,
+ []
+
 1: section
 [5
 
@@ -2139,7 +2162,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--28
  []
 
 [6] [7]
-<Figures/ObstructionVentilationApnea.png, id=870, 803.0pt x 223.83624pt>
+<Figures/ObstructionVentilationApnea.png, id=908, 803.0pt x 223.83624pt>
 File: Figures/ObstructionVentilationApnea.png Graphic file (type png)
 
 <use Figures/ObstructionVentilationApnea.png>
@@ -2201,7 +2224,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--67
 
  []
 
-[10] <Figures/humanbody.jpg, id=899, 620.3175pt x 516.93124pt>
+[10] <Figures/humanbody.jpg, id=937, 620.3175pt x 516.93124pt>
 File: Figures/humanbody.jpg Graphic file (type jpg)
 
 <use Figures/humanbody.jpg>
@@ -2263,21 +2286,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmsa
 ns9-regular.luc)(load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generi
 c/fonts/otl/lmmono9-regular.luc)
-<Figures/BITalino_board.png, id=958, 711.65875pt x 421.575pt>
+<Figures/BITalino_board.png, id=997, 711.65875pt x 421.575pt>
 File: Figures/BITalino_board.png Graphic file (type png)
 
 <use Figures/BITalino_board.png>
 Package luatex.def Info: Figures/BITalino_board.png used on input line 19.
 (luatex.def)             Requested size: 404.02908pt x 239.33533pt.
 
-<Figures/BITalino_plugged.png, id=962, 704.6325pt x 456.70625pt>
+<Figures/BITalino_plugged.png, id=1001, 704.6325pt x 456.70625pt>
 File: Figures/BITalino_plugged.png Graphic file (type png)
 
 <use Figures/BITalino_plugged.png>
 Package luatex.def Info: Figures/BITalino_plugged.png used on input line 26.
 (luatex.def)             Requested size: 404.02908pt x 261.87233pt.
 
-<Figures/BITalino_Freestyle.png, id=966, 701.62125pt x 464.73625pt>
+<Figures/BITalino_Freestyle.png, id=1005, 701.62125pt x 464.73625pt>
 File: Figures/BITalino_Freestyle.png Graphic file (type png)
 
 <use Figures/BITalino_Freestyle.png>
@@ -2300,7 +2323,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
-[22] <Figures/VUH_ANN.png, id=1049, 281.05pt x 282.05376pt>
+[22] <Figures/VUH_ANN.png, id=1087, 281.05pt x 282.05376pt>
 File: Figures/VUH_ANN.png Graphic file (type png)
 
 <use Figures/VUH_ANN.png>
@@ -2312,61 +2335,62 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--71
 []\EU2/lmr/m/it/9 (a) \EU2/lmr/m/n/9 An-no-ta-tions for
  []
 
-<Figures/VUH_ANN_respevt.png, id=1052, 513.92pt x 262.9825pt>
+<Figures/VUH_ANN_respevt.png, id=1090, 513.92pt x 262.9825pt>
 File: Figures/VUH_ANN_respevt.png Graphic file (type png)
 
 <use Figures/VUH_ANN_respevt.png>
 Package luatex.def Info: Figures/VUH_ANN_respevt.png used on input line 72.
 (luatex.def)             Requested size: 256.0748pt x 131.03748pt.
- [23<./Figures/VUH_ANN.png><./Figures/VUH_ANN_respevt.png>] <Figures/EDFFILE.pn
-g, id=1072, 726.715pt x 516.93124pt>
+ [23]
+<Figures/EDFFILE.png, id=1106, 726.715pt x 516.93124pt>
 File: Figures/EDFFILE.png Graphic file (type png)
 
 <use Figures/EDFFILE.png>
 Package luatex.def Info: Figures/EDFFILE.png used on input line 83.
 (luatex.def)             Requested size: 404.02908pt x 287.40504pt.
 
-<Figures/Scoringsample.png, id=1076, 670.505pt x 359.3425pt>
+<Figures/Scoringsample.png, id=1110, 670.505pt x 359.3425pt>
 File: Figures/Scoringsample.png Graphic file (type png)
 
 <use Figures/Scoringsample.png>
 Package luatex.def Info: Figures/Scoringsample.png used on input line 94.
 (luatex.def)             Requested size: 404.02908pt x 216.52832pt.
- [24] [25<./Figures/EDFFILE.png>]
+ [24<./Figures/VUH_ANN.png><./Figures/VUH_ANN_respevt.png>] [25<./Figures/EDFFIL
+E.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 101--103
 
  []
 
 [26<./Figures/Scoringsample.png>]
-<Figures/provider_SW.png, id=1102, 572.1375pt x 417.56pt>
+<Figures/provider_SW.png, id=1141, 572.1375pt x 417.56pt>
 File: Figures/provider_SW.png Graphic file (type png)
 
 <use Figures/provider_SW.png>
 Package luatex.def Info: Figures/provider_SW.png used on input line 107.
 (luatex.def)             Requested size: 202.01454pt x 147.43521pt.
 
-<Figures/JSONmeta.png, id=1105, 450.68375pt x 517.935pt>
+<Figures/JSONmeta.png, id=1144, 450.68375pt x 517.935pt>
 File: Figures/JSONmeta.png Graphic file (type png)
 
 <use Figures/JSONmeta.png>
 Package luatex.def Info: Figures/JSONmeta.png used on input line 114.
 (luatex.def)             Requested size: 199.16928pt x 228.88788pt.
 
-<Figures/JSONdata.png, id=1106, 437.635pt x 392.46625pt>
+<Figures/JSONdata.png, id=1145, 437.635pt x 392.46625pt>
 File: Figures/JSONdata.png Graphic file (type png)
 
 <use Figures/JSONdata.png>
 Package luatex.def Info: Figures/JSONdata.png used on input line 115.
 (luatex.def)             Requested size: 213.39566pt x 191.36993pt.
 
-<Figures/metadata.png, id=1109, 377.41pt x 500.87125pt>
+<Figures/metadata.png, id=1148, 377.41pt x 500.87125pt>
 File: Figures/metadata.png Graphic file (type png)
 
 <use Figures/metadata.png>
 Package luatex.def Info: Figures/metadata.png used on input line 122.
 (luatex.def)             Requested size: 202.01454pt x 268.09721pt.
  [27] [28<./Figures/provider_SW.png>]
-<Figures/metadata2.png, id=1123, 382.42876pt x 830.10126pt>
+<Figures/metadata2.png, id=1161, 382.42876pt x 830.10126pt>
 File: Figures/metadata2.png Graphic file (type png)
 
 <use Figures/metadata2.png>
@@ -2388,7 +2412,7 @@ Overfull \hbox (62.7622pt too wide) in paragraph at lines 17--72
  [] 
  []
 
-[34] [35] [36] <Figures/ARecord.png, id=1178, 1119.18124pt x 349.305pt>
+[34] [35] [36] <Figures/ARecord.png, id=1216, 1119.18124pt x 349.305pt>
 File: Figures/ARecord.png Graphic file (type png)
 
 <use Figures/ARecord.png>
@@ -2434,21 +2458,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
-<Figures/USEDORM.png, id=1201, 569.12625pt x 1090.0725pt>
+<Figures/USEDORM.png, id=1239, 569.12625pt x 1090.0725pt>
 File: Figures/USEDORM.png Graphic file (type png)
 
 <use Figures/USEDORM.png>
 Package luatex.def Info: Figures/USEDORM.png used on input line 171.
 (luatex.def)             Requested size: 282.81912pt x 541.72491pt.
 
-<Figures/ConceptDB1.png, id=1203, 901.3675pt x 381.425pt>
+<Figures/ConceptDB1.png, id=1241, 901.3675pt x 381.425pt>
 File: Figures/ConceptDB1.png Graphic file (type png)
 
 <use Figures/ConceptDB1.png>
 Package luatex.def Info: Figures/ConceptDB1.png used on input line 182.
 (luatex.def)             Requested size: 404.02908pt x 170.97035pt.
 
-<Figures/ConceptDB2.png, id=1204, 897.3525pt x 385.44pt>
+<Figures/ConceptDB2.png, id=1242, 897.3525pt x 385.44pt>
 File: Figures/ConceptDB2.png Graphic file (type png)
 
 <use Figures/ConceptDB2.png>
@@ -2489,14 +2513,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
-<Figures/RelationshipBinary.png, id=1228, 970.62625pt x 776.9025pt>
+<Figures/RelationshipBinary.png, id=1267, 970.62625pt x 776.9025pt>
 File: Figures/RelationshipBinary.png Graphic file (type png)
 
 <use Figures/RelationshipBinary.png>
 Package luatex.def Info: Figures/RelationshipBinary.png used on input line 209.
 (luatex.def)             Requested size: 404.02908pt x 323.39246pt.
 
-<Figures/NaryAndRecursive.png, id=1229, 722.7pt x 809.0225pt>
+<Figures/NaryAndRecursive.png, id=1268, 722.7pt x 809.0225pt>
 File: Figures/NaryAndRecursive.png Graphic file (type png)
 
 <use Figures/NaryAndRecursive.png>
@@ -2619,14 +2643,14 @@ Overfull \hbox (7.45561pt too wide) in paragraph at lines 328--336
 sses as fol-low([]Munthe-
  []
 
-[48] <Figures/LogicalModelDB1.png, id=1279, 616.3025pt x 681.54625pt>
+[48] <Figures/LogicalModelDB1.png, id=1317, 616.3025pt x 681.54625pt>
 File: Figures/LogicalModelDB1.png Graphic file (type png)
 
 <use Figures/LogicalModelDB1.png>
 Package luatex.def Info: Figures/LogicalModelDB1.png used on input line 370.
 (luatex.def)             Requested size: 404.02908pt x 446.80605pt.
 
-<Figures/LogicalModelDB2.png, id=1280, 820.06375pt x 882.29625pt>
+<Figures/LogicalModelDB2.png, id=1318, 820.06375pt x 882.29625pt>
 File: Figures/LogicalModelDB2.png Graphic file (type png)
 
 <use Figures/LogicalModelDB2.png>
@@ -2687,7 +2711,7 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 LaTeX Font Info:    Font shape `EU2/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `EU2/lmtt/b/n' tried instead on input line 599.
 (load luc: /usr/local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmmo
-nolt10-bold.luc) <Figures/FinalTable.png, id=1322, 754.82pt x 902.37125pt>
+nolt10-bold.luc) <Figures/FinalTable.png, id=1360, 754.82pt x 902.37125pt>
 File: Figures/FinalTable.png Graphic file (type png)
 
 <use Figures/FinalTable.png>
@@ -2937,7 +2961,7 @@ Overfull \hbox (52.84535pt too wide) in paragraph at lines 13--73
 [][] 
  []
 
-<Figures/OSADBSContext.png, id=1367, 863.225pt x 391.4625pt>
+<Figures/OSADBSContext.png, id=1405, 863.225pt x 391.4625pt>
 File: Figures/OSADBSContext.png Graphic file (type png)
 
 <use Figures/OSADBSContext.png>
@@ -2950,28 +2974,28 @@ Package luatex.def Info: Figures/OSADBSContext.png used on input line 83.
 
 
 ] [60] [61<./Figures/OSADBSContext.png>] [62]
-<Figures/WINDOWDSMS.png, id=1394, 735.74875pt x 512.91624pt>
+<Figures/WINDOWDSMS.png, id=1432, 735.74875pt x 512.91624pt>
 File: Figures/WINDOWDSMS.png Graphic file (type png)
 
 <use Figures/WINDOWDSMS.png>
 Package luatex.def Info: Figures/WINDOWDSMS.png used on input line 99.
 (luatex.def)             Requested size: 242.4199pt x 168.99678pt.
 
-<Figures/ServerActivity.png, id=1398, 623.32875pt x 373.395pt>
+<Figures/ServerActivity.png, id=1436, 623.32875pt x 373.395pt>
 File: Figures/ServerActivity.png Graphic file (type png)
 
 <use Figures/ServerActivity.png>
 Package luatex.def Info: Figures/ServerActivity.png used on input line 110.
 (luatex.def)             Requested size: 404.02908pt x 242.03156pt.
 
-<Figures/ClientThreadAc.png, id=1400, 1137.24875pt x 617.30624pt>
+<Figures/ClientThreadAc.png, id=1438, 1137.24875pt x 617.30624pt>
 File: Figures/ClientThreadAc.png Graphic file (type png)
 
 <use Figures/ClientThreadAc.png>
 Package luatex.def Info: Figures/ClientThreadAc.png used on input line 118.
 (luatex.def)             Requested size: 404.02908pt x 219.31009pt.
 
-<Figures/ThreadsDBPlot.png, id=1403, 760.8425pt x 783.92876pt>
+<Figures/ThreadsDBPlot.png, id=1441, 760.8425pt x 783.92876pt>
 File: Figures/ThreadsDBPlot.png Graphic file (type png)
 
 <use Figures/ThreadsDBPlot.png>
@@ -2984,14 +3008,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--130
 
 [63] [64<./Figures/WINDOWDSMS.png>] [65<./Figures/ServerActivity.png>] [66<./Fig
 ures/ClientThreadAc.png>] [67<./Figures/ThreadsDBPlot.png>]
-<Figures/EDFImporter.png, id=1437, 896.34875pt x 715.67375pt>
+<Figures/EDFImporter.png, id=1475, 896.34875pt x 715.67375pt>
 File: Figures/EDFImporter.png Graphic file (type png)
 
 <use Figures/EDFImporter.png>
 Package luatex.def Info: Figures/EDFImporter.png used on input line 139.
 (luatex.def)             Requested size: 404.02908pt x 322.5853pt.
  [68]
-<Figures/EDFExporter.png, id=1445, 951.555pt x 874.26625pt>
+<Figures/EDFExporter.png, id=1484, 951.555pt x 874.26625pt>
 File: Figures/EDFExporter.png Graphic file (type png)
 
 <use Figures/EDFExporter.png>
@@ -3004,7 +3028,7 @@ Overfull \hbox (2.6101pt too wide) in paragraph at lines 152--155
  []
 
 [70<./Figures/EDFExporter.png>]
-<Figures/CESARGUIWrapper.png, id=1463, 1084.05pt x 1927.2pt>
+<Figures/CESARGUIWrapper.png, id=1502, 1084.05pt x 1927.2pt>
 File: Figures/CESARGUIWrapper.png Graphic file (type png)
 
 <use Figures/CESARGUIWrapper.png>
@@ -3020,7 +3044,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
-[75] <Figures/clinicpatient.png, id=1564, 1084.05pt x 1927.2pt>
+[75] <Figures/clinicpatient.png, id=1603, 1084.05pt x 1927.2pt>
 File: Figures/clinicpatient.png Graphic file (type png)
 
 <use Figures/clinicpatient.png>
@@ -3031,21 +3055,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 284--326
 
  []
 
-[78] [79] <Figures/EDFimport.png, id=1639, 1084.05pt x 1927.2pt>
+[78] [79] <Figures/EDFimport.png, id=1677, 1084.05pt x 1927.2pt>
 File: Figures/EDFimport.png Graphic file (type png)
 
 <use Figures/EDFimport.png>
 Package luatex.def Info: Figures/EDFimport.png used on input line 331.
 (luatex.def)             Requested size: 170.71652pt x 303.47679pt.
 
-<Figures/EDFexport.png, id=1640, 1084.05pt x 1927.2pt>
+<Figures/EDFexport.png, id=1678, 1084.05pt x 1927.2pt>
 File: Figures/EDFexport.png Graphic file (type png)
 
 <use Figures/EDFexport.png>
 Package luatex.def Info: Figures/EDFexport.png used on input line 332.
 (luatex.def)             Requested size: 170.71652pt x 303.47679pt.
  [80] [81<./Figures/EDFimport.png><./Figures/EDFexport.png>] [82] <Figures/NONP
-LOT.png, id=1700, 1927.2pt x 1084.05pt>
+LOT.png, id=1738, 1927.2pt x 1084.05pt>
 File: Figures/NONPLOT.png Graphic file (type png)
 
 <use Figures/NONPLOT.png>
@@ -3085,14 +3109,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--102
 
  []
 
-[90] [91] [92] [93] <Figures/PowerMetric.png, id=1818, 1084.05pt x 1927.2pt>
+[90] [91] [92] [93] <Figures/PowerMetric.png, id=1856, 1084.05pt x 1927.2pt>
 File: Figures/PowerMetric.png Graphic file (type png)
 
 <use Figures/PowerMetric.png>
 Package luatex.def Info: Figures/PowerMetric.png used on input line 129.
 (luatex.def)             Requested size: 161.60916pt x 287.30313pt.
  [94] [95<./Figures/PowerMetric.png>] [96]
-<Figures/CPUusageImportEDFNRFILEs.png, id=1840, 462.528pt x 346.896pt>
+<Figures/CPUusageImportEDFNRFILEs.png, id=1878, 462.528pt x 346.896pt>
 File: Figures/CPUusageImportEDFNRFILEs.png Graphic file (type png)
 
 <use Figures/CPUusageImportEDFNRFILEs.png>
@@ -3100,7 +3124,7 @@ Package luatex.def Info: Figures/CPUusageImportEDFNRFILEs.png used on input line
  179.
 (luatex.def)             Requested size: 199.16928pt x 149.37938pt.
 
-<Figures/EDFimportBUFFlength.png, id=1841, 462.528pt x 346.896pt>
+<Figures/EDFimportBUFFlength.png, id=1879, 462.528pt x 346.896pt>
 File: Figures/EDFimportBUFFlength.png Graphic file (type png)
 
 <use Figures/EDFimportBUFFlength.png>
@@ -3135,23 +3159,23 @@ Overfull \hbox (20.52023pt too wide) in paragraph at lines 282--289
  [][] 
  []
 
-[102] [103] <Figures/StressTest.png, id=1906, 462.528pt x 346.896pt>
+[102] [103] <Figures/StressTest.png, id=1944, 462.528pt x 346.896pt>
 File: Figures/StressTest.png Graphic file (type png)
 
 <use Figures/StressTest.png>
 Package luatex.def Info: Figures/StressTest.png used on input line 308.
 (luatex.def)             Requested size: 404.02908pt x 303.03568pt.
- [104]) [105] [106<./Figures/StressTest.png>]
+ [104] [105] [106<./Figures/StressTest.png>])
+[107]
 \openout2 = Chapters/Chapter7.aux
+ (./Chapters/Chapter7.tex [108
 
-(./Chapters/Chapter7.tex
+
+
+]
 Chapter 7.
 1: section
-[107
-
-
-
-] [108]
+[109] [110] [111]
 Underfull \hbox (badness 10000) in paragraph at lines 21--26
 
  []
@@ -3161,7 +3185,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--26
 
  []
 
-[109])
+[112])
 Underfull \hbox (badness 10000) in paragraph at lines 27--293
 
  []
@@ -3176,9 +3200,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--293
 
  []
 
-[110] [111]
+[113]
 \openout2 = Appendices/AppendixA.aux
- (./Appendices/AppendixA.tex [112
+ (./Appendices/AppendixA.tex [114
 
 
 
@@ -3197,22 +3221,48 @@ File: Figures/EDFexport.png Graphic file (type png)
 <use Figures/EDFexport.png>
 Package luatex.def Info: Figures/EDFexport.png used on input line 10.
 (luatex.def)             Requested size: 142.26378pt x 252.89732pt.
-File: Figures/EDFexport.png Graphic file (type png)
- <use Figures/EDFexport.png>
-Package luatex.def Info: Figures/EDFexport.png used on input line 11.
+
+<Figures/RawQuery.png, id=2016, 1084.05pt x 1927.2pt>
+File: Figures/RawQuery.png Graphic file (type png)
+
+<use Figures/RawQuery.png>
+Package luatex.def Info: Figures/RawQuery.png used on input line 11.
 (luatex.def)             Requested size: 142.26378pt x 252.89732pt.
 
 1: section
-[113] [114]) [115]
+[115] [116<./Figures/RawQuery.png>]) [117]
 \openout2 = Appendices/AppendixB.aux
- (./Appendices/AppendixB.tex [116
+ (./Appendices/AppendixB.tex [118
 
 
 
 ]
 Appendix B.
+File: Figures/StressTest.png Graphic file (type png)
+<use Figures/StressTest.png>
+Package luatex.def Info: Figures/StressTest.png used on input line 9.
+(luatex.def)             Requested size: 404.02908pt x 303.03568pt.
+File: Figures/StressTest.png Graphic file (type png)
+ <use Figures/StressTest.png>
+Package luatex.def Info: Figures/StressTest.png used on input line 16.
+(luatex.def)             Requested size: 404.02908pt x 303.03568pt.
+File: Figures/StressTest.png Graphic file (type png)
+
+<use Figures/StressTest.png>
+Package luatex.def Info: Figures/StressTest.png used on input line 23.
+(luatex.def)             Requested size: 404.02908pt x 303.03568pt.
+File: Figures/StressTest.png Graphic file (type png)
+ <use Figures/StressTest.png>
+Package luatex.def Info: Figures/StressTest.png used on input line 30.
+(luatex.def)             Requested size: 404.02908pt x 303.03568pt.
+File: Figures/StressTest.png Graphic file (type png)
+
+<use Figures/StressTest.png>
+Package luatex.def Info: Figures/StressTest.png used on input line 37.
+(luatex.def)             Requested size: 404.02908pt x 303.03568pt.
+)
 1: section
-[117] [118] [119]) [120]
+[119] [120] [121] [122]
 \openout2 = Appendices/AppendixC.aux
  (./Appendices/AppendixC.tex
 Appendix C.
@@ -3223,42 +3273,44 @@ LaTeX Font Info:    Font shape `EU2/lmtt/bx/n' in size <9> not available
 (Font)              Font shape `EU2/lmtt/b/n' tried instead on input line 31.
 )
 1: section
-[121
+[123
 
 
 
-] [122] [123] [124
+] [124] [125]
+\openout2 = Appendices/AppendixD.aux
+ (./Appendices/AppendixD.tex [126
+
 
 
 ]
+Appendix D.
+1: section
+[127] [128] [129]) [130]
 Overfull \hbox (3.88583pt too wide) in paragraph at lines 313--313
 \EU2/lmtt/m/n/10.95 bitalino . com / datasheets / REVOLUTION _ BITalino _ Frees
 tyle _ Kit _ Datasheet .
  []
 
 1: section
-[125]
+[131
+
+
+]
 Overfull \hbox (1.57285pt too wide) in paragraph at lines 313--313
 \EU2/lmr/m/n/10.95 logic Sig-nals”. In: \EU2/lmr/m/sc/10.95 url\EU2/lmr/m/n/1
 0.95 : []$\EU2/lmtt/m/n/10.95 http : / / ecg . mit . edu / george / publication
 s / physionet -
  []
 
-[126]
-Overfull \hbox (2.04538pt too wide) in paragraph at lines 313--313
-[][]\EU2/lmr/m/n/10.95 grapview (2017a). “  Graph View An-droid”. In: \EU2/
-lmr/m/sc/10.95 url\EU2/lmr/m/n/10.95 : []$\EU2/lmtt/m/n/10.95 http : / / www . 
-android - graphview .
+
+Overfull \hbox (2.27528pt too wide) in paragraph at lines 313--313
+[][]\EU2/lmr/m/n/10.95 George, B. Moody. “  WFDB Pro-gram-mer’s Guide”. I
+n: \EU2/lmr/m/sc/10.95 url\EU2/lmr/m/n/10.95 : []$\EU2/lmtt/m/n/10.95 https : /
+ / www . physionet .
  []
 
-
-Overfull \hbox (21.49818pt too wide) in paragraph at lines 313--313
-[][][]\EU2/lmr/m/n/10.95 (2017b). “  Line-Graph-Series java file”. In: \EU2
-/lmr/m/sc/10.95 url\EU2/lmr/m/n/10.95 : []$\EU2/lmtt/m/n/10.95 https : / / gith
-ub . com / appsthatmatter /
- []
-
-
+[132]
 Overfull \hbox (21.13208pt too wide) in paragraph at lines 313--313
 \EU2/lmtt/m/n/10.95 heart . org / HEARTORG / Conditions / HighBloodPressure / A
 boutHighBloodPressure /
@@ -3276,38 +3328,49 @@ Overfull \hbox (38.37833pt too wide) in paragraph at lines 313--313
 le / forelesningsmateriale /
  []
 
-[127]
-Overfull \hbox (15.38333pt too wide) in paragraph at lines 313--313
-[]$\EU2/lmtt/m/n/10.95 https : / / www . ncbi . nlm . nih . gov / pmc / article
-s / PMC2645248 / pdf / PROCATS52136 .
+[133] [134]
+Overfull \hbox (6.84152pt too wide) in paragraph at lines 313--313
+[][]\EU2/lmr/m/n/10.95 ve-r-a-code.com (2017). “  Owasp top 10 vul-ner-a-bil-
+i-ties”. In: \EU2/lmr/m/sc/10.95 url\EU2/lmr/m/n/10.95 : []$\EU2/lmtt/m/n/10.
+95 https : / / www . veracode .
  []
 
-[128]
+
+Overfull \hbox (3.42038pt too wide) in paragraph at lines 313--313
+[][]\EU2/lmr/m/n/10.95 wik-i-how.com (Au-gust, 2016). “  How to Mea-sure Oxy-
+gen Sat-u-ra-tion Us-ing Pulse Oxime-
+ []
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
- [129]
+[135]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
  (./main.aux (./Chapters/Chapter1.aux) (./Chapters/Chapter2.aux)
 (./Chapters/Chapter3.aux) (./Chapters/Chapter4.aux) (./Chapters/Chapter5.aux)
 (./Chapters/Chapter6.aux) (./Chapters/Chapter7.aux) (./Appendices/AppendixA.aux
-) (./Appendices/AppendixB.aux) (./Appendices/AppendixC.aux))
+) (./Appendices/AppendixB.aux) (./Appendices/AppendixC.aux)
+(./Appendices/AppendixD.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 317.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 317.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8428EA136F942338B955F9A8399FD572;15855.
+(rerunfilecheck)             Checksum: BC35EF89E4E0066EC433CE1B739E9198;16855.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 
 \openout1 = main.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 42211 strings out of 495119
- 381554,1373583 words of node,token memory allocated
- 21016 words of node memory still in use:
-   3 hlist, 1 vlist, 1 rule, 2444 glue, 750 attribute, 67 glue_spec, 750 attribu
-te_list, 1 write, 77 pdf_action nodes
-   avail lists: 1:9,2:6958,3:729,4:137,5:8228,6:9844,7:6527,8:4562,9:11876,10:35
-,11:965,12:1
- 43476 multiletter control sequences out of 65536+600000
+ 42303 strings out of 495119
+ 381551,1373583 words of node,token memory allocated
+ 21059 words of node memory still in use:
+   3 hlist, 1 vlist, 1 rule, 2453 glue, 751 attribute, 67 glue_spec, 751 attribu
+te_list, 1 write, 73 pdf_action nodes
+   avail lists: 1:11,2:6948,3:729,4:138,5:8228,6:9832,7:7078,8:4562,9:11876,10:3
+5,11:963,12:1
+ 43491 multiletter control sequences out of 65536+600000
  85 fonts using 8234743 bytes
  63i,20n,84p,3396b,2458s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf
@@ -3333,10 +3396,10 @@ e1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1
 blic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb>
-Output written on main.pdf (147 pages, 12640319 bytes).
+Output written on main.pdf (153 pages, 12681842 bytes).
 
-PDF statistics: 2501 PDF objects out of 2984 (max. 8388607)
- 2181 compressed objects within 22 object streams
- 771 named destinations out of 1000 (max. 131072)
- 745 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 2566 PDF objects out of 2984 (max. 8388607)
+ 2238 compressed objects within 23 object streams
+ 788 named destinations out of 1000 (max. 131072)
+ 793 words of extra memory for PDF output out of 10000 (max. 10000000)
 

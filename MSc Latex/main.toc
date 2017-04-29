@@ -49,7 +49,7 @@
 \contentsline {subsection}{\numberline {5.3.3}EDF wrapper}{80}{subsection.253}
 \contentsline {subsection}{\numberline {5.3.4}Real-time and non-real-time visualization}{83}{subsection.296}
 \contentsline {chapter}{\numberline {6}Evaluation}{87}{chapter.321}
-\contentsline {section}{\numberline {6.1}Real-time data collecting experiment}{88}{section.322}
+\contentsline {section}{\numberline {6.1}Real-time data collection experiment}{88}{section.322}
 \contentsline {subsection}{\numberline {6.1.1}Experiment workloads}{88}{subsection.324}
 \contentsline {subsection}{\numberline {6.1.2}Experiment metrics}{89}{subsection.325}
 \contentsline {subsection}{\numberline {6.1.3}Experiment setup}{89}{subsection.326}
@@ -76,21 +76,27 @@
 \contentsline {section}{\numberline {6.6}Stress test with visualization and mixed tasks experiment}{104}{section.369}
 \contentsline {subsection}{\numberline {6.6.1}Experiment setup}{104}{subsection.370}
 \contentsline {subsection}{\numberline {6.6.2}Results and discussion}{104}{subsection.371}
-\contentsline {section}{\numberline {6.7}Summary of results}{105}{section.373}
-\contentsline {chapter}{\numberline {7}Conclusion}{107}{chapter.374}
-\contentsline {section}{\numberline {7.1}General summarization}{107}{section.375}
-\contentsline {section}{\numberline {7.2}Related works}{108}{section.376}
-\contentsline {section}{\numberline {7.3}Contributions}{108}{section.377}
-\contentsline {section}{\numberline {7.4}Open problems}{109}{section.378}
-\contentsline {section}{\numberline {7.5}Future works}{110}{section.379}
-\contentsline {chapter}{\numberline {A}User manual for the database application}{113}{appendix.380}
-\contentsline {section}{\numberline {A.1}Real time wrapper}{113}{section.386}
-\contentsline {section}{\numberline {A.2}Import EDF files}{113}{section.387}
-\contentsline {section}{\numberline {A.3}Visualize samples}{113}{section.388}
-\contentsline {section}{\numberline {A.4}Export EDF files}{115}{section.389}
-\contentsline {section}{\numberline {A.5}Raw query}{115}{section.390}
-\contentsline {chapter}{\numberline {B}SQLite code for creating tables}{117}{appendix.391}
-\contentsline {chapter}{\numberline {C}Python code for parsing CPU usage}{121}{appendix.483}
-\contentsline {section}{\numberline {C.1}How to parse the output from Busybox}{121}{section.484}
-\contentsline {section}{\numberline {C.2}Python code for parsing}{122}{section.502}
-\contentsline {chapter}{Bibliography}{125}{appendix*.542}
+\contentsline {section}{\numberline {6.7}Summary of results}{106}{section.373}
+\contentsline {chapter}{\numberline {7}Conclusion}{109}{chapter.374}
+\contentsline {section}{\numberline {7.1}General summarization}{109}{section.375}
+\contentsline {section}{\numberline {7.2}Related works}{110}{section.376}
+\contentsline {section}{\numberline {7.3}Contributions}{111}{section.377}
+\contentsline {section}{\numberline {7.4}Open problems}{112}{section.378}
+\contentsline {section}{\numberline {7.5}Future works}{113}{section.379}
+\contentsline {chapter}{\numberline {A}User manual for the database application}{115}{appendix.380}
+\contentsline {section}{\numberline {A.1}Real time wrapper}{115}{section.386}
+\contentsline {section}{\numberline {A.2}Import EDF files}{115}{section.387}
+\contentsline {section}{\numberline {A.3}Visualize samples}{115}{section.388}
+\contentsline {section}{\numberline {A.4}Export EDF files}{117}{section.389}
+\contentsline {section}{\numberline {A.5}Raw query}{117}{section.390}
+\contentsline {chapter}{\numberline {B}Results of the experiments}{119}{appendix.391}
+\contentsline {section}{\numberline {B.1}Real-time data collection experiment}{119}{section.392}
+\contentsline {section}{\numberline {B.2}Overnight experiment}{119}{section.394}
+\contentsline {section}{\numberline {B.3}EDF import}{119}{section.396}
+\contentsline {section}{\numberline {B.4}EDF export}{119}{section.398}
+\contentsline {section}{\numberline {B.5}Querying data experiment}{119}{section.400}
+\contentsline {chapter}{\numberline {C}Python code for parsing CPU usage}{123}{appendix.402}
+\contentsline {section}{\numberline {C.1}How to parse the output from Busybox}{123}{section.403}
+\contentsline {section}{\numberline {C.2}Python code for parsing}{124}{section.421}
+\contentsline {chapter}{\numberline {D}SQLite code for creating tables}{127}{appendix.461}
+\contentsline {chapter}{Bibliography}{131}{appendix*.553}

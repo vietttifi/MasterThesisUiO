@@ -1,20 +1,18 @@
 [0] Config.pm:343> INFO - This is Biber 2.5
 [0] Config.pm:346> INFO - Logfile is 'main.blg'
-[48] biber-darwin:290> INFO - === Thu Apr 27, 2017, 10:52:37
-[67] Biber.pm:351> INFO - Reading 'main.bcf'
-[159] Biber.pm:776> INFO - Found 81 citekeys in bib section 0
-[170] Biber.pm:3493> INFO - Processing section 0
-[183] Biber.pm:3657> INFO - Looking for bibtex format file 'example.bib' for section 0
-[188] bibtex.pm:1187> INFO - Decoding LaTeX character macros into UTF-8
-[192] bibtex.pm:1048> INFO - Found BibTeX data source 'example.bib'
+[44] biber-darwin:290> INFO - === Sat Apr 29, 2017, 14:54:13
+[63] Biber.pm:351> INFO - Reading 'main.bcf'
+[158] Biber.pm:776> INFO - Found 81 citekeys in bib section 0
+[171] Biber.pm:3493> INFO - Processing section 0
+[185] Biber.pm:3657> INFO - Looking for bibtex format file 'example.bib' for section 0
+[189] bibtex.pm:1187> INFO - Decoding LaTeX character macros into UTF-8
+[193] bibtex.pm:1048> INFO - Found BibTeX data source 'example.bib'
 [250] Utils.pm:149> WARN - ISBN '13: 978-0-12-685352-0' in entry 'DATABASEMODELING_BOOK' is invalid - run biber with '--validate_datamodel' for details.
-[254] Utils.pm:149> WARN - ISBN '13: 978-0-13-705346-9' in entry 'INF1050BOOK' is invalid - run biber with '--validate_datamodel' for details.
-[262] Utils.pm:149> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
-[263] Utils.pm:149> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
-[373] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[373] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[373] Biber.pm:3306> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
-[373] Biber.pm:3310> INFO - No sort tailoring available for locale 'en-US'
-[477] bbl.pm:526> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[485] bbl.pm:619> INFO - Output to main.bbl
-[485] Biber.pm:108> INFO - WARNINGS: 4
+[253] Utils.pm:149> WARN - ISBN '13: 978-0-13-705346-9' in entry 'INF1050BOOK' is invalid - run biber with '--validate_datamodel' for details.
+[371] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[371] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[371] Biber.pm:3306> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
+[372] Biber.pm:3310> INFO - No sort tailoring available for locale 'en-US'
+[492] bbl.pm:526> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[505] bbl.pm:619> INFO - Output to main.bbl
+[505] Biber.pm:108> INFO - WARNINGS: 2

@@ -19,26 +19,67 @@
 
 \refsection{0}
   \sortlist[entry]{nyt/global/}
-    \entry{Alfonso}{article}{}
+    \entry{Westchester}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=65ddd5da7370f787ac412fcd4753a214}{%
-           family={Alfonso},
-           family_i={A\bibinitperiod},
-           given={Et.al},
-           given_i={E\bibinitperiod}}}%
+        {{uniquename=0,hash=925ce78f0e7d07a4ffddd95c7e0d58a7}{%
+           family={American\_Academy\_of\_Sleep\_Medicine},
+           family_i={A\bibinitperiod}}}%
       }
-      \strng{namehash}{65ddd5da7370f787ac412fcd4753a214}
-      \strng{fullhash}{65ddd5da7370f787ac412fcd4753a214}
+      \strng{namehash}{925ce78f0e7d07a4ffddd95c7e0d58a7}
+      \strng{fullhash}{925ce78f0e7d07a4ffddd95c7e0d58a7}
       \field{sortinit}{A}
       \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
-      \field{labelyear}{retrieved 2017}
+      \field{labelyear}{2005}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Management of Streaming Body Sensor Data for Medical Information Systems}
-      \field{year}{retrieved 2017}
+      \field{journaltitle}{Obstructive Sleep Apnea Syndrome}
+      \field{title}{The international classification of sleep disorders : diagnostic and coding manual}
+      \field{year}{2005}
+      \field{pages}{52}
+      \range{pages}{1}
+      \keyw{Sleep Disorders–Classification. Sleep Disorders–Diagnosis}
+    \endentry
+    \entry{DEVELOPERANDROIDSQL}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=e84e30b9390cdb64db6db2c9ab87846d}{%
+           family={Android},
+           family_i={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \strng{fullhash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{extrayear}{1}
+      \field{labelyear}{2017}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{android.database.sqlite}
+      \field{year}{2017}
       \verb{url}
-      \verb http://ai2-s2-pdfs.s3.amazonaws.com/e1d6/7eac67173b03966b4d038bdfaa1f6acd0986.pdf
+      \verb https://developer.android.com/reference/android/database/sqlite/package-summary.html
+      \endverb
+    \endentry
+    \entry{DEVELOPERANDROIDAPI}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=e84e30b9390cdb64db6db2c9ab87846d}{%
+           family={Android},
+           family_i={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \strng{fullhash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{extrayear}{2}
+      \field{labelyear}{2017}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Dashboards}
+      \field{year}{2017}
+      \verb{url}
+      \verb https://developer.android.com/about/dashboards/index.html
       \endverb
     \endentry
     \entry{AndroidAPIProcessLifeCycle}{article}{}
@@ -104,79 +145,48 @@
       \verb https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html
       \endverb
     \endentry
-    \entry{DEVELOPERANDROIDSQL}{article}{}
+    \entry{JSREM}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=c3a0b6b4901a75957e2beb3beb97afe2}{%
-           prefix={developer},
-           prefix_i={d\bibinitperiod},
-           family={android},
-           family_i={a\bibinitperiod}}}%
+        {{uniquename=0,hash=d919f12cd268b54c9d5ed2fe91bb9896}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Babak\bibnamedelima Mokhlesi},
+           family_i={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
       }
-      \strng{namehash}{c3a0b6b4901a75957e2beb3beb97afe2}
-      \strng{fullhash}{c3a0b6b4901a75957e2beb3beb97afe2}
-      \field{sortinit}{a}
-      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
-      \field{extrayear}{1}
-      \field{labelyear}{2017}
+      \strng{namehash}{d919f12cd268b54c9d5ed2fe91bb9896}
+      \strng{fullhash}{d919f12cd268b54c9d5ed2fe91bb9896}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{2012}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{android.database.sqlite}
-      \field{year}{2017}
+      \field{title}{“REM-related” Obstructive Sleep Apnea: An Epiphenomenon or a Clinically Important Entity?}
+      \field{year}{2012}
       \verb{url}
-      \verb https://developer.android.com/reference/android/database/sqlite/package-summary.html
+      \verb http://www.journalsleep.org/ViewAbstract.aspx?pid=28396
       \endverb
     \endentry
-    \entry{DEVELOPERANDROIDAPI}{article}{}
+    \entry{BersainReyes}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=c3a0b6b4901a75957e2beb3beb97afe2}{%
-           prefix={developer},
-           prefix_i={d\bibinitperiod},
-           family={android},
-           family_i={a\bibinitperiod}}}%
+        {{uniquename=0,hash=3f8c9592d3f8d12a41d8fd32a2ff98f8}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Bersain\bibnamedelima Reyes},
+           family_i={B\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
       }
-      \strng{namehash}{c3a0b6b4901a75957e2beb3beb97afe2}
-      \strng{fullhash}{c3a0b6b4901a75957e2beb3beb97afe2}
-      \field{sortinit}{a}
-      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
-      \field{extrayear}{2}
-      \field{labelyear}{2017}
+      \strng{namehash}{3f8c9592d3f8d12a41d8fd32a2ff98f8}
+      \strng{fullhash}{3f8c9592d3f8d12a41d8fd32a2ff98f8}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{February 25, 2016}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Dashboards}
-      \field{year}{2017}
+      \field{title}{Tidal Volume and Instantaneous Respiration Rate Estimation using a Smartphone Camera}
+      \field{year}{February 25, 2016}
       \verb{url}
-      \verb https://developer.android.com/about/dashboards/index.html
-      \endverb
-    \endentry
-    \entry{ChestWorldCongress}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,hash=ed80a0400bb710aee636e6fd6302ebc0}{%
-           family={Arghir;},
-           family_i={A\bibinitperiod},
-           given={Mihaela\bibnamedelimb Trenchea\bibnamedelimb PhD\bibnamedelimb Oana\bibnamedelimb Deleanu\bibnamedelimb Elena\bibnamedelimb Dantes\bibnamedelimb PhD\bibnamedelimb Agripina\bibnamedelimb Rascu\bibnamedelima Oana},
-           given_i={M\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim O\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
-        {{uniquename=0,hash=0dfb7d35ee0eefdbebd86c5adab23b76}{%
-           family={Paraschiva\bibnamedelimb Postolache*\bibnamedelimb Ovidius\bibnamedelimb University\bibnamedelimb of\bibnamedelima Constanta},
-           family_i={P\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim O\bibinitperiod\bibinitdelim U\bibinitperiod\bibinitdelim o\bibinitperiod\bibinitdelim C\bibinitperiod},
-           suffix={Constanta},
-           suffix_i={C\bibinitperiod},
-           given={Romania},
-           given_i={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{aaeac86a6aeafa7c769f217d9bd259de}
-      \strng{fullhash}{aaeac86a6aeafa7c769f217d9bd259de}
-      \field{sortinit}{A}
-      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
-      \field{labelyear}{04.2016}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Smoking, Drinking, Overweight, and Obstructive Sleep Apnea Among Patients With Sleep Breathing Disorders}
-      \field{year}{04.2016}
-      \verb{url}
-      \verb http://journal.publications.chestnet.org/data/Journals/CHEST/935163/02594.pdf
+      \verb http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7415992
       \endverb
     \endentry
     \entry{BITalino_board}{article}{}
@@ -305,6 +315,96 @@
       \verb http://www.bitalino.com/index.php/community/publications
       \endverb
     \endentry
+    \entry{LOGICALSENSOR_3}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=e6f45be9d974ea6952153da9e32b22ad}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Carlos\bibnamedelima Carreiras},
+           family_i={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6f45be9d974ea6952153da9e32b22ad}
+      \strng{fullhash}{e6f45be9d974ea6952153da9e32b22ad}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Logical Sensor Specification}
+      \field{year}{2011}
+      \verb{url}
+      \verb http://www.cs.utah.edu/~tch/publications/pub30.pdf
+      \endverb
+    \endentry
+    \entry{LOGICALSENSOR_1}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=0b73eb7544821904ff332ef95de0ebe5}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={C.Hansen},
+           family_i={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{0b73eb7544821904ff332ef95de0ebe5}
+      \strng{fullhash}{0b73eb7544821904ff332ef95de0ebe5}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelyear}{1984}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Logical sensor specification}
+      \field{year}{1984}
+      \field{pages}{169\bibrangedash 193}
+      \range{pages}{25}
+      \verb{url}
+      \verb http://www.cs.utah.edu/~tch/publications/pub38.pdf
+      \endverb
+    \endentry
+    \entry{StorageBIT}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=7aa834ecd149488b69d92b8f273f9a36}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Charles\bibnamedelima Hansen},
+           family_i={C\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{7aa834ecd149488b69d92b8f273f9a36}
+      \strng{fullhash}{7aa834ecd149488b69d92b8f273f9a36}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{StorageBIT A Metadata-aware, Extensible, Semantic, and Hierarchical Database for Biosignals}
+      \field{year}{2011}
+      \verb{url}
+      \verb http://www.lx.it.pt/~afred/papers/StorageBIT.pdf
+      \endverb
+    \endentry
+    \entry{HINDIWAAIRFLOW}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=225951f08a8d99da491cecef30eec331}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Daniel\bibnamedelimb de\bibnamedelimb Sousa\bibnamedelima Michels},
+           family_i={D\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{225951f08a8d99da491cecef30eec331}
+      \strng{fullhash}{225951f08a8d99da491cecef30eec331}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelyear}{2014}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Nasal Involvement in Obstructive Sleep Apnea Syndrome}
+      \field{year}{2014}
+      \verb{url}
+      \verb http://www.hindawi.com/journals/ijoto/2014/717419/
+      \endverb
+    \endentry
     \entry{EDF1}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,hash=7a79beb81ec5ee8f87c06b30dd2aa6d8}{%
@@ -363,20 +463,15 @@
       \endverb
     \endentry
     \entry{DSMS_WINDOW}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,hash=02d71b4c28a1d06468f28b61f765fd13}{%
-           family={Emanuele\bibnamedelima Panigati},
-           family_i={E\bibinitperiod\bibinitdelim P\bibinitperiod},
-           given={Fabio\bibnamedelimb A.\bibnamedelimi Schreiber},
-           given_i={F\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
-        {{uniquename=0,hash=9429c10cb9d6a59bfab498da5ee6234d}{%
-           family={Zaniolo},
-           family_i={Z\bibinitperiod},
-           given={Carlo},
-           given_i={C\bibinitperiod}}}%
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=52e6f25de554ff7370df28aa59446b59}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Emanuele\_Panigati},
+           family_i={E\bibinitperiod}}}%
       }
-      \strng{namehash}{ff892cd8009b93590932d14750e8dfb8}
-      \strng{fullhash}{ff892cd8009b93590932d14750e8dfb8}
+      \strng{namehash}{52e6f25de554ff7370df28aa59446b59}
+      \strng{fullhash}{52e6f25de554ff7370df28aa59446b59}
       \field{sortinit}{E}
       \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
       \field{labelyear}{2017}
@@ -389,130 +484,38 @@
       \verb http://eecs.wsu.edu/~yinghui/mat/courses/spring%202016/Reading/chp5-data%20stream%20management.pdf
       \endverb
     \endentry
-    \entry{JSREM}{article}{}
+    \entry{INF3100}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=1,hash=d919f12cd268b54c9d5ed2fe91bb9896}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={Babak\bibnamedelima Mokhlesi},
-           given_i={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{uniquename=0,hash=7380554a78edc8e967935a286a890e7e}{%
+           family={Evgenij\_Thorstensen},
+           family_i={E\bibinitperiod}}}%
       }
-      \strng{namehash}{d919f12cd268b54c9d5ed2fe91bb9896}
-      \strng{fullhash}{d919f12cd268b54c9d5ed2fe91bb9896}
-      \field{sortinit}{e}
+      \strng{namehash}{7380554a78edc8e967935a286a890e7e}
+      \strng{fullhash}{7380554a78edc8e967935a286a890e7e}
+      \field{sortinit}{E}
       \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{2012}
+      \field{labelyear}{2017}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{“REM-related” Obstructive Sleep Apnea: An Epiphenomenon or a Clinically Important Entity?}
-      \field{year}{2012}
+      \field{title}{Database system course}
+      \field{year}{2017}
       \verb{url}
-      \verb http://www.journalsleep.org/ViewAbstract.aspx?pid=28396
-      \endverb
-    \endentry
-    \entry{BersainReyes}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=3f8c9592d3f8d12a41d8fd32a2ff98f8}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={Bersain\bibnamedelima Reyes},
-           given_i={B\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-      }
-      \strng{namehash}{3f8c9592d3f8d12a41d8fd32a2ff98f8}
-      \strng{fullhash}{3f8c9592d3f8d12a41d8fd32a2ff98f8}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{February 25, 2016}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Tidal Volume and Instantaneous Respiration Rate Estimation using a Smartphone Camera}
-      \field{year}{February 25, 2016}
-      \verb{url}
-      \verb http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7415992
-      \endverb
-    \endentry
-    \entry{LOGICALSENSOR_3}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=e6f45be9d974ea6952153da9e32b22ad}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={Carlos\bibnamedelima Carreiras},
-           given_i={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-      }
-      \strng{namehash}{e6f45be9d974ea6952153da9e32b22ad}
-      \strng{fullhash}{e6f45be9d974ea6952153da9e32b22ad}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{2011}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Logical Sensor Specification}
-      \field{year}{2011}
-      \verb{url}
-      \verb http://www.cs.utah.edu/~tch/publications/pub30.pdf
-      \endverb
-    \endentry
-    \entry{LOGICALSENSOR_1}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=0b73eb7544821904ff332ef95de0ebe5}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={C.Hansen},
-           given_i={C\bibinitperiod}}}%
-      }
-      \strng{namehash}{0b73eb7544821904ff332ef95de0ebe5}
-      \strng{fullhash}{0b73eb7544821904ff332ef95de0ebe5}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{1984}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Logical sensor specification}
-      \field{year}{1984}
-      \field{pages}{169\bibrangedash 193}
-      \range{pages}{25}
-      \verb{url}
-      \verb http://www.cs.utah.edu/~tch/publications/pub38.pdf
-      \endverb
-    \endentry
-    \entry{StorageBIT}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=7aa834ecd149488b69d92b8f273f9a36}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={Charles\bibnamedelima Hansen},
-           given_i={C\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-      }
-      \strng{namehash}{7aa834ecd149488b69d92b8f273f9a36}
-      \strng{fullhash}{7aa834ecd149488b69d92b8f273f9a36}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{2011}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{StorageBIT A Metadata-aware, Extensible, Semantic, and Hierarchical Database for Biosignals}
-      \field{year}{2011}
-      \verb{url}
-      \verb http://www.lx.it.pt/~afred/papers/StorageBIT.pdf
+      \verb http://www.uio.no/studier/emner/matnat/ifi/INF3100/v17/
       \endverb
     \endentry
     \entry{PhysioNet_Intro}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=1,hash=ef9a3ad2423ad950f0b354848045852d}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={George\bibnamedelimb B.\bibnamedelimi Moody},
-           given_i={G\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{uniquename=0,hash=ef9a3ad2423ad950f0b354848045852d}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={George\bibnamedelimb B.\bibnamedelimi Moody},
+           family_i={G\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
       }
       \strng{namehash}{ef9a3ad2423ad950f0b354848045852d}
       \strng{fullhash}{ef9a3ad2423ad950f0b354848045852d}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
       \field{labelyear}{nodate}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
@@ -521,134 +524,24 @@
       \verb http://ecg.mit.edu/george/publications/physionet-embs-2001.pdf
       \endverb
     \endentry
-    \entry{Akershus}{article}{}
+    \entry{MIT_BIH_WFDB}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=1,hash=be48284492bec494a23fdd230e457077}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={HARALD\bibnamedelima HRUBOS-STRØM},
-           given_i={H\bibinitperiod\bibinitdelim H\bibinithyphendelim S\bibinitperiod}}}%
+        {{uniquename=0,hash=5a8ca1fa9c182bba8a33a61fabfee507}{%
+           family={George},
+           family_i={G\bibinitperiod},
+           given={B.\bibnamedelimi Moody},
+           given_i={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
       }
-      \strng{namehash}{be48284492bec494a23fdd230e457077}
-      \strng{fullhash}{be48284492bec494a23fdd230e457077}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{16 June 2010}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{A Norwegian population-based study on the risk and prevalence of obstructive sleep apnea The Akershus Sleep Apnea Project (ASAP)}
-      \field{year}{16 June 2010}
-      \verb{url}
-      \verb http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2869.2010.00861.x/full
-      \endverb
-    \endentry
-    \entry{NCBIEGEPILEPSY}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=6150a131144baa3f9fde9925ffb89cba}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={Karakis},
-           given_i={K\bibinitperiod}}}%
-      }
-      \strng{namehash}{6150a131144baa3f9fde9925ffb89cba}
-      \strng{fullhash}{6150a131144baa3f9fde9925ffb89cba}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{August 29, 2012}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{The utility of routine EEG in the diagnosis of sleep disordered breathing.}
-      \field{year}{August 29, 2012}
-      \verb{url}
-      \verb http://www.ncbi.nlm.nih.gov/pubmed/22854767
-      \endverb
-    \endentry
-    \entry{SDEMG}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=c904aab476c45f970a69be22426db782}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={Marc\bibnamedelimb B\bibnamedelima Blumen},
-           given_i={M\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-      }
-      \strng{namehash}{c904aab476c45f970a69be22426db782}
-      \strng{fullhash}{c904aab476c45f970a69be22426db782}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{May 20, 2004}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Tongue mechanical characteristics and genioglossus muscle EMG in obstructive sleep apnoea patients}
-      \field{year}{May 20, 2004}
-      \verb{url}
-      \verb http://www.sciencedirect.com/science/article/pii/S1569904803002933
-      \endverb
-    \endentry
-    \entry{SensorDataAbstract}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=6c00691e640cd7a15b9370da23074ddd}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={Payam\bibnamedelima Barnaghi},
-           given_i={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-      }
-      \strng{namehash}{6c00691e640cd7a15b9370da23074ddd}
-      \strng{fullhash}{6c00691e640cd7a15b9370da23074ddd}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
+      \strng{namehash}{5a8ca1fa9c182bba8a33a61fabfee507}
+      \strng{fullhash}{5a8ca1fa9c182bba8a33a61fabfee507}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
       \field{labelyear}{nodate}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Computing Perception from Sensor Data}
+      \field{title}{WFDB Programmer's Guide}
       \verb{url}
-      \verb http://personal.ee.surrey.ac.uk/Personal/P.Barnaghi/doc/PID2479545.pdf
-      \endverb
-    \endentry
-    \entry{APNEA_ECGDB}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=89b1db89e570edb40b6bce866007b718}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={T\bibnamedelima Penzel},
-           given_i={T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
-      }
-      \strng{namehash}{89b1db89e570edb40b6bce866007b718}
-      \strng{fullhash}{89b1db89e570edb40b6bce866007b718}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{2017}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Data for development and evaluation}
-      \field{year}{2017}
-      \verb{url}
-      \verb http://ecg.mit.edu/george/publications/apnea-ecg-cinc-2000.pdf
-      \endverb
-    \endentry
-    \entry{IEEEOSAEEG}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=1,hash=6444a5c1685d6f1d73d8b46d83f1db1f}{%
-           family={et.al},
-           family_i={e\bibinitperiod},
-           given={Wafaa\bibnamedelima S.Almuhammadi},
-           given_i={W\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
-      }
-      \strng{namehash}{6444a5c1685d6f1d73d8b46d83f1db1f}
-      \strng{fullhash}{6444a5c1685d6f1d73d8b46d83f1db1f}
-      \field{sortinit}{e}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
-      \field{labelyear}{May 1, 2015}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Efficient Obstructive Sleep Apnea Classification Based on EEG Signals}
-      \field{year}{May 1, 2015}
-      \verb{url}
-      \verb http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7160186
+      \verb https://www.physionet.org/physiotools/wpg/
       \endverb
     \endentry
     \entry{SP}{article}{}
@@ -670,17 +563,38 @@
       \field{title}{Generic data acquisition for mobile platforms, the CESAR acquisition toll}
       \field{year}{2016}
     \endentry
+    \entry{LittleD}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=d4deb94e5c413a224bc806af8a9c22cb}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Graeme},
+           family_i={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{d4deb94e5c413a224bc806af8a9c22cb}
+      \strng{fullhash}{d4deb94e5c413a224bc806af8a9c22cb}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelyear}{retrieved 2017}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A SQL Database for Sensor Nodes and Embedded Applications}
+      \field{year}{retrieved 2017}
+      \verb{url}
+      \verb http://ai2-s2-pdfs.s3.amazonaws.com/e1d6/7eac67173b03966b4d038bdfaa1f6acd0986.pdf
+      \endverb
+    \endentry
     \entry{GRAPHVIEWMAIN}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=838719be0f3f4369e4345f79bd91bf52}{%
-           family={grapview},
-           family_i={g\bibinitperiod}}}%
+        {{uniquename=0,hash=7be39e9f17390e395c31f2a500b62155}{%
+           family={Grapview},
+           family_i={G\bibinitperiod}}}%
       }
-      \strng{namehash}{838719be0f3f4369e4345f79bd91bf52}
-      \strng{fullhash}{838719be0f3f4369e4345f79bd91bf52}
-      \field{sortinit}{g}
+      \strng{namehash}{7be39e9f17390e395c31f2a500b62155}
+      \strng{fullhash}{7be39e9f17390e395c31f2a500b62155}
+      \field{sortinit}{G}
       \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
-      \field{extrayear}{1}
       \field{labelyear}{2017}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
@@ -693,15 +607,14 @@
     \endentry
     \entry{GRAPHVIEW}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=838719be0f3f4369e4345f79bd91bf52}{%
-           family={grapview},
-           family_i={g\bibinitperiod}}}%
+        {{uniquename=0,hash=b7e7a09c16908b29cdb9189646bbdcbc}{%
+           family={Grapview\_code},
+           family_i={G\bibinitperiod}}}%
       }
-      \strng{namehash}{838719be0f3f4369e4345f79bd91bf52}
-      \strng{fullhash}{838719be0f3f4369e4345f79bd91bf52}
-      \field{sortinit}{g}
+      \strng{namehash}{b7e7a09c16908b29cdb9189646bbdcbc}
+      \strng{fullhash}{b7e7a09c16908b29cdb9189646bbdcbc}
+      \field{sortinit}{G}
       \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
-      \field{extrayear}{2}
       \field{labelyear}{2017}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
@@ -758,6 +671,28 @@
       \verb http://www.orm.net/pdf/ORM2.pdf
       \endverb
     \endentry
+    \entry{Akershus}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=0952cbd817fbcc9a6d9faadebc2d179e}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Harald\bibnamedelima Hrubos-Strøm},
+           family_i={H\bibinitperiod\bibinitdelim H\bibinithyphendelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{0952cbd817fbcc9a6d9faadebc2d179e}
+      \strng{fullhash}{0952cbd817fbcc9a6d9faadebc2d179e}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelyear}{16 June 2010}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Norwegian population-based study on the risk and prevalence of obstructive sleep apnea The Akershus Sleep Apnea Project (ASAP)}
+      \field{year}{16 June 2010}
+      \verb{url}
+      \verb http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2869.2010.00861.x/full
+      \endverb
+    \endentry
     \entry{HEARTORG_HR}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,hash=784b134d7d8536cffb3a7e53c165bcc1}{%
@@ -812,7 +747,7 @@
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{SLEEP AS A TEACHING TOOL FOR INTEGRATING RESPIRATORY PHYSIOLOGY AND MOTOR CONTROL}
+      \field{title}{Sleep as a teaching tool for integrating respiratory physiology and motor control}
       \field{year}{June 2001}
       \verb{url}
       \verb http://advan.physiology.org/content/25/2/29
@@ -838,32 +773,25 @@
       \verb https://helsenorge.no/sykdom/sovnproblemer/snorking-og-sovnapne
       \endverb
     \endentry
-    \entry{LOGICALSENSOR_0}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,hash=31b9ad6dc0e4ea2925c29391c480c462}{%
-           family={Henderson},
-           family_i={H\bibinitperiod},
-           given={Tom},
-           given_i={T\bibinitperiod}}}%
-        {{uniquename=0,hash=b2bcce8e831b37f238f110a13f8e9a73}{%
-           family={Shilcrat},
-           family_i={S\bibinitperiod},
-           given={Esther},
-           given_i={E\bibinitperiod}}}%
+    \entry{INF1050BOOK}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=6697a95848936c3af7b72dec17559783}{%
+           family={Ian},
+           family_i={I\bibinitperiod},
+           given={Sommerville},
+           given_i={S\bibinitperiod}}}%
       }
-      \strng{namehash}{c5099dd2b3e5d50ef2d8076a45adb749}
-      \strng{fullhash}{c5099dd2b3e5d50ef2d8076a45adb749}
-      \field{sortinit}{H}
-      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
-      \field{labelyear}{1984}
+      \strng{namehash}{6697a95848936c3af7b72dec17559783}
+      \strng{fullhash}{6697a95848936c3af7b72dec17559783}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelyear}{2017}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Logical Sensor System}
-      \field{year}{1984}
-      \verb{url}
-      \verb http://www.cs.utah.edu/~tch/publications/pub38.pdf
-      \endverb
+      \field{isbn}{13: 978-0-13-705346-9}
+      \field{title}{Software Engineering}
+      \field{year}{2017}
     \endentry
     \entry{IANAPORT}{article}{}
       \name{author}{1}{}{%
@@ -885,45 +813,38 @@
       \verb https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
       \endverb
     \endentry
-    \entry{Hindawi}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,hash=ce3babf970186c081a25486e31c0c6cf}{%
-           family={Khan},
-           family_i={K\bibinitperiod},
-           given={Muhammad\bibnamedelima Talha},
-           given_i={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
-        {{uniquename=0,hash=4d943af75936139719ac56745a39636c}{%
-           family={Franco},
-           family_i={F\bibinitperiod},
-           given={Rose\bibnamedelima Amy},
-           given_i={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+    \entry{NCBIEGEPILEPSY}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=6150a131144baa3f9fde9925ffb89cba}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Karakis},
+           family_i={K\bibinitperiod}}}%
       }
-      \strng{namehash}{7cf64b3ba1990220416b0466d8fa7aad}
-      \strng{fullhash}{7cf64b3ba1990220416b0466d8fa7aad}
+      \strng{namehash}{6150a131144baa3f9fde9925ffb89cba}
+      \strng{fullhash}{6150a131144baa3f9fde9925ffb89cba}
       \field{sortinit}{K}
       \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
-      \field{labelyear}{February 16, 2014}
+      \field{labelyear}{August 29, 2012}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Complex Sleep Apnea Syndrome}
-      \field{year}{February 16, 2014}
+      \field{title}{The utility of routine EEG in the diagnosis of sleep disordered breathing.}
+      \field{year}{August 29, 2012}
       \verb{url}
-      \verb http://www.hindawi.com/journals/sd/2014/798487/
+      \verb http://www.ncbi.nlm.nih.gov/pubmed/22854767
       \endverb
     \endentry
     \entry{RESEARCHGATE}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=33dac964dee965f68f06ac45d5b78a3b}{%
+        {{uniquename=0,hash=a39008a845ef35a7b4f95e080e161e8e}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
            family={Laiali\bibnamedelima Almazaydeh},
-           family_i={L\bibinitperiod\bibinitdelim A\bibinitperiod},
-           suffix={Khaled\bibnamedelima Elleithy},
-           suffix_i={K\bibinitperiod\bibinitdelim E\bibinitperiod},
-           given={Miad\bibnamedelima Faezipour},
-           given_i={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+           family_i={L\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
       }
-      \strng{namehash}{33dac964dee965f68f06ac45d5b78a3b}
-      \strng{fullhash}{33dac964dee965f68f06ac45d5b78a3b}
+      \strng{namehash}{a39008a845ef35a7b4f95e080e161e8e}
+      \strng{fullhash}{a39008a845ef35a7b4f95e080e161e8e}
       \field{sortinit}{L}
       \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
       \field{labelyear}{May 2012}
@@ -936,26 +857,68 @@
       \verb https://www.researchgate.net/publication/254039441_Detection_of_obstructive_sleep_apnea_through_ECG_signal_features
       \endverb
     \endentry
-    \entry{SLEEP_M_UNDIAG}{article}{}
+    \entry{SDEMG}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=6f2b19c9e3e7663ae41c13f16b1a49c7}{%
-           family={Medicine},
-           family_i={M\bibinitperiod},
-           given={Sleep},
-           given_i={S\bibinitperiod}}}%
+        {{uniquename=0,hash=c904aab476c45f970a69be22426db782}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Marc\bibnamedelimb B\bibnamedelima Blumen},
+           family_i={M\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
       }
-      \strng{namehash}{6f2b19c9e3e7663ae41c13f16b1a49c7}
-      \strng{fullhash}{6f2b19c9e3e7663ae41c13f16b1a49c7}
+      \strng{namehash}{c904aab476c45f970a69be22426db782}
+      \strng{fullhash}{c904aab476c45f970a69be22426db782}
       \field{sortinit}{M}
       \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelyear}{2009}
+      \field{labelyear}{May 20, 2004}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Prevalence of undiagnosed obstructive sleep apnea among adult surgical patients in an academic medical center}
-      \field{year}{2009}
+      \field{title}{Tongue mechanical characteristics and genioglossus muscle EMG in obstructive sleep apnoea patients}
+      \field{year}{May 20, 2004}
       \verb{url}
-      \verb http://www.sciencedirect.com/science/article/pii/S1389945708003079
+      \verb http://www.sciencedirect.com/science/article/pii/S1569904803002933
+      \endverb
+    \endentry
+    \entry{MAYOCLINIC}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=ad22890e9d6dca8da22c0288ff563184}{%
+           family={mayoclinic.org},
+           family_i={m\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad22890e9d6dca8da22c0288ff563184}
+      \strng{fullhash}{ad22890e9d6dca8da22c0288ff563184}
+      \field{sortinit}{m}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelyear}{June 15, 2016}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Obstructive sleep apnea - Treatment}
+      \field{year}{June 15, 2016}
+      \verb{url}
+      \verb http://www.mayoclinic.org/diseases-conditions/obstructive-sleep-apnea/diagnosis-treatment/treatment/txc-20206034
+      \endverb
+    \endentry
+    \entry{ChestWorldCongress}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=59659487b8ec9e878c00a1061874df8e}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Mihaela},
+           family_i={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{59659487b8ec9e878c00a1061874df8e}
+      \strng{fullhash}{59659487b8ec9e878c00a1061874df8e}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelyear}{04.2016}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Smoking, Drinking, Overweight, and Obstructive Sleep Apnea Among Patients With Sleep Breathing Disorders}
+      \field{year}{04.2016}
+      \verb{url}
+      \verb http://journal.publications.chestnet.org/data/Journals/CHEST/935163/02594.pdf
       \endverb
     \endentry
     \entry{EDF4J}{article}{}
@@ -980,16 +943,14 @@
     \endentry
     \entry{tcts}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=a8fa62641b9a8329f2aa0607993ca418}{%
+        {{uniquename=0,hash=90d25802aac23e10cbec86213d05b6d4}{%
            prefix={de},
            prefix_i={d\bibinitperiod},
-           family={Mons},
-           family_i={M\bibinitperiod},
-           given={Universite},
-           given_i={U\bibinitperiod}}}%
+           family={Mons\bibnamedelima Universite},
+           family_i={M\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
       }
-      \strng{namehash}{a8fa62641b9a8329f2aa0607993ca418}
-      \strng{fullhash}{a8fa62641b9a8329f2aa0607993ca418}
+      \strng{namehash}{90d25802aac23e10cbec86213d05b6d4}
+      \strng{fullhash}{90d25802aac23e10cbec86213d05b6d4}
       \field{sortinit}{M}
       \field{sortinithash}{2684bec41e9697b92699b46491061da2}
       \field{labelyear}{retrieved 2017}
@@ -1002,24 +963,26 @@
       \verb http://www.tcts.fpms.ac.be/~devuyst/Databases/DatabaseApnea/
       \endverb
     \endentry
-    \entry{MIT_BIH_WFDB}{article}{}
+    \entry{Hindawi}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=a0e87fcc1c46edf31fc03586089ae34d}{%
-           family={Moody},
-           family_i={M\bibinitperiod},
-           given={George\bibnamedelima B.},
-           given_i={G\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{uniquename=0,hash=66757adf88b79b2b7df62d54c69917c5}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Muhammad},
+           family_i={M\bibinitperiod}}}%
       }
-      \strng{namehash}{a0e87fcc1c46edf31fc03586089ae34d}
-      \strng{fullhash}{a0e87fcc1c46edf31fc03586089ae34d}
+      \strng{namehash}{66757adf88b79b2b7df62d54c69917c5}
+      \strng{fullhash}{66757adf88b79b2b7df62d54c69917c5}
       \field{sortinit}{M}
       \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelyear}{nodate}
+      \field{labelyear}{February 16, 2014}
+      \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{WFDB Programmer's Guide}
+      \field{title}{Complex Sleep Apnea Syndrome}
+      \field{year}{February 16, 2014}
       \verb{url}
-      \verb https://www.physionet.org/physiotools/wpg/
+      \verb http://www.hindawi.com/journals/sd/2014/798487/
       \endverb
     \endentry
     \entry{INF3100_Recipe_book}{article}{}
@@ -1046,12 +1009,14 @@
     \endentry
     \entry{NCBINLM}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=761e8c50bd81dec3d13304ad587c737d}{%
+        {{uniquename=0,hash=9eb633a6c54b6bccb1568b260f4752b8}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
            family={Naresh},
            family_i={N\bibinitperiod}}}%
       }
-      \strng{namehash}{761e8c50bd81dec3d13304ad587c737d}
-      \strng{fullhash}{761e8c50bd81dec3d13304ad587c737d}
+      \strng{namehash}{9eb633a6c54b6bccb1568b260f4752b8}
+      \strng{fullhash}{9eb633a6c54b6bccb1568b260f4752b8}
       \field{sortinit}{N}
       \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
       \field{labelyear}{2008}
@@ -1106,12 +1071,14 @@
     \endentry
     \entry{Nicolas}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=d9fd932e114c21309e61c08496bdc78e}{%
+        {{uniquename=0,hash=d351b42b661e9031c2a76e4bf5a7d419}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
            family={Nicolas},
            family_i={N\bibinitperiod}}}%
       }
-      \strng{namehash}{d9fd932e114c21309e61c08496bdc78e}
-      \strng{fullhash}{d9fd932e114c21309e61c08496bdc78e}
+      \strng{namehash}{d351b42b661e9031c2a76e4bf5a7d419}
+      \strng{fullhash}{d351b42b661e9031c2a76e4bf5a7d419}
       \field{sortinit}{N}
       \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
       \field{labelyear}{retrieved 2017}
@@ -1122,6 +1089,26 @@
       \field{year}{retrieved 2017}
       \verb{url}
       \verb http://dunkels.com/adam/tsiftes11database.pdf
+      \endverb
+    \endentry
+    \entry{SensorDataAbstract}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=6c00691e640cd7a15b9370da23074ddd}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Payam\bibnamedelima Barnaghi},
+           family_i={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{6c00691e640cd7a15b9370da23074ddd}
+      \strng{fullhash}{6c00691e640cd7a15b9370da23074ddd}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelyear}{nodate}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Computing Perception from Sensor Data}
+      \verb{url}
+      \verb http://personal.ee.surrey.ac.uk/Personal/P.Barnaghi/doc/PID2479545.pdf
       \endverb
     \endentry
     \entry{PhysioNet_Contributing}{article}{}
@@ -1281,13 +1268,13 @@
     \endentry
     \entry{ScienceDaily}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=bce07cca7bc0e44f71891cd3ffc989bb}{%
-           family={ScienceDaily},
-           family_i={S\bibinitperiod}}}%
+        {{uniquename=0,hash=f7a9b0b1a1dfe70ddbd350a598f92fa4}{%
+           family={sciencedaily.com},
+           family_i={s\bibinitperiod}}}%
       }
-      \strng{namehash}{bce07cca7bc0e44f71891cd3ffc989bb}
-      \strng{fullhash}{bce07cca7bc0e44f71891cd3ffc989bb}
-      \field{sortinit}{S}
+      \strng{namehash}{f7a9b0b1a1dfe70ddbd350a598f92fa4}
+      \strng{fullhash}{f7a9b0b1a1dfe70ddbd350a598f92fa4}
+      \field{sortinit}{s}
       \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
       \field{labelyear}{September 4, 2006}
       \field{datelabelsource}{}
@@ -1297,59 +1284,6 @@
       \field{year}{September 4, 2006}
       \verb{url}
       \verb https://www.sciencedaily.com/releases/2006/09/060901161349.htm
-      \endverb
-    \endentry
-    \entry{Westchester}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,hash=c9a34e2805cc30e4bcbe7747dd92453f}{%
-           prefix={of},
-           prefix_i={o\bibinitperiod},
-           family={Sleep\bibnamedelima Medicine.},
-           family_i={S\bibinitperiod\bibinitdelim M\bibinitperiod},
-           given={American\bibnamedelima Academy},
-           given_i={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-      }
-      \strng{namehash}{c9a34e2805cc30e4bcbe7747dd92453f}
-      \strng{fullhash}{c9a34e2805cc30e4bcbe7747dd92453f}
-      \field{sortinit}{S}
-      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelyear}{2005}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Sleep apnea, obstructive apnea, upper airway apnea, mixed apnea, hypersomnia sleep apnea syndrome, obesity hypoventilation syndrome, adenoidal hypertrophy, cor pulmonale syndrome, Pickwickian syn- drome. The terms Pickwickian syndrome and obesity hypoventilation syndrome are discouraged from use because they have been applied to several different sleep-related breathing disorders}
-      \field{journaltitle}{Obstructive Sleep Apnea Syndrome}
-      \field{title}{The international classification of sleep disorders : diagnostic and coding manual}
-      \field{year}{2005}
-      \field{pages}{52}
-      \range{pages}{1}
-      \keyw{Sleep Disorders–Classification. Sleep Disorders–Diagnosis}
-    \endentry
-    \entry{HudsonOSA}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,hash=810069a82d873ba53f591d1cf7b528f1}{%
-           family={sleep},
-           family_i={s\bibinitperiod},
-           given={Hudson},
-           given_i={H\bibinitperiod}}}%
-        {{uniquename=0,hash=b434adecf3706607d23620cbe07862c9}{%
-           prefix={tmj},
-           prefix_i={t\bibinitperiod},
-           family={center},
-           family_i={c\bibinitperiod}}}%
-      }
-      \strng{namehash}{b119ff205a46cba9b0a084dd73465198}
-      \strng{fullhash}{b119ff205a46cba9b0a084dd73465198}
-      \field{sortinit}{s}
-      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelyear}{2016}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Obstructive sleep apnea}
-      \field{year}{2016}
-      \verb{url}
-      \verb http://sleeptmjdr.com/obstructive-sleep-apnea/
       \endverb
     \endentry
     \entry{SHSH_SleepData}{article}{}
@@ -1388,48 +1322,44 @@
       \verb https://sleepdata.org
       \endverb
     \endentry
-    \entry{INF1050BOOK}{article}{}
+    \entry{SLEEP_M_UNDIAG}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=70341b3bfcce7026902f4eb1e4111b58}{%
-           family={Sommerville},
-           family_i={S\bibinitperiod},
-           given={Ian},
-           given_i={I\bibinitperiod}}}%
+        {{uniquename=0,hash=9e080a3a36ba6a7d8ac9d11148a1af68}{%
+           family={Sleep\_Medicine},
+           family_i={S\bibinitperiod}}}%
       }
-      \strng{namehash}{70341b3bfcce7026902f4eb1e4111b58}
-      \strng{fullhash}{70341b3bfcce7026902f4eb1e4111b58}
+      \strng{namehash}{9e080a3a36ba6a7d8ac9d11148a1af68}
+      \strng{fullhash}{9e080a3a36ba6a7d8ac9d11148a1af68}
       \field{sortinit}{S}
       \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelyear}{2017}
+      \field{labelyear}{2009}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{13: 978-0-13-705346-9}
-      \field{title}{Software Engineering}
-      \field{year}{2017}
-    \endentry
-    \entry{HINDIWAAIRFLOW}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,hash=9d22a3acb54af015768ce0314c306b3e}{%
-           prefix={de},
-           prefix_i={d\bibinitperiod},
-           family={Sousa\bibnamedelimb Michels\bibnamedelima et.al},
-           family_i={S\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim e\bibinitperiod},
-           given={Daniel},
-           given_i={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{9d22a3acb54af015768ce0314c306b3e}
-      \strng{fullhash}{9d22a3acb54af015768ce0314c306b3e}
-      \field{sortinit}{S}
-      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelyear}{2014}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Nasal Involvement in Obstructive Sleep Apnea Syndrome}
-      \field{year}{2014}
+      \field{title}{Prevalence of undiagnosed obstructive sleep apnea among adult surgical patients in an academic medical center}
+      \field{year}{2009}
       \verb{url}
-      \verb http://www.hindawi.com/journals/ijoto/2014/717419/
+      \verb http://www.sciencedirect.com/science/article/pii/S1389945708003079
+      \endverb
+    \endentry
+    \entry{HudsonOSA}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=13779bc6b3dd0ec66224e7c1284cc80d}{%
+           family={sleeptmjdr.com},
+           family_i={s\bibinitperiod}}}%
+      }
+      \strng{namehash}{13779bc6b3dd0ec66224e7c1284cc80d}
+      \strng{fullhash}{13779bc6b3dd0ec66224e7c1284cc80d}
+      \field{sortinit}{s}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelyear}{2016}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Obstructive sleep apnea}
+      \field{year}{2016}
+      \verb{url}
+      \verb http://sleeptmjdr.com/obstructive-sleep-apnea/
       \endverb
     \endentry
     \entry{SQLITEORG}{article}{}
@@ -1492,30 +1422,6 @@
       \verb http://www.sqlite.org/faq.html#q19
       \endverb
     \endentry
-    \entry{MAYOCLINIC}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,hash=52907e9d5f7c283c75dee8e1e2ae447f}{%
-           prefix={clinic},
-           prefix_i={c\bibinitperiod},
-           family={staff},
-           family_i={s\bibinitperiod},
-           given={By\bibnamedelima Mayo},
-           given_i={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-      }
-      \strng{namehash}{52907e9d5f7c283c75dee8e1e2ae447f}
-      \strng{fullhash}{52907e9d5f7c283c75dee8e1e2ae447f}
-      \field{sortinit}{s}
-      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelyear}{June 15, 2016}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Obstructive sleep apnea - Treatment}
-      \field{year}{June 15, 2016}
-      \verb{url}
-      \verb http://www.mayoclinic.org/diseases-conditions/obstructive-sleep-apnea/diagnosis-treatment/treatment/txc-20206034
-      \endverb
-    \endentry
     \entry{EDFLIB}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,hash=642f9834e7623a7f40d7e9c507084a2f}{%
@@ -1575,28 +1481,6 @@
       \field{title}{Email communication between Line Michelsen (Resmed) and Thomas Plagemann (University of Oslo)}
       \field{year}{August 26th 2016}
     \endentry
-    \entry{INF3100}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,hash=691314c81c174b93e4a4e101763f55ff}{%
-           family={Thorstensen},
-           family_i={T\bibinitperiod},
-           given={Evgenij},
-           given_i={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{691314c81c174b93e4a4e101763f55ff}
-      \strng{fullhash}{691314c81c174b93e4a4e101763f55ff}
-      \field{sortinit}{T}
-      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
-      \field{labelyear}{2017}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Database system course}
-      \field{year}{2017}
-      \verb{url}
-      \verb http://www.uio.no/studier/emner/matnat/ifi/INF3100/v17/
-      \endverb
-    \endentry
     \entry{DATABASEMODELING_BOOK}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,hash=7e4e618afddabd5242ec65c64dc7d0d3}{%
@@ -1619,37 +1503,101 @@
       \field{title}{Database Modeling \& Design: Logical Design}
       \field{year}{2006}
     \endentry
+    \entry{LOGICALSENSOR_0}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=d40c3a9729f1f4d006776cac85bb4c6f}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Tom\bibnamedelima Henderson},
+           family_i={T\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{d40c3a9729f1f4d006776cac85bb4c6f}
+      \strng{fullhash}{d40c3a9729f1f4d006776cac85bb4c6f}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelyear}{1984}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Logical Sensor System}
+      \field{year}{1984}
+      \verb{url}
+      \verb http://www.cs.utah.edu/~tch/publications/pub38.pdf
+      \endverb
+    \endentry
+    \entry{APNEA_ECGDB}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=378c0ff932228bbfb2d6a5a4b7ab9081}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={T\_Penzel},
+           family_i={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{378c0ff932228bbfb2d6a5a4b7ab9081}
+      \strng{fullhash}{378c0ff932228bbfb2d6a5a4b7ab9081}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelyear}{2017}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Data for development and evaluation}
+      \field{year}{2017}
+      \verb{url}
+      \verb http://ecg.mit.edu/george/publications/apnea-ecg-cinc-2000.pdf
+      \endverb
+    \endentry
     \entry{OWASP}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=454de087d7c5e3750abd2288421b0736}{%
-           family={veracode},
+        {{uniquename=0,hash=7e1bbced9864ba5f439ed2a2d2877035}{%
+           family={veracode.com},
            family_i={v\bibinitperiod}}}%
       }
-      \strng{namehash}{454de087d7c5e3750abd2288421b0736}
-      \strng{fullhash}{454de087d7c5e3750abd2288421b0736}
+      \strng{namehash}{7e1bbced9864ba5f439ed2a2d2877035}
+      \strng{fullhash}{7e1bbced9864ba5f439ed2a2d2877035}
       \field{sortinit}{v}
       \field{sortinithash}{d18f5ce25ce0b5ca7f924e3f6c04870e}
       \field{labelyear}{2017}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{OWASP TOP 10 VULNERABILITIES}
+      \field{title}{Owasp top 10 vulnerabilities}
       \field{year}{2017}
       \verb{url}
       \verb https://www.veracode.com/directory/owasp-top-10
       \endverb
     \endentry
+    \entry{IEEEOSAEEG}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=6444a5c1685d6f1d73d8b46d83f1db1f}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Wafaa\bibnamedelima S.Almuhammadi},
+           family_i={W\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{6444a5c1685d6f1d73d8b46d83f1db1f}
+      \strng{fullhash}{6444a5c1685d6f1d73d8b46d83f1db1f}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelyear}{May 1, 2015}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Efficient Obstructive Sleep Apnea Classification Based on EEG Signals}
+      \field{year}{May 1, 2015}
+      \verb{url}
+      \verb http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7160186
+      \endverb
+    \endentry
     \entry{WIKIHOW}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=8fcff3d0ba824a41945e0a8fd3888f70}{%
-           family={Wiki\bibnamedelima how},
-           family_i={W\bibinitperiod\bibinitdelim h\bibinitperiod},
-           given={M.\bibnamedelimi Expert\bibnamedelimb review\bibnamedelimb by\bibnamedelimb Janine\bibnamedelima Kelbach},
-           given_i={M\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim r\bibinitperiod\bibinitdelim b\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{uniquename=0,hash=f5063e24eb1ef53b38fda7a7b122e1cb}{%
+           family={wikihow.com},
+           family_i={w\bibinitperiod}}}%
       }
-      \strng{namehash}{8fcff3d0ba824a41945e0a8fd3888f70}
-      \strng{fullhash}{8fcff3d0ba824a41945e0a8fd3888f70}
-      \field{sortinit}{W}
+      \strng{namehash}{f5063e24eb1ef53b38fda7a7b122e1cb}
+      \strng{fullhash}{f5063e24eb1ef53b38fda7a7b122e1cb}
+      \field{sortinit}{w}
       \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
       \field{labelyear}{August, 2016}
       \field{datelabelsource}{}
@@ -1659,26 +1607,6 @@
       \field{year}{August, 2016}
       \verb{url}
       \verb http://www.wikihow.com/Measure-Oxygen-Saturation-Using-Pulse-Oximeter
-      \endverb
-    \endentry
-    \entry{CONSUMERPRODUCER}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,hash=0565889ca04c1640042996b3c043b8ae}{%
-           family={WIKIPEDIA},
-           family_i={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{0565889ca04c1640042996b3c043b8ae}
-      \strng{fullhash}{0565889ca04c1640042996b3c043b8ae}
-      \field{sortinit}{W}
-      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
-      \field{labelyear}{2017}
-      \field{datelabelsource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Producer and consumer problem}
-      \field{year}{2017}
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem
       \endverb
     \endentry
     \entry{OSAWiki}{article}{}
@@ -1711,6 +1639,7 @@
       \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
       \field{sortinit}{W}
       \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{extrayear}{1}
       \field{labelyear}{2017}
       \field{datelabelsource}{}
       \field{labelnamesource}{author}
@@ -1721,16 +1650,37 @@
       \verb https://en.wikipedia.org/wiki/Object-role_modeling
       \endverb
     \endentry
+    \entry{CONSUMERPRODUCER}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           family_i={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{extrayear}{2}
+      \field{labelyear}{2017}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Producer and consumer problem}
+      \field{year}{2017}
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem
+      \endverb
+    \endentry
     \entry{MIT_BIH_slpdb}{article}{}
       \name{author}{1}{}{%
-        {{uniquename=0,hash=64949de3382af463eb6b06f80d9cb012}{%
-           family={Y.ICHIMARU},
-           family_i={Y\bibinitperiod},
-           given={GB.MOODY},
-           given_i={G\bibinitperiod}}}%
+        {{uniquename=0,hash=353670067cb0e61482822ec671382976}{%
+           prefix={et.al},
+           prefix_i={e\bibinitperiod},
+           family={Y.Ichimaru},
+           family_i={Y\bibinitperiod}}}%
       }
-      \strng{namehash}{64949de3382af463eb6b06f80d9cb012}
-      \strng{fullhash}{64949de3382af463eb6b06f80d9cb012}
+      \strng{namehash}{353670067cb0e61482822ec671382976}
+      \strng{fullhash}{353670067cb0e61482822ec671382976}
       \field{sortinit}{Y}
       \field{sortinithash}{3cbc1e3d286284cedb5e5218a3248f94}
       \field{labelyear}{nodate}

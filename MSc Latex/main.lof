@@ -9,9 +9,9 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces BITalino (r)evolution Board with Bluetooth connectivity \citep {BITalino_board}\relax }}{17}{figure.caption.25}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces BITalino (r)evolution Plugged with Bluetooth connectivity \citep {BITalino_plugged}\relax }}{18}{figure.caption.26}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces BITalino (r)evolution Freestyle with Bluetooth connectivity \citep {BITalino_Freestyle}\relax }}{19}{figure.caption.27}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Annotations for St. Vincent's University Hospital database\relax }}{23}{figure.caption.35}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Annotations for *\_stage.txt\citep {STVinceUniversity_ann}}}}{23}{figure.caption.35}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Annotations for *\_respevt.txt\citep {STVinceUniversity_ann}}}}{23}{figure.caption.35}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Annotations for St. Vincent's University Hospital database\relax }}{24}{figure.caption.35}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Annotations for *\_stage.txt\citep {STVinceUniversity_ann}}}}{24}{figure.caption.35}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Annotations for *\_respevt.txt\citep {STVinceUniversity_ann}}}}{24}{figure.caption.35}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces EDF and EDF+ file structure \citep {EDF2}\relax }}{25}{figure.caption.39}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Sleep scoring sample\citep {EDFpluss}\relax }}{26}{figure.caption.40}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Sharing the collected data between multiple applications\citep {SP}\relax }}{28}{figure.caption.43}
@@ -52,10 +52,16 @@
 \contentsline {figure}{\numberline {6.3}{\ignorespaces CPU usage under stress test\relax }}{106}{figure.caption.372}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Main fragments of the database application\relax }}{114}{figure.caption.381}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Real time}}}{114}{figure.caption.381}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {EDF import}}}{114}{figure.caption.381}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {EDF export}}}{114}{figure.caption.381}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Database tasks}}}{114}{figure.caption.381}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Main fragments of the database application\relax }}{116}{figure.caption.381}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Real time}}}{116}{figure.caption.381}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {EDF import}}}{116}{figure.caption.381}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {EDF export}}}{116}{figure.caption.381}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Database tasks}}}{116}{figure.caption.381}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces CPU usage under stress test\relax }}{120}{figure.caption.393}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces CPU usage under stress test\relax }}{120}{figure.caption.395}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces CPU usage under stress test\relax }}{121}{figure.caption.397}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces CPU usage under stress test\relax }}{121}{figure.caption.399}
+\contentsline {figure}{\numberline {B.5}{\ignorespaces CPU usage under stress test\relax }}{122}{figure.caption.401}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
